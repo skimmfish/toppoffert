@@ -11,7 +11,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head itemscope itemtype="http://schema.org/WebSite">
     <meta charset="utf-8">
-    <title itemprop="name">{{$title}}</title>
+    <title itemprop="name">@if(isset($title)) {{$title}} @else {{config('app.name')}} @endif</title>
 
     <link rel="dns-prefetch" href="https://s.ytimg.com/" />
     <link rel="dns-prefetch" href="https://i.ytimg.com/" />
@@ -21,7 +21,7 @@
     <link rel="dns-prefetch" href="https://www.youtube.com/" />
 
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/icons/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/icons/favicon.ico')}}" />
     <meta name="author" content="TOPPOFFERT.SE" />
     <meta property="fb:admins" content="753251562" />
     <meta name="msapplication-tap-highlight" content="no" />
@@ -72,18 +72,21 @@
 }
 }
 @media (min-width: 380px){
-.worktype-grid-item {
+.worktype-grid-item{
     padding: 1rem;
 }
 }
-.worktype-grid:before, .worktype-grid>:first-child {
+
+.worktype-grid:before, .worktype-grid>:first-child{
     grid-row: 1/1;
     grid-column: 1/1;
 }
+
 @media (min-width: 480px){
 .worktype-grid-item {
     font-size: 1em;
 }}
+
 .worktype-grid-item{
     display: flex;
     flex-direction: column;
@@ -128,12 +131,13 @@ svg:not(:root) {
 .show-on-large-only img{
 border-radius:15px;
 }
-@media (min-width: 640px)
+
+@media (min-width: 640px){
 .worktype-grid {
 grid-template-columns: repeat(4,1fr);
 grid-gap: 0.8rem;}
+}
 
-<!--for campaign section-->
 img{
     max-width: 100%;
     height: auto;
@@ -144,7 +148,8 @@ img{
 input:not([type=radio]):not([type=checkbox]):not(.autocomplete):not([type=submit]):not(.input-search-expandable):not(.fileuploader):not(.input-sidenav) {
     color: #000;
 }
-input:not([type=radio]):not([type=checkbox]):not(.autocomplete):not(.input-slideout) {
+
+input:not([type=radio]):not([type=checkbox]):not(.autocomplete):not(.input-slideout){
     -webkit-transition: border .16s;
     -o-transition: border .16s;
     -moz-transition: border .16s;
@@ -165,6 +170,7 @@ input:not([type=radio]):not([type=checkbox]):not(.autocomplete):not(.input-slide
     width: 74px;
 }
 }
+
 @media (min-width: 380px){
 .v-autocomplete-input {
     font-size: 18px;
@@ -204,28 +210,9 @@ input:not([type=radio]):not([type=checkbox]):not(.autocomplete):not(.input-slide
     font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
 }
 </style>
-    
-
-<script>
-document.documentElement.className = document.documentElement.className.replace('no-js', 'js js-loading');
-</script>
-<!--[if (lt IE 9)]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <!-- 
-         <script>
-                    (function (d) {
-                        var config = {
-                            kitId: 'goi3eol',
-                            scriptTimeout: 2000,
-                            async: true
-                        },
-                            h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
-                    })(document);
-                </script>        
- -->
-    <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
-
 </head>
 <body class="campaigns campaigns-layout">
+
 @yield('content')
 
 <script type="text/javascript">

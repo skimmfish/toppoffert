@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//homepage
 Route::get('/', function () {
     return view('homepage')->with(['title'=>'Vi hjälper dig hitta rätt tjänsteföretag']);
-});
-
+})->name('index');
 
 //unauthorized/non/unauthenticated users goes here
 Route::get('/authorized',function(){
@@ -27,6 +27,17 @@ Route::get('/authorized',function(){
 Route::get('/finder',function(){
     
 })->name('finder_search');
+
+
+//Route for ancilliary pages
+Route::get('anslut-ditt-foretag',function(){
+    return view('pages.anslut-ditt-foretag',['title'=>'Anslut Ditt Foretag']);
+})->name('anslut-ditt-foretag');
+//authentication routes
+//Authentication and authorization interfaces route
+Auth::routes(['verify'=>true]);
+
+
 /*
 ==================
 Grouped routes for both authenticated users and unauthenticated users
@@ -47,3 +58,7 @@ Route::middleware(['auth','superadmin'])->prefix('dashboard/sa')->group(function
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
