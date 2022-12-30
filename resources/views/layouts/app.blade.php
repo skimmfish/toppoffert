@@ -109,6 +109,25 @@ svg:not(:root) {
     overflow: hidden;
 }
 
+.autocomplete-submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 41%;
+    top: 42%;
+    height: 45.92308px;
+    width: 45.92308px;
+    background: #41509a;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.show-on-large-only img{
+border-radius:15px;
+}
 @media (min-width: 640px)
 .worktype-grid {
 grid-template-columns: repeat(4,1fr);
@@ -121,6 +140,68 @@ img{
     vertical-align: middle;
     border: 0;
     -ms-interpolation-mode: bicubic;
+}
+input:not([type=radio]):not([type=checkbox]):not(.autocomplete):not([type=submit]):not(.input-search-expandable):not(.fileuploader):not(.input-sidenav) {
+    color: #000;
+}
+input:not([type=radio]):not([type=checkbox]):not(.autocomplete):not(.input-slideout) {
+    -webkit-transition: border .16s;
+    -o-transition: border .16s;
+    -moz-transition: border .16s;
+    transition: border .16s;
+}
+
+@media (min-width: 480px){
+.v-autocomplete-input {
+    height: 74px;
+    padding-left: 2rem;
+    border-radius: 37px;
+    margin-bottom:25px;
+}
+
+.autocomplete-submit {
+    border: 10px solid #fff;
+    height: 74px;
+    width: 74px;
+}
+}
+@media (min-width: 380px){
+.v-autocomplete-input {
+    font-size: 18px;
+}
+}
+
+.v-autocomplete-input{
+    height: 58.92308px;
+    font-size: 15px;
+    padding-left: 1.2rem;
+    border-radius: 28.46154px;
+    width: 100%;
+    border: none;
+    outline: none;
+    box-shadow: 0 3px 8px rgb(0 0 0 / 8%);
+    transition: all .2s ease;
+}
+.combo-box, .input, input, textarea{
+    height: 44px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0 1em;
+    outline: 0;
+    color: #000;
+    font-size: 1em;
+    -webkit-box-shadow: inset 0 2px 4px 0 rgba(0,0,0,.04);
+    box-shadow: inset 0 2px 4px 0 rgba(0,0,0,.04);
+    font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;height: 44px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0 1em;
+    outline: 0;
+    color: #000;
+    font-size: 1em;
+    -webkit-box-shadow: inset 0 2px 4px 0 rgba(0,0,0,.04);
+    box-shadow: inset 0 2px 4px 0 rgba(0,0,0,.04);
+    font-family: "Open Sans","Helvetica Neue",Arial,sans-serif;
 }
 </style>
     
