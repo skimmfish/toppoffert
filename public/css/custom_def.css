@@ -1,0 +1,25 @@
+ /**
+    *=================
+    Custom CSS definitions goes here
+    *=================
+    **/
+    .form_field_round, #form_field_round{
+    border-radius:40px !important;border:2px solid #dfdfdf;box-shadow:1px 1px 1px 1px #efefef;
+    height:80px;width:35vw;font-size:16px;font-weight:500;
+    }
+    
+    .btn-circle{
+      border-radius:50%;background: #0d2453;color:#fff;width:70px;height:70px;border:0 !important;
+      margin:5px -3px 5px 0;
+    }
+    
+    h1,h2,h3,h4,h5,h6{
+      font-family:GD Sherpa Regular;font-family:30px;
+    }
+
+    .grid-box{
+      display:grid;
+      grid-template-columns: 80% 20%;grid-gap:0px;
+    }
+
+
