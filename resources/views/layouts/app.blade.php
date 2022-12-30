@@ -171,7 +171,7 @@ document.documentElement.className = document.documentElement.className.replace(
     
 
 
-@include('layouts.footer')
+@include('layouts.footer_one')
 
 </body>
 </html>
