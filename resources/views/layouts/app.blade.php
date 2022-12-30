@@ -36,17 +36,27 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.lazy.min.js') }}"></script>
         
+
+    <link rel="stylesheet" type="text/css" href="{{asset('css/campaign_v638066915600000000.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/custom_def.css')}}" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/icons/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="asset('img/icons/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/icons/favicon-16x16.png')}}">
+    <link rel="mask-icon" href="{{asset('img/icons/safari-pinned-tab.svg')}}" color="#8bc343">
+    <meta name="theme-color" content="#2F3033">
+
 <style id="critical-css">
 .worktype-grid{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-auto-rows: 1fr;
-    grid-gap: 0.3rem;
+    grid-gap: 0.7rem;
     text-align: center;
 }
-.worktype-grid-item .svg-icon {
-    width: 28px;
-    height: 28px;
+.worktype-grid-item .svg-icon{
+    width: 30px !important;
+    height: 30px !important;
     fill: #41509a;
     margin-bottom: 0.5rem;
     opacity: .7;
@@ -104,16 +114,16 @@ svg:not(:root) {
 grid-template-columns: repeat(4,1fr);
 grid-gap: 0.8rem;}
 
+<!--for campaign section-->
+img{
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
 </style>
     
-    <link rel="stylesheet" type="text/css" href="{{asset('css/campaign_v638066915600000000.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('css/custom_def.css')}}" />
-
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('images/icons/apple-touch-icon.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="asset('images/icons/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/icons/favicon-16x16.png')}}">
-    <link rel="mask-icon" href="{{asset('images/icons/safari-pinned-tab.svg')}}" color="#8bc343">
-    <meta name="theme-color" content="#2F3033">
 
 <script>
 document.documentElement.className = document.documentElement.className.replace('no-js', 'js js-loading');
