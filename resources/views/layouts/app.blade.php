@@ -36,8 +36,75 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.lazy.min.js') }}"></script>
         
-    
-    <style id="critical-css" url="{{asset('css/site_css.css')}}"></style>
+<style id="critical-css">
+.worktype-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: 1fr;
+    grid-gap: 0.3rem;
+    text-align: center;
+}
+.worktype-grid-item .svg-icon {
+    width: 28px;
+    height: 28px;
+    fill: #41509a;
+    margin-bottom: 0.5rem;
+    opacity: .7;
+    transition: all .2s ease;
+}
+.worktype-grid>:first-child {
+    grid-row: 1/1;
+    grid-column: 1/1;
+}
+@media (min-width: 480px){
+.worktype-grid-item {
+    font-size: 1em;
+}
+}
+@media (min-width: 380px){
+.worktype-grid-item {
+    padding: 1rem;
+}
+}
+.worktype-grid:before, .worktype-grid>:first-child {
+    grid-row: 1/1;
+    grid-column: 1/1;
+}
+@media (min-width: 480px){
+.worktype-grid-item {
+    font-size: 1em;
+}}
+.worktype-grid-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0.3rem 3rem 0.3rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgb(0 0 0 / 8%);
+    font-size: 0.9em;
+    font-weight:800 !important;
+    line-height: 1.3;
+    cursor: pointer;
+    transition: all .2s ease;
+
+}
+.autocomplete-submit .svg-icon {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+
+@media (min-width: 640px)
+.worktype-grid {
+grid-template-columns: repeat(4,1fr);
+grid-gap: 0.8rem;}
+
+</style>
     
     <link rel="stylesheet" type="text/css" href="{{asset('css/campaign_v638066915600000000.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/custom_def.css')}}" />
@@ -65,6 +132,7 @@ document.documentElement.className = document.documentElement.className.replace(
                 </script>        
  -->
     <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
+
 </head>
 <body class="campaigns campaigns-layout">
 @yield('content')

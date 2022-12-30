@@ -19,7 +19,11 @@
 
     .grid-box{
       display:grid;
-      grid-template-columns: 80% 20%;grid-gap:0px;
+      grid-template-columns: 79% 21%;grid-gap:0px;
+      margin-bottom:25px;
     }
+    .hero-image-campaign.default {
+      background-image: url(../img/banners/default-20221018-mobile.jpeg);
+  }
 
 
