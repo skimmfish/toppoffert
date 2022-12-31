@@ -84,11 +84,11 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <nav class="new-main-menu">
     <div class="new-main-menu__inner">
         <div class="new-main-menu__menu">
-            <a href="anslut-ditt-foretag/index.html" class="new-main-menu__menu--item mobile">Anslut företag</a>
+            <a href="{{route('anslut-ditt-foretag')}}" class="new-main-menu__menu--item mobile">Anslut företag</a>
             <a href="{{route('login')}}" class="new-main-menu__menu--item mobile">Logga in</a>
             <a href="om-offerta/sa-fungerar-offerta/index.html" class="new-main-menu__menu--item">Så fungerar Offerta</a>
             <a href="kontakta-oss/index.html" class="new-main-menu__menu--item">Kontakta oss</a>
-            <a href="https://careers.offerta.se/" target="_blank" class="new-main-menu__menu--item">Jobba hos oss</a>
+            <a href="https://careers.toppoffert.se/" target="_blank" class="new-main-menu__menu--item">Jobba hos oss</a>
         </div>
         <div class="new-main-menu__menu">
             <a href="bestallarskolan/index.html" class="new-main-menu__menu--item">Beställarskolan</a>
@@ -104,7 +104,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <a href="tel:010-33 020 11">010-33 020 11</a>
         </li>
         <li class="new-main-menu__footer--item">
-            <a href="mailto:info@offerta.se">info@offerta.se</a>
+            <a href="mailto:info@toppoffert.se">info@toppoffert.se</a>
         </li>
         <li class="new-main-menu__footer--item">
             <a href="https://www.linkedin.com/company/offertase" class="social-icons">
@@ -117,7 +117,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
             </a>
-            <a href="https://www.facebook.com/offerta.se/" class="social-icons">
+            <a href="https://www.facebook.com/toppoffert.se/" class="social-icons">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
@@ -125,7 +125,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
             </a>
-            <a href="https://www.instagram.com/offerta.se/" class="social-icons">
+            <a href="https://www.instagram.com/toppoffert.se/" class="social-icons">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
@@ -137,12 +137,12 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </ul>
 </nav>
                     
-                    <div class="header-material-circle"></div>
-                </div>
-            </header>
-            <main class="content-main" role="main">
+<div class="header-material-circle"></div>
+  </div>
+     </header>
 
-<section class="startpage-top-section">
+ <main class="content-main" role="main">
+    <section class="startpage-top-section">
     <div class="background-canvas">
         <div class="background-canvas__bg"></div>
         <div class="background-canvas__hero hero-image hero-image-campaign default" id="hero-image"></div>
@@ -174,11 +174,14 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                 </div>                
             </form>
 -->
-<div class="what-select">
-<div class="autocomplete-input"><div class="v-autocomplete input-autocomplete" request-done="[object Promise]">
+<div class="autocomplete-input">
+    <div class="v-autocomplete input-autocomplete">
     <div class="v-autocomplete-input-group">
-        <input type="search" placeholder="Ange vad du behöver hjälp med (t.ex flytthjälp)" id="autocomplete" class="v-autocomplete-input"></div> 
-        <!----></div><button class="autocomplete-submit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon"><path d="M19.5 12a2.3 2.3 0 01-.78 1.729L7.568 23.54a1.847 1.847 0 01-2.439-2.773l9.752-8.579a.25.25 0 000-.376L5.129 3.233A1.847 1.847 0 017.568.46l11.148 9.808A2.31 2.31 0 0119.5 12z"></path>
+        <input type="search" placeholder="Ange vad du behöver hjälp med (t.ex flytthjälp)" onChange="autoCompleteFilter(this.value)" id="autocomplete" class="v-autocomplete-input"></div> 
+        <!---->
+    </div>
+    <button class="autocomplete-submit">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon"><path d="M19.5 12a2.3 2.3 0 01-.78 1.729L7.568 23.54a1.847 1.847 0 01-2.439-2.773l9.752-8.579a.25.25 0 000-.376L5.129 3.233A1.847 1.847 0 017.568.46l11.148 9.808A2.31 2.31 0 0119.5 12z"></path>
     </svg></button>
     </div>
 
@@ -201,22 +204,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                     
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 721.31 798.93" style="enable-background:new 0 0 721.31 798.93" class="icon-more-huge">
-  <path style="fill:#f1f9ed" d="M189.87 749.65c-20.28-11.26-126.64-72.89-168.4-197.55-12.55-37.47-41.28-123.21 0-181.36 38.21-53.83 107.01-42.57 129.54-93.92 19.35-44.09-33.26-75.65-19.43-110.11 23.65-58.95 213.32-83.84 336.81 9.72 63.54 48.14 2.31 22.71 80.04 123.11 56.42 72.88 154.7 82.67 170.02 144.11 18.89 75.75-61.7 224.5-62.23 260.66-.76 52.03-266.02 156.56-466.35 45.34z" />
-  <path style="fill:#fff" d="M521.77 43.06v492.1c0 18.72-14.03 33.9-31.33 33.9h-228.5c-17.3 0-31.33-15.18-31.33-33.9V43.06c0-18.72 14.03-33.9 31.33-33.9h228.5c17.3 0 31.33 15.18 31.33 33.9z" />
-  <path style="fill:#41509a" d="M490.44 574.2h-228.5c-19.89 0-36.08-17.51-36.08-39.04V43.06c0-21.53 16.19-39.04 36.08-39.04h228.5c19.89 0 36.08 17.51 36.08 39.04v492.1c0 21.53-16.19 39.04-36.08 39.04zM261.93 14.3c-14.66 0-26.58 12.9-26.58 28.77v492.1c0 15.86 11.93 28.77 26.59 28.77h228.5c14.66 0 26.58-12.9 26.58-28.77V43.06c0-15.86-11.93-28.77-26.59-28.77h-228.5z" />
-  <path style="fill:#41509a" d="M521.77 500.58H230.6c-2.62 0-4.75-2.3-4.75-5.14V57.1c0-2.84 2.13-5.14 4.75-5.14h291.17c2.62 0 4.75 2.3 4.75 5.14v438.34c0 2.84-2.13 5.14-4.75 5.14zM235.35 490.3h281.67V62.24H235.35V490.3z" />
-  <path style="opacity:.13" d="M251.17 533.97V42.54c0-15.57 11.83-28.24 26.37-28.24h-16.08c-14.42 0-26.11 12.65-26.11 28.25v491.42c0 15.6 11.69 29.96 26.11 29.96h16.08c-14.54 0-26.37-14.38-26.37-29.96zM501.2 533.97V42.54c0-15.57-11.83-28.24-26.37-28.24h16.08c14.42 0 26.11 12.65 26.11 28.25v491.42c0 15.6-11.69 29.96-26.11 29.96h-16.08c14.54 0 26.37-14.38 26.37-29.96z" />
-  <circle style="opacity:.21" cx="479.42" cy="424.74" r="105.9" />
-  <circle style="fill:#8bc343;stroke:#41509a;stroke-width:9.7952;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" cx="479.42" cy="417.28" r="101.42" />
-  <g>
-    <path style="fill:#fcfcfc" d="M468.17 420.76l-24.07-24.07a4.008 4.008 0 0 0-5.66 0l-11.33 11.33a4.008 4.008 0 0 0 0 5.66l41.07 41.07a4.008 4.008 0 0 0 5.66 0l59.47-59.47a4.008 4.008 0 0 0 0-5.66l-11.33-11.33a4.008 4.008 0 0 0-5.66 0l-42.48 42.48a4.029 4.029 0 0 1-5.67-.01z" />
-    <path style="fill:#bedea4" d="M470.76 419.62z" />
-  </g>
-  <g>
-    <path style="fill:#eee" d="M272.85 106.72h191.5v23.61h-191.5zM338.97 163.41l-63.1 85.05h126.19z" />
-    <path style="fill:#eee" d="M398.3 186.76l-52.81 61.7h105.62zM433.58 293.19a129.05 129.05 0 0 0-17.51 7.66c-2.22 1.18-4.72 1.75-7.23 1.75H280.77c-2.62 0-4.75-2.13-4.75-4.75v-6.06c0-2.62 2.13-4.75 4.75-4.75h151.76c3.55.01 4.4 4.97 1.05 6.15zM376.28 333.33c-2.39 2.91-4.65 5.92-6.78 9.02-.59.86-1.56 1.38-2.6 1.38h-86.12c-2.62 0-4.75-2.13-4.75-4.75v-6.06c0-2.62 2.13-4.75 4.75-4.75h93.05c2.64.02 4.13 3.11 2.45 5.16zM353.77 373.51c-1.02 2.94-1.93 5.94-2.73 8.98-.37 1.4-1.61 2.39-3.06 2.39h-67.22c-2.62 0-4.75-2.13-4.75-4.75v-6.06c0-2.62 2.13-4.75 4.75-4.75h70.02c2.17 0 3.7 2.14 2.99 4.19zM343.77 426.01h-63.01c-2.62 0-4.75-2.13-4.75-4.75v-6.06c0-2.62 2.13-4.75 4.75-4.75h62.83c1.76 0 3.19 1.43 3.16 3.19-.01.66-.01 1.32-.01 1.98 0 2.35.06 4.69.19 7.01.1 1.84-1.33 3.38-3.16 3.38z" />
-    <circle style="fill:#eee" cx="428.96" cy="159.86" r="12.66" />
-  </g>
+  <path style="fill:#f1f9ed" d="M189.87 749.65c-20.28-11.26-126.64-72.89-168.4-197.55-12.55-37.47-41.28-123.21 0-181.36 38.21-53.83 107.01-42.57 129.54-93.92 19.35-44.09-33.26-75.65-19.43-110.11 23.65-58.95 213.32-83.84 336.81 9.72 63.54 48.14 2.31 22.71 80.04 123.11 56.42 72.88 154.7 82.67 170.02 144.11 18.89 75.75-61.7 224.5-62.23 260.66-.76 52.03-266.02 156.56-466.35 45.34z" />  <path style="fill:#fff" d="M521.77 43.06v492.1c0 18.72-14.03 33.9-31.33 33.9h-228.5c-17.3 0-31.33-15.18-31.33-33.9V43.06c0-18.72 14.03-33.9 31.33-33.9h228.5c17.3 0 31.33 15.18 31.33 33.9z" />  <path style="fill:#41509a" d="M490.44 574.2h-228.5c-19.89 0-36.08-17.51-36.08-39.04V43.06c0-21.53 16.19-39.04 36.08-39.04h228.5c19.89 0 36.08 17.51 36.08 39.04v492.1c0 21.53-16.19 39.04-36.08 39.04zM261.93 14.3c-14.66 0-26.58 12.9-26.58 28.77v492.1c0 15.86 11.93 28.77 26.59 28.77h228.5c14.66 0 26.58-12.9 26.58-28.77V43.06c0-15.86-11.93-28.77-26.59-28.77h-228.5z" />  <path style="fill:#41509a" d="M521.77 500.58H230.6c-2.62 0-4.75-2.3-4.75-5.14V57.1c0-2.84 2.13-5.14 4.75-5.14h291.17c2.62 0 4.75 2.3 4.75 5.14v438.34c0 2.84-2.13 5.14-4.75 5.14zM235.35 490.3h281.67V62.24H235.35V490.3z" />  <path style="opacity:.13" d="M251.17 533.97V42.54c0-15.57 11.83-28.24 26.37-28.24h-16.08c-14.42 0-26.11 12.65-26.11 28.25v491.42c0 15.6 11.69 29.96 26.11 29.96h16.08c-14.54 0-26.37-14.38-26.37-29.96zM501.2 533.97V42.54c0-15.57-11.83-28.24-26.37-28.24h16.08c14.42 0 26.11 12.65 26.11 28.25v491.42c0 15.6-11.69 29.96-26.11 29.96h-16.08c14.54 0 26.37-14.38 26.37-29.96z" />  <circle style="opacity:.21" cx="479.42" cy="424.74" r="105.9" />  <circle style="fill:#8bc343;stroke:#41509a;stroke-width:9.7952;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" cx="479.42" cy="417.28" r="101.42" />
+  <g><path style="fill:#fcfcfc" d="M468.17 420.76l-24.07-24.07a4.008 4.008 0 0 0-5.66 0l-11.33 11.33a4.008 4.008 0 0 0 0 5.66l41.07 41.07a4.008 4.008 0 0 0 5.66 0l59.47-59.47a4.008 4.008 0 0 0 0-5.66l-11.33-11.33a4.008 4.008 0 0 0-5.66 0l-42.48 42.48a4.029 4.029 0 0 1-5.67-.01z" />    <path style="fill:#bedea4" d="M470.76 419.62z" />  </g><g><path style="fill:#eee" d="M272.85 106.72h191.5v23.61h-191.5zM338.97 163.41l-63.1 85.05h126.19z" /><path style="fill:#eee" d="M398.3 186.76l-52.81 61.7h105.62zM433.58 293.19a129.05 129.05 0 0 0-17.51 7.66c-2.22 1.18-4.72 1.75-7.23 1.75H280.77c-2.62 0-4.75-2.13-4.75-4.75v-6.06c0-2.62 2.13-4.75 4.75-4.75h151.76c3.55.01 4.4 4.97 1.05 6.15zM376.28 333.33c-2.39 2.91-4.65 5.92-6.78 9.02-.59.86-1.56 1.38-2.6 1.38h-86.12c-2.62 0-4.75-2.13-4.75-4.75v-6.06c0-2.62 2.13-4.75 4.75-4.75h93.05c2.64.02 4.13 3.11 2.45 5.16zM353.77 373.51c-1.02 2.94-1.93 5.94-2.73 8.98-.37 1.4-1.61 2.39-3.06 2.39h-67.22c-2.62 0-4.75-2.13-4.75-4.75v-6.06c0-2.62 2.13-4.75 4.75-4.75h70.02c2.17 0 3.7 2.14 2.99 4.19zM343.77 426.01h-63.01c-2.62 0-4.75-2.13-4.75-4.75v-6.06c0-2.62 2.13-4.75 4.75-4.75h62.83c1.76 0 3.19 1.43 3.16 3.19-.01.66-.01 1.32-.01 1.98 0 2.35.06 4.69.19 7.01.1 1.84-1.33 3.38-3.16 3.38z" />   <circle style="fill:#eee" cx="428.96" cy="159.86" r="12.66" />  </g>
 </svg>
 
                 </div>
@@ -313,9 +302,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                 </div>
             </div>
         </div>
-        <a href="https://topp100.idg.se/2.39772/1.742991/topp-100-2020-sok-jamfor" target="_blank" class="block">
-            <img src="{{asset('img/banners/award.png')}}" alt="Sveriges bästa jämförelsetjänst i 2020 utsedd av IDG">
-        </a>
     </div>
 </section>
 
@@ -764,7 +750,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <section class="page-section">
     <div class="page-section__inner two-col">
         <div class="col show-on-medium-and-down block">
-            <img src="images/campaign/brf-campaign.jpg" alt="Hitta och jämför tjänsteföretag även för projekt och underhållsbehov i bostadsrättsföreningen">
+            <img src="{{asset('img/campaign/brf-campaign.jpg')}}" lazyloading alt="Vi hjälper dig hitta rätt tjänsteföretag!">
         </div>
         <div class="col">
             <h2 class="page-section__heading">Få hjälp i föreningen eller på arbetsplatsen</h2>

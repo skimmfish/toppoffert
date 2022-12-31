@@ -1,5 +1,6 @@
 @extends('layouts.login_layout')
 @section('content')
+
 <div id="app">
         <div class="container-wrapper">
     <div class="login-container">
@@ -99,7 +100,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                                 <input type="password" class="input-large" placeholder=" " data-val="true" data-val-required="Fyll i ett l&#xF6;senord" id="Password" name="Password" />
                             </div>
                             <div class="link-container">
-                                <a class="forgot-password" href="forgotpassword.html">Glömt ditt lösenord?</a>
+                                <a class="forgot-password" href="{{ route('password.request') }}">Glömt ditt lösenord?</a>
                                 <span class="error-message field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
                                 
                             </div>
@@ -114,13 +115,14 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                             <button type="submit" id="submit" class="button button-rounded button-login">Logga in</button>
                             
                         </div>
-                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8LRaIQn2hIJCg90zztmrAkE-e7NBF1JsUQlIFxgRbfv379boG1L0tGIi2gfalaiFOc28svyZ4ZKObCzI3tEn1pwlmF_HvZ1gN7EM408GS6h2_zABU-V606X6Oe6spx8wDHW8r4LjhOBUmK8YiqeD9CA" /><input name="RememberLogin" type="hidden" value="false" /></form>
+                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8LRaIQn2hIJCg90zztmrAkE-e7NBF1JsUQlIFxgRbfv379boG1L0tGIi2gfalaiFOc28svyZ4ZKObCzI3tEn1pwlmF_HvZ1gN7EM408GS6h2_zABU-V606X6Oe6spx8wDHW8r4LjhOBUmK8YiqeD9CA" />
+                    <input name="RememberLogin" type="hidden" value="false" /></form>
                 </div>
             </div>
                 <div class="login-footer desktop" >
                     <div class="bottom-links">
                         <a href="{{route('anslut-ditt-foretag')}}" class="link">Anslut företag</a>
-                        <a href="https://offerta.se/skapa/" class="link">Skapa förfrågan</a>
+                        <a href="https://toppoffert.se/skapa/" class="link">Skapa förfrågan</a>
                     </div>
                 </div>
            
@@ -130,7 +132,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <div class="login-footer mobile" >
                 <div class="bottom-links">
                     <a href="{{route('anslut-ditt-foretag')}}" class="link">Anslut företag</a>
-                    <a href="https://offerta.se/skapa/" class="link">Skapa förfrågan</a>
+                    <a href="https://toppoffert.se/skapa/" class="link">Skapa förfrågan</a>
                 </div>
             </div>
 </div>

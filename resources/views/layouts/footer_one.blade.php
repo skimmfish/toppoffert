@@ -10,8 +10,8 @@
       </div>
       <div class="new-footer__inner--item">
         <nav class="footer-icons">
-          <a href="https://www.linkedin.com/company/offertase" class="footer-icons__item"
-            aria-label="Offerta på LinkedIn">
+          <a href="https://www.linkedin.com/company/toppoffertase" class="footer-icons__item"
+            aria-label="Toppoffert på LinkedIn">
             
   
   <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
@@ -19,7 +19,7 @@
   </svg>
   
           </a>
-          <a href="https://www.facebook.com/toppoffert.se/" class="footer-icons__item" aria-label="Offerta på Facebook">
+          <a href="https://www.facebook.com/toppoffert/" class="footer-icons__item" aria-label="Toppoffert på Facebook">
             
   
   <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
@@ -27,7 +27,7 @@
   </svg>
   
           </a>
-          <a href="https://www.instagram.com/offerta.se/" class="footer-icons__item" aria-label="Offerta på Instagram">
+          <a href="https://www.instagram.com/toppoffert.se/" class="footer-icons__item" aria-label="Offerta på Instagram">
             
   
   <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
@@ -45,7 +45,7 @@
           <a class="footer-menu__item" href="anslut-ditt-foretag/{{route('index')}}">
             Anslut ditt företag
           </a>
-          <a class="footer-menu__item" href="https://careers.offerta.se/" target="_blank">
+          <a class="footer-menu__item" href="https://careers.topoffert.se/" target="_blank">
             Jobba hos oss
           </a>
           <a class="footer-menu__item" href="bestallarskolan/{{route('index')}}">
@@ -79,8 +79,8 @@
           </span>
           <div class="media">
             <span>
-              <a href="mailto:info@offerta.se" class="footer-menu__item">
-                info@offerta.se
+              <a href="mailto:info@toppoffert.se" class="footer-menu__item">
+                info@toppoffert.se
               </a>
               <a href="tel:010-33 020 11" class="footer-menu__item">
                 010-33 020 11
@@ -174,7 +174,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <div class="new-footer__footer-menu--text">Anslut företag</div>
       </a>
       
-          <a href="https://auth.offerta.se/login" class="new-footer__footer-menu--link">
+          <a href="{{route('login')}}" class="new-footer__footer-menu--link">
   
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24" class="icon icon-medium">
