@@ -174,15 +174,17 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                 </div>                
             </form>
 -->
+
 <div class="autocomplete-input">
-    <div class="v-autocomplete input-autocomplete">
+    <div class="v-autocomplete">
     <div class="v-autocomplete-input-group">
-        <input type="search" placeholder="Ange vad du behöver hjälp med (t.ex flytthjälp)" onChange="autoCompleteFilter(this.value)" id="autocomplete" class="v-autocomplete-input"></div> 
-        <!---->
+        <input type="search" placeholder="Ange vad du behöver hjälp med (t.ex flytthjälp)" onChange="autoCompleteFilter(this.value)" id="autocomplete" class="v-autocomplete-input">
     </div>
-    <button class="autocomplete-submit">
+   <div class="btn-group"> <button class="autocomplete-submit">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon"><path d="M19.5 12a2.3 2.3 0 01-.78 1.729L7.568 23.54a1.847 1.847 0 01-2.439-2.773l9.752-8.579a.25.25 0 000-.376L5.129 3.233A1.847 1.847 0 017.568.46l11.148 9.808A2.31 2.31 0 0119.5 12z"></path>
     </svg></button>
+    </div>
+
     </div>
 
             <div class="worktype-grid">
