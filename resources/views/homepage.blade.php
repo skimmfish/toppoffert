@@ -770,7 +770,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <section class="page-section gray-bg">
     <div class="page-section__inner two-col">
         <div class="col">
-            <h2 class="page-section__heading">Få ditt företag att växa du med</h2>
+            <h2 class="page-section__heading">Få ditt företag att växa du</h2>
             <p class="page-section__paragraph">
                 Ta del av nya kunder varje dag. Tusentals företag använder Offerta för att öka sin omsättning, lönsamhet och för att få en roligare vardag.
             </p>
