@@ -459,7 +459,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <footer class="new-footer">
   <div class="new-footer__inner">
     <div class="new-footer__inner mobile-logo">
-      <a href="index.html" class="new-footer__inner--link" aria-label="Hem">
+      <a href="{{route('index')}}" class="new-footer__inner--link" aria-label="Hem">
         
 
 
@@ -472,8 +472,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </div>
     <div class="new-footer__inner--item">
       <nav class="footer-icons">
-        <a href="https://www.linkedin.com/company/offertase" class="footer-icons__item"
-          aria-label="Offerta på LinkedIn">
+        <a href="https://www.linkedin.com/company/toppoffert" class="footer-icons__item"
+          aria-label="Toppoffert på LinkedIn">
           
 
 <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
@@ -481,7 +481,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
         </a>
-        <a href="https://www.facebook.com/offerta.se/" class="footer-icons__item" aria-label="Offerta på Facebook">
+        <a href="https://www.facebook.com/toppoffert.se/" class="footer-icons__item" aria-label="Offerta på Facebook">
           
 
 <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
@@ -489,7 +489,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
         </a>
-        <a href="https://www.instagram.com/offerta.se/" class="footer-icons__item" aria-label="Offerta på Instagram">
+        <a href="https://www.instagram.com/toppoffert.se/" class="footer-icons__item" aria-label="Offerta på Instagram">
           
 
 <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
