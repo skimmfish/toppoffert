@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 //homepage
 Route::get('/', function () {
-    return view('index')->with(['title'=>'Vi hjälper dig hitta rätt tjänsteföretag']);
+    return view('homepage')->with(['title'=>'Vi hjälper dig hitta rätt tjänsteföretag']);
 })->name('index');
 
 //unauthorized/non/unauthenticated users goes here

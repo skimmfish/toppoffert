@@ -189,7 +189,7 @@ svg:not(:root) {
         padding-left: 2rem;
         border-radius: 37px;
         margin-bottom:25px;
-        width:100%;
+        width:75% !important;
     }
 }
 
