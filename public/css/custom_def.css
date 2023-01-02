@@ -27,6 +27,9 @@
       background-repeat:no-repeat;background-position:top center;
   }
 
+.show-on-medium-and-down img, .show-on-large-only img{
+  border-radius:20px;
+}
 
 .header_logo{
   width:128px;height:128px;background:none;

@@ -93,8 +93,6 @@
         </div>
         <a href="{{route('index')}}" class="new-footer__inner--link hide-mobile" aria-label="Hem">
           
-  
-  
 <!-- 
    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7311 3543.31" 
   style="enable-background:new 0 0 7311 3543.31" class="logo-offerta-footer site-logo">
@@ -238,7 +236,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
   
       <!-- SiteJS -->
       
-              <script async data-main="site/_main" src="dist/js/bundled-require_v638066915840000000.js" type="text/javascript"></script>
+              <script async data-main="site/_main" src="{{asset('js/dist/bundled-require_v638066915840000000.js')}}" type="text/javascript"></script>
           
       <!-- /SiteJS -->
       <!-- BottomScripts -->
@@ -246,7 +244,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
           <div class="hidden">
               
           </div>
-      <script async src="dist/js/chunk-vendors_v638066916940000000.js"></script>
-      <script async src="dist/js/app_v638066916940000000.js"></script>
+      <script async src="{{asset('js/dist/chunk-vendors_v638066916940000000.js')}}"></script>
+      <script async src="{{asset('js/dist/app_v638066916940000000.js')}}"></script>
   
       <!-- /BottomScripts -->
