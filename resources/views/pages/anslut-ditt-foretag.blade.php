@@ -1352,7 +1352,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
       <div class="new-footer__footer-menu--text">Anslut företag</div>
     </a>
     
-        <a href="https://auth.offerta.se/login" class="new-footer__footer-menu--link">
+        <a href="{{route('login')}}" class="new-footer__footer-menu--link">
 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24" class="icon icon-medium">
