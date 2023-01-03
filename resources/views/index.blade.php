@@ -446,8 +446,8 @@ m-1638 -484 l0 -70 -30 0 c-30 0 -30 1 -30 54 0 44 4 56 23 69 12 9 25 16 30
     <div class="col">
         <h2 class="page-section__heading">Störst i Sverige</h2>
         <p class="page-section__paragraph">
-            I över tio års tid har Offerta hjälpt företag och kunder att hitta varandra. Varje år förmedlas över 80.000 uppdrag i mer än 140 branscher.
-        </p>
+        Förverkliga ditt drömprojekt eller anlita ett företag som gör din vardag lite enklare. Skapa en gratis förfrågan så matchar vi ihop dig med kompetenta företag som får jobbet gjort.     
+      </p>
         <div class="stats">
             <div class="stats-block">
                 <h4 class="stats__heading">15 000</h4>
@@ -510,8 +510,6 @@ m-1638 -484 l0 -70 -30 0 c-30 0 -30 1 -30 54 0 44 4 56 23 69 12 9 25 16 30
   <div class="new-footer__inner">
     <div class="new-footer__inner mobile-logo">
       <a href="{{route('index')}}" class="new-footer__inner--link" aria-label="Hem">
-        
-
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7311 3543.31" style="enable-background:new 0 0 7311 3543.31" class="logo-offerta-footer site-logo">
   <path style="fill:#8bc343" d="M1482.89 3507.69c23.07 23.08 60.48 23.08 83.56 0l458.35-470.7h4731.71c281.87 0 512.49-230.62 512.49-512.49V553.44c0-281.87-230.62-512.49-512.49-512.49H550.49C268.62 40.95 38 271.57 38 553.44V2524.5c0 281.87 230.62 512.49 512.49 512.49h474.05l458.35 470.7z" />
@@ -557,7 +555,7 @@ m-1638 -484 l0 -70 -30 0 c-30 0 -30 1 -30 54 0 44 4 56 23 69 12 9 25 16 30
         <a class="footer-menu__item" href="{{route('anslut-ditt-foretag')}}">
           Anslut ditt företag
         </a>
-        <a class="footer-menu__item" href="https://careers.offerta.se/" target="_blank">
+        <a class="footer-menu__item" href="https://careers.toppoffert.se/" target="_blank">
           Jobba hos oss
         </a>
         <a class="footer-menu__item" href="bestallarskolan/index.html">
@@ -587,12 +585,12 @@ m-1638 -484 l0 -70 -30 0 c-30 0 -30 1 -30 54 0 44 4 56 23 69 12 9 25 16 30
     <div class="new-footer__inner--item">
       <div>
         <span class="footer-menu__item no-link">
-          Offerta Group AB
+          {{config('app.name')}} Group AB
         </span>
         <div class="media">
           <span>
             <a href="mailto:info@offerta.se" class="footer-menu__item">
-              info@offerta.se
+              info@toppoffert.se
             </a>
             <a href="tel:010-33 020 11" class="footer-menu__item">
               010-33 020 11

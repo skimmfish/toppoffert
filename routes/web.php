@@ -28,6 +28,20 @@ Route::get('/finder',function(){
     
 })->name('finder_search');
 
+//yrkeskategorier page
+Route::get('/anslut-ditt-foretag/yrkeskategorier',function(){
+    return view('pages.yrkeskategorier',['title'=>'Inom vilken bransch vill du bli framgångsrik?']);
+})->name('yrkeskategorier');
+
+//Pris
+Route::get('/anslut-ditt-foretag/pris',function(){
+    return view('pages.pris',['title'=>'Affarspaket']);
+})->name('pris');
+
+//intresseanmalan
+Route::get('/anslut-ditt-foretag/intresseanmalan',function(){
+    return view('pages.intresseanmalan');
+})->name('intresseanmalan');
 
 //Route for ancilliary pages
 Route::get('anslut-ditt-foretag',function(){
