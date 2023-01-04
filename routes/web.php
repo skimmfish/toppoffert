@@ -52,6 +52,9 @@ Route::get('anslut-ditt-foretag',function(){
 Auth::routes(['verify'=>true]);
 
 
+Route::get('/kontact-os',function(){
+    return view('pages.kontactos',['title'=>'Kontact Os']);
+})->name('kontactos-pg');
 /*
 ==================
 Grouped routes for both authenticated users and unauthenticated users
