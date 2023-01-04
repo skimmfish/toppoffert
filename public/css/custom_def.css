@@ -34,3 +34,18 @@
 .header_logo{
   width:128px;height:128px;background:none;
 }
+
+.grid_ui{
+  display:grid;
+  grid-template-columns: 20% 80%;
+  grid-gap:1rem;
+}
+.grid_ui h1{
+  color:#0d3455;font-size:6rem;
+}
+.grid_ui .page-section__paragraph{
+  font-size:1rem;font-weight: 700;
+}
+.grid_ui .col-3__heading{
+  font-size:1.4rem;
+}
