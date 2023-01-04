@@ -257,7 +257,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <!--NExt-->
 <section class="page-section centered">
     <div class="page-section__inner">
-        <h2 class="page-section__heading">Så här fungerar det</h2>
+        <h2 class="page-section__heading">Så funkar det</h2>
         <div class="page-section__content">
             <div class="line-with-icons block">
                 <div class="line-with-icons__item">
@@ -494,23 +494,23 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <a class="footer-menu__item" href="{{route('anslut-ditt-foretag')}}">
           Anslut ditt företag
         </a>
-        <a class="footer-menu__item" href="https://careers.toppoffert.se/" target="_blank">
+        <a class="footer-menu__item" href="" target="_blank">
           Jobba hos oss
         </a>
         </nav>
     </div>
     <div class="new-footer__inner--item">
       <nav class="footer-menu">
-        <a class="footer-menu__item blog" href="blogg/index.html">
+        <a class="footer-menu__item blog" href="">
           Blogg
         </a>
-        <a class="footer-menu__item companies-blog" href="framgangscoachen/index.html">
+        <a class="footer-menu__item companies-blog" href="">
           Företagsblogg
         </a>
-        <a class="footer-menu__item" href="press/index.html">
+        <a class="footer-menu__item" href="">
           Press
         </a>
-        <a class="footer-menu__item" href="anvandarvillkor/leverantor/index.html">
+        <a class="footer-menu__item" href="">
           Integritetspolicy
         </a>
         <span id="cookieSettings" class="footer-menu__item">

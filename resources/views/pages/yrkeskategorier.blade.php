@@ -888,8 +888,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
   </g>
 </svg>
 
-        
-
 <svg viewBox="0 0 50 50" class="spinner">
   <circle class="path" cx="25" cy="25" r="16" fill="none" stroke-width="5" />
 </svg>
@@ -905,10 +903,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <footer class="new-footer">
   <div class="new-footer__inner">
     <div class="new-footer__inner mobile-logo">
-      <a href="../../index.html" class="new-footer__inner--link" aria-label="Hem">
+      <a href="{{route('index')}}" class="new-footer__inner--link" aria-label="Hem">
         
-
-
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7311 3543.31" style="enable-background:new 0 0 7311 3543.31" class="logo-offerta-footer site-logo">
   <path style="fill:#8bc343" d="M1482.89 3507.69c23.07 23.08 60.48 23.08 83.56 0l458.35-470.7h4731.71c281.87 0 512.49-230.62 512.49-512.49V553.44c0-281.87-230.62-512.49-512.49-512.49H550.49C268.62 40.95 38 271.57 38 553.44V2524.5c0 281.87 230.62 512.49 512.49 512.49h474.05l458.35 470.7z" />
   <path style="fill:#fff" d="M1483.22 825.57c341.33 0 645.52 249.37 645.52 654.37 0 403.22-304.2 652.6-645.52 652.6-339.56 0-643.75-249.37-643.75-652.6 0-405 304.19-654.37 643.75-654.37zm0 1069.98c194.54 0 392.62-134.42 392.62-417.39s-198.08-417.38-392.62-417.38c-192.77 0-390.85 134.41-390.85 417.38s198.08 417.39 390.85 417.39zM2588.58 1140.38v95.5h196.31v201.61h-196.31v668.52H2351.6v-668.52h-145.02v-201.61h145.02v-99.05c0-196.31 123.8-323.64 316.57-323.64 49.52 0 97.27 8.84 116.73 17.69v198.08c-12.38-5.31-33.6-8.84-74.28-8.84-53.06-.01-122.04 22.98-122.04 120.26zM3219.94 1140.38v95.5h196.31v201.61h-196.31v668.52h-236.99v-668.52h-145.02v-201.61h145.02v-99.05c0-196.31 123.8-323.64 316.57-323.64 49.52 0 97.27 8.84 116.73 17.69v198.08c-12.38-5.31-33.6-8.84-74.28-8.84-53.06-.01-122.03 22.98-122.03 120.26zM4311.16 1856.65c-42.45 152.09-183.93 275.89-396.16 275.89-240.52 0-449.21-171.55-449.21-465.14 0-277.66 205.15-458.05 427.99-458.05 270.59 0 429.77 169.78 429.77 450.98 0 33.6-3.54 67.2-3.54 72.5h-622.53c5.3 113.19 102.58 198.08 219.3 198.08 111.42 0 169.78-54.81 198.08-132.64l196.3 58.38zm-219.31-284.75c-5.3-84.89-60.13-171.55-194.54-171.55-122.03 0-189.23 93.73-194.54 171.55h389.08zM4951.4 1469.33c-22.99-5.31-47.75-7.08-70.74-7.08-120.26 0-224.6 58.36-224.6 245.83V2106h-235.22v-870.13h228.14v129.1c53.05-114.95 173.32-136.17 247.59-136.17 19.46 0 35.37 1.77 54.83 3.53v237zM5405.91 1235.88H5581v208.69h-175.09v364.33c0 76.05 33.6 100.8 102.58 100.8 28.3 0 60.13-1.77 72.51-7.08v194.55c-21.22 8.84-63.66 21.22-132.64 21.22-169.78 0-275.89-99.03-275.89-268.81v-405h-157.41v-208.69h44.22c91.96 0 134.41-60.14 134.41-137.95V975.9h212.23v259.98zM5918.78 1605.51l213.99-31.83c49.52-7.08 65.44-31.84 65.44-61.91 0-61.91-47.75-113.19-146.79-113.19-104.34 0-159.17 65.44-166.25 141.48l-208.69-44.22c14.15-136.17 137.95-286.5 373.17-286.5 275.9 0 378.48 155.63 378.48 330.72v427.99c0 47.75 5.3 107.89 10.61 137.95h-215.77c-5.3-22.99-8.84-70.74-8.84-104.34-44.21 68.97-127.34 129.11-256.44 129.11-185.7 0-298.89-127.34-298.89-261.75-.01-157.4 114.95-240.53 259.98-263.51zm279.43 148.56v-38.91l-196.31 30.06c-61.9 8.84-107.88 40.67-107.88 109.64 0 51.3 37.14 100.81 113.19 100.81 99.03.01 191-47.74 191-201.6z" />
@@ -918,8 +914,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </div>
     <div class="new-footer__inner--item">
       <nav class="footer-icons">
-        <a href="https://www.linkedin.com/company/offertase" class="footer-icons__item"
-          aria-label="Offerta på LinkedIn">
+        <a href="https://www.linkedin.com/company/toppoffert" class="footer-icons__item"
+          aria-label="{{config('app.name')}} på LinkedIn">
           
 
 <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
@@ -927,7 +923,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
         </a>
-        <a href="https://www.facebook.com/offerta.se/" class="footer-icons__item" aria-label="Offerta på Facebook">
+        <a href="https://www.facebook.com/toppoffert.se/" class="footer-icons__item" aria-label="Offerta på Facebook">
           
 
 <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
@@ -935,7 +931,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
         </a>
-        <a href="https://www.instagram.com/offerta.se/" class="footer-icons__item" aria-label="Offerta på Instagram">
+        <a href="https://www.instagram.com/toppoffert.se/" class="footer-icons__item" aria-label="Offerta på Instagram">
           
 
 <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
@@ -950,29 +946,29 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
    
     <div class="new-footer__inner--item">
       <nav class="footer-menu">
-        <a class="footer-menu__item" href="../index.html">
+        <a class="footer-menu__item" href="{{route('anslut-ditt-foretag')}}">
           Anslut ditt företag
         </a>
-        <a class="footer-menu__item" href="https://careers.offerta.se/" target="_blank">
+        <a class="footer-menu__item" href="" target="_blank">
           Jobba hos oss
         </a>
-        <a class="footer-menu__item" href="../../bestallarskolan/index.html">
+        <a class="footer-menu__item" href="">
           Beställarskolan
         </a>
       </nav>
     </div>
     <div class="new-footer__inner--item">
       <nav class="footer-menu">
-        <a class="footer-menu__item blog" href="../../blogg/index.html">
+        <a class="footer-menu__item blog" href="">
           Blogg
         </a>
-        <a class="footer-menu__item companies-blog" href="../../framgangscoachen/index.html">
+        <a class="footer-menu__item companies-blog" href="">
           Företagsblogg
         </a>
-        <a class="footer-menu__item" href="../../press/index.html">
+        <a class="footer-menu__item" href="">
           Press
         </a>
-        <a class="footer-menu__item" href="../../anvandarvillkor/leverantor/index.html">
+        <a class="footer-menu__item" href="">
           Integritetspolicy
         </a>
         <span id="cookieSettings" class="footer-menu__item">
@@ -983,7 +979,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     <div class="new-footer__inner--item">
       <div>
         <span class="footer-menu__item no-link">
-          Offerta Group AB
+          {{config('app.name')}} Group AB
         </span>
         <div class="media">
           <span>
