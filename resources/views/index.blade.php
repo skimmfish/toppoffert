@@ -38,7 +38,9 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jquery.lazy.min.js')}}"></script>
 
-    
+    <script async data-main="site/_main" src="{{asset('js/dist/app_v638066916940000000.js')}}" type="text/javascript"></script>
+    <script async data-main="site/_main" src="{{asset('js/dist/chunk-vendors_v638066916940000000.js')}}" type="text/javascript"></script>
+ 
                 <!-- Start Visual Website Optimizer Asynchronous Code -->
                 <script type='text/javascript'>
                     var _vwo_code = (function () {
@@ -180,7 +182,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </a>
 </div>
 
-<nav class="new-main-menu">
+<nav class="new-main-menu" style="display:block;visibility:visible">
     <div class="new-main-menu__inner">
         <div class="new-main-menu__menu">
             <a href="{{route('anslut-ditt-foretag')}}" class="new-main-menu__menu--item mobile">Anslut företag</a>
