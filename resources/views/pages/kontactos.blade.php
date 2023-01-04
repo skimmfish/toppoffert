@@ -10,7 +10,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head itemscope itemtype="http://schema.org/WebSite">
     <meta charset="utf-8">
-    <title itemprop="name">@if(isset($title)){{$title}} - {{config('app.name')}} @else Kontact Os - {{config('app.name')}} @endif</title>
+    <title itemprop="name">@if(isset($title)){{$title}} - {{config('app.name')}} @else Kontakta Oss - {{config('app.name')}} @endif</title>
 
     <link rel="dns-prefetch" href="https://static.doubleclick.net/" />
     <link rel="dns-prefetch" href="https://s.ytimg.com/" />
@@ -49,7 +49,7 @@
                 </script>
                 <!-- End Visual Website Optimizer Asynchronous Code -->
         
- <link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>        
+<link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>        
 <link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/icons/apple-touch-icon.png')}}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/icons/favicon-32x32.png')}}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/icons/favicon-16x16.png')}}">
@@ -610,7 +610,9 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     
   </nav>
 </footer>
-        <script defer src="../../wchat.freshchat.com/js/widget.js"></script>
+
+<script defer src="{{asset('wchat.freshchat.com/js/widget.js')}}"></script>
+
 <script>
     var retries = 5;
     function initChat() {

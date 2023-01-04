@@ -2262,7 +2262,9 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     
   </nav>
 </footer>
-        <script defer src="../../wchat.freshchat.com/js/widget.js"></script>
+
+<script defer src="{{asset('wchat.freshchat.com/js/widget.js')}}"></script>
+
 <script>
     var retries = 5;
     function initChat() {

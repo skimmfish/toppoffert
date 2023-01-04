@@ -55,6 +55,10 @@ Auth::routes(['verify'=>true]);
 Route::get('/kontact-os',function(){
     return view('pages.kontactos',['title'=>'Kontact Os']);
 })->name('kontactos-pg');
+
+Route::get('skapa',function(){
+    return view('pages.skapa',['title'=>'Skapa förfrågan']);
+})->name('skapa');
 /*
 ==================
 Grouped routes for both authenticated users and unauthenticated users

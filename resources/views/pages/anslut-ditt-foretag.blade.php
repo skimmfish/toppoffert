@@ -23,7 +23,6 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/icons/favicon.ico')}}" />
     <meta name="author" content="Toppoffert AB" />
-    <meta name="X-Recruiting" content="Vi söker utvecklare! Titta in på https://toppoffert.se/jobb" />
     <meta property="fb:admins" content="753251562" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="format-detection" content="telephone=no">
@@ -49,19 +48,14 @@
                     }()); _vwo_settings_timer = _vwo_code.init();
                 </script>
                 <!-- End Visual Website Optimizer Asynchronous Code -->
-        
-
-
     
-                <link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}" />
-            
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/icons/apple-touch-icon.png')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/icons/apple-touch-icon.png')}}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/icons/favicon-32x32.png')}}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/icons/favicon-16x16.png')}}">
 <link rel="mask-icon" href="{{asset('img/icons/safari-pinned-tab.svg')}}" color="#8bc343">
 <meta name="theme-color" content="#2F3033">
+
 <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js js-loading');    
 </script>
@@ -110,16 +104,9 @@
         })(window, document, 'dataLayer', window.PiwikPROappID);
     </script> 
     
-    
-    
-
     <div class="legacy-browser-warning alert-site">
         Du använder en webbläsare som inte stöds av Offerta och därför fungerar inte alla funktioner som de skall. <a class="link white" href="http://www.browsehappy.com/">Uppgradera din webbläsare</a> för att kunna använda Offertas alla funktioner.
     </div>
-
-    
-
-    
 
         <div class="fake-scrollbar"></div>
         <div class="page-wrapper">
@@ -1364,9 +1351,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </div>
   </div>
   <nav class="new-footer__footer-menu">
-    <a href="../index.html" class="new-footer__footer-menu--link home-page">
+    <a href="{{route('index')}}" class="new-footer__footer-menu--link home-page">
       
-
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24" class="icon icon-medium">
   <path d="M7.488 24a1.98 1.98 0 0 1-1.881-1.551L2.542 10.398l-1.289 1.177a.75.75 0 0 1-1.011-1.108L11.492.196a.747.747 0 0 1 1.011 0l11.25 10.271a.752.752 0 0 1-.506 1.304.751.751 0 0 1-.506-.196l-1.29-1.177-3.069 12.075A1.961 1.961 0 0 1 16.524 24H7.488zm-.421-1.897a.48.48 0 0 0 .456.397H16.5a.473.473 0 0 0 .424-.373L20.196 9.25l-8.198-7.485-8.2 7.486 3.269 12.852z" />
   <path d="M11.997 18a3.754 3.754 0 0 1-3.75-3.75 3.754 3.754 0 0 1 3.75-3.75 3.754 3.754 0 0 1 3.75 3.75 3.754 3.754 0 0 1-3.75 3.75zm0-6c-1.241 0-2.25 1.009-2.25 2.25s1.009 2.25 2.25 2.25 2.25-1.009 2.25-2.25S13.238 12 11.997 12z" />
@@ -1374,8 +1360,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
       <div class="new-footer__footer-menu--text">Hitta proffs</div>
     </a>
-    <a href="index.html" class="new-footer__footer-menu--link supplier-register-link">
-      
+    <a href="{{route('index')}}" class="new-footer__footer-menu--link supplier-register-link"> 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24" class="icon icon-medium">
   <path d="M5.253 21.497a5.213 5.213 0 0 1-3.712-1.535A5.213 5.213 0 0 1 .006 16.25c0-1.404.545-2.722 1.535-3.712l4.773-4.774a5.215 5.215 0 0 1 3.716-1.539c1.402 0 2.719.544 3.708 1.531a5.225 5.225 0 0 1 .538 6.804.752.752 0 0 1-1.048.165.744.744 0 0 1-.299-.489.745.745 0 0 1 .134-.558 3.732 3.732 0 0 0-.384-4.86 3.726 3.726 0 0 0-2.649-1.094 3.729 3.729 0 0 0-2.655 1.099l-4.774 4.774a3.754 3.754 0 0 0 0 5.303c.707.707 1.649 1.096 2.652 1.096s1.945-.389 2.652-1.096l.932-.932a.744.744 0 0 1 1.06 0 .744.744 0 0 1 0 1.06l-.932.932a5.205 5.205 0 0 1-3.712 1.537z" />

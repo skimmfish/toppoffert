@@ -122,7 +122,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                 <div class="login-footer desktop" >
                     <div class="bottom-links">
                         <a href="{{route('anslut-ditt-foretag')}}" class="link">Anslut företag</a>
-                        <a href="https://toppoffert.se/skapa/" class="link">Skapa förfrågan</a>
+                        <a href="{{route('skapa')}}" class="link">Skapa förfrågan</a>
                     </div>
                 </div>
            
@@ -132,7 +132,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <div class="login-footer mobile" >
                 <div class="bottom-links">
                     <a href="{{route('anslut-ditt-foretag')}}" class="link">Anslut företag</a>
-                    <a href="https://toppoffert.se/skapa/" class="link">Skapa förfrågan</a>
+                    <a href="{{route('skapa')}}" class="link">Skapa förfrågan</a>
                 </div>
             </div>
 </div>
