@@ -157,14 +157,8 @@
             <a href="{{route('anslut-ditt-foretag')}}" class="new-main-menu__menu--item mobile">Anslut företag</a>
             <a href="{{route('login')}}" class="new-main-menu__menu--item mobile">Logga in</a>
             <a href="https://offerta.se/om-offerta/sa-fungerar-offerta/" class="new-main-menu__menu--item">Så fungerar Offerta</a>
-            <a href="index.html" class="new-main-menu__menu--item">Kontakta oss</a>
-            <a href="https://careers.offerta.se/" target="_blank" class="new-main-menu__menu--item">Jobba hos oss</a>
-        </div>
-        <div class="new-main-menu__menu">
-            <a href="https://offerta.se/bestallarskolan/" class="new-main-menu__menu--item">Beställarskolan</a>
-            <a href="https://offerta.se/blogg/" class="new-main-menu__menu--item">Blogg</a>
-            <a href="https://offerta.se/press/" class="new-main-menu__menu--item">Press</a>
-        </div>
+            <a href="{{route('kontactos-pg')}}" class="new-main-menu__menu--item">Kontakta oss</a>
+           </div>
     </div>
     <ul class="new-main-menu__footer">
         <li class="new-main-menu__footer--item">
@@ -174,10 +168,10 @@
             <a href="tel:010-33 020 11">010-33 020 11</a>
         </li>
         <li class="new-main-menu__footer--item">
-            <a href="mailto:info@offerta.se">info@offerta.se</a>
+            <a href="mailto:info@toppoffert.se">info@toppoffert.se</a>
         </li>
         <li class="new-main-menu__footer--item">
-            <a href="https://www.linkedin.com/company/offertase" class="social-icons">
+            <a href="https://www.linkedin.com/company/toppoffert" class="social-icons">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
@@ -187,7 +181,7 @@
 </svg>
 
             </a>
-            <a href="https://www.facebook.com/offerta.se/" class="social-icons">
+            <a href="https://www.facebook.com/toppoffert.se/" class="social-icons">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
@@ -195,7 +189,7 @@
 </svg>
 
             </a>
-            <a href="https://www.instagram.com/offerta.se/" class="social-icons">
+            <a href="https://www.instagram.com/toppoffert.se/" class="social-icons">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
@@ -214,7 +208,7 @@
                 
         <div class="container breadcrumbs-container">
         <nav class="breadcrumbs">
-            <a href="https://offerta.se/" class="breadcrumb-icon">
+            <a href="https://toppoffert.se/" class="breadcrumb-icon">
                 
 
 <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" class="icon-small icon-faded">
@@ -227,25 +221,20 @@
         <span class="breadcrumbs-arrow">
             &gt;
         </span>
-        <a href="https://offerta.se/om-offerta/" itemprop="url" class="title-info">
-            <span itemprop="title">Om Offerta</span>
+        <a href="https://toppoffert.se/" itemprop="url" class="title-info">
+            <span itemprop="title">Om {{config('app.name')}}</span>
         </a>
     </span>
     <span itemscope itemtype="http://schema.org/BreadcrumbList">
         <span class="breadcrumbs-arrow">
             &gt;
         </span>
-        <a href="index.html" itemprop="url" class="title-info">
+        <a href="{{route(kontactos-pg)}}" itemprop="url" class="title-info">
             <span itemprop="title">Kontakta oss</span>
         </a>
     </span>
         </nav>
     </div>
-
-
-
-                
-
 
 <section class="section">
     <div class="container">
@@ -254,7 +243,7 @@
             <div class="white-box content">
                 <p>
                     Du är alltid välkommen att höra av dig till oss om du har några frågor kring tjänsten eller vill komma i kontakt med oss.
-                    Du hittar även många svar under <a class="link" href="https://offerta.se/om-offerta/sa-fungerar-offerta/#faq">vanliga frågor.</a>
+                    Du hittar även många svar under <a class="link" href="https://toppoffert.se/om-offerta/sa-fungerar-offerta/#faq">vanliga frågor.</a>
                 </p>
                 <div class="block hidden-small">
                     <div class="h5 hidden-small block-small">
@@ -431,7 +420,6 @@
         
 
         @include('pages.gen_footer')
-
 
     </body>
 </html>

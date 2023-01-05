@@ -193,9 +193,7 @@
 
 
     <!-- SiteJS -->
-    <script async data-main="site/_main" src="{{asset('js/dist/app_v638066916940000000.js')}}" type="text/javascript"></script>
-
-      
+    <script async data-main="site/_main" src="{{asset('js/dist/app_v638066916940000000.js')}}" type="text/javascript"></script>     
     
     <!-- /SiteJS -->
     <!-- BottomScripts -->

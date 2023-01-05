@@ -175,14 +175,14 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
           
             <a href="{{route('login')}}" class="new-header__menu--item">Logga in</a>
         
-    <a class="nav-icon" data-toggle-menu="mobile-nav">
+    <a class="nav-icon" data-toggle-menu="mobile-nav" style="display:block;visibility:visible">
         <div class="text-close">Stäng</div>
         <div class="text-menu">Meny</div>
         <div class="menu-icon"></div>
     </a>
 </div>
 
-<nav class="new-main-menu" style="display:block;visibility:visible">
+<nav class="new-main-menu">
     <div class="new-main-menu__inner">
         <div class="new-main-menu__menu">
             <a href="{{route('anslut-ditt-foretag')}}" class="new-main-menu__menu--item mobile">Anslut företag</a>
