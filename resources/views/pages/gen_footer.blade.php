@@ -42,33 +42,24 @@
         </a>
       </nav>
     </div>
-   
+    
+   <!-- footer-menu__item-->
+
     <div class="new-footer__inner--item">
       <nav class="footer-menu">
         <a class="footer-menu__item" href="{{route('anslut-ditt-foretag')}}">
           Anslut ditt företag
         </a>
-        <a class="footer-menu__item" href="" target="_blank">
-          Jobba hos oss
-        </a>
         <a class="footer-menu__item" href="">
-          Beställarskolan
+          Integritetspolicy
         </a>
+
       </nav>
     </div>
     <div class="new-footer__inner--item">
       <nav class="footer-menu">
-        <a class="footer-menu__item blog" href="">
-          Blogg
-        </a>
         <a class="footer-menu__item companies-blog" href="">
           Företagsblogg
-        </a>
-        <a class="footer-menu__item" href="">
-          Press
-        </a>
-        <a class="footer-menu__item" href="">
-          Integritetspolicy
         </a>
         <span id="cookieSettings" class="footer-menu__item">
           Cookie inställningar
@@ -82,13 +73,13 @@
         </span>
         <div class="media">
           <span>
-            <a href="mailto:info@offerta.se" class="footer-menu__item">
+            <a href="mailto:info@toppoffert.se" class="footer-menu__item">
               info@toppoffert.se
             </a>
             <a href="tel:010-33 020 11" class="footer-menu__item">
               010-33 020 11
             </a>
-            <a class="footer-menu__item" href="../../kontakta-oss/index.html">
+            <a class="footer-menu__item" href="{{route('kontactos-pg')}}">
               Skicka meddelande
             </a>
           </span>
@@ -107,7 +98,7 @@
     </div>
   </div>
   <nav class="new-footer__footer-menu">
-    <a href="../../index.html" class="new-footer__footer-menu--link home-page">
+    <a href="{{route('index')}}" class="new-footer__footer-menu--link home-page">
       
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24" class="icon icon-medium">

@@ -53,7 +53,7 @@ Auth::routes(['verify'=>true]);
 
 
 Route::get('/kontact-os',function(){
-    return view('pages.kontactos',['title'=>'Kontact Os']);
+    return view('pages.kontactos',['title'=>'Kontakta Oss']);
 })->name('kontactos-pg');
 
 Route::get('skapa',function(){
