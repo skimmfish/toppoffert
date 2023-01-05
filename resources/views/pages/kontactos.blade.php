@@ -229,7 +229,7 @@
         <span class="breadcrumbs-arrow">
             &gt;
         </span>
-        <a href="{{route(kontactos-pg)}}" itemprop="url" class="title-info">
+        <a href="{{route('kontactos-pg')}}" itemprop="url" class="title-info">
             <span itemprop="title">Kontakta oss</span>
         </a>
     </span>
@@ -255,8 +255,8 @@
   </g>
 </svg>
 
-                        <a class="link" href="mailto:info@offerta.se">
-                            info@offerta.se
+                        <a class="link" href="mailto:info@toppoffert.se">
+                            info@toppoffert.se
                         </a>
                     </div>
                     <div class="h5 hidden-small block-small">
@@ -309,7 +309,7 @@
 
                 <h4>Skicka ett meddelande till oss</h4>
 
-<form action="https://offerta.se/kontakta-oss/" method="post"><textarea class="flex-input" cols="20" id="FormModel_Message" minlength="5" name="FormModel.Message" required="required" rows="2">
+<form action="{{route('kontactos-pg')}}" method="post"><textarea class="flex-input" cols="20" id="FormModel_Message" minlength="5" name="FormModel.Message" required="required" rows="2">
 </textarea>
 
 <input class="flex-input input-email" id="FormModel_Email" name="FormModel.Email" placeholder="e-post" type="text" value="" />
@@ -317,7 +317,7 @@
 <input class="flex-input input-phone" id="FormModel_Telephone" name="FormModel.Telephone" placeholder="Telefon" type="text" value="" />                    <button type="submit" class="button-primary">Skicka</button>
 </form>                <div class="block">
                     <hr />
-                    <a href="https://www.facebook.com/offerta.se/" class="black block" target="_blank">
+                    <a href="https://www.facebook.com/toppoffert.se/" class="black block" target="_blank">
                         <div class="media">
                             <div class="media-left">
                                 
