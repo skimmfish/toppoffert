@@ -68,7 +68,9 @@ document.documentElement.className = document.documentElement.className.replace(
     
 
     <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
+
 </head>
+
 
 <body class="enquiry-create">
     <script type="text/javascript">

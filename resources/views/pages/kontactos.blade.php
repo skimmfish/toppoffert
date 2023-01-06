@@ -48,7 +48,8 @@
                     }()); _vwo_settings_timer = _vwo_code.init();
                 </script>
                 <!-- End Visual Website Optimizer Asynchronous Code -->
-        
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>        
 <link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/icons/apple-touch-icon.png')}}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/icons/favicon-32x32.png')}}">
@@ -85,6 +86,139 @@
     
 
     <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
+
+<style>
+.new-header.scrolled{
+	background-color: #fff !important;
+	transition: background-color 200ms linear;
+  }
+  
+  .new-header__menu--item{
+	font-family:'Open Sans';
+  }
+  
+  *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+  }
+  *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+  }
+  *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+  }
+  .wrapper{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	/*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+	/* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+	/* clip-path: circle(25px at calc(0% + 45px) 45px); */
+	background:#fff;
+	clip-path: circle(25px at calc(100% - 45px) 45px);
+	transition: all 0.3s ease-in-out;
+  }
+  
+  #active:checked ~ .wrapper{
+	clip-path: circle(75%);
+  }
+  .menu-btn{
+	position: absolute;
+	z-index: 2;
+	right: 20px;
+	/* left: 20px; */
+	top: 30px;
+	height: 50px;
+	width: 60px;
+	text-align: center;
+	font-size: 30px;font-weight:400;
+	color: #434345 !important;
+	cursor: pointer;
+	border-radius: 50%;
+	line-height: 10px !important;
+	/*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+	/* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+	/*background: #41509a !important;*/
+	background-color: none !important;
+  }
+
+  #active:checked ~ .menu-btn{
+	color: #434343 !important;
+  }
+  #active:checked ~ .menu-btn i:before{
+	content: "\f00d";
+  }
+   
+ 
+  .wrapper ul{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	list-style: none;
+	text-align: center;
+	background:none;
+  }
+  .wrapper ul li{
+	margin: 15px 0;text-align: left !important;
+  }
+  .wrapper ul li a{
+	color: none;
+	text-decoration: none;
+	font-size: 48px;
+	font-weight: 900 !important;
+	padding: 5px 30px;
+	color: #434345;
+	background:none;
+	position: relative;
+	line-height: 50px;
+	transition: all 0.3s ease;
+	text-align:left !important;
+  }
+  .wrapper ul li a:after{
+	position: absolute;
+	content: "";
+	background:none;
+	width: 104%;
+	height: 110%;
+	left: -2%;
+	top: -5%; /* if the font is 'Oswald'*/
+	transform: scaleY(0);
+	z-index: -1;
+	animation: rotate 1.5s linear infinite;
+	transition: transform 0.3s ease;
+  }
+  .wrapper ul li a:hover:after{
+	transform: scaleY(1);
+  }
+  .wrapper ul li a:hover{
+	color: #434345;
+  }
+  input[type="checkbox"]{
+	display: none;
+  }
+  
+
+
+  .grid_base{
+	display:grid;grid-template-columns: repeat(3);
+  }
+  .text-sm{
+	font-size:13px !important;color:#434345 !important;font-weight:900 !important;
+  }
+    </style>
 </head>
 
 <body class="info info contactus">
@@ -176,71 +310,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </a>
                     
 
+@include('layouts.navigationbar')
 
-<div class="new-header__menu contact-us-active" role="navigation">
-    <a href="{{route('anslut-ditt-foretag')}}" class="new-header__menu--item">Anslut företag</a>
-    
-            <a href="{{route('login')}}" class="new-header__menu--item">Logga in</a>
-        
-    
-    
-    <a class="nav-icon" data-toggle-menu="mobile-nav">
-        <div class="text-close">Stäng</div>
-        <div class="text-menu">Meny</div>
-        <div class="menu-icon"></div>
-    </a>
-</div>
-<nav class="new-main-menu">
-    <div class="new-main-menu__inner">
-        <div class="new-main-menu__menu">
-            <a href="{{route('anslut-ditt-foretag')}}" class="new-main-menu__menu--item mobile">Anslut företag</a>
-            <a href="{{route('login')}}" class="new-main-menu__menu--item mobile">Logga in</a>
-            <a href="{{route('kontactos-pg')}}" class="new-main-menu__menu--item">Kontakta oss</a>
-           </div>
-    </div>
-    <ul class="new-main-menu__footer">
-        <li class="new-main-menu__footer--item">
-            {{config('app.name')}}Group AB
-        </li>
-        <li class="new-main-menu__footer--item">
-            <a href="tel:010-33 020 11">010-33 020 11</a>
-        </li>
-        <li class="new-main-menu__footer--item">
-            <a href="mailto:info@toppoffert.se">info@toppoffert.se</a>
-        </li>
-        <li class="new-main-menu__footer--item">
-            <a href="https://www.linkedin.com/company/toppoffert" class="social-icons">
-                
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
-  <rect x="2" y="8.5" width="5" height="14" rx=".5" ry=".5" />
-  <ellipse cx="4.48" cy="4" rx="2.48" ry="2.5" />
-  <path d="M18.5 22.5h3a.5.5 0 0 0 .5-.5v-8.4C22 9.83 19.87 8 16.89 8a4.21 4.21 0 0 0-3.17 1.27A.41.41 0 0 1 13 9a.5.5 0 0 0-.5-.5h-3A.5.5 0 0 0 9 9v13a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-7.5a2.5 2.5 0 0 1 5 0V22a.5.5 0 0 0 .5.5z" />
-</svg>
-
-            </a>
-            <a href="https://www.facebook.com/toppoffert.se/" class="social-icons">
-                
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
-  <path d="M18.14 7.17a.5.5 0 0 0-.37-.17H14V5.59c0-.28.06-.6.51-.6h3a.44.44 0 0 0 .35-.15.5.5 0 0 0 .14-.34v-4a.5.5 0 0 0-.5-.5h-4.33C8.37 0 8 4.1 8 5.35V7H5.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5H8v11.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V12h3.35a.5.5 0 0 0 .5-.45l.42-4a.5.5 0 0 0-.13-.38z" />
-</svg>
-
-            </a>
-            <a href="https://www.instagram.com/toppoffert.se/" class="social-icons">
-                
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
-  <path d="M17.5 0h-11A6.51 6.51 0 0 0 0 6.5v11A6.51 6.51 0 0 0 6.5 24h11a6.51 6.51 0 0 0 6.5-6.5v-11A6.51 6.51 0 0 0 17.5 0zM12 17.5a5.5 5.5 0 1 1 5.5-5.5 5.5 5.5 0 0 1-5.5 5.5zm6.5-11A1.5 1.5 0 1 1 20 5a1.5 1.5 0 0 1-1.5 1.5z" />
-</svg>
-
-            </a>
-        </li>
-    </ul>
-</nav>
-                    
-                    <div class="header-material-circle"></div>
-                </div>
             </header>
             <main class="content-main" role="main">
                 
