@@ -218,6 +218,9 @@
   .text-sm{
 	font-size:13px !important;color:#434345 !important;font-weight:900 !important;
   }
+  .icon-small{
+top:37px;
+  }
     </style>
 </head>
 
