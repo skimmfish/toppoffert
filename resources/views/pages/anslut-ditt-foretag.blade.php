@@ -79,7 +79,8 @@
     
 
     <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
-</head>
+
+  </head>
 
 <body class="supplier-register">
     <script type="text/javascript">
