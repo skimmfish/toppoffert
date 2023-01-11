@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
-            $table->id();
-            $table->string('service_cat_name')->nullable()->index();
-            $table->integer('providers_count')->nullable()->index();
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('active')->after('is_admin')->nullable()->index();
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::table('uses', function (Blueprint $table) {
+            //
+        });
     }
 };

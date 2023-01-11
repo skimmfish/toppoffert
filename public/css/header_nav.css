@@ -282,3 +282,6 @@ display:block;
 			
 		 }
  
+		 .img_avatar{
+			width:34px;height:34px;border-radius:50%;position:relative;left:-4px;
+		 }

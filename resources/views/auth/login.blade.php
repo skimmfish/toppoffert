@@ -7,39 +7,7 @@
         <div class="login-wrapper">
             <div class="login-inner">
                 <a href="{{route('index')}}" class="logo-offerta">
-                   <!-- <svg class="logo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 7311 3543.31" style="enable-background:new 0 0 7311 3543.31;" xml:space="preserve">
-                        <path style="fill: #8BC343" d="M1482.89,3507.69c23.07,23.08,60.48,23.08,83.56,0l458.35-470.7h4731.71c281.87,0,512.49-230.62,512.49-512.49
-                            V553.44c0-281.87-230.62-512.49-512.49-512.49H550.49C268.62,40.95,38,271.57,38,553.44V2524.5
-                            c0,281.87,230.62,512.49,512.49,512.49h474.05L1482.89,3507.69z"/>
-                        <g>
-                            <path style="fill: #FFFFFF" d="M1483.22,825.57c341.33,0,645.52,249.37,645.52,654.37c0,403.22-304.2,652.6-645.52,652.6
-                                c-339.56,0-643.75-249.37-643.75-652.6C839.47,1074.94,1143.66,825.57,1483.22,825.57z M1483.22,1895.55
-                                c194.54,0,392.62-134.42,392.62-417.39s-198.08-417.38-392.62-417.38c-192.77,0-390.85,134.41-390.85,417.38
-                                S1290.45,1895.55,1483.22,1895.55z"/>
-                            <path style="fill: #FFFFFF" d="M2588.58,1140.38v95.5h196.31v201.61h-196.31v668.52H2351.6v-668.52h-145.02v-201.61h145.02v-99.05
-                                c0-196.31,123.8-323.64,316.57-323.64c49.52,0,97.27,8.84,116.73,17.69v198.08c-12.38-5.31-33.6-8.84-74.28-8.84
-                                C2657.56,1020.11,2588.58,1043.1,2588.58,1140.38z"/>
-                            <path style="fill: #FFFFFF" d="M3219.94,1140.38v95.5h196.31v201.61h-196.31v668.52h-236.99v-668.52h-145.02v-201.61h145.02v-99.05
-                                c0-196.31,123.8-323.64,316.57-323.64c49.52,0,97.27,8.84,116.73,17.69v198.08c-12.38-5.31-33.6-8.84-74.28-8.84
-                                C3288.91,1020.11,3219.94,1043.1,3219.94,1140.38z"/>
-                            <path style="fill: #FFFFFF" d="M4311.16,1856.65c-42.45,152.09-183.93,275.89-396.16,275.89c-240.52,0-449.21-171.55-449.21-465.14
-                                c0-277.66,205.15-458.05,427.99-458.05c270.59,0,429.77,169.78,429.77,450.98c0,33.6-3.54,67.2-3.54,72.5h-622.53
-                                c5.3,113.19,102.58,198.08,219.3,198.08c111.42,0,169.78-54.81,198.08-132.64L4311.16,1856.65z M4091.85,1571.9
-                                c-5.3-84.89-60.13-171.55-194.54-171.55c-122.03,0-189.23,93.73-194.54,171.55H4091.85z"/>
-                            <path style="fill: #FFFFFF" d="M4951.4,1469.33c-22.99-5.31-47.75-7.08-70.74-7.08c-120.26,0-224.6,58.36-224.6,245.83v397.92h-235.22
-                                v-870.13h228.14v129.1c53.05-114.95,173.32-136.17,247.59-136.17c19.46,0,35.37,1.77,54.83,3.53V1469.33z"/>
-                            <path style="fill: #FFFFFF" d="M5405.91,1235.88h175.09v208.69h-175.09v364.33c0,76.05,33.6,100.8,102.58,100.8c28.3,0,60.13-1.77,72.51-7.08
-                                v194.55c-21.22,8.84-63.66,21.22-132.64,21.22c-169.78,0-275.89-99.03-275.89-268.81v-405h-157.41v-208.69h44.22
-                                c91.96,0,134.41-60.14,134.41-137.95V975.9h212.23V1235.88z"/>
-                            <path style="fill: #FFFFFF" d="M5918.78,1605.51l213.99-31.83c49.52-7.08,65.44-31.84,65.44-61.91c0-61.91-47.75-113.19-146.79-113.19
-                                c-104.34,0-159.17,65.44-166.25,141.48l-208.69-44.22c14.15-136.17,137.95-286.5,373.17-286.5c275.9,0,378.48,155.63,378.48,330.72
-                                v427.99c0,47.75,5.3,107.89,10.61,137.95h-215.77c-5.3-22.99-8.84-70.74-8.84-104.34c-44.21,68.97-127.34,129.11-256.44,129.11
-                                c-185.7,0-298.89-127.34-298.89-261.75C5658.79,1711.62,5773.75,1628.49,5918.78,1605.51z M6198.21,1754.07v-38.91l-196.31,30.06
-                                c-61.9,8.84-107.88,40.67-107.88,109.64c0,51.3,37.14,100.81,113.19,100.81C6106.24,1955.68,6198.21,1907.93,6198.21,1754.07z"/>
-                        </g>
-                    </svg>-->
-                
+                   
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1900.000000pt" height="1900.000000pt" viewBox="0 0 310 310.31" preserveAspectRatio="xMidYMid meet" class="logo">
 <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
 fill="#0d2453" stroke="none">
@@ -87,24 +55,26 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </a>
  <div class="login-box">
     <h1>Logga in</h1>
-       <form id="form" method="post" novalidate action="{{ route('login') }}">                      
+       <form method="POST" action="{{route('user_login')}}" id="login_form">      
+        @csrf                
                         <div class="input-wrapper">
                             <div class="form-group text-input">
                                 <label for="Email">Email</label>
-                                <input type="email" class="input-large @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autofocus data-val="true" data-val-email="Ogilitig e-postadress" data-val-required="Fyll i en e-postadress" id="Email" name="Email" value="" />
-                                
+                                <input type="email" class="input-large @error('email') is-invalid @enderror" value="{{ old('email') }}" autofocus data-val="true" placeholder="Ogilitig e-postadress" id="Email" name="email" value="{{old('email')}}" reqired />
                             </div>
-                            <span class="error-message field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                            <span class="error-message field-validation-valid text-danger error-text email_error text-danger"></span>
+
                             <div class="form-group text-input">
                                 <label for="Password">Lösenord</label>
-                                <input type="password" class="input-large" placeholder=" " data-val="true" data-val-required="Fyll i ett l&#xF6;senord" id="Password" name="Password" />
+                                <input type="password" class="input-large" placeholder="Fyll i ett l&#xF6;senord" data-val="true" id="password" name="password" required/>
                             </div>
+
                             <div class="link-container">
                                 <a class="forgot-password" href="{{ route('password.request') }}">Glömt ditt lösenord?</a>
-                                <span class="error-message field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
-                                
+                                <span class="error-message field-validation-valid text-danger error-text text-danger password_error"></span>                                
                             </div>
                         </div>
+
                         <input type="hidden" id="ReturnUrl" name="ReturnUrl" value="" />
                         <div class="form-group submit-and-links">
                             <div class="form-group checkbox-wrapper">
@@ -115,7 +85,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                             <button type="submit" id="submit" class="button button-rounded button-login">Logga in</button>
                             
                         </div>
-                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8LRaIQn2hIJCg90zztmrAkE-e7NBF1JsUQlIFxgRbfv379boG1L0tGIi2gfalaiFOc28svyZ4ZKObCzI3tEn1pwlmF_HvZ1gN7EM408GS6h2_zABU-V606X6Oe6spx8wDHW8r4LjhOBUmK8YiqeD9CA" />
                     <input name="RememberLogin" type="hidden" value="false" /></form>
                 </div>
             </div>
@@ -138,80 +107,46 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </div>
 
     </div>
+
+<script>
+$("#login_form").submit(function(e){
+    e.preventDefault();
+
+   var all = $(this).serialize();
+
+   $.ajax({
+       url:  $(this).attr('action'),
+       type: "POST",
+       data: all,
+       beforeSend:function(){
+           $(document).find('span.error-text').text('');
+       },
+       
+       //validate form with ajax. This will be communicating with your LoginController
+       success: function(data){
+           if (data.status==0) {
+               $.each(data.error, function(prefix, val){
+                   $('span.'+prefix+'_error').text(val[0]);
+               });
+           }
+          /* Redirect the user to [another page] if the login cred are correct.
+             Remember this is communicating with the LoginController which we 
+              are yet to create */
+           if(data == 1){
+               window.location.replace(
+                '{{route("marketplace.clients")}}'
+               );
+           }else if(data == 2){
+            // Show the user authentication error if the login cred are invalid. 
+            //Remember this is communicating with the LoginController which we are yet to create
+               $("#show_error").hide().html("Invalid login details");
+           }
+
+       }
+       })
+
+   });
+
+    </script>
 @endsection
 
-{{--
-@extends('layouts.app')
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
-
---}}

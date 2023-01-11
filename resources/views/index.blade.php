@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 
 <!--[if lt IE 7 ]> <html lang="sv" class="no-js ie ie7 ie-legacy"> <![endif]-->

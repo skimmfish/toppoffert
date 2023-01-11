@@ -1,14 +1,18 @@
 <div class="new-header__menu" role="navigation">
 
     <a href="{{route('anslut-ditt-foretag')}}" class="new-header__menu--item">Anslut företag</a>  
-          
-            <a href="{{route('login')}}" class="new-header__menu--item">Logga in</a>
-        
+        @if(\Auth::check())
+      <a href="{{route('login')}}" class="new-header__menu--item"><img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
+      @else
+      <a href="{{route('login')}}" class="new-header__menu--item">Logga In</a>
+    @endif
+   
+
     <a class="nav-icon" data-toggle-menu="mobile-nav" onClick="showLogo()">
         <div class="text-menu">Meny</div>
         </a>
 </div>
-        <input type="checkbox" id="active" onClick="showLogo()">
+        <input type="checkbox" id="active">
         <label for="active" class="menu-btn-left">
           <!--logo-->
 <a href="{{route('index')}}" aria-label="Hem" id="_dropdown_logo">
@@ -66,7 +70,13 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
       <div class="wrapper">
       <ul>
       <li><a href="{{route('yrkeskategorier')}}">Yrkeskategorier</a></li>
-      <li class="show_768"><a href="{{route('login')}}">Logga In</a></li>
+      <li class="show_768">
+      @if(\Auth::check())
+      <a href="{{route('login')}}"><img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
+      @else
+      <a href="{{route('login')}}">Logga In</a>
+    @endif
+    </li>
       <li><a href="{{route('pris')}}">Pris</a></li>
       <li><a href="{{route('kontactos-pg')}}">Kontakta Oss</a></li>
 

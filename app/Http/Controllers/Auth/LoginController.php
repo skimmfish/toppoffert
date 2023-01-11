@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -26,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::CLIENTS;
 
     /**
      * Create a new controller instance.
@@ -37,4 +40,48 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    /**
+     * @param Illuminate\Http\Request $request
+     * @return void
+     */
+    public function customLogin(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'email' =>    'required',
+            'password' => 'required',
+          ]);
+
+           //validate all requests and it sends output to your login.blade.php
+    
+           if(!$validator->passes()){
+              return response()->json([
+                 'status'=>0, 
+                 'error'=>$validator->errors()->toArray()
+              ]);
+            }
+    
+           $user_cred = $request->only('email', 'password');
+            if (\Auth::attempt($user_cred)) {
+    
+                 //if user is logged in as a client
+                if(Auth()->user()->user_cat=='CLIENT'){  
+                   return response()->json([ [1] ]);
+                }  
+    
+            }else if(Auth()->user()->user_cat=='SUPPLIERS'){
+                 //if user is a supplier
+                    return response()->json([ [2] ]);
+
+            }ELSE IF(Auth()->user()->user_cat=='SADMIN'){
+               //IF the logged in user is a super admin   
+               return response()->json([ [3] ]);
+                    
+            }
+            return redirect("/");
+         }
+
+         
+//end of class
 }

@@ -18,6 +18,10 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
+    public const DASHBOARD = '/dashboard';
+    public const SUPPLIERS = '/marketplace/suppliers';
+    public const CLIENTS = '/marketplace/clients';
+    public const LOGIN = '/login';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -40,7 +44,7 @@ class RouteServiceProvider extends ServiceProvider
 
     /**
      * Configure the rate limiters for the application.
-     *
+     *;
      * @return void
      */
     protected function configureRateLimiting()

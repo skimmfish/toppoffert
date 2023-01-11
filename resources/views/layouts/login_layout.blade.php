@@ -6,6 +6,7 @@
     <meta name="msapplication-TileColor" content="#2F3033" />
     <title>Logga in - {{ config('app.name') }}</title>
     <link rel="stylesheet" href="{{asset('css/login/toppoffert.css')}}">
+    
     <script src="{{asset('css/js/toppoffert.js')}}"></script>
     <link rel="icon" href="{{asset('img/icons/favicon.ico')}}" />
     <link
@@ -37,7 +38,17 @@
     '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-TTBP');</script>
     <!-- End Google Tag Manager -->
-</head>
+
+    <!--JQuery-->
+    <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.lazy.min.js') }}"></script>
+    
+
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans&amp;display=swap);
+  .input-large{font-family:'Open Sans';}
+  </style>
+  </head>
 <body>
 
 @yield('content')
