@@ -4,6 +4,10 @@
 <div id="app">
         <div class="container-wrapper">
     <div class="login-container">
+
+
+    <div id="show_error" class="text-danger">@if(isset($error)) {{$error}} @endif</div>
+
         <div class="login-wrapper">
             <div class="login-inner">
                 <a href="{{route('index')}}" class="logo-offerta">
@@ -139,7 +143,25 @@ $("#login_form").submit(function(e){
            }else if(data == 2){
             // Show the user authentication error if the login cred are invalid. 
             //Remember this is communicating with the LoginController which we are yet to create
-               $("#show_error").hide().html("Invalid login details");
+               //$("#show_error").hide().html("Invalid login details");
+
+               window.location.replace(
+                '{{route("suppliers.dashboard")}}'
+               );
+           }else if(data == 3){
+            // Show the user authentication error if the login cred are invalid. 
+            //Remember this is communicating with the LoginController which we are yet to create
+               //$("#show_error").hide().html("Invalid login details");
+
+               window.location.replace(
+                '{{route("sadmin_index")}}'
+               );
+           }else if(data=='error'){
+               // Show the user authentication error if the login cred are invalid. 
+            //Remember this is communicating with the LoginController which we are yet to create
+            
+            $("#show_error").html("Invalid login details");
+
            }
 
        }

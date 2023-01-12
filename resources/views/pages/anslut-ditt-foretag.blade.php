@@ -10,7 +10,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head itemscope itemtype="http://schema.org/WebSite">
     <meta charset="utf-8">
-    <title itemprop="name">@if(isset($title)){{$title}} @else Anslut dittretag - {{config('app.name')}}.se @endif</title>
+    <title itemprop="name">@if(isset($title)){{$title}} - {{config('app.name')}} @else Anslut dittretag - {{config('app.name')}} @endif</title>
 
     <link rel="dns-prefetch" href="https://static.doubleclick.net/" />
     <link rel="dns-prefetch" href="https://s.ytimg.com/" />
@@ -270,21 +270,23 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <div class="splash-supplier-register-column supplier-register-form-container">
 
 
-        <form class="form-new">
+        <form class="form-new" id="supplier_form" method="POST" action="{{route('suppliers_register')}}">
+          @csrf
             <label>Email</label>
-            <input type="email" data-source="registerInputCta" name="registerEmail"
-                class="supplier-register-input full-width" placeholder="" autocomplete="off">
+            <input type="email" name="_email_address"
+                class="supplier-register-input full-width" placeholder="" autocomplete="off" required>
             <div class="email-action-container">
                 <div class="input-group option-with-zone">
                     <label>
                         <input type="checkbox" class="checkbox-custom-large" id="terms" />
                         <label for="terms"></label>
                         <div>
-                            Jag godkänner Offertas <a href="../anvandarvillkor/leverantor/index.html"
+                            Jag godkänner {{config('app.name')}} <a href="../anvandarvillkor/leverantor/index.html"
                                 style="text-decoration: underline;">användarvillkor</a></div>
                     </label>
                 </div>
-                <div id="submitWrapper" class="button-wrapper">
+                <div class="button-wrapper">
+
                     <button type="submit" class="supplier-register-submit">
                         <span class="button-text">Anm&#228;l intresse</span>
                         <span class="button-text-send">Skickar...</span>
@@ -295,9 +297,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     <path d="M7.71 6.29l-6-6A1 1 0 0 0 .29 1.71L5.59 7l-5.3 5.29A1 1 0 1 0 1.7 13.7l6-6a1 1 0 0 0 .01-1.41z" id="Layer_1-2" data-name="Layer 1" />
   </g>
 </svg>
-
-                        
-
 <svg viewBox="0 0 50 50" class="spinner">
   <circle class="path" cx="25" cy="25" r="16" fill="none" stroke-width="5" />
 </svg>
@@ -438,7 +437,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </section>
 <section id="varforOfferta" class="page-section gray-bg">
     <div class="page-section__inner">
-        <h2 class="page-section__heading text-center no-margins">Varför ska du välja Offerta?</h2>
+        <h2 class="page-section__heading text-center no-margins">Varför ska du välja {{ config('app.name') }}</h2>
         <hr class="divider-short-center"/>
         <div class="page-section__content">
             <div class="col-4">
@@ -1175,22 +1174,21 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         </div>
     </div>
 </div>
-<form class="supplier-register-email email-form-large">
+<form class="supplier-register-email email-form-large" action="{{route('suppliers_register')}}" method="POST">
+  @csrf
     <label for="registerEmail" class="hidden">Ange e-postadress</label>
-    <input type="email" data-source="registerInputCta" name="registerEmail" class="supplier-register-input" placeholder="Ange e-postadress" autocomplete="off">
+    <input type="email" data-source="registerInputCta" name="_email_adddress" class="supplier-register-input" placeholder="Ange e-postadress" autocomplete="off" required />
     <button type="submit" class="supplier-register-submit">
         <span class="button-text">Anm&#228;l intresse</span>
         <span class="button-text-send">Skickar...</span>
-        
-
+      
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon">
   <g id="Layer_2" data-name="Layer 2">
     <path d="M7.71 6.29l-6-6A1 1 0 0 0 .29 1.71L5.59 7l-5.3 5.29A1 1 0 1 0 1.7 13.7l6-6a1 1 0 0 0 .01-1.41z" id="Layer_1-2" data-name="Layer 1" />
   </g>
 </svg>
 
-        
-
+      
 <svg viewBox="0 0 50 50" class="spinner">
   <circle class="path" cx="25" cy="25" r="16" fill="none" stroke-width="5" />
 </svg>

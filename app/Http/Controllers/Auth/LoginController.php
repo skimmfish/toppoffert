@@ -64,22 +64,25 @@ class LoginController extends Controller
     
            $user_cred = $request->only('email', 'password');
             if (\Auth::attempt($user_cred)) {
-    
                  //if user is logged in as a client
                 if(Auth()->user()->user_cat=='CLIENT'){  
-                   return response()->json([ [1] ]);
+                   return response()->json([[1]]);
                 }  
     
             }else if(Auth()->user()->user_cat=='SUPPLIERS'){
                  //if user is a supplier
-                    return response()->json([ [2] ]);
+                    return response()->json([[2]]);
 
             }ELSE IF(Auth()->user()->user_cat=='SADMIN'){
                //IF the logged in user is a super admin   
-               return response()->json([ [3] ]);
+               return response()->json([[3]]);
                     
+            }else{
+               return 'invalid_credentials_error';
             }
-            return redirect("/");
+            //$error = 'Invalid Login Credentials';
+            //flash::fail($error);
+            //return redirect()->route('login')->with(['error'=>$error]);
          }
 
          

@@ -48,11 +48,18 @@ Route::get('/anslut-ditt-foretag/intresseanmalan',function(){
 Route::get('anslut-ditt-foretag',function(){
     return view('pages.anslut-ditt-foretag',['title'=>'Anslut Ditt Foretag']);
 })->name('anslut-ditt-foretag');
+
+
+//staging area for suppliers who just got their interest registered
+Route::get('suppliers-staging',function(){
+    return view('marketplace.suppliers.staging',['title'=>'Thank you for your interest in Toppoffertse']);
+})->name('marketplace_suppliers_staging');
+
 //authentication routes
 //Authentication and authorization interfaces route
 Auth::routes(['verify'=>true]);
 
-
+//for contact-oss page
 Route::get('/kontact-os',function(){
     return view('pages.kontactos',['title'=>'Kontakta Oss']);
 })->name('kontactos-pg');
@@ -62,9 +69,32 @@ Route::get('skapa',function(){
 })->name('skapa');
 
 
+//this route redirects user to their respective dashboard if properly logged in previously
+Route::get('redirecting',function(){
+
+if(\Auth::check()){
+
+//check if user is a client
+if(\Auth::user()->user_cat=='CLIENT'){
+
+    return redirect()->route('marketplace.clients');
+
+}else if(\Auth::user()->user_cat=='SADMIN'){
+return redirect()->route('sadmin_index');
+}else if(\Auth::user()->user_cat=='SUPPLIER'){
+   return redirect()->route("suppliers.dashboard");
+}
+
+}
+
+})->name('redirect_to_dashboard')->middleware(['auth']);
+
+
 //login user
 Route::post('/ulogin',[App\Http\Controllers\Auth\LoginController::class, 'customLogin'])->name('user_login');
 
+//suppliers indicates their interest
+Route::post('anslutditt-foretag','App\Http\Controllers\SuppliersController@storer')->name('suppliers_register');
 /*
 ==================
 Grouped routes for both authenticated users and unauthenticated users
@@ -75,7 +105,7 @@ Grouped routes for both authenticated users and unauthenticated users
 Route::middleware(['auth','verified'])->prefix('marketplace/clients')->group(function(){
 
     Route::get('/',function(){
-        return 'Welcome';
+        return view('marketplace.clients.index')->with(['title'=>'Enquiries - '.config('app.name'),'personalNotification'=>array()]);
     })->name('marketplace.clients');
 
 });

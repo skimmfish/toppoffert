@@ -2,7 +2,7 @@
 
     <a href="{{route('anslut-ditt-foretag')}}" class="new-header__menu--item">Anslut företag</a>  
         @if(\Auth::check())
-      <a href="{{route('login')}}" class="new-header__menu--item"><img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
+      <a href="{{route('redirect_to_dashboard')}}" class="new-header__menu--item"><img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
       @else
       <a href="{{route('login')}}" class="new-header__menu--item">Logga In</a>
     @endif
@@ -72,7 +72,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
       <li><a href="{{route('yrkeskategorier')}}">Yrkeskategorier</a></li>
       <li class="show_768">
       @if(\Auth::check())
-      <a href="{{route('login')}}"><img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
+      <a href="{{route('redirect_to_dashboard')}}"><img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
       @else
       <a href="{{route('login')}}">Logga In</a>
     @endif
