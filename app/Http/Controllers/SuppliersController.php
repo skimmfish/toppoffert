@@ -10,7 +10,6 @@ use Illuminate\Support\Str;
 
 class SuppliersController extends Controller
 {
-    
 
 
     /**
@@ -20,8 +19,6 @@ class SuppliersController extends Controller
 
      public function store(Request $request){
 
-
-        
         $supplier = new Suppliers;
         $rule = ['email' => 'required | unique:suppliers | email'];
         $request->validate($rule);

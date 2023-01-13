@@ -270,7 +270,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <div class="splash-supplier-register-column supplier-register-form-container">
 
 
-        <form class="form-new" id="supplier_form" method="POST" action="{{route('suppliers_register')}}">
+        <form class="form-new" id="supplier_form" method="POST" action="{{route('register')}}">
           @csrf
             <label>Email</label>
             <input type="email" name="_email_address"

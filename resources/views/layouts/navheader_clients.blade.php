@@ -64,7 +64,7 @@ body{
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
-      <div class="container-fluid" data-layout="container">
+      <div class="row-fluid" style="margin:0 !important;width:100%;min-width:100vw;overflow:hidden;padding:0;" data-layout="container-fluid">
         <script>
           var isFluid = JSON.parse(localStorage.getItem('isFluid'));
           if (isFluid) {

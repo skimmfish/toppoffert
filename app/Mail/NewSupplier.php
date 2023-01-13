@@ -39,11 +39,11 @@ class NewSupplier extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('smartmds55@gmail.com',config('app.name')),
+            from: new Address('Aluh1@hotmail.com',config('app.name')),
             replyTo: [
-                new Address('Aluh1@hotmail.com', 'Abbel Ljung'),
+                new Address('hello@toppoffert.se', 'Abbel Ljung'),
             ],
-            subject: 'New Supplier',
+            subject: 'Thank you For Connecting'
         );
     }
 

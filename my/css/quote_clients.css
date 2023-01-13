@@ -1,13 +1,17 @@
 /* quote_clients.css*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans&amp;display=swap);
+
 body{
 	font-family:'GD Sherpa Regular','Open Sans' !important;
-	font-size:17px !important;color:#000;font-weight:500;color:#000;line-height:auto;
+	color:#000;font-weight:500;color:#000;line-height:auto;
 	overflow-x:hidden;font-size:14px !important;background-color: #f0f2ff !important;padding:0;margin:0 !important
 } 
 
 h1,h2,h3,h4,h5,h6{
-    font-family:'GD Sherpa Regular';font-weight: 800;margin-bottom:15px;
+    font-family:'GD Sherpa Regular' !important;font-weight: 900;margin-bottom:15px;
+}
+.content{
+min-height:auto !important;
 }
 h1{font-size:30px;font-weight: 900;}h2{font-size:27px;}h3{font-size:25px;}h4{font-size:22px;}h5{font-size:18px}h6{font-size:15px;}
 .mb-3{
@@ -20,18 +24,30 @@ h1{font-size:30px;font-weight: 900;}h2{font-size:27px;}h3{font-size:25px;}h4{fon
 .dx-20{
     margin-top:20px;
 }
-.container-main{y-overflow:scroll;height:40px;}
+.container-main{overflow-y:scroll;height:40px;}
+
 .btn_corn_1{
-    background:#f0f2ff;height:40px;
+    height:30px;padding:15px 15px 20px 18px;position:relative;top:20px;
 }
+.btn_corn_1 span{color:#0d2453;}
+.btn_corn_1:hover, .btn_corn_1:active{
+    background:#f0f2ff;}
+
 .btn_corn_1 svg{
-fill:#0d2453;width:30px;height:30px;font-weight:600;position:relative;top:10px;
+fill:#0d2453;width:30px;height:30px;font-weight:600;position:relative;top:-1px;margin-right:4px;
 }
+.avatar svg{fill:#0d2453;}
 .heading_bar .mid_box{
     display:flex;justify-content: center;
 }
 .heading_bar .dropdown_nav{
-    justify-items:self-end;
+    display:flex;
+    justify-items:self-end !important;
+    
+}
+
+.cc_phone{
+    position:relative;top:0;float:right;
 }
 
 .mid_box .center_box_logo{
@@ -44,3 +60,47 @@ position:relative;top:-50px;
     width:15px !important;height:15px;
 }
 .create-enquiry__desktop{color:#fff;border:0;background-color: #0d2453;border-radius:40px;width:auto;padding:9px 20px 5px 20px;height:45px;}
+.span_text{
+    color:#0d2453 !important;
+}
+
+.dropdown-item{
+font-family:'GD Sherpa Regular' !important;
+}
+.h6{
+    font-size:30px;margin-bottom:40px;
+}
+.h6-md{
+    font-size:16px;
+}
+.card-header{
+    display:flex;padding:10px !important;
+}
+.h6-md_title{
+    display:flex;flex-direction: row;
+}
+.h6-md_title small{
+    color:#555;font-weight:600;
+}
+.card-header .service_request_publish_status{
+    justify-items: flex-end;padding:1px;height:10px;position:relative;top:px;right:-20px;
+}
+.request_items{
+    margin-top:40px;
+}
+.service_request_publish_status small{font-size:10px;font-weight: 700;}
+
+
+@media(max-width:425px){
+    .span_text{display:none;}
+    .h6{
+        font-size:19px;
+    }
+}
+@media(min-width:1024px){
+.img_lg_xl svg{
+    position:relative;top:-100px;left:50%;
+    display:flex;align-items: center !important;
+    justify-content: center;
+}
+}

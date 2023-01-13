@@ -73,7 +73,7 @@ class LoginController extends Controller
                  //if user is a supplier
                     return response()->json([[2]]);
 
-            }ELSE IF(Auth()->user()->user_cat=='SADMIN'){
+            }else if(Auth()->user()->user_cat=='SADMIN'){
                //IF the logged in user is a super admin   
                return response()->json([[3]]);
                     

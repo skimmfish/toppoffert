@@ -18,9 +18,19 @@ class RequestUpdate extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    protected $request_scope;
+    protected $f_name;
+    protected $msg;
+    protected $matchedSupplierCount;
+    protected $request_title;
+    
+    public function __construct($requestScope,$f_name,$msg,$supplier_count,$request_title)
     {
-        //
+        $this->request_scope=$requestScope;
+        $this->f_name = $f_name;
+        $this->msg = $msg;
+        $this->matchedSupplierCount = $supplier_count;
+        $this->request_title = $request_title;
     }
 
     /**
@@ -31,7 +41,12 @@ class RequestUpdate extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Request Update',
+            from: new Address('Aluh1@hotmail.com',config('app.name')),
+            replyTo: [
+                new Address('hello@toppoffert.se', 'Abbel Ljung'),
+            ],
+            subject: 'Request Update'
+
         );
     }
 
@@ -44,6 +59,13 @@ class RequestUpdate extends Mailable
     {
         return new Content(
             markdown: 'emails.requestupdate',
+            with: [
+                'message' => $this->msg,
+                'f_name' => $this->f_name,
+                'request_scope' => $this->request_scope,
+                'quote_company_count'=>$this->matchedSupplierCount,
+                'request_title'=>$this->request_title
+            ]
         );
     }
 

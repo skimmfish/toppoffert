@@ -156,11 +156,11 @@ $("#login_form").submit(function(e){
                window.location.replace(
                 '{{route("sadmin_index")}}'
                );
-           }else if(data=='error'){
+           }else{
                // Show the user authentication error if the login cred are invalid. 
             //Remember this is communicating with the LoginController which we are yet to create
             
-            $("#show_error").html("Invalid login details");
+            $("#show_error").text("Invalid login details");
 
            }
 

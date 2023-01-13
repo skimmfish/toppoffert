@@ -150,7 +150,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
       <div class="new-footer__footer-menu--text">Hitta proffs</div>
     </a>
-    <a href="../index.html" class="new-footer__footer-menu--link supplier-register-link">
+    <a href="{{route('anslut-ditt-foretag')}}" class="new-footer__footer-menu--link supplier-register-link">
       
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24" class="icon icon-medium">
@@ -184,7 +184,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     function initChat() {
         if (retries > 0 && window.fcWidget) {
             window.fcWidget.init({
-                token: "62991366-f918-4244-9199-d663f807e81a",
+                token: "0aed9c8a-82df-4a70-a5a9-04c00ea03154",
                 host: "https://wchat.freshchat.com",
                 locale: 'sv'
             });

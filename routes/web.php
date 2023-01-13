@@ -95,6 +95,11 @@ Route::post('/ulogin',[App\Http\Controllers\Auth\LoginController::class, 'custom
 
 //suppliers indicates their interest
 Route::post('anslutditt-foretag','App\Http\Controllers\SuppliersController@storer')->name('suppliers_register');
+
+Route::get('customer-care',function(){
+    return view('pages.customer_care',['title'=>'Kundservice']);
+})->name('customer_care');
+
 /*
 ==================
 Grouped routes for both authenticated users and unauthenticated users
@@ -104,9 +109,12 @@ Grouped routes for both authenticated users and unauthenticated users
 //grouping all routes under the dashboard/admin namespace for authenticated users
 Route::middleware(['auth','verified'])->prefix('marketplace/clients')->group(function(){
 
-    Route::get('/',function(){
-        return view('marketplace.clients.index')->with(['title'=>'Enquiries - '.config('app.name'),'personalNotification'=>array()]);
-    })->name('marketplace.clients');
+    Route::get('/',[App\Http\Controllers\ServiceRequestsController::class,'index'])->name('marketplace.clients');
+
+    Route::get('feeds',function(){
+        return view('marketplace.clients.feeds');
+    })->name('feeds');
+
 
 });
 
