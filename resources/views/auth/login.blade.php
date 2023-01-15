@@ -160,7 +160,7 @@ $("#login_form").submit(function(e){
                // Show the user authentication error if the login cred are invalid. 
             //Remember this is communicating with the LoginController which we are yet to create
             
-            $("#show_error").text("Invalid login details");
+            $("#show_error").hide().html("Invalid login details");
 
            }
 

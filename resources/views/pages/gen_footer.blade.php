@@ -177,6 +177,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
   </nav>
 </footer>
 
+<!--
 <script defer src="{{asset('wchat.freshchat.com/js/widget.js')}}"></script>
 
 <script>
@@ -200,6 +201,13 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
     initChat();
 </script>
+  -->
+
+<script
+src='//eu.fw-cdn.com/10491327/338276.js'
+chat='true'>
+</script>
+
 <div id="help-overlay" class="overlay-center hidden animate-fast fade">
         <button class="button-square-small button-secondary close-button overlay-close-button">
             
@@ -227,7 +235,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
     <!-- SiteJS -->
     <script async data-main="site/_main" src="{{asset('js/dist/app_v638066916940000000.js')}}" type="text/javascript"></script>     
-    
+    <script async data-main="site/_main" src="{{asset('js/bundled-require_v638066915840000000.js')}}" type="text/javascript"></script>
     <!-- /SiteJS -->
     <!-- BottomScripts -->
     

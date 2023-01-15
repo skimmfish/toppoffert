@@ -228,7 +228,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <p class="page-subtitle text-center">Beskriv ditt behov och ta emot upp till sex offerter från lokala tjänsteföretag</p>
         <div class="grid">
             <div class="content">
-<form action="{{route('skapa')}}" method="post"><div class="box box-enquiry-create has-button-bar">
+<form action="{{route('skapa_request')}}" method="post">
+    <div class="box box-enquiry-create has-button-bar">
         <div class="media media-center block">
             <div class="media-left">
                 
@@ -252,7 +253,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
      data-id="" data-parent-id="" data-parent-human-id=""
      class="what-select-wrapper whatwhere-select-wrapper">
     <div class="what-select whatwhere-select flex-input combo-box js-loading" >
-<input autocomplete="off" class="autocomplete what-autocomplete whatwhere-input" id="WhatText" maxlength="100" name="WhatText" placeholder="Ange uppdragstyp" tabindex="1" title="Ange uppdragstyp" type="text" value="" />        <div data-toggle="modal" data-target="#what-parents" data-backdrop="false"
+<input autocomplete="off" class="autocomplete what-autocomplete whatwhere-input" id="WhatText" maxlength="100" name="WhatText" placeholder="Ange uppdragstyp" tabindex="1" title="Ange uppdragstyp" type="text" value="" />        
+<div data-toggle="modal" data-target="#what-parents" data-backdrop="false"
              class="what-dropdown options-loading">
             <div id="what-display-text" class="whatwhere-dropdown-text">
                 Ange uppdragstyp
@@ -401,19 +403,13 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
         <span class="p fileuploader-text">Bifoga filer</span>
-        <input type="file" class="fileuploader flex-input" name="files[]" multiple="multiple"
-               data-url="/api/files/"
-               data-delete-url="/api/files/"
-               data-form-data='{ "ownerId": "fc388303-aa4f-4646-91f5-99ba6e6bf1f1", "folderId": "2c5e6755-c7c3-42d0-be47-ed432fa4a311" }'
-            tabindex="19" />
-
-        <input id="FileUploadData_OwnerId" name="FileUploadData.OwnerId" type="hidden" value="fc388303-aa4f-4646-91f5-99ba6e6bf1f1" />
-        <input id="FileUploadData_FolderId" name="FileUploadData.FolderId" type="hidden" value="2c5e6755-c7c3-42d0-be47-ed432fa4a311" />
-    </div>
+        <input type="file" class="fileuploader flex-input" name="filesAttache" multiple="multiple" tabindex="19" />
+   </div>
     
     <div class="progress-bar hidden">
         <div class="progress" style="width: 0%;"></div>
     </div>
+
     <div class="uploaded-files hidden">
         
     </div>
@@ -423,7 +419,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
     <input class="what-selection-method-field" id="WhatSelectionMethod" name="WhatSelectionMethod" type="hidden" value="preset" />
     <p>
-        Vi på {{config('app.name')}} är måna om din personliga integritet och vår <a href="https://offerta.se/anvandarvillkor/integritetspolicy/" class="link">integritetspolicy</a> förklarar hur vi samlar in och använder dina personuppgifter. Genom att klicka på knappen 'Offerta mig!' skickar du in din förfrågan och godkänner våra <a href="https://offerta.se/anvandarvillkor/kopare/" class="link">användarvillkor</a> för att använda Offertas tjänst.
+        Vi på {{config('app.name')}} är måna om din personliga integritet och vår <a href="{{route('integritetspolicy')}}" class="link">integritetspolicy</a> förklarar hur vi samlar in och använder dina personuppgifter. Genom att klicka på knappen '{{config('app.name')}}} mig!' skickar du in din förfrågan och godkänner våra användarvillkor för att använda {{config('app.name')}} tjänst.
     </p>
 
     <div class="button-bar">

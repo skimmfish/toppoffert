@@ -55,6 +55,14 @@ Route::get('suppliers-staging',function(){
     return view('marketplace.suppliers.staging',['title'=>'Thank you for your interest in Toppoffertse']);
 })->name('marketplace_suppliers_staging');
 
+
+//integritetspolicy page
+Route::get('integritetspolicy',function(){
+
+return view('pages.integritetspolicy',['title'=>'integritets Policy']);
+
+})->name('integritetspolicy');
+
 //authentication routes
 //Authentication and authorization interfaces route
 Auth::routes(['verify'=>true]);
@@ -68,6 +76,8 @@ Route::get('skapa',function(){
     return view('pages.skapa',['title'=>'Skapa förfrågan']);
 })->name('skapa');
 
+//taking new buyers' requests
+Route::post('skapa_request','\App\Http\Controllers\ServiceRequests@newrequest')->name('skapa_request');
 
 //this route redirects user to their respective dashboard if properly logged in previously
 Route::get('redirecting',function(){
@@ -100,6 +110,11 @@ Route::get('customer-care',function(){
     return view('pages.customer_care',['title'=>'Kundservice']);
 })->name('customer_care');
 
+Route::get('faq',function(){
+
+    return view('pages.faqs',['title'=>'Vanliga frågor och svar']);
+
+})->name('faqs');
 /*
 ==================
 Grouped routes for both authenticated users and unauthenticated users
@@ -118,6 +133,7 @@ Route::middleware(['auth','verified'])->prefix('marketplace/clients')->group(fun
 
 });
 
+Route::get('projekt-winner')->name('projekt_winnr');
 //group of routes for superadmin only
 Route::middleware(['auth','verified','superadmin'])->prefix('sadmin')->group(function(){
 
@@ -155,8 +171,6 @@ Route::post('/email/verification-notification', function (Request $request) {
  
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
-
 
 
 //Logout route

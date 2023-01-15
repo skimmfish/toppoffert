@@ -298,7 +298,4 @@ h1{font-size:36px;font-weight:900;}
     <script src="{{asset('css/admin/vendors/list.js/list.min.js')}}"></script>
     <script src="{{asset('css/admin/assets/js/theme.js')}}"></script>
   </body>
-
-
-<!-- Mirrored from prium.github.io/falcon/v3.7.0/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 22 Feb 2022 11:55:40 GMT -->
 </html>

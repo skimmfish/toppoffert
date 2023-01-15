@@ -6,7 +6,7 @@ body{
 	color:#000;font-weight:500;color:#000;line-height:auto;
 	overflow-x:hidden;font-size:14px !important;background-color: #f0f2ff !important;padding:0;margin:0 !important
 } 
-
+a{font-family:'GD Sherpa Regular' !important;}
 h1,h2,h3,h4,h5,h6{
     font-family:'GD Sherpa Regular' !important;font-weight: 900;margin-bottom:15px;
 }
@@ -30,6 +30,7 @@ h1{font-size:30px;font-weight: 900;}h2{font-size:27px;}h3{font-size:25px;}h4{fon
     height:30px;padding:15px 15px 20px 18px;position:relative;top:20px;
 }
 .btn_corn_1 span{color:#0d2453;}
+
 .btn_corn_1:hover, .btn_corn_1:active{
     background:#f0f2ff;}
 
@@ -88,6 +89,7 @@ font-family:'GD Sherpa Regular' !important;
 .request_items{
     margin-top:40px;
 }
+
 .service_request_publish_status small{font-size:10px;font-weight: 700;}
 
 
