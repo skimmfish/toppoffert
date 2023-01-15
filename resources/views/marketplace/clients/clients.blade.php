@@ -116,14 +116,14 @@ h1{font-size:36px;font-weight:900;}
 <div class="col-md-6 col-xxl-6 request_items">
 
         <!--card-->
-        <div class="card h-md-100 ecommerce-card-min-width tw-div">
+        <div class="card ecommerce-card-min-width tw-div">
               <div>
                 <h6 class="align-items-center h6-md_title">{{$x->request_title}}</h6>
                     <small>Publicerades on {{ date('d M Y',strtotime($x->created_at)) }} </small>
                         </div>
               
-              <div class="service_request_publish_status">@if($x->project_execution_status==1) <small class="alert-success">Avklarad</small> @elseif($x->project_execution_status==0) <small class="alert-danger">publicerade</small> 
-              @elseif($x->project_execution_status==2)<small class="alert-warning">Avpublicerad</small>@endif
+              <div class="service_request_publish_status">@if($x->project_execution_status==1) <small class="alert-primary">Avklarad</small> @elseif($x->project_execution_status==0) <small class="alert-success">publicerade</small> 
+              @elseif($x->project_execution_status==2)<small class="alert-grey">Avpublicerad</small>@endif
                     </div>
 
 <hr/>                    
@@ -136,27 +136,15 @@ h1{font-size:36px;font-weight:900;}
 </div>
 @elseif($x->project_execution_status==2)
 <div class="span_tw_div">
-<span>Har du valt företag för detta uppdrag? </span>
-<span><a href="{{route('projekt_winnr')}}" class="btn btn-dark">Ange vinnare</a></span>
+<span class="text-md">Har du valt företag för detta uppdrag? </span>
+<span><a href="{{route('projekt_winnr')}}" class="btn btn-primary btn-dark" style="padding-top:2px !important; font-size:12.5px;" target="_blank">Ange vinnare</a></span>
 </div>
 @endif
 
-                        </div>
+</div>
 
                         <!--./card-->
-            
-             <!--body section-->
-                <div class="card-body d-flex flex-column justify-content-end">
-                  <div class="row">
-     
-                    <div class="col">
-                              </div>
-                    <div class="col-auto ps-0">
-                     
-                    </div>
-                  </div>
-                </div>
-<!--./col-md-6-->
+            <!--./col-md-6-->
             </div>
 @endforeach
 @endif

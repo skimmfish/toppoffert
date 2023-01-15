@@ -15,7 +15,9 @@ h1{font-size:46px;font-weight:900;}h3{font-size:19px !important;}
     padding-top:80px;
 }
 
-
+.mainx .card{
+    min-height:150px !important;padding-bottom:15px !important;margin-top:15px;
+}
 .btn_corn_1, .btn_corn_1 .a-text{
     color:#0d2453;
 }
@@ -60,7 +62,10 @@ h1{font-size:45px;}h2{font-size:39px;}h3{font-size:32px}h4{font-size:28px}h5{fon
     padding:2px 3px;
 }
 .span_tw_div{
-    display:grid;grid-template-columns: 60% 40%;grid-auto-flow: row;
+    display:grid;grid-template-columns: 80% 20%;grid-auto-flow: row;
+}
+.span_tw_div .text-md{
+    font-weight:700;font-size:14.5px;
 }
 @media(min-width:1024px){
     .mainx{
@@ -76,8 +81,9 @@ h1{font-size:45px;}h2{font-size:39px;}h3{font-size:32px}h4{font-size:28px}h5{fon
 }
 
 .btn-dark{
-    border-radius:50px !important;background-color: #e0f2dd !important;color:#0d2453 !important;height:55px;width:auto;padding:9px 30px 5px 30px;
+    border-radius:50px !important;background-color: #e0f2dd !important;color:#0d2453 !important;height:60px;width:auto;padding:5px 30px 8px 30px;
 }
+
 .btn-dark svg{fill:#fff;width:20px;height:20px;
 }
 
@@ -87,7 +93,8 @@ h1{font-size:45px;}h2{font-size:39px;}h3{font-size:32px}h4{font-size:28px}h5{fon
 .h6-md_title small{
     color:#555;font-weight:600;
 }
-.request_items{border-radius:10px;}
+
+.request_items{border-radius:10px;padding-bottom:0;}
 .request_items .service_request_publish_status{
     justify-items: flex-end;padding:1px;height:10px;position:relative;top:px;right:0px;
 }

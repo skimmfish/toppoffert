@@ -133,7 +133,11 @@ Route::middleware(['auth','verified'])->prefix('marketplace/clients')->group(fun
 
 });
 
-Route::get('projekt-winner')->name('projekt_winnr');
+Route::get('projekt-winner',function(){
+
+return view('pages.projekt_winnr',['title'=>'Ange Vinnare - '.config('app.name')]);
+
+})->name('projekt_winnr');
 //group of routes for superadmin only
 Route::middleware(['auth','verified','superadmin'])->prefix('sadmin')->group(function(){
 
