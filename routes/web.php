@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -107,7 +109,11 @@ Route::post('/ulogin',[App\Http\Controllers\Auth\LoginController::class, 'custom
 Route::post('anslutditt-foretag','App\Http\Controllers\SuppliersController@storer')->name('suppliers_register');
 
 Route::get('customer-care',function(){
-    return view('pages.customer_care',['title'=>'Kundservice']);
+ $dt = \Carbon\Carbon::now();
+
+$dayOfWeek = explode(',',$dt->toDayDateTimeString())[0];
+
+ return view('pages.customer_care',['title'=>'Kundservice','dayOfWeek'=>$dayOfWeek]);
 })->name('customer_care');
 
 Route::get('faq',function(){

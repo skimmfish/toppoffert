@@ -38,6 +38,11 @@ class ServiceRequests extends Model
 
     }
 
+    public function Offers(){
+
+        return $this->hasMany('\App\Models\Offers');
     
+    }
+        
 
 }

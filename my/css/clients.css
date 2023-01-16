@@ -123,3 +123,13 @@ display:block;margin:auto;    margin-top:45px;position:relative;
 .open_close{
     background:#efefef;border-radius:9px;max-height:125px;line-height:28px;border:1px solid #bfbfbf;
 }
+
+.rw_control{
+    display:grid;grid-template-columns: 95% 5%;grid-gap:14px;
+}
+.active_control .svg-icon, .active_control{
+fill:#afafaf !important;width:30px;position:Relative;top:40px;right:-50px;
+}
+.flat-icon .svg_icon{
+    width:20px !important;height:20px;
+}

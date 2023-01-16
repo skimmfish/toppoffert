@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('bookings', function (Blueprint $table) {
-            $table->unsignedBigInteger('booking_owner_id')->index();
-            $table->foreign('booking_owner_id')->references('id')->on('users');
-       
+        Schema::table('offers', function (Blueprint $table) {
+            $table->integer('supplier_id')->unsigned()->nullable()->index();
+            $table->foreign('supplier_id')->references('id')->on('users');
+
+            $table->integer('buyer_id')->unsigned()->nullable()->index();
+            $table->foreign('buyer_id')->references('id')->on('users');
+
         });
     }
 
@@ -27,7 +30,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('bookings', function (Blueprint $table) {
+        Schema::table('offers', function (Blueprint $table) {
             //
         });
     }

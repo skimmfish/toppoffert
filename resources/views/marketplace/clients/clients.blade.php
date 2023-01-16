@@ -129,11 +129,30 @@ h1{font-size:36px;font-weight:900;}
 <hr/>                    
 <br/>
 @if($x->project_execution_status==0)
+<div class="rw_control">
+
 <div class="fact-icon" data-v-0b12e4d7="">
 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M5.785 17.942L1.36 13.034a1.517 1.517 0 01-.134-1.841v0a1.517 1.517 0 012.025-.459l2.375 1.434-1.241-8.742a1.525 1.525 0 011.133-1.667v0a1.525 1.525 0 011.867 1.159l1.133 5.641V2.068A1.433 1.433 0 0110.001.626v0a1.441 1.441 0 011.442 1.442v6.491l1.058-5.683a1.484 1.484 0 012.713-.503c.204.323.277.711.204 1.086l-1.167 5.834 2.209-4.409a1.323 1.323 0 011.933-.516v0a1.317 1.317 0 01.5 1.608l-2.167 5.433a4.249 4.249 0 00-.308 1.608v2.05a4.325 4.325 0 01-1.733 3.459v0a4.3 4.3 0 01-2.6.833H9a4.309 4.309 0 01-3.216-1.417v0z" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+@if(isset($interested_suppliers) && $interested_suppliers>0){{$interested_suppliers}} interested companies @endif
+
 <Br/>
 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M18.75 18.125a1.25 1.25 0 01-1.25 1.25h-15a1.25 1.25 0 01-1.25-1.25V1.875A1.25 1.25 0 012.5.625h12.537c.327 0 .64.127.874.355l2.461 2.402a1.249 1.249 0 01.378.895v13.848zM5.038 6.875h10M5.038 10.625h10M5.038 14.375h5" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+@if(isset($msgs) && $msgs>0){{$msgs}} new messages @endif
+
+@if(isset($offerCount) && $obj->getOffers($x->request_id,\Auth::user()->id)['offer_count']>0) 
+<br/>
+<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M18.125 15.625h-8.75l-5 3.75v-3.75h-2.5a1.25 1.25 0 01-1.25-1.25v-12.5a1.25 1.25 0 011.25-1.25h16.25a1.25 1.25 0 011.25 1.25v12.5a1.25 1.25 0 01-1.25 1.25z" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg> $obj->getOffers($x->request_id,\Auth::user()->id)['offer_count'] offer
+@endif
 </div>
+
+<div class="active_control fact-icon">
+<a href="#" data-toggle="" class="dropdown-toggle button-square-rounded button-transparent">
+<img src="{{asset('img/gear.png')}}" class="img svg_icon" style="width:20px;height:20px;" lazyloading />
+</a>
+</div>
+</div>
+
 @elseif($x->project_execution_status==2)
 <div class="span_tw_div">
 <span class="text-md">Har du valt företag för detta uppdrag? </span>
