@@ -8,18 +8,24 @@ use App\Models\ServiceRequests;
 class ServiceRequestsController extends Controller
 {
     
+    public function __construct(){
+
+    }
 
     public function index(){
 
         $top_request = \App\Models\ServiceRequests::where('customer_id','=',\Auth::user()->id)->first();
-        $requests = \App\Models\ServiceRequests::where('customer_id','=',\Auth::user()->id)->orderBy('project_execution_status','ASC')->get();
+        $requests = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>false])->orderBy('project_execution_status','ASC')->get();
+        $archivedrequest = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>true])->get();
+        
+        
         $messageCount = 0;
-        $interested_supplier = 0;
-        $offers = 0;
+
+        $interested_supplier = 3; $offers = 0;
 
         return view('marketplace.clients.clients',['top_request'=>$top_request,'requests'=>$requests,
         'title'=>'Fofragningar - '.config('app.name'),'obj'=> new \App\Http\Controllers\ServiceRequestsController,
-        'msgs'=>$messageCount,'offerCount'=>0,'interested_suppliers'=>$interested_supplier]);
+        'msgs'=>2,'offerCount'=> 0,'interested_suppliers'=>$interested_supplier,'archivedrequest'=>$archivedrequest]);
  }
 
 
@@ -32,16 +38,45 @@ class ServiceRequestsController extends Controller
 
     $offers = array();
 
-   $off = \App\Models\Offers::where(['request_id'=>$request_id,'buyer_id'=>$user_id])->get();
+    $off = \App\Models\Offers::where(['request_id'=>$request_id,'buyer_id'=>$user_id])->get();
 
-   return $offers = [
+    return $offers = [
     'offer_count' => sizeof($off),
     'offerStdOut'=>$off
    ];
+}
 
- }
 
 
+/**
+ * @param Integer <$request_id>
+ * @param Integer <$user_id>
+ * This function returns the suppliers, their count and their response object
+ */
+
+ public function getInterestSuppliers($request_id,$user_id){
+
+    $suppliers = array();
+
+    $suppliers = \App\Models\Responders::where(['request_id'=>$request_id,'buyer_id'=>$user_id])->get();
+
+    return $suppliers = [
+    'supplier_count' => sizeof($suppliers),
+    'suppliersInterested'=>$suppliers
+   ];
+}
+
+
+/**
+ * @param String <$hash>
+ * This function pulls up using livewire to pull up all the suppliers info and request responses
+ */
+public function enquiries_suppliers($hash){
+
+
+
+
+}
 /**
  * @param Illuminate\Http\Request
  * @return Illuminate\Http\Response $response

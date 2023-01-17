@@ -62,18 +62,18 @@ class LoginController extends Controller
               ]);
             }
     
-           $user_cred = $request->only('email', 'password');
+           $user_cred = $request->only('email', 'password','active');
             if (\Auth::attempt($user_cred)) {
                  //if user is logged in as a client
-                if(Auth()->user()->user_cat=='CLIENT'){  
+                if(\Auth()->user()->user_cat=='CLIENT'){  
                    return response()->json([[1]]);
                 }  
     
-            }else if(Auth()->user()->user_cat=='SUPPLIERS'){
+            }else if(\Auth()->user()->user_cat=='SUPPLIER'){
                  //if user is a supplier
                     return response()->json([[2]]);
 
-            }else if(Auth()->user()->user_cat=='SADMIN'){
+            }else if(\Auth()->user()->user_cat=='SADMIN'){
                //IF the logged in user is a super admin   
                return response()->json([[3]]);
                     

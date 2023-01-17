@@ -21,9 +21,6 @@
     <link rel="manifest" href="{{asset('assets/img/favicons/manifest.json')}}">
     <meta name="msapplication-TileImage" content="{{asset('ico/site_logo.svg')}}">
     <meta name="theme-color" content="#ffffff">
-    <script src="{{asset('assets/js/config.js')}}"></script>
-    <script src="{{asset('vendors/overlayscrollbars/OverlayScrollbars.min.js') }}"></script>
-
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
@@ -35,6 +32,7 @@
 
     <link href="{{asset('css/index.509e34c1.css')}}" rel="stylesheet" />
     <link href="{{asset('css/chunk.css')}}" rel="stylesheet" />
+    <script src="{{asset('js/index.68b2b9e4.js')}}" type="text/javascript"></script>
 
 <script>
       var isRTL = JSON.parse(localStorage.getItem('isRTL'));
@@ -108,7 +106,7 @@ h1{font-size:36px;font-weight:900;}
             <!--./row-fluid-->
                 </div>
 
-
+<!--all buyers' requests that have not been archived-->
 <div class="row mainx">
 @if(sizeof($requests)>0)
 @foreach($requests as $x)
@@ -118,32 +116,33 @@ h1{font-size:36px;font-weight:900;}
         <!--card-->
         <div class="card ecommerce-card-min-width tw-div">
               <div>
-                <h6 class="align-items-center h6-md_title">{{$x->request_title}}</h6>
+                <a href="{{route('suppliers.offerta_pages',['hash'=>$x->request_hash])}}"><h6 class="align-items-center h6-md_title">{{$x->request_title}}</h6></a>
                     <small>Publicerades on {{ date('d M Y',strtotime($x->created_at)) }} </small>
                         </div>
               
-              <div class="service_request_publish_status">@if($x->project_execution_status==1) <small class="alert-primary">Avklarad</small> @elseif($x->project_execution_status==0) <small class="alert-success">publicerade</small> 
-              @elseif($x->project_execution_status==2)<small class="alert-grey">Avpublicerad</small>@endif
+        <div class="service_request_publish_status">@if($x->project_execution_status==1 && $x->pub_status==0) <small class="alert-primary">Avklarad</small> @elseif($x->project_execution_status==0 && $x->publish_status==1) <small class="alert-success">publicerade</small> 
+              @elseif($x->project_execution_status==2 && $x->publish_status==1)<small class="alert-warning">Avpublicerad</small>@endif
                     </div>
 
 <hr/>                    
 <br/>
-@if($x->project_execution_status==0)
+@if($x->project_execution_status==0 && $x->publish_status==1)
 <div class="rw_control">
 
 <div class="fact-icon" data-v-0b12e4d7="">
 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M5.785 17.942L1.36 13.034a1.517 1.517 0 01-.134-1.841v0a1.517 1.517 0 012.025-.459l2.375 1.434-1.241-8.742a1.525 1.525 0 011.133-1.667v0a1.525 1.525 0 011.867 1.159l1.133 5.641V2.068A1.433 1.433 0 0110.001.626v0a1.441 1.441 0 011.442 1.442v6.491l1.058-5.683a1.484 1.484 0 012.713-.503c.204.323.277.711.204 1.086l-1.167 5.834 2.209-4.409a1.323 1.323 0 011.933-.516v0a1.317 1.317 0 01.5 1.608l-2.167 5.433a4.249 4.249 0 00-.308 1.608v2.05a4.325 4.325 0 01-1.733 3.459v0a4.3 4.3 0 01-2.6.833H9a4.309 4.309 0 01-3.216-1.417v0z" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-@if(isset($interested_suppliers) && $interested_suppliers>0){{$interested_suppliers}} interested companies @endif
+@if(isset($interested_suppliers) && $obj->getInterestSuppliers($x->id,\Auth::user()->id)['supplier_count']>0) {{$obj->getInterestSuppliers($x->id,\Auth::user()->id)['supplier_count'] }} interested companies @endif
 
 <Br/>
 <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M18.75 18.125a1.25 1.25 0 01-1.25 1.25h-15a1.25 1.25 0 01-1.25-1.25V1.875A1.25 1.25 0 012.5.625h12.537c.327 0 .64.127.874.355l2.461 2.402a1.249 1.249 0 01.378.895v13.848zM5.038 6.875h10M5.038 10.625h10M5.038 14.375h5" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 @if(isset($msgs) && $msgs>0){{$msgs}} new messages @endif
 
-@if(isset($offerCount) && $obj->getOffers($x->request_id,\Auth::user()->id)['offer_count']>0) 
+@if(isset($offerCount) && $obj->getOffers($x->id,\Auth::user()->id)['offer_count']>0) 
 <br/>
-<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M18.125 15.625h-8.75l-5 3.75v-3.75h-2.5a1.25 1.25 0 01-1.25-1.25v-12.5a1.25 1.25 0 011.25-1.25h16.25a1.25 1.25 0 011.25 1.25v12.5a1.25 1.25 0 01-1.25 1.25z" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg> $obj->getOffers($x->request_id,\Auth::user()->id)['offer_count'] offer
+<div class="notification"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M18.125 15.625h-8.75l-5 3.75v-3.75h-2.5a1.25 1.25 0 01-1.25-1.25v-12.5a1.25 1.25 0 011.25-1.25h16.25a1.25 1.25 0 011.25 1.25v12.5a1.25 1.25 0 01-1.25 1.25z" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg> 
+{{ $obj->getOffers($x->id,\Auth::user()->id)['offer_count'] }} offers
 @endif
+</div>
 </div>
 
 <div class="active_control fact-icon">
@@ -169,6 +168,80 @@ h1{font-size:36px;font-weight:900;}
 @endif
 
 <!--./row-->
+</div>
+
+
+
+<!--for archived buyer requests-->
+@if(sizeof($archivedrequest)>0)
+<div class="container-fluid mainx pull-up">
+<h6 class="grey">Arkiverade<hr style="border:1px solid #dfdfdf;width:100% !important;"></hr></h6> 
+</div>
+@endif
+
+
+<div class="row mainx">
+
+@if(sizeof($archivedrequest)>0)
+@foreach($archivedrequest as $x)
+
+<div class="col-md-6 col-xxl-6 request_items">
+
+        <!--card-->
+        <div class="card ecommerce-card-min-width tw-div">
+              <div>
+                <h6 class="align-items-center h6-md_title">{{$x->request_title}}</h6>
+                    <small>Publicerades on {{ date('d M Y',strtotime($x->created_at)) }} </small>
+                        </div>
+              
+        <div class="service_request_publish_status">@if($x->project_execution_status==1 && $x->pub_status==0) <small class="alert-primary">Avklarad</small> @elseif($x->project_execution_status==0 && $x->publish_status==1) <small class="alert-success">publicerade</small> 
+              @elseif($x->project_execution_status==2 && $x->publish_status==1)<small class="alert-warning">Avpublicerad</small>@endif
+                    </div>
+
+<hr/>                    
+<br/>
+@if($x->project_execution_status==0 && $x->publish_status==1)
+<div class="rw_control">
+
+<div class="fact-icon" data-v-0b12e4d7="">
+<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M5.785 17.942L1.36 13.034a1.517 1.517 0 01-.134-1.841v0a1.517 1.517 0 012.025-.459l2.375 1.434-1.241-8.742a1.525 1.525 0 011.133-1.667v0a1.525 1.525 0 011.867 1.159l1.133 5.641V2.068A1.433 1.433 0 0110.001.626v0a1.441 1.441 0 011.442 1.442v6.491l1.058-5.683a1.484 1.484 0 012.713-.503c.204.323.277.711.204 1.086l-1.167 5.834 2.209-4.409a1.323 1.323 0 011.933-.516v0a1.317 1.317 0 01.5 1.608l-2.167 5.433a4.249 4.249 0 00-.308 1.608v2.05a4.325 4.325 0 01-1.733 3.459v0a4.3 4.3 0 01-2.6.833H9a4.309 4.309 0 01-3.216-1.417v0z" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+@if(isset($interested_suppliers) && $obj->getInterestSuppliers($x->id,\Auth::user()->id)['supplier_count']>0) {{$obj->getInterestSuppliers($x->id,\Auth::user()->id)['supplier_count'] }} interested companies @endif
+
+<Br/>
+<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M18.75 18.125a1.25 1.25 0 01-1.25 1.25h-15a1.25 1.25 0 01-1.25-1.25V1.875A1.25 1.25 0 012.5.625h12.537c.327 0 .64.127.874.355l2.461 2.402a1.249 1.249 0 01.378.895v13.848zM5.038 6.875h10M5.038 10.625h10M5.038 14.375h5" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+@if(isset($msgs) && $msgs>0){{$msgs}} new messages @endif
+
+@if(isset($offerCount) && $obj->getOffers($x->id,\Auth::user()->id)['offer_count']>0) 
+<br/>
+<div class="notification"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M18.125 15.625h-8.75l-5 3.75v-3.75h-2.5a1.25 1.25 0 01-1.25-1.25v-12.5a1.25 1.25 0 011.25-1.25h16.25a1.25 1.25 0 011.25 1.25v12.5a1.25 1.25 0 01-1.25 1.25z" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg> 
+{{ $obj->getOffers($x->id,\Auth::user()->id)['offer_count'] }} offers
+@endif
+</div>
+</div>
+
+<div class="active_control fact-icon">
+<a href="#" data-toggle="" class="dropdown-toggle button-square-rounded button-transparent">
+<img src="{{asset('img/gear.png')}}" class="img svg_icon" style="width:20px;height:20px;" lazyloading />
+</a>
+</div>
+</div>
+
+@elseif($x->project_execution_status==2)
+<div class="span_tw_div">
+<span class="text-md">Har du valt företag för detta uppdrag? </span>
+<span><a href="{{route('projekt_winnr')}}" class="btn btn-primary btn-dark" style="padding-top:0 !important; font-size:14px;background:none !important;border:2px solid #0099cc;color:#0099cc !important;font-weight:600;" target="_blank">Ange vinnare</a></span>
+</div>
+@endif
+
+</div>
+   <!--./card-->
+   <!--./col-md-6-->
+  </div>
+@endforeach
+@endif
+
+<!--./for archived requests-->
+</div>
 </div>
 
 

@@ -96,7 +96,6 @@ return redirect()->route('sadmin_index');
 }else if(\Auth::user()->user_cat=='SUPPLIER'){
    return redirect()->route("suppliers.dashboard");
 }
-
 }
 
 })->name('redirect_to_dashboard')->middleware(['auth']);
@@ -132,10 +131,14 @@ Route::middleware(['auth','verified'])->prefix('marketplace/clients')->group(fun
 
     Route::get('/',[App\Http\Controllers\ServiceRequestsController::class,'index'])->name('marketplace.clients');
 
+    //for getting all the buyers' request feeds
     Route::get('feeds',function(){
         return view('marketplace.clients.feeds');
     })->name('feeds');
 
+
+    //for pulling up al that is relative to every service_requests
+    Route::get('/enquiries/{hash}','\App\Http\Controllers\ServiceRequestsController@enquiries_suppliers')->name('suppliers.offerta_pages');
 
 });
 
@@ -172,6 +175,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
  
     return redirect('/home');
+
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
@@ -191,4 +195,6 @@ Route::get('/logout',function(){
 })->name('auth.logout');
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function(){
+    return redirect()->route('redirect_to_dashboard');
+})->name('home');

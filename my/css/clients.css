@@ -7,14 +7,22 @@ h1,h2,h3,h4,h5,h6{
     font-family:'GD Sherpa Regular' !important;
 }
 h1{font-size:46px;font-weight:900;}h3{font-size:19px !important;}
-
+a, .top-nav-text{
+    text-decoration: none !important;
+}
+.top-nav-text:hover, .top-nav-text:active{
+    text-decoration: none !important;
+}
+.pull-up{margin-bottom:-80px;} .grey{color:#666;font-weight:500;}
 .mainx{
   
     display: flex;
     align-items: center;
     padding-top:80px;
 }
-
+.top-nav-link:active:hover, .top-nav-link:active{
+    background:#f0f2ff !important;
+}
 .mainx .card{
     min-height:150px !important;padding-bottom:15px !important;margin-top:15px;
 }
@@ -56,7 +64,7 @@ h1{font-size:45px;}h2{font-size:39px;}h3{font-size:32px}h4{font-size:28px}h5{fon
 }
 
 .fact-icon{
-    line-height: 56px;;
+    line-height: 40px;;
 }
 .service_request_publish_status .alert-success, .alert-danger, .alert-warning{
     padding:2px 3px;
@@ -88,13 +96,13 @@ h1{font-size:45px;}h2{font-size:39px;}h3{font-size:32px}h4{font-size:28px}h5{fon
 }
 
 .h6-md_title{
-    display:flex;flex-direction: row;
+    display:flex;flex-direction: row;font-size:27px;
 }
 .h6-md_title small{
-    color:#555;font-weight:600;
+    color:#555;font-weight:800;font-size:30px;
 }
 
-.request_items{border-radius:10px;padding-bottom:0;}
+.request_items{border-radius:10px;padding-bottom:0;max-height: 30rem;min-height:30rem !important;}
 .request_items .service_request_publish_status{
     justify-items: flex-end;padding:1px;height:10px;position:relative;top:px;right:0px;
 }

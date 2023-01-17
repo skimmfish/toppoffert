@@ -1,13 +1,17 @@
 @extends('layouts.login_layout')
 @section('content')
 
+<style>
+.form-group label{
+    font-size:90%;
+}
+    </style>
 <div id="app">
-        <div class="container-wrapper">
+
+<div id="show_error"><div class="text-danger">@if(isset($error)) {{$error}} </div> @elseif(isset($message)) <div class="alert alert-success"> {{$message}} </div> @endif </div>
+
+<div class="container-wrapper">
     <div class="login-container">
-
-
-    <div id="show_error" class="text-danger">@if(isset($error)) {{$error}} @endif</div>
-
         <div class="login-wrapper">
             <div class="login-inner">
                 <a href="{{route('index')}}" class="logo-offerta">
@@ -125,7 +129,6 @@ $("#login_form").submit(function(e){
        beforeSend:function(){
            $(document).find('span.error-text').text('');
        },
-       
        //validate form with ajax. This will be communicating with your LoginController
        success: function(data){
            if (data.status==0) {
@@ -136,11 +139,11 @@ $("#login_form").submit(function(e){
           /* Redirect the user to [another page] if the login cred are correct.
              Remember this is communicating with the LoginController which we 
               are yet to create */
-           if(data == 1){
+           if(data==1){
                window.location.replace(
                 '{{route("marketplace.clients")}}'
                );
-           }else if(data == 2){
+           }else if(data==2){
             // Show the user authentication error if the login cred are invalid. 
             //Remember this is communicating with the LoginController which we are yet to create
                //$("#show_error").hide().html("Invalid login details");
@@ -148,7 +151,7 @@ $("#login_form").submit(function(e){
                window.location.replace(
                 '{{route("suppliers.dashboard")}}'
                );
-           }else if(data == 3){
+           }else if(data==3){
             // Show the user authentication error if the login cred are invalid. 
             //Remember this is communicating with the LoginController which we are yet to create
                //$("#show_error").hide().html("Invalid login details");
