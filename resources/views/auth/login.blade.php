@@ -63,7 +63,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </a>
  <div class="login-box">
     <h1>Logga in</h1>
-       <form method="POST" action="{{route('user_login')}}" id="login_form">      
+       <form method="POST" action="{{route('login')}}" id="login_form">      
         @csrf                
                         <div class="input-wrapper">
                             <div class="form-group text-input">
@@ -116,62 +116,5 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
     </div>
 
-<script>
-$("#login_form").submit(function(e){
-    e.preventDefault();
-
-   var all = $(this).serialize();
-
-   $.ajax({
-       url:  $(this).attr('action'),
-       type: "POST",
-       data: all,
-       beforeSend:function(){
-           $(document).find('span.error-text').text('');
-       },
-       //validate form with ajax. This will be communicating with your LoginController
-       success: function(data){
-           if (data.status==0) {
-               $.each(data.error, function(prefix, val){
-                   $('span.'+prefix+'_error').text(val[0]);
-               });
-           }
-          /* Redirect the user to [another page] if the login cred are correct.
-             Remember this is communicating with the LoginController which we 
-              are yet to create */
-           if(data==1){
-               window.location.replace(
-                '{{route("marketplace.clients")}}'
-               );
-           }else if(data==2){
-            // Show the user authentication error if the login cred are invalid. 
-            //Remember this is communicating with the LoginController which we are yet to create
-               //$("#show_error").hide().html("Invalid login details");
-
-               window.location.replace(
-                '{{route("suppliers.dashboard")}}'
-               );
-           }else if(data==3){
-            // Show the user authentication error if the login cred are invalid. 
-            //Remember this is communicating with the LoginController which we are yet to create
-               //$("#show_error").hide().html("Invalid login details");
-
-               window.location.replace(
-                '{{route("sadmin_index")}}'
-               );
-           }else{
-               // Show the user authentication error if the login cred are invalid. 
-            //Remember this is communicating with the LoginController which we are yet to create
-            
-            $("#show_error").hide().html("Invalid login details");
-
-           }
-
-       }
-       })
-
-   });
-
-    </script>
 @endsection
 

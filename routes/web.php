@@ -84,7 +84,7 @@ Route::post('skapa_request','\App\Http\Controllers\ServiceRequests@newrequest')-
 //this route redirects user to their respective dashboard if properly logged in previously
 Route::get('redirecting',function(){
 
-if(\Auth::check()){
+if(\Auth::check()){ 
 
 //check if user is a client
 if(\Auth::user()->user_cat=='CLIENT'){
@@ -92,9 +92,13 @@ if(\Auth::user()->user_cat=='CLIENT'){
     return redirect()->route('marketplace.clients');
 
 }else if(\Auth::user()->user_cat=='SADMIN'){
+
 return redirect()->route('sadmin_index');
+
 }else if(\Auth::user()->user_cat=='SUPPLIER'){
-   return redirect()->route("suppliers.dashboard");
+
+    return redirect()->route("suppliers.dashboard");
+
 }
 }
 
@@ -129,6 +133,7 @@ Grouped routes for both authenticated users and unauthenticated users
 //grouping all routes under the dashboard/admin namespace for authenticated users
 Route::middleware(['auth','verified'])->prefix('marketplace/clients')->group(function(){
 
+    //consumers' home page
     Route::get('/',[App\Http\Controllers\ServiceRequestsController::class,'index'])->name('marketplace.clients');
 
     //for getting all the buyers' request feeds
@@ -141,6 +146,8 @@ Route::middleware(['auth','verified'])->prefix('marketplace/clients')->group(fun
     Route::get('/enquiries/{hash}','\App\Http\Controllers\ServiceRequestsController@enquiries_suppliers')->name('suppliers.offerta_pages');
 
 });
+
+//for the winner of the request
 
 Route::get('projekt-winner',function(){
 
@@ -157,7 +164,7 @@ Route::get('/')->name('sadmin_index');
 //Group of routes for suppliers in the marketplace
 Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/suppliers')->group(function(){
 Route::get('/',function(){
-    return 'Welcome';
+    return view('marketplace.suppliers.index',['title'=>'Marknadsplatsen - '.config('app.name')]);
 })->name('suppliers.dashboard');
 });
 

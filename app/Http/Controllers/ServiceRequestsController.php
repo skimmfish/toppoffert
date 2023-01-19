@@ -17,15 +17,14 @@ class ServiceRequestsController extends Controller
         $top_request = \App\Models\ServiceRequests::where('customer_id','=',\Auth::user()->id)->first();
         $requests = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>false])->orderBy('project_execution_status','ASC')->get();
         $archivedrequest = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>true])->get();
-        
-        
+                
         $messageCount = 0;
 
-        $interested_supplier = 3; $offers = 0;
+        $interested_supplier = 0; $offers = 0;
 
         return view('marketplace.clients.clients',['top_request'=>$top_request,'requests'=>$requests,
         'title'=>'Fofragningar - '.config('app.name'),'obj'=> new \App\Http\Controllers\ServiceRequestsController,
-        'msgs'=>2,'offerCount'=> 0,'interested_suppliers'=>$interested_supplier,'archivedrequest'=>$archivedrequest]);
+        'msgs'=>2,'offerCount'=> 0,'interested_suppliers'=>$interested_supplier,'archivedrequest'=>$archivedrequest,'supplierObj'=>new \App\Models\Suppliers]);
  }
 
 

@@ -34,4 +34,17 @@ class SuppliersController extends Controller
         }
         
     }
+
+
+/**
+ * supplier_s rating
+ */
+public static function getRatings($supplier_id){
+
+
+
+
+}
+
+
 }

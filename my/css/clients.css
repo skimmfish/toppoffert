@@ -20,6 +20,9 @@ a, .top-nav-text{
     align-items: center;
     padding-top:80px;
 }
+.grid-rows{
+    display:flex;flex-direction: column;
+}
 .top-nav-link:active:hover, .top-nav-link:active{
     background:#f0f2ff !important;
 }

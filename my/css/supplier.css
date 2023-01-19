@@ -1,0 +1,29 @@
+/** 
+suppliers.css
+**/
+@font-face {font-family: "GD Sherpa Regular";
+    src: url("../font/0aee6008b82cde991ec28387169bb13e.eot"); /* IE9*/
+    src: url("../font/0aee6008b82cde991ec28387169bb13e.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+        url("../font/0aee6008b82cde991ec28387169bb13e.woff2") format("woff2"), /* chrome、firefox */
+        url("../font/0aee6008b82cde991ec28387169bb13e.woff") format("woff"), /* chrome、firefox */
+        url("../fonts/0aee6008b82cde991ec28387169bb13e.ttf") format("truetype"), 
+        /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+        url("../font/0aee6008b82cde991ec28387169bb13e.svg#GD Sherpa Regular") format("svg"); /* iOS 4.1- */
+      }
+
+body{
+    font-family:'GD Sherpa Regular','Open Sans' !important;font-size:13.5px !important;
+}
+.fuzzy-search{border:1px solid #dfdfdf;background-color: #efefef;}
+.fuzzy-search:placeholder{
+    font-size:11px; font-weight: 800;
+}
+#navbarVerticalNav{
+    line-height: 35px !important;
+}
+.sidenav .svg-icon, #sidenav .svg-icon{
+    fill:#efefef;width:40px !important;height:40px !important;
+}
+.nav-brand .credit{
+    font-size:14px;
+}

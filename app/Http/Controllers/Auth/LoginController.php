@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::CLIENTS;
+    //protected $redirectTo = RouteServiceProvider::CLIENTS;
 
     /**
      * Create a new controller instance.
@@ -62,20 +62,28 @@ class LoginController extends Controller
               ]);
             }
     
-           $user_cred = $request->only('email', 'password','active');
+           $user_cred = $request->only('email', 'password');
             if (\Auth::attempt($user_cred)) {
                  //if user is logged in as a client
                 if(\Auth()->user()->user_cat=='CLIENT'){  
-                   return response()->json([[1]]);
+                   //return response()->json([[1]]);
+                   return redirect()->route('marketplace.clients');
+
+
                 }  
     
             }else if(\Auth()->user()->user_cat=='SUPPLIER'){
                  //if user is a supplier
-                    return response()->json([[2]]);
+                   // return response()->json([[2]]);
+                   return redirect()->route("suppliers.dashboard");
+
+                   
 
             }else if(\Auth()->user()->user_cat=='SADMIN'){
                //IF the logged in user is a super admin   
-               return response()->json([[3]]);
+               //return response()->json([[3]]);
+               return redirect()->route('sadmin_index');
+
                     
             }else{
                return 'invalid_credentials_error';
