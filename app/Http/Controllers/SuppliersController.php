@@ -26,8 +26,7 @@ class SuppliersController extends Controller
         $supplier->supplier_email = $request->_email_address;
         //saving the supplier
         $supplier->save();
-
-      
+        
         if($response==true){
             \Mail::to($userEmail)->send(\App\Mail\NewSupplier());
             return redirect()->route('')->with(['status'=>'Thank you for your interest in Toppoffert! Please check your email for more info']);

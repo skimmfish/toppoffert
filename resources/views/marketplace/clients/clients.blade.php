@@ -117,9 +117,7 @@ h1{font-size:36px;font-weight:900;}
 <div class="row mainx">
 @if(sizeof($requests)>0)
 @foreach($requests as $x)
-
 <div class="col-md-6 col-xxl-6 request_items">
-
         <!--card-->
         <div class="card ecommerce-card-min-width tw-div">
               <div>
@@ -172,13 +170,13 @@ h1{font-size:36px;font-weight:900;}
 <span><a href="{{route('projekt_winnr')}}" class="btn btn-primary btn-dark" style="padding-top:2px !important; font-size:12.5px;" target="_blank">Ange vinnare</a></span>
 </div>
 @endif
-
 </div>
-
-                        <!--./card-->
-            <!--./col-md-6-->
-            </div>
-@endforeach
+   <!--./card-->
+    <!--./col-md-6-->
+  </div>
+  @endforeach
+        @else
+<h5><i>You haven't submitted any request, <a href="{{route('skapa')}}" target="_blank" class="text-primary"><u>submit one here</u></a>.</i></h5>
 @endif
 
 <!--./row-->

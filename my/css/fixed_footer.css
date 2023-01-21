@@ -1,0 +1,41 @@
+/** fixed_footer.css **/
+@media(max-width:1024px){
+    body{
+        overflow-x:hidden;
+    }
+.fixed-footer{
+    width: 100vw;
+    position: fixed;        
+    background: #1e293b !important;
+    padding: 20px 30px 20px 0px !important;
+    color: #fff;
+    display:grid;grid-template-columns: 25% 25% 25% 25%;grid-gap:10px;
+    left:3px;
+    text-align: center;
+}
+
+.fixed-footer .svg-icon{
+    width:20px;height:20px;fill:none;stroke:#fff;vertical-align: middle;
+}
+
+.fixed-footer a{color:#fff;vertical-align: middle;}
+
+
+
+.fixed-footer{
+    bottom: 0;
+}    
+
+/* Some more styles to beutify this example */
+nav a{
+    color: #fff;
+    text-decoration: none;
+    padding: 7px 25px;
+    display: inline-block;
+}
+.container
+.container p{
+    line-height: 200px; /* Create scrollbar to test positioning */
+}
+
+}

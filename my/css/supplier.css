@@ -10,10 +10,31 @@ suppliers.css
         /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
         url("../font/0aee6008b82cde991ec28387169bb13e.svg#GD Sherpa Regular") format("svg"); /* iOS 4.1- */
       }
-
-body{
+body,html{
+overflow-x:hidden;
+}
+body, a{
     font-family:'GD Sherpa Regular','Open Sans' !important;font-size:13.5px !important;
 }
+h1,h2,h3,h4,h5,h6{font-family: 'GD Sherpa Regular'; font-weight:900;line-height:32px;margin:10px 0;}
+.h1_m_30{
+    margin-top:30px;
+}
+h1{font-size:45px;}h2{font-size:38px}h3{font-size:25px;}h4{font-size:20px;}h5{font-size:18px;}h6{font-size:15px;}
+.redc_grey{color:#64748b;font-size:18px;}
+
+.bevel_border{
+    background-color: #fff;border-radius:7px;min-height:100px;padding:15px 10px;
+}
+.bevel_border p{font-size:14px;font-weight:700;color:#64748b;}
+.bevel_border h5{
+    font-size:30px;font-weight: 800 !important;
+}
+.bevel_box{
+margin:0;
+}
+
+
 .fuzzy-search{border:1px solid #dfdfdf;background-color: #efefef;}
 .fuzzy-search:placeholder{
     font-size:11px; font-weight: 800;
@@ -22,8 +43,124 @@ body{
     line-height: 35px !important;
 }
 .sidenav .svg-icon, #sidenav .svg-icon{
-    fill:#efefef;width:40px !important;height:40px !important;
+    fill:none;stroke:#0d2453;width:15px !important;height:15px !important;
 }
-.nav-brand .credit{
-    font-size:14px;
+.notification-indicator .svg-icon{
+    fill:none;stroke:#888;width:27px;height:28px;min-width:30px !important;
+    position: relative;right:15px;top:-4px;font-weight:lighter;
+}
+
+.nav_img{
+width:25px !important;height:25px !important;position:relative;left:-10px;top:-3px;z-index:-1;
+}
+.usr_icon{left:12px;top:4px;}
+
+.notification-indicator .svg-icon, .avatar .svg-icon{
+
+    width:20px;height:20px;font-weight:400 !important;
+
+}
+
+.avatar .svg-icon{
+stroke:#efefef;
+}
+
+
+.credit{
+   height:auto; background: #0d2553;padding:4px;font-size:10px;border-radius:12px;color:#fff !important;font-family:GD Sherpa Regular;
+position:relative;top:5px;left:88px;
+}
+.navbar-vertical-toggle svg{
+    width:150px !important;height:auto;
+}
+
+.img-circle-md, .img-circle-lg{width:30px;height:30px;border-radius:50%;}
+.img-circle-lg{width:80px;height:80px;}
+.grid-2-x{display:grid;grid-template-columns: 17% 83%;grid-gap:6px;background-color: #fff;}
+.grid-2-x small{
+    font-weight:600;font-size:11.5px;
+}
+.move-left-20{
+    position:relative;left:-3px;top:-5px;
+}
+.grid-2-y{display:grid;grid-template-columns: 60% 40%;grid-gap:2px;width:100%;margin-top: 9px;}
+
+.footer-item .svg-icon{
+    width:15px;height:15px;fill:none;stroke:#0d2453;font-weight:800;margin-right:2px;position:relative;top:0px;
+}
+.footer-item span{
+    font-size:11px;font-weight:500;
+}
+.request_box{
+    background:#0d2453;color:#fff;position:relative;left:10px;width:20px;height:20px;border-radius:50%;text-align:center;line-height: 19px;font-size:10px;
+}
+
+.tp-padding{
+    padding:20px 0;font-size:14.5px;font-weight:400 !important;display:grid;
+    grid-template-columns: 70% 30%;grid-gap:inherit;margin-bottom:15px;
+}
+
+.navigation_control{
+    display:grid;grid-template-columns: 25% 25% 25% 25%;grid-gap:0;
+}
+.navigation_control .svg-icon, .btn-grey-bg .svg-icon, .flex-rw .svg-icon,.position-relative .svg-icon{
+width:14px;fill:none;stroke:#0d2453;font-weight:700;color:#000;min-width:20px;fill-opacity: inherit;
+}
+.position-relative .dropdown:hover{
+    background-color:#e7f5d6;width:50px;height:50px;border-radius: 50%;line-height: 37px;
+}
+.position-relative{
+    display:flex;flex-direction: row !important;
+}
+.position-relative .dropdown .svg-icon{
+width:9px;fill:#333;
+}
+.position-relative .dropdown{
+    position:relative;top:7.5px;left:5px;
+}
+.navigation_control .btn:hover, .btn-grey-bg{
+    background:#e7f5d6;border-radius:50%;width:50px;height:50px;line-height: 37px;
+}
+.requests{background:#fff;border-radius: 10px;padding:10px 5px 10px 5px;height:auto;margin-bottom:15px;}
+.requests .request_title{color:#000;font-weight:600;}
+.titles{line-height:29px;}
+.titles p{
+    font-size:12.5px;
+}
+.titles span{
+    font-weight:600;
+}
+.flex-rw{
+    display:flex;flex-direction: column;
+}
+.d-flex .svgico{
+    width:100px;
+}
+
+
+@media(max-width:425px){
+    .row>* {
+    width:auto !important;
+    }
+    .tp-padding{
+       grid-template-columns: 50% 50% !important;
+    }
+    
+}
+
+@media(max-width:1024px){
+
+}
+
+@media(max-width:768px and min-width:424px;){
+.tp-padding{
+    grid-template-columns: 40% 60%;
+    }
+.requests{
+    width:100vw;
+}
+    .row>* {
+        width:auto !important;margin-right:18px;
+        }
+    
 }
