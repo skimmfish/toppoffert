@@ -73,8 +73,6 @@ class ServiceRequestsController extends Controller
 public function enquiries_suppliers($hash){
 
 
-
-
 }
 /**
  * @param Illuminate\Http\Request
@@ -84,9 +82,20 @@ public function enquiries_suppliers($hash){
     public function newrequest(Request $request){
 
         $buyerRequest = new ServiceRequests;
-
         $buyerRequest->request_title = $request->WhatText;
         $buyerRequest->service = $request->WhatText;
 
     }
+
+    /**
+     * @param String <$field> - Column name
+     * @param Integer <$request_id>
+     */
+
+public static function get_request_metadata($field,$request_id){
+
+ return \App\Models\ServiceRequests::where('id',$request_id)->first()->$field;
+
+}
+
 }

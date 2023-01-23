@@ -17,7 +17,7 @@ class RatingTestimonialsFactory extends Factory
     public function definition()
     {
         return [
-            //
+          
         ];
     }
 }

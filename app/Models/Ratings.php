@@ -12,6 +12,7 @@ class Ratings extends Model
 
     protected $fillable = ['review_count','rating','provider_id'];
     protected $dates = ['created_at','updated_at','deleted_at'];
+    protected $cast = ['created_at','deleted_at','updated_at'];
 
     //establishing relationships between users and ratings
     public function User(){

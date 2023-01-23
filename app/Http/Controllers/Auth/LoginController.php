@@ -85,6 +85,7 @@ class LoginController extends Controller
                return redirect()->route('sadmin_index');
 
                     
+               
             }else{
                return 'invalid_credentials_error';
             }

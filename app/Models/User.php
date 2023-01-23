@@ -36,6 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'province',
         'zip_code',
         'phone_no',
+        'telephone',
         'profile_img'
     ];
 
@@ -80,4 +81,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('\App\Models\RatingTestimonials');
     }
     
+
+    /**
+     * @param String <$field> This isi the column field to be returned
+     * @param Integer <$id> User id in the user's table
+     */
+    public static function get_data($field,$pkid){
+
+    return \App\Models\User::where('id',$pkid)->first()->$field;
+
+}
+
 }

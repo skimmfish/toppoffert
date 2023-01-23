@@ -83,7 +83,7 @@ $supplierObj = new \App\Models\Suppliers;
       <div class="d-flex align-items-center">    
           <div class="toggle-icon-wrapper">
               <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation">
-              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" viewBox="0 0 500.000000 500.000000"
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="topp_logo" width="130.000000pt" height="130.000000pt" viewBox="0 0 500.000000 500.000000"
  preserveAspectRatio="xMidYMid meet">
 <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
 fill="#0d2663" stroke="none">
@@ -135,6 +135,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             </div>
             </a>
           </div>
+
           <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
             <div class="navbar-vertical-content scrollbar">
               <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
@@ -185,7 +186,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                   
                <!-- parent pages-->
                
-                    <li class="nav-item"><a class="nav-link dropdown-indicator" href="#orders" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-indicator" href="#orders" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
                         <div class="d-flex align-items-center sidenav">
                         <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-69441b5d=""><path d="M5.625 5a4.375 4.375 0 108.75 0 4.375 4.375 0 00-8.75 0zM1.875 19.375a8.125 8.125 0 1116.25 0" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                         <span class="nav-link-text ps-1">Mina Sidor</span></div>
@@ -221,8 +223,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                       </a><!-- more inner pages-->
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('settings.watch')}}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">ratings</span></div>
+                    <li class="nav-item"><a class="nav-link" href="{{route('settings.ratings')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Omdömen</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
@@ -236,11 +238,10 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                       </a><!-- more inner pages-->
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('cannedresponses')}}" data-bs-toggle="" aria-expanded="false">
+                  <!--  <li class="nav-item"><a class="nav-link" href="{{route('cannedresponses')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Svarsmallar</span></div>
-                      </a><!-- more inner pages-->
-                    </li>
-
+                      </a>
+                    </li>-->
                     <li class="nav-item"><a class="nav-link" href="{{route('settings.notifications')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Pushnotiser</span></div>
                       </a><!-- more inner pages-->
@@ -288,11 +289,12 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
         <!--end of sidebar navigation for col-lg-->
 
+        <!--mobile-navigation area-->
         <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand-xl" style="display: none;">
-          <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+          <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" id="hide_lg" type="button" data-bs-toggle="collapse" data-bs-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
           <a class="navbar-brand me-1 me-sm-3" href="{{route('index')}}">
             <div class="d-flex align-items-center">
-            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" viewBox="0 0 500.000000 500.000000"
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" class="topp_logo" viewBox="0 0 500.000000 500.000000"
  preserveAspectRatio="xMidYMid meet">
 <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
 fill="#0d2663" stroke="none">
@@ -340,6 +342,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
             </div>
           </a>
+
           <div class="collapse navbar-collapse scrollbar" id="navbarStandard">
             <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dashboards">Dashboard</a>
@@ -347,7 +350,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                   <div class="bg-white dark__bg-1000 rounded-3 py-2"><a class="dropdown-item link-600 fw-medium" href="index-2.html">Default</a><a class="dropdown-item link-600 fw-medium" href="dashboard/analytics.html">Analytics</a><a class="dropdown-item link-600 fw-medium" href="dashboard/crm.html">CRM</a><a class="dropdown-item link-600 fw-medium" href="dashboard/e-commerce.html">E commerce</a><a class="dropdown-item link-600 fw-medium" href="dashboard/project-management.html">Management</a><a class="dropdown-item link-600 fw-medium" href="dashboard/saas.html">SaaS</a></div>
                 </div>
               </li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="apps">App</a>
+            <!-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="apps">App</a>
                 <div class="dropdown-menu dropdown-menu-card border-0 mt-0" aria-labelledby="apps">
                   <div class="card navbar-card-app shadow-none dark__bg-1000">
                     <div class="card-body scrollbar max-h-dropdown"><img class="img-dropdown" src="assets/img/icons/spot-illustrations/authentication-corner.png" width="130" alt="" />
@@ -368,7 +371,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                     </div>
                   </div>
                 </div>
-              </li>
+              </li>-->
+             <!-- 
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="pagess">Pages</a>
                 <div class="dropdown-menu dropdown-menu-card border-0 mt-0" aria-labelledby="pagess">
                   <div class="card navbar-card-pages shadow-none dark__bg-1000">
@@ -422,6 +426,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                   </div>
                 </div>
               </li>
+          
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="moduless">Modules</a>
                 <div class="dropdown-menu dropdown-menu-card border-0 mt-0" aria-labelledby="moduless">
                   <div class="card navbar-card-components shadow-none dark__bg-1000">
@@ -477,7 +482,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                   <div class="bg-white dark__bg-1000 rounded-3 py-2"><a class="dropdown-item link-600 fw-medium" href="documentation/getting-started.html">Getting started</a><a class="dropdown-item link-600 fw-medium" href="documentation/customization/configuration.html">Configuration</a><a class="dropdown-item link-600 fw-medium" href="documentation/customization/styling.html">Styling</a><a class="dropdown-item link-600 fw-medium" href="documentation/customization/dark-mode.html">Dark mode<span class="badge rounded-pill ms-2 badge-soft-success">New</span></a><a class="dropdown-item link-600 fw-medium" href="documentation/customization/plugin.html">Plugin</a><a class="dropdown-item link-600 fw-medium" href="documentation/gulp.html">Gulp</a><a class="dropdown-item link-600 fw-medium" href="documentation/design-file.html">Design file</a><a class="dropdown-item link-600 fw-medium" href="changelog.html">Changelog</a></div>
                 </div>
               </li>
-            </ul>
+            </ul>-->
           </div>
 		  
         </nav>
@@ -485,14 +490,12 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
         <div class="content">
           <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand" style="display: none;">
-            <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+            <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" class="topp_logo" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
             <a class="navbar-brand me-1 me-sm-3" href="{{route('index')}}">
               <div class="d-flex align-items-center">
-              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" viewBox="0 0 500.000000 500.000000"
- preserveAspectRatio="xMidYMid meet" class="svgico">
-<g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
-fill="#0d2663" stroke="none">
-<path d="M943 3272 c-156 -51 -248 -200 -274 -446 -17 -163 2 -336 50 -448 23
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" viewBox="0 0 500.000000 500.000000" preserveAspectRatio="xMidYMid meet" class="svgico">
+                <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)" fill="#0d2663" stroke="none">
+                  <path d="M943 3272 c-156 -51 -248 -200 -274 -446 -17 -163 2 -336 50 -448 23
 -55 81 -121 133 -155 l38 -23 0 -125 0 -126 132 111 132 110 1484 0 c1321 0
 1491 2 1545 16 153 39 250 149 293 331 22 91 22 311 0 412 -31 142 -103 255
 -194 306 -102 57 -33 55 -1727 54 -1436 0 -1564 -2 -1612 -17z m2210 -329 c4
@@ -536,6 +539,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
               </div>
             </a>
+            
             <ul class="navbar-nav align-items-center d-none d-lg-block">
               <li class="nav-item">
                 <div class="search-box" data-list='{"valueNames":["title"]}'>
@@ -592,7 +596,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
               <li class="nav-item d-none d-sm-block">
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link notification-indicator notification-indicator-primary px-0 fa-icon-wait" id="navbarDropdownNotification" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hide-on-body-scroll="data-hide-on-body-scroll">
+
+              <a class="nav-link notification-indicator notification-indicator-primary px-0 fa-icon-wait" id="navbarDropdownNotification" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hide-on-body-scroll="data-hide-on-body-scroll">
                 
               <img src="{{asset('img/msg.png')}}" class="nav_img" />
 
@@ -604,49 +609,42 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                         <div class="col-auto">
                           <h6 class="card-header-title mb-0">Notifications</h6>
                         </div>
-                        <div class="col-auto ps-0 ps-sm-3"><a class="card-link fw-normal" href="#">Mark all as read</a></div>
+                        <div class="col-auto ps-0 ps-sm-3">
+                        <a class="card-link fw-normal" href="#">Mark all as read</a></div>
                       </div>
                     </div>
                     <div class="scrollbar-overlay" style="max-height:19rem">
                       <div class="list-group list-group-flush fw-normal fs--1">
-                        <div class="list-group-title border-bottom">NEW</div>
+                        <div class="list-group-title border-bottom"> </div>
                         <div class="list-group-item">
                           <a class="notification notification-flush notification-unread" href="#!">
                             <div class="notification-avatar">
                               <div class="avatar avatar-2xl me-3">
-                                <img class="rounded-circle" src="assets/img/team/1-thumb.png" alt="" />
                               </div>
                             </div>
                             <div class="notification-body">
-                              <p class="mb-1"><strong>Emma Watson</strong> replied to your comment : "Hello world 😍"</p>
-                              <span class="notification-time"><span class="me-2" role="img" aria-label="Emoji">💬</span>Just now</span>
-                            </div>
+
+                          </div>
                           </a>
                         </div>
                         <div class="list-group-item">
                           <a class="notification notification-flush notification-unread" href="#!">
                             <div class="notification-avatar">
                               <div class="avatar avatar-2xl me-3">
-                                <div class="avatar-name rounded-circle"><span>AB</span></div>
                               </div>
                             </div>
                             <div class="notification-body">
-                              <p class="mb-1"><strong>Albert Brooks</strong> reacted to <strong>Mia Khalifa's</strong> status</p>
-                              <span class="notification-time"><span class="me-2 fab fa-gratipay text-danger"></span>9hr</span>
                             </div>
                           </a>
                         </div>
-                        <div class="list-group-title border-bottom">EARLIER</div>
+                        <div class="list-group-title border-bottom"></div>
                         <div class="list-group-item">
                           <a class="notification notification-flush" href="#!">
                             <div class="notification-avatar">
                               <div class="avatar avatar-2xl me-3">
-                                <img class="rounded-circle" src="assets/img/icons/weather-sm.jpg" alt="" />
                               </div>
                             </div>
                             <div class="notification-body">
-                              <p class="mb-1">The forecast today shows a low of 20&#8451; in California. See today's weather.</p>
-                              <span class="notification-time"><span class="me-2" role="img" aria-label="Emoji">🌤️</span>1d</span>
                             </div>
                           </a>
                         </div>
@@ -654,26 +652,21 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                           <a class="border-bottom-0 notification-unread  notification notification-flush" href="#!">
                             <div class="notification-avatar">
                               <div class="avatar avatar-xl me-3">
-                                <img class="rounded-circle" src="assets/img/logos/oxford.png" alt="" />
                               </div>
                             </div>
                             <div class="notification-body">
-                              <p class="mb-1"><strong>University of Oxford</strong> created an event : "Causal Inference Hilary 2019"</p>
-                              <span class="notification-time"><span class="me-2" role="img" aria-label="Emoji">✌️</span>1w</span>
+
                             </div>
                           </a>
                         </div>
                         <div class="list-group-item">
                           <a class="border-bottom-0 notification notification-flush" href="#!">
                             <div class="notification-avatar">
-                              <div class="avatar avatar-xl me-3">
-                                <img class="rounded-circle" src="assets/img/team/10.jpg" alt="" />
-                              </div>
+                              
                             </div>
                             <div class="notification-body">
-                              <p class="mb-1"><strong>James Cameron</strong> invited to join the group: United Nations International Children's Fund</p>
-                              <span class="notification-time"><span class="me-2" role="img" aria-label="Emoji">🙋‍</span>2d</span>
-                            </div>
+
+                          </div>
                           </a>
                         </div>
                       </div>
@@ -682,6 +675,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                   </div>
                 </div>
               </li>
+
               <li class="nav-item dropdown"><a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="avatar avatar-xl">
                 <img src="{{asset('img/user_icon.png')}}" class="nav_img usr_icon" />
@@ -690,10 +684,12 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                 <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                   <div class="bg-white dark__bg-1000 rounded-2 py-2">
                  
-                  <a class="dropdown-item" href="{{route('suppliers_dashboard')}}" data-bs-toggle="" aria-expanded="false">Överblick </a>
+                  <a class="dropdown-item" href="{{route('suppliers_dashboard')}}" data-bs-toggle="" aria-expanded="false">
+                  <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Överblick</span></div>
+                 </a>
                  
                   <a class="dropdown-item" href="{{route('contact-information')}}" data-bs-toggle="" aria-expanded="false">
-                        Kontaktinformation
+                  <div class="d-flex align-items-center"><span class="nav-link-text ps-1"> Kontaktinformation</span></div>
                       </a>
                       <a class="dropdown-item" href="{{route('settings.password')}}" data-bs-toggle="" aria-expanded="false">Byt lösenord</a>
                                      
@@ -704,7 +700,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                       <a class="dropdown-item" href="{{route('settings.invoices')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Fakturor och betalningar</span></div>
                       </a>
-
+<!--
                       <a class="dropdown-item" href="{{route('settings.profile')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Företagsprofil</span></div>
                       </a>
@@ -712,19 +708,20 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                       <a class="dropdown-item" href="{{route('settings.watch')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">ratings</span></div>
                       </a>
-
+          
                       <a class="dropdown-item" href="{{route('settings.stamps')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Certifikat och kvalitetsstämplar</span></div>
                       </a>
 
+          -->
                       <a class="dropdown-item" href="{{route('settings.labels')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Etiketter</span></div>
                       </a>
 
-                      <a class="dropdown-item" href="{{route('cannedresponses')}}" data-bs-toggle="" aria-expanded="false">
+                    <!--  <a class="dropdown-item" href="{{route('cannedresponses')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Svarsmallar</span></div>
                       </a>
-
+          -->
                       <a class="dropdown-item" href="{{route('settings.notifications')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Pushnotiser</span></div>
                       </a>
@@ -733,7 +730,9 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Cookie-inställningar</span></div>
                       </a>
 
-                      <a class="dropdown-item" data-bs-toggle="" aria-expanded="false" href="{{route('logout')}}">Logga ut</a>
+                      <a class="dropdown-item" data-bs-toggle="" aria-expanded="false" href="{{route('logout')}}">
+                      <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Logga ut</span></div>
+                    </a>
                  
                   </div>
                 </div>
@@ -764,49 +763,13 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
               navbarTopCombo.remove(navbarTopCombo);
             }
           </script>
-
-	  
 			  
 @yield('content')
-
 
 @include('layouts.fixed_footer')
 
 </div>
 
-      <div class="modal fade" id="authentication-modal" tabindex="-1" role="dialog" aria-labelledby="authentication-modal-label" aria-hidden="true">
-        <div class="modal-dialog mt-6" role="document">
-          <div class="modal-content border-0">
-            <div class="modal-header px-5 position-relative modal-shape-header bg-shape">
-              <div class="position-relative z-index-1 light">
-                <h4 class="mb-0 text-white" id="authentication-modal-label">Register</h4>
-                <p class="fs--1 mb-0 text-white">Please create your free Falcon account</p>
-              </div><button class="btn-close btn-close-white position-absolute top-0 end-0 mt-2 me-2" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body py-4 px-5">
-              <form>
-                <div class="mb-3"><label class="form-label" for="modal-auth-name">Name</label><input class="form-control" type="text" autocomplete="on" id="modal-auth-name" /></div>
-                <div class="mb-3"><label class="form-label" for="modal-auth-email">Email address</label><input class="form-control" type="email" autocomplete="on" id="modal-auth-email" /></div>
-                <div class="row gx-2">
-                  <div class="mb-3 col-sm-6"><label class="form-label" for="modal-auth-password">Password</label><input class="form-control" type="password" autocomplete="on" id="modal-auth-password" /></div>
-                  <div class="mb-3 col-sm-6"><label class="form-label" for="modal-auth-confirm-password">Confirm Password</label><input class="form-control" type="password" autocomplete="on" id="modal-auth-confirm-password" /></div>
-                </div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="modal-auth-register-checkbox" /><label class="form-label" for="modal-auth-register-checkbox">I accept the <a href="#!">terms </a>and <a href="#!">privacy policy</a></label></div>
-                <div class="mb-3"><button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Register</button></div>
-              </form>
-              <div class="position-relative mt-5">
-                <hr class="bg-300" />
-                <div class="divider-content-center">or register with</div>
-              </div>
-              <div class="row g-2 mt-2">
-                <div class="col-sm-6"><a class="btn btn-outline-google-plus btn-sm d-block w-100" href="#"><span class="fab fa-google-plus-g me-2" data-fa-transform="grow-8"></span> google</a></div>
-                <div class="col-sm-6"><a class="btn btn-outline-facebook btn-sm d-block w-100" href="#"><span class="fab fa-facebook-square me-2" data-fa-transform="grow-8"></span> facebook</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </main><!-- ===============================================-->
   <!--    End of Main Content-->
   <!-- ===============================================-->
