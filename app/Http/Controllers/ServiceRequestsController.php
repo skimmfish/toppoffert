@@ -98,4 +98,40 @@ public static function get_request_metadata($field,$request_id){
 
 }
 
+/**
+ * @param NULL
+ * @return StdObj
+ * This function returns all requests grouped with their created_at column
+ *  */
+
+public function allbuyersrequest(){
+
+$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->orderBy('created_at','DESC')->paginate(30);
+
+return view('marketplace.sadmin.buyer_requests',['title'=>"Köparnas önskemål",'allrequest'=>$allrequests]);
+
+}
+
+
+/**
+ * 
+ */
+public function get_all_sales(){
+
+$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->where('project_execution_status',true)->orderBy('created_at','DESC')->paginate(30);
+
+return view('marketplace.sadmin.buyer_requests',['title'=>"Förfrågningar vände försäljning",'allrequest'=>$allrequests]);
+
+
+}
+
+/***
+ * @param Integer $request_id
+ * @param Integer $action_id
+ */
+public function approve_request($request_id){
+
+\DB::update("UPDATE service_requests SET publish_status=? WHERE id=?",[true,$request_id]);
+
+}
 }

@@ -12,8 +12,26 @@ suppliers.css
       }
 body,html{
 overflow-x:hidden;
-
 }
+.row{
+margin-top:15px;
+}
+.form .form-control{
+    height:45px;font-family:'GD Sherpa Regular';font-weight:500;font-size:13.5px;
+}
+
+.form .form-label, .form-label{
+    font-family:'GD Sherpa Regular';color:#000;font-weight: 800 !important;margin-top: 12px;
+}
+
+.adjust_dw{
+margin-top:20px;
+}
+
+.form .check_box_md{
+width:25px;height:25px;line-height: 24px;
+}
+
 .topp_logo{
     width:100px !important;height:90px !important;
 }
@@ -71,13 +89,41 @@ padding:10px 0 15px 10px;background-color: none !important;
 .flex .btn-round{
     border-radius: 50px;width:auto;padding:9px 25px 5px 25px;height:45px;
 }
+.btn-round{
+    font-family: 'GD Sherpa Regular';font-weight:500;border-radius:50px;border:0;height:50px;padding:auto;font-size:13px;padding-left:20px;padding-right:20px;
+}
 .btn-round .svg-icon{width:19px;fill:#fff;stroke:#fff;}
 .btn-empty{background-color: #dfdfdf;border:#0099cc;color:#0d2453;}
 .btn-round span{margin-left:7px;}
 .view .svg-icon{
     width:30px;height:30px;
 }
+
+.dark-bg{
+    background-color: #0d2453;padding-left: 45px !important;padding-right: 45px !important;
+    
+}
+
+.form .input-control-lg, .input-control-lg{height:55px;border-radius:8px;}
+.text-gray{color:#666;}
 .view .hide_link{font-weight: 800;color:#444;}
+
+.labels{
+    display:grid;grid-template-columns: 15% 85%;
+}
+
+.labels:nth-child(1){
+justify-items: self-end;position:relative;top:15px;
+}
+.labels .text-gray{
+    color:#ccc;
+}
+.labels .labs{
+    position:relative;
+    top:-15px;
+}
+
+
 
 .text-md{font-size:13.5px;font-weight: 600;}.text-lg{font-size:17px;font-weight: 700;}
 .bevel_border p{font-size:14px;font-weight:700;color:#64748b;}
@@ -109,6 +155,10 @@ width:25px !important;height:25px !important;position:relative;left:-10px;top:-3
 
     width:20px;height:20px;font-weight:400 !important;
 
+}
+
+.pull_right{
+float:right;
 }
 
 .avatar .svg-icon{

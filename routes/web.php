@@ -134,25 +134,48 @@ Grouped routes for both authenticated users and unauthenticated users
 Route::middleware(['auth','sadmin'])->prefix('marketplace/sa')->group(function(){
 
     //super administrator's home
-Route::get('/',function(){})->name('sadmin_index');
+Route::get('/',function(){
+
+    return view('marketplace.sadmin.index',['title'=>"Administrator's Portal - ".config('app.name'), 'unreadMessageCounter'=>0]);
+
+})->name('sadmin_index');
 
 //generate invoices
-Route::get('/invoices',function(){})->name('sadmin.invoices');
+Route::get('/invoices',function(){
+
+
+})->name('sadmin.invoices');
 
 //see all invoices
 Route::get('/all-invoice',function(){})->name('sadmin_all_invoices');
 
 //generate new invoice, this page open up all the users on the suppliers' list to pick the right suppleir to issue the invoice to
-Route::get('/new-invoice')->name('saadmin.new_invoice');
+Route::get('/new-invoice')->name('sadmin.new_invoice');
 
+//deletion confirmation
+Route::get('confirm-resource-action/{action_type}/{id}/{resource}',function(){})->name('sadmin_confirm_resources');
+
+//all sales made between buyers and suppliers
+Route::get('all-sales',[App\Http\Controllers\ServiceRequestsController::class,'get_all_sales'])->name('sadmin_all_sales');
+
+//approving service buyer requests
+Route::get('/approve-request/{request_id}',[App\Http\Controllers\ServiceRequestsController::class,'approve_request'])->name('sadmin_approve_request');
 
 //delete an invoice
 Route::delete('delete-invoice/{id}')->name('sadmin.delete_invoice');
 
+//getting all buyers request for assignments and approvals
+Route::get('/all-buyer-requests',[App\Http\Controllers\ServiceRequestsController::class,'allbuyersrequest'])->name('sadmin_all_requests');
 
 
+//for managing credit assignment
+Route::get('/credit-management',[App\Http\Controllers\CreditsController::class,'credit_portal'])->name('sadmin_credit_mgt');
 
+//all users with a type argument
+Route::get('/all-users/{type}')->name('sa_all_users');
 
+//site configuration
+Route::get('site-configuration')->name('site_configuration');
 });
 
 //grouping all routes under the dashboard/admin namespace for authenticated users
@@ -179,13 +202,75 @@ Route::get('projekt-winner',function(){
 return view('pages.projekt_winnr',['title'=>'Ange Vinnare - '.config('app.name')]);
 
 })->name('projekt_winnr');
+
+//=======================================
+//SADMIN ROUTES
+//=======================================
 //group of routes for superadmin only
-Route::middleware(['auth','verified','superadmin'])->prefix('sadmin')->group(function(){
+Route::middleware(['auth','verified','sadmin'])->prefix('sadmin')->group(function(){
 
-Route::get('/')->name('sadmin_index');
+//HOMEPAGE
+Route::get('/',function(){
 
+$active_user = \App\Models\User::whereNull('deleted_at')->orderBy('created_at','DESC')->take(5)->get();
+$messages = \App\Models\NotificationModel::where('receiver_id',\Auth::user()->id)->orderBy('created_at','DESC')->get();
+return view('marketplace.sadmin.index',['title'=>'Administrators Portal',
+'active_user'=>$active_user,'personalNotification'=>$messages]);
+
+})->name('sadmin_index');
+
+
+//configuration panel
+Route::get('/settings-and-configuration',function(){
+
+    return view('marketplace.sadmin.settings_config',['title'=>'Settings & Configurations']);
+
+})->name('marketplace.sadmin.settings');
+
+
+//switch to maintenance
+Route::get('/switch-to-maintenance',function(){
+
+    \Artisan::call('down --secret=toppoffert');
+
+    return redirect()->route('sadmin_index')->with(['message'=>'Site switched to maintenance']);
+
+})->name('switch_to_maintenance');
+
+//ALL USERS
+Route::get('/all-users')->name('sadmin.all_users');
+
+//see a user's profile
+Route::get('/see-user-profile/{id}')->name('seeuserprofile');
+
+
+//create invoices
+Route::get('/create-invoice',function(){})->name('sadmin.create_invoice');
 });
 
+
+//all messages
+Route::get('/recent-messages',function(){
+
+    return view('marketplace.sadmin.messages',[
+
+    ]);
+    
+})->name('marketplace.sadmin.recent_message')->middleware(['auth']);
+
+
+    //View Message
+Route::get('/view-message/{id}',function(){
+
+return view('marketplace.view_msg',[]);
+
+})->name('marketplace.sadmin.view_recent_message')->middleware(['auth']);
+
+
+
+//===================================================
+//For suppliers only
+//===================================================
 //Group of routes for suppliers in the marketplace
 Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/suppliers')->group(function(){
 
@@ -271,17 +356,42 @@ Route::get('/settings/accountsummary',function(){
 
 
 //for resetting supplier's password from the dashboard
-Route::get('/settings/password',function(){})->name('settings.password');
+Route::get('/settings/password',function(){
+    
+  $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials(\Auth::user()->id);  
+  $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
+  $catCount = sizeof(\App\Models\Categories::all());
+  $ratingObj = new \App\Models\Ratings;
+  $ratings = \App\Models\Ratings::where('provider_id',\Auth::user()->id)->first();
+  $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+
+    return view('marketplace.suppliers.password',['title'=>'Byt lösenord',
+    'ratings'=>$ratings->rating,
+    'review_count'=>$ratings->review_count, 'request_count'=>sizeof($requests),
+    'credit'=>$credits,
+    ]);
+
+
+})->name('settings.password');
 
 //for account summary of all requests, those responded to and those requesteds for which the buyer chose this arrtisan
 Route::get('/settings/accountsummary',function(){
-
 })->name('accountsummary');
 
 //for generating invoices/paying invoices generated by the site administrators
 Route::get('/settings/invoices',function(){
-
-    return view('suppliers.marketplace.invoices',['title'=>'Fakturor']);
+    $uid = \Auth::user()->id;
+    
+    $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
+    $catCount = sizeof(\App\Models\Categories::all());
+    $ratingObj = new \App\Models\Ratings;
+    $ratings = \App\Models\Ratings::where('provider_id',$uid)->first();
+    $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+    $invoices = \App\Http\Controllers\InvoiceController::getall($uid);
+    return view('marketplace.suppliers.invoices',['title'=>'Fakturor Och','ratings'=>$ratings->rating,
+    'review_count'=>$ratings->review_count, 'request_count'=>sizeof($requests),
+    'credit'=>$credits,'invoices'=>$invoices
+    ]);
 
 })->name('settings.invoices');
 
@@ -289,8 +399,7 @@ Route::get('/settings/invoices',function(){
 //for ratings
 Route::get('/settings/ratings',function(){
 
-  $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials(\Auth::user()->id);
-  
+  $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials(\Auth::user()->id);  
   $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
   $catCount = sizeof(\App\Models\Categories::all());
   $ratingObj = new \App\Models\Ratings;

@@ -202,6 +202,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Kontaktinformation</span></div>
                       </a><!-- more inner pages-->
                     </li>
+
                     <li class="nav-item"><a class="nav-link" href="{{route('settings.password')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Byt lösenord</span></div>
                       </a><!-- more inner pages-->
@@ -223,25 +224,26 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                       </a><!-- more inner pages-->
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('settings.ratings')}}" data-bs-toggle="" aria-expanded="false">
+                    <!--<li class="nav-item"><a class="nav-link" href="{{route('settings.ratings')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Omdömen</span></div>
-                      </a><!-- more inner pages-->
-                    </li>
+                      </a>
+                    </li>-->
 
                     <li class="nav-item"><a class="nav-link" href="{{route('settings.stamps')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Certifikat och kvalitetsstämplar</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('settings.labels')}}" data-bs-toggle="" aria-expanded="false">
+                    <!-- <li class="nav-item"><a class="nav-link" href="{{route('settings.labels')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Etiketter</span></div>
-                      </a><!-- more inner pages-->
-                    </li>
+                      </a>
+                    </li>-->
 
                   <!--  <li class="nav-item"><a class="nav-link" href="{{route('cannedresponses')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Svarsmallar</span></div>
                       </a>
                     </li>-->
+                    
                     <li class="nav-item"><a class="nav-link" href="{{route('settings.notifications')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Pushnotiser</span></div>
                       </a><!-- more inner pages-->
@@ -268,10 +270,10 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
               </ul>
 
               <div class="settings" style="padding:10px;margin:0;background:#fff;border-radius:10px;">
-        <div class="grid-2-x">
+               <div class="grid-2-x">
                   <img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img-responsive img-circle-md move-left-20" />
                 <small>{{$supplierObj->where('supplier_id','=',\Auth::user()->id)->first()->supplier_corp_name}}</small>
-          </div>
+                  </div>
 
               <div class="grid-2-y">
               <div class="footer-item">
@@ -713,12 +715,13 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Certifikat och kvalitetsstämplar</span></div>
                       </a>
 
-          -->
+          
                       <a class="dropdown-item" href="{{route('settings.labels')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Etiketter</span></div>
                       </a>
-
-                    <!--  <a class="dropdown-item" href="{{route('cannedresponses')}}" data-bs-toggle="" aria-expanded="false">
+                        -->
+              
+                        <!--  <a class="dropdown-item" href="{{route('cannedresponses')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Svarsmallar</span></div>
                       </a>
           -->

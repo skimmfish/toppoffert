@@ -19,7 +19,7 @@ class SuperAdmin
 
         if ($request->user())
         {
-         if ($request->user()->is_admin == true && $request->user()->active==1 && $request->user()->administrative_level>=3){
+         if ($request->user()->is_admin == true && $request->user()->active==1 && $request->user()->administrative_level>=2){
 
             return $next($request);
 
