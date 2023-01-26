@@ -171,8 +171,26 @@ Route::get('/all-buyer-requests',[App\Http\Controllers\ServiceRequestsController
 //for managing credit assignment
 Route::get('/credit-management',[App\Http\Controllers\CreditsController::class,'credit_portal'])->name('sadmin_credit_mgt');
 
+
+//assign credit view
+Route::get('/assign-credit-view/{supplier_id}/{img}/{f_name}/{email}',function($supplier_id,$img,$f_name,$email){
+    
+    return view('marketplace.sadmin.assigncreditview',['supplier_id'=>$supplier_id,'img'=>$img, 'f_name'=>$f_name,'email'=>$email]);
+
+})->name('assign_credit');
+
+//assign_credit_action route
+Route::put('/assign-credit/{id}',[\App\Http\Controllers\CreditsController::class,'assign_credit'])->name('assign_credit_to_supplier');
+
+
+//send an email to
+Route::get('mail-to/{email}',function($mail){
+
+
+})->name('mail_to_supplier');
+
 //all users with a type argument
-Route::get('/all-users/{type}')->name('sa_all_users');
+Route::get('/all-users/{type}',[App\Http\Controllers\UserController::class,'sa_all_users'])->name('sa_all_users');
 
 //site configuration
 Route::get('site-configuration')->name('site_configuration');
@@ -237,11 +255,14 @@ Route::get('/switch-to-maintenance',function(){
 
 })->name('switch_to_maintenance');
 
-//ALL USERS
-Route::get('/all-users')->name('sadmin.all_users');
 
 //see a user's profile
-Route::get('/see-user-profile/{id}')->name('seeuserprofile');
+Route::get('/see-user-profile/{id}',function($id){
+    $profile = \App\Models\User::where('id',$id)->first();
+
+    return view('marketplace.sadmin.viewprofile',['id'=>$id,'profileID'=>$profile]);
+
+})->name('seeuserprofile');
 
 
 //create invoices

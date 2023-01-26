@@ -72,9 +72,15 @@ class User extends Authenticatable implements MustVerifyEmail
 
     }
 
+    //for establishing relationship between ratings and the user
     public function Ratings(){
 
         return $this->hasOne('\App\Models\Ratings');
+    }
+
+    //establishing relationship between supplier and users
+    public function Suppliers(){
+        return $this->hasOne('\App\Models\Suppliers');
     }
 
     public function RatingTestimonials(){

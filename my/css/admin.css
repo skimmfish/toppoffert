@@ -9,11 +9,29 @@ admin.css
     url("../font/0aee6008b82cde991ec28387169bb13e.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
     url("../font/0aee6008b82cde991ec28387169bb13e.svg#GD Sherpa Regular") format("svg"); /* iOS 4.1- */
   }
-  
-      body{
-      font-family:'Spartan','GD Sherpa Regular','Work Sans','Brandon Grotesque' !important;font-size:13px;color:#000;font-weight:500;color:#000;line-height:auto;
+
+  .img-responsive-logo{
+display:relative;width:90px;height:auto;margin-top:-30px !important;
+  }
+  .navbar-vertical-toggle{
+    margin-top:-30px;
+  }
+  .no-padding{
+    padding:0 !important;
+  }
+  .form-control{
+    font-size:13.5px;height:50px !important;font-family: Spartan;
+  }
+  .form-control::placeholder{
+    color:#333;font-size:13px;
+  }
+  #dataFilter{ margin-top:20px;  }
+
+  body{font-family:'Spartan','GD Sherpa Regular','Work Sans','Brandon Grotesque' !important;font-size:13px;color:#000;font-weight:500;color:#000;line-height:auto; }
+      .nav-link .svg-icon{
+        stroke:#0d2453;width:17px;height:17px;fill:none;
       }
-      
+
       .nav-link, .nav-link-text, .dropdown-item, .mb-1,.mb-0, .form-control, label{
       font-family:'Spartan','GD Sherpa','Work Sans','Brandon Grotesque';font-size:11.8px !important;
       }
@@ -84,4 +102,26 @@ font-size:12px;font-weight:600;
 }
 .mission_type{
     display:grid;grid-template-columns: 15% 85%;grid-gap:0;
+}
+.scrollable_table{
+    overflow-x:auto !important;width:100%;
+}
+.table_rws{
+    margin-top:25px;font-size:11px !important;
+}
+.table_rws thead > th{
+    color:#000;font-size:10px !important;text-transform: uppercase !important;
+}
+.table_rws tbody>td{
+    color:#000 !important;font-size:12px !important
+}
+.table_rws a{font-size:11.5px !important;text-decoration:underline;font-family:'Spartan','GD Sherpa Regular' !important;}
+.form .grid-box{
+    display:grid;grid-template-columns: 20% 80%;grid-gap:0;
+}
+
+.pagination{
+    margin-top:20px;
+    vertical-align:middle;
+    vertical-align: -webkit-baseline-middle;
 }

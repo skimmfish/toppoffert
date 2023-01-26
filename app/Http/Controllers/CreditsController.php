@@ -40,8 +40,15 @@ if($status==1){
  * supplier and here you also assign credits who has fulfilled their payment on invoice
  */
 public function credit_portal(){
+//fetch all users that are suppliers
+$suppliers =  \App\Models\User::where(['user_cat'=>'SUPPLIER','active'=>true])->whereNotNull('email_verified_at')->get();
 
-return view('marketplace.sadmin.credit_portal',['title'=>'Kredithanteringsportal']);
+$suppliers = \DB::table('users')->join('credits',function($join){
+    $join->on('credits.supplier_id','=','users.id')->where('users.user_cat','=','SUPPLIER');
+})->paginate(10);
+
+return view('marketplace.sadmin.credit_portal',['title'=>'Kredithanteringsportal','verified_suppliers'=>$suppliers]);
+
 }
 
 }

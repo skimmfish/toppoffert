@@ -127,6 +127,63 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
 </script>
 
 
+<script>
+        // display a modal (small modal) for assigning credit
+        $(document).on('click', '#assignCredit', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
+
+<script>
+        // display a modal (small modal) for sending invoice to user
+        $(document).on('click', '#sendInvoice', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
+
+
   </head>
 <body>
     <!-- ===============================================-->
@@ -161,52 +218,7 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
               <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
             </div><a class="navbar-brand" href="{{route('sadmin_index')}}">
               <div class="d-flex align-items-center py-3">
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100.000000pt" height="100.000000pt" viewBox="0 0 500.000000 500.000000"
- preserveAspectRatio="xMidYMid meet">
-<g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
-fill="#0d2663" stroke="none">
-<path d="M943 3272 c-156 -51 -248 -200 -274 -446 -17 -163 2 -336 50 -448 23
--55 81 -121 133 -155 l38 -23 0 -125 0 -126 132 111 132 110 1484 0 c1321 0
-1491 2 1545 16 153 39 250 149 293 331 22 91 22 311 0 412 -31 142 -103 255
--194 306 -102 57 -33 55 -1727 54 -1436 0 -1564 -2 -1612 -17z m2210 -329 c4
--2 7 -17 7 -32 0 -24 -5 -30 -30 -34 -38 -8 -39 -33 -2 -38 52 -8 69 0 76 33
-3 18 14 40 23 50 22 24 82 39 118 30 24 -7 31 -15 33 -39 3 -27 -1 -31 -27
--36 -41 -9 -42 -37 -1 -37 28 0 30 -2 30 -40 0 -38 -2 -40 -30 -40 l-29 0 -3
--112 -3 -113 -55 0 -55 0 -3 113 -3 112 -49 0 -49 0 -3 -112 -3 -113 -55 0
--55 0 -3 113 c-2 104 -4 112 -22 112 -17 0 -20 7 -20 40 0 33 4 40 19 40 13 0
-21 10 25 34 7 38 31 63 72 76 26 8 78 4 97 -7z m-334 -37 c61 -30 91 -86 91
--173 0 -76 -16 -120 -58 -155 -46 -38 -95 -51 -173 -46 -118 9 -176 64 -186
-178 -6 66 8 118 44 161 57 67 185 83 282 35z m-1501 -28 l-3 -53 -62 -3 -63
--3 0 -145 0 -145 -62 3 -63 3 -3 142 -3 142 -62 3 -62 3 -3 39 c-6 68 -13 66
-198 66 l191 0 -3 -52z m2862 7 c0 -43 1 -45 30 -45 28 0 30 -2 30 -40 0 -38
--2 -40 -30 -40 l-31 0 3 -72 c3 -72 4 -73 31 -76 26 -3 28 -6 25 -40 -3 -35
--5 -37 -43 -40 -21 -2 -54 -1 -73 3 -45 8 -62 50 -62 150 0 68 -2 75 -20 75
--17 0 -20 7 -20 40 0 36 3 40 25 40 21 0 26 7 36 45 11 45 12 45 55 45 l44 0
-0 -45z m-170 -96 c0 -49 0 -49 -32 -49 -57 0 -63 -10 -68 -112 l-5 -93 -57 -3
--58 -3 0 156 0 155 46 0 c38 0 47 -4 51 -20 5 -18 7 -19 17 -5 13 18 63 34 89
-27 13 -3 17 -15 17 -53z m-2392 31 c101 -62 96 -219 -8 -273 -51 -26 -154 -20
--199 12 -84 60 -80 199 8 258 46 31 150 32 199 3z m222 5 c0 -19 11 -19 36 0
-26 20 100 19 135 -2 74 -44 79 -208 8 -267 -36 -30 -101 -35 -137 -10 l-22 15
-0 -71 0 -71 -57 3 -58 3 -3 208 -2 207 50 0 c38 0 50 -4 50 -15z m380 -6 l0
--20 26 20 c19 15 41 21 76 21 43 0 55 -5 83 -33 40 -40 53 -102 35 -176 -16
--69 -48 -96 -113 -96 -29 0 -60 4 -69 9 -15 7 -17 0 -20 -56 l-3 -63 -57 -3
--58 -3 0 211 0 210 50 0 c44 0 50 -3 50 -21z m1447 1 c44 -26 66 -64 67 -113
-l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
-20 12 18 24 22 69 22 55 0 55 0 48 -27 -15 -60 -71 -93 -160 -93 -65 0 -110
-17 -145 54 -19 21 -25 40 -28 89 -6 114 47 167 168 167 47 0 74 -6 97 -20z"/>
-<path d="M2668 2829 c-50 -19 -64 -134 -22 -180 24 -27 87 -26 114 3 27 29 29
-126 3 156 -22 26 -59 34 -95 21z"/>
-<path d="M1482 2748 c-7 -7 -12 -35 -12 -63 0 -57 12 -75 50 -75 38 0 50 18
-50 75 0 57 -12 75 -50 75 -14 0 -31 -5 -38 -12z"/>
-<path d="M1877 2742 c-20 -22 -23 -92 -5 -110 17 -17 65 -15 72 4 3 9 6 35 6
-59 0 34 -5 47 -19 55 -27 14 -35 13 -54 -8z"/>
-<path d="M2256 2744 c-19 -18 -22 -94 -4 -112 7 -7 21 -12 33 -12 32 0 45 20
-45 66 0 43 -19 74 -45 74 -7 0 -21 -7 -29 -16z"/>
-<path d="M3538 2759 c-36 -21 -21 -39 32 -39 52 0 60 8 34 34 -18 18 -41 20
--66 5z"/>
-</g>
-</svg>
-
+              <img src="{{asset('img/logos/logo.svg')}}" class="img-responsive-logo" lazyloading/>
             </div>
             </a>
           </div>
@@ -224,27 +236,31 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                     <li class="nav-item"><a class="nav-link" href="{{route('sadmin_all_requests')}}" aria-expanded="false">
                         <div class="d-flex align-items-left">
-						<span class="nav-link-icon"><span class="fas fa-thin fa-wallet"></span></span>
-						<span class="nav-link-text ps-1 text-black">Buyers' Requests</span></div>
+                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><g clip-path="url(#clip0_1514_6104)" stroke-width="1.429" stroke-linecap="round" stroke-linejoin="round"><path d="M2.143 12.143v6.428a.714.714 0 00.714.715h14.286a.714.714 0 00.714-.715v-6.428M11.429 12.143v7.143M2.143 14.286h9.286M.714 5.714l2.143-5h14.286l2.143 5H.714zM6.786 5.714v1.429A2.857 2.857 0 013.929 10h-.4A2.857 2.857 0 01.67 7.143V5.714"></path><path d="M13.214 5.714v1.429A2.857 2.857 0 0110.357 10h-.714a2.857 2.857 0 01-2.857-2.857V5.714M19.286 5.714v1.429A2.857 2.857 0 0116.428 10h-.357a2.857 2.857 0 01-2.857-2.857V5.714"></path></g><defs><clipPath id="clip0_1514_6104"><path fill="#fff" d="M0 0h20v20H0z"></path></clipPath></defs></svg>
+                       	<span class="nav-link-text ps-1 text-black">Köpares Begäran</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
                     <li class="nav-item"><a class="nav-link" href="{{route('sadmin_all_sales')}}" aria-expanded="false">
                         <div class="d-flex align-items-left">
-						<span class="nav-link-icon"><span class="fas fa-thin fa-wallet"></span></span>
-						<span class="nav-link-text ps-1 text-black">Sales</span></div>
+                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><path d="M16.908 11.825l-4.616.917M3.067 11.833h2.041l2.925 3.284a1.176 1.176 0 00.834.383 38.494 38.494 0 004.783-4.075c.092-.258-.083-.517-.242-.733l-2.091-2.7M8.817 5.9l-.292-.25A1.8 1.8 0 007.5 5.317c-.223 0-.443.042-.65.125L3.125 6.925" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M.625 5.5h1.667a.833.833 0 01.833.767v5.35a.833.833 0 01-.833.758H.625M19.375 12.375h-1.667a.834.834 0 01-.833-.758v-5.35a.834.834 0 01.833-.767h1.667M12.292 7.667l-2.875.95A1.342 1.342 0 017.75 7.9a1.358 1.358 0 01.617-1.783l2.8-1.409c.273-.139.576-.21.883-.208.227.002.452.04.667.117l4.166 1.516" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>  
+                       <span class="nav-link-text ps-1 text-black">Försäljning</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
                     <li class="nav-item"><a class="nav-link" href="{{route('sadmin_credit_mgt')}}" aria-expanded="false">
                         <div class="d-flex align-items-left">
-						<span class="nav-link-icon"><span class="fas fa-thin fa-wallet"></span></span>
-						<span class="nav-link-text ps-1 text-black">Credit Management</span></div>
+                        <svg width="800px" height="800px" class="svg-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 12V14M12 6H5C3.89543 6 3 6.89543 3 8V14M3 14V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V14M3 14H21M23 4L18 9L16 7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+                        <span class="nav-link-text ps-1 text-black">Kredithantering</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
                     <li class="nav-item"><a class="nav-link" href="#" aria-expanded="false">
-                        <div class="d-flex align-items-left"><span class="nav-link-icon"><span class="fas fa-solid fa-history"></span></span><span class="nav-link-text ps-1 text-black">API Integrations</span></div>
+                        <div class="d-flex align-items-left">
+                        <svg viewBox="0 0 1024 1024" class="svg-icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M877.685565 727.913127l-0.584863-0.365539a32.898541 32.898541 0 0 1-8.041866-46.423497 411.816631 411.816631 0 1 0-141.829267 145.777092c14.621574-8.992268 33.62962-5.117551 43.645398 8.772944l0.146216 0.073108a30.412874 30.412874 0 0 1-7.968758 43.206751l-6.141061 4.020933a475.201154 475.201154 0 1 1 163.615412-164.419599 29.974227 29.974227 0 0 1-42.841211 9.357807z m-537.342843-398.584106c7.164571-7.091463 24.71046-9.650239 33.26408 0 10.600641 11.185504 7.164571 29.462472 0 37.138798l-110.612207 107.468569L370.901811 576.14119c7.164571 7.091463 8.114974 27.342343 0 35.384209-9.796455 9.723347-29.828011 8.188081-36.480827 1.535265L208.309909 487.388236a18.423183 18.423183 0 0 1 0-25.953294l132.032813-132.032813z m343.314556 0l132.032813 132.032813a18.423183 18.423183 0 0 1 0 25.953294L689.652124 613.133772c-6.652816 6.579708-25.587754 10.746857-36.553935 0-10.30821-10.235102-7.091463-31.290168 0-38.381632l108.345863-100.669537-111.855041-108.638294c-7.164571-7.676326-9.504023-26.611265 0-36.04218 9.284699-9.138484 26.903696-7.091463 34.068267 0z m-135.54199-26.318833c3.582286-9.504023 21.347498-15.498868 32.679217-11.258612 10.819965 4.020933 17.180349 19.008046 14.256035 28.512069l-119.896906 329.716493c-3.509178 9.504023-20.616419 13.305632-30.193551 9.723347-10.161994-3.509178-21.201282-17.545889-17.545888-26.976804l120.627985-329.716493z" fill="#000000" /></svg>
+                        <span class="nav-link-text ps-1 text-black">API-Integrationer</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
@@ -257,8 +273,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 					<!--the navigation links here are for managing trades by the admin and authorized personnel-->
 					
                   <div class="row navbar-vertical-label-wrapper mt-3 mb-2">                    
-                    <a class="nav-link dropdown-indicator text-black" role="button" data-bs-toggle="collapse" aria-expanded="true">
-                    <div class="d-flex align-items-left"><span class="nav-link-icon"><span class="fas fa-chart-pie"></span></span><span class="nav-link-text ps-1" style="font-weight:600;font-size:14px;">Admin</span>
+                    <a class="nav-link text-black" role="button" data-bs-toggle="collapse" aria-expanded="true">
+                    <div class="d-flex align-items-left"><span class="nav-link-text ps-1" style="font-weight:600;font-size:14px;">Administration</span>
                   </div>
                   </a>
                 
@@ -267,42 +283,51 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                       <hr class="mb-0 navbar-vertical-divider" />
                     </div>
                   </div><!-- parent pages-->
-
-				  				  
-				  <!-- parent pages-->
-				  <a class="nav-link" href="" target="_blank" role="button" data-bs-toggle="" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-book"></span></span><span class="nav-link-text ps-1 text-black">Logs</span></div>
-                  </a><!-- parent pages--><a class="nav-link dropdown-indicator" href="#email" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-envelope-open"></span></span><span class="nav-link-text ps-1 text-black">System Notifications</span></div>
+       
+                  <a class="nav-link dropdown-indicator" href="#email" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="email">
+                    <div class="d-flex align-items-center">
+                    <svg viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><g clip-path="url(#clip0_1060_2513)"><path d="M18.588 15.88h-8.75l-5 3.75v-3.75h-2.5a1.25 1.25 0 01-1.25-1.25V2.13A1.25 1.25 0 012.338.88h16.25a1.25 1.25 0 011.25 1.25v12.5a1.25 1.25 0 01-1.25 1.25z" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></g><defs><clipPath id="clip0_1060_2513"><path transform="translate(.463 .254)" d="M0 0h20v20H0z"></path></clipPath></defs></svg>
+                    <span class="nav-link-text ps-1 text-black">Sys. Meddelanden</span></div>
                   </a>
 
                   <ul class="nav collapse" id="email">
-                    <li class="nav-item"><a class="nav-link" href="" data-bs-toggle="" aria-expanded="false">
+                    <li class="nav-item">
+                      <a class="nav-link" href="" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Inbox</span>
                       <p class="unread_notebox" style="font-family:GD Sherpa;font-size:10px;">{{ $unreadMessageCounter }}</p>
                       </div>
                       </a><!-- more inner pages-->
                     </li>
                     
+                    <li class="nav-item">
+                      <a class="nav-link" href="" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Logs</span>
+                     
+                      </div>
+                      </a><!-- more inner pages-->
+                    </li>
+                    
+
                     <li class="nav-item"><a class="nav-link" href="" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">New Broadcast</span></div>
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Ny sändning</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
                   </ul><!-- parent pages-->
                   
                   <a class="nav-link dropdown-indicator" href="#invoices" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="invoices">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-calendar-day"></span></span>
-                    <span class="nav-link-text ps-1 text-black">Invoices</span></div>
+                    <div class="d-flex align-items-center">
+                    <svg width="800px" height="800px" viewBox="0 0 1024 1024" class="svg-icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M621.79 438.98h56.16L547.92 569.02 402.37 423.46 194.1 631.73l51.71 51.72 156.56-156.56 145.55 145.56 183.37-183.38v59.7h73.15V365.84H621.79z" fill="#0F1F3C" /><path d="M829.15 73.14h-6.48c-30.41 0-58.57 17.11-75.34 45.75-6.12 10.43-22.29 11.7-29.96 2.43-25.52-31.07-59.41-48.18-95.64-48.18-35.98 0-69.86 17.11-95.41 48.18-7.02 8.52-21.29 8.5-28.27-0.02-25.55-31.05-59.43-48.16-95.41-48.16s-69.86 17.11-95.41 48.18c-7.66 9.34-23.82 8.07-29.95-2.43-16.8-28.64-44.96-45.75-75.34-45.75h-7.25c-46.89 0-85.05 38.16-85.05 85.05V865.8c0 46.89 38.16 85.05 85.05 85.05h7.25c30.38 0 58.54-17.11 75.36-45.79 6.07-10.45 22.23-11.77 29.93-2.38 25.55 31.05 59.43 48.16 95.41 48.16s69.86-17.11 95.41-48.18c6.98-8.48 21.25-8.54 28.27 0.02 25.55 31.05 59.43 48.16 95.66 48.16 35.98 0 69.88-17.11 95.38-48.14 7.73-9.38 23.89-8.02 29.96 2.36 16.79 28.68 44.95 45.79 75.36 45.79h6.48c46.89 0 85.05-38.16 85.05-85.05V158.2c-0.01-46.9-38.17-85.06-85.06-85.06z m11.91 792.66c0 6.57-5.34 11.91-11.91 11.91h-6.48c-6.14 0-10.91-7.34-12.23-9.61-16.36-27.91-46.61-45.25-78.93-45.25-27.43 0-53.16 12.16-70.64 33.39-6.59 8.02-20.41 21.46-39.14 21.46-18.48 0-32.32-13.46-38.91-21.46-34.88-42.48-106.43-42.43-141.27-0.02-6.59 8.02-20.43 21.48-38.91 21.48s-32.32-13.46-38.91-21.46c-17.43-21.23-43.18-33.39-70.62-33.39-32.36 0-62.61 17.36-78.93 45.25-1.32 2.25-6.11 9.61-12.23 9.61h-7.25c-6.57 0-11.91-5.34-11.91-11.91V158.2c0-6.57 5.34-11.91 11.91-11.91h7.25c6.12 0 10.91 7.36 12.21 9.57 16.34 27.93 46.59 45.29 78.95 45.29 27.45 0 53.2-12.16 70.62-33.38 6.59-8.02 20.43-21.48 38.91-21.48s32.32 13.46 38.91 21.46c34.84 42.45 106.39 42.46 141.27 0.02 6.59-8.02 20.43-21.48 39.16-21.48 18.48 0 32.3 13.45 38.91 21.5 17.46 21.2 43.2 33.36 70.62 33.36 32.32 0 62.57-17.34 78.95-45.29 1.3-2.23 6.07-9.57 12.21-9.57h6.48c6.57 0 11.91 5.34 11.91 11.91v707.6z" fill="#0F1F3C" /></svg>  
+                    <span class="nav-link-text ps-1 text-black">Fakturor</span></div>
                   </a>
                   <ul class="nav collapse" id="invoices">
                     <li class="nav-item"><a class="nav-link" href="{{ route('sadmin_all_invoices') }}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">All Invoices</span></div>
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Alla fakturor</span></div>
                       </a><!-- more inner pages-->
                     </li>
                     
                     <li class="nav-item"><a class="nav-link" href="{{route('sadmin.new_invoice')}}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Create New Invoice</span></div>
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Skapa ny Faktura</span></div>
                       </a><!-- more inner pages-->
                     </li>
                     
@@ -310,27 +335,29 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                   
 
                   <a class="nav-link dropdown-indicator" href="#events" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="events">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-calendar-day"></span></span><span class="nav-link-text ps-1 text-black">Users</span></div>
+                    <div class="d-flex align-items-center">
+                      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-69441b5d=""><path d="M5.625 5a4.375 4.375 0 108.75 0 4.375 4.375 0 00-8.75 0zM1.875 19.375a8.125 8.125 0 1116.25 0" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>  
+                      <span class="nav-link-text ps-1 text-black">Användare</span></div>
                   </a>
                   <ul class="nav collapse" id="events">
-                    <li class="nav-item"><a class="nav-link" href="{{route('sa_all_users',['type'=>all])}}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">All Users</span></div>
+                    <li class="nav-item"><a class="nav-link" href="{{route('sa_all_users',['type'=>'all'])}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Alla Användare</span></div>
                       </a><!-- more inner pages-->
                     </li>
                     
-                    <li class="nav-item"><a class="nav-link" href="{{route('sa_all_users',['type'=>suppliers])}}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Suppliers</span></div>
+                    <li class="nav-item"><a class="nav-link" href="{{route('sa_all_users',['type'=>'supplier'])}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Leverantörer</span></div>
                       </a><!-- more inner pages-->
                     </li>
                     
-                    <li class="nav-item"><a class="nav-link" href="{{route('sa_all_users',['type'=>buyers])}}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Customers</span></div>
+                    <li class="nav-item"><a class="nav-link" href="{{route('sa_all_users',['type'=>'client'])}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Kunder</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
 
                     <li class="nav-item"><a class="nav-link" href="{{route('sa_all_users',['type'=>'deleted_users'])}}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Deleted Users</span></div>
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Raderade Användare</span></div>
                       </a><!-- more inner pages-->
                     </li>
                   </ul><!-- parent pages-->
@@ -346,7 +373,16 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                       <hr class="mb-0 navbar-vertical-divider" />
                     </div>
                   </div><!-- parent pages--><a class="nav-link" href="{{route('site_configuration')}}" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-flag"></span></span><span class="nav-link-text ps-1 text-black">Site Settings</span></div>
+                    <div class="d-flex align-items-center">
+                    <svg width="800px" height="800px" class="svg-icon" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Settings</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Settings">
+            <rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+            <circle id="Oval" stroke="#0C0310" stroke-width="2" stroke-linecap="round" cx="12" cy="12" r="3"></circle>
+<path d="M10.069,3.36281 C10.7151,1.54573 13.2849,1.54573 13.931,3.3628 C14.338,4.5071 15.6451,5.04852 16.742,4.52713 C18.4837,3.69918 20.3008,5.51625 19.4729,7.25803 C18.9515,8.35491 19.4929,9.66203 20.6372,10.069 C22.4543,10.7151 22.4543,13.2849 20.6372,13.931 C19.4929,14.338 18.9515,15.6451 19.4729,16.742 C20.3008,18.4837 18.4837,20.3008 16.742,19.4729 C15.6451,18.9515 14.338,19.4929 13.931,20.6372 C13.2849,22.4543 10.7151,22.4543 10.069,20.6372 C9.66203,19.4929 8.35491,18.9515 7.25803,19.4729 C5.51625,20.3008 3.69918,18.4837 4.52713,16.742 C5.04852,15.6451 4.5071,14.338 3.3628,13.931 C1.54573,13.2849 1.54573,10.7151 3.36281,10.069 C4.5071,9.66203 5.04852,8.35491 4.52713,7.25803 C3.69918,5.51625 5.51625,3.69918 7.25803,4.52713 C8.35491,5.04852 9.66203,4.5071 10.069,3.36281 Z" id="Path" stroke="#0C0310" stroke-width="2" stroke-linecap="round">
+</path></g></g></svg>  
+                    <span class="nav-link-text ps-1 text-black">Site Settings</span></div>
                   </a><!-- parent pages-->
                   
                 </li>
@@ -355,19 +391,21 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
               @endif
 			  
 
-              <div class="settings" style="padding:10px;margin:0;background:#fff;border-radius:10px;">
+              <div class="settings" style="padding:6px;margin:0;background:#fff;border-radius:10px;">
                <div class="grid-2-x">
                   <img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img-responsive img-circle-md move-left-20" />
-                <small>@if(\Auth::user()->user_cat=='SUPPLIER') {{$supplierObj->where('supplier_id','=',\Auth::user()->id)->first()->supplier_corp_name}} @endif</small>
+                <small>@if(\Auth::user()->user_cat=='SUPPLIER') {{$supplierObj->where('supplier_id','=',\Auth::user()->id)->first()->supplier_corp_name }} @else 
+                {{\Auth::user()->f_name.' '.\Auth::user()->l_name}}  
+                @endif</small>
                   </div>
 
               <div class="grid-2-y">
               <div class="footer-item">
-              <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-mini fill-current-color" style="fill: none;" data-v-270f2b45=""><g clip-path="url(#clip0_1810_41320)" stroke="#B8C3D5" stroke-width=".75" stroke-linecap="round" stroke-linejoin="round"><path d="M11.625.374L.375 11.624M11.625 3.749V.374H8.25M.375.374L4.5 4.499M11.625 8.249v3.375H8.25M7.5 7.499l4.125 4.125"></path></g><defs><clipPath id="clip0_1810_41320"><path fill="#fff" d="M0 0h12v12H0z"></path></clipPath></defs></svg><a href="{{route('marketplace.clients')}}" target="_blank"><span>Växla till köpare</span></a>
+              <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-mini fill-current-color" style="fill: none;" data-v-270f2b45=""><g clip-path="url(#clip0_1810_41320)" stroke="#B8C3D5" stroke-width=".75" stroke-linecap="round" stroke-linejoin="round"><path d="M11.625.374L.375 11.624M11.625 3.749V.374H8.25M.375.374L4.5 4.499M11.625 8.249v3.375H8.25M7.5 7.499l4.125 4.125"></path></g><defs><clipPath id="clip0_1810_41320"><path fill="#fff" d="M0 0h12v12H0z"></path></clipPath></defs></svg><a href="{{route('sadmin_index')}}" target="_blank"><span class="text-black">Home</span></a>
               </div>
-              <div class="footer-item logout">
+              <div class="footer-item">
               <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-mini fill-current-color" style="fill: none;" data-v-270f2b45=""><g clip-path="url(#clip0_738_26060)" stroke="#B8C3D5" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M19.375 10.003H6.25M9.375 13.128L6.25 10.003l3.125-3.125"></path><path d="M13.125 13.75v3.75a1.197 1.197 0 01-1.137 1.25H1.761A1.197 1.197 0 01.625 17.5v-15a1.197 1.197 0 011.136-1.25h10.227a1.197 1.197 0 011.137 1.25v3.75"></path></g><defs><clipPath id="clip0_738_26060"><path fill="#fff" d="M0 0h20v20H0z"></path></clipPath></defs></svg>  
-              <a href="{{route('logout')}}"><span>Logga ut</span></a></div>
+              <a href="{{route('logout')}}"><span class="text-black">Logga ut</span></a></div>
               </div>
 
                 </div>
@@ -382,9 +420,11 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
           <a class="navbar-brand me-1 me-sm-3" href="{{ route('index') }}">
             <div class="d-flex align-items-center">
               
-            <img src="{{ asset('img/'.\App\Models\Config::get_value('site_logo_light')) }}" lazyloading alt="Site Logo" class="avatar avatar-xl avatar-4x3 me-2"/>
+            <img src="{{asset('img/logos/logo.svg')}}" class="img-responsive-logo" lazyloading/>
                
-              <span class="font-sans-serif">{{config('app.name')}}</span></div>
+              <span class="font-sans-serif">{{config('app.name')}}</span>
+            
+            </div>
 
           </a>
           <div class="collapse navbar-collapse scrollbar" id="navbarStandard">

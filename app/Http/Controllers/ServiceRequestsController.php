@@ -106,7 +106,7 @@ public static function get_request_metadata($field,$request_id){
 
 public function allbuyersrequest(){
 
-$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->orderBy('created_at','DESC')->paginate(30);
+$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->orderBy('created_at','DESC')->paginate(2);
 
 return view('marketplace.sadmin.buyer_requests',['title'=>"Köparnas önskemål",'allrequest'=>$allrequests]);
 
@@ -118,7 +118,7 @@ return view('marketplace.sadmin.buyer_requests',['title'=>"Köparnas önskemål"
  */
 public function get_all_sales(){
 
-$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->where('project_execution_status',true)->orderBy('created_at','DESC')->paginate(30);
+$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->where('project_execution_status',true)->orderBy('created_at','DESC')->paginate(10);
 
 return view('marketplace.sadmin.buyer_requests',['title'=>"Förfrågningar vände försäljning",'allrequest'=>$allrequests]);
 

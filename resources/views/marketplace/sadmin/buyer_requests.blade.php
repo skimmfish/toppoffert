@@ -69,6 +69,10 @@
                     </div>
                     @endforeach
                         @endif
+
+                        <div class="pagination">
+                        {!! $allrequest->links('vendor.pagination.bootstrap-4') !!}
+                        </div>
                 </div>
 
 

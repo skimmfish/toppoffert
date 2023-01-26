@@ -83,11 +83,14 @@ class LoginController extends Controller
                //IF the logged in user is a super admin   
                //return response()->json([[3]]);
                return redirect()->route('sadmin_index');
-
-                    
                
             }else{
-               return 'invalid_credentials_error';
+               $error = ["Invalid login credentials"];
+
+               $messageBag = new \Illuminate\Support\MessageBag($error);
+
+               return redirect()->route('auth.login')->with(['message'=>$messageBag]);
+               
             }
             //$error = 'Invalid Login Credentials';
             //flash::fail($error);
