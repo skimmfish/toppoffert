@@ -135,14 +135,11 @@ Route::middleware(['auth','sadmin'])->prefix('marketplace/sa')->group(function()
 
     //super administrator's home
 Route::get('/',function(){
-
-    return view('marketplace.sadmin.index',['title'=>"Administrator's Portal - ".config('app.name'), 'unreadMessageCounter'=>0]);
-
+return view('marketplace.sadmin.index',['title'=>"Administrator's Portal - ".config('app.name'), 'unreadMessageCounter'=>0]);
 })->name('sadmin_index');
 
 //generate invoices
 Route::get('/invoices',function(){
-
 
 })->name('sadmin.invoices');
 
@@ -173,21 +170,26 @@ Route::get('/credit-management',[App\Http\Controllers\CreditsController::class,'
 
 
 //assign credit view
-Route::get('/assign-credit-view/{supplier_id}/{img}/{f_name}/{email}',function($supplier_id,$img,$f_name,$email){
+Route::get('/assign-credit-view/{supplier_id}/{img}/{f_name}/{email}/{l_name}',function($supplier_id,$img,$f_name,$email,$l_name){
     
-    return view('marketplace.sadmin.assigncreditview',['supplier_id'=>$supplier_id,'img'=>$img, 'f_name'=>$f_name,'email'=>$email]);
+    return view('marketplace.sadmin.assigncreditview',['l_name'=>$l_name,'supplier_id'=>$supplier_id,'img'=>$img,
+    'f_name'=>$f_name,'email'=>$email,'supObj'=>new \App\Http\Controllers\SuppliersController]);
 
 })->name('assign_credit');
 
 //assign_credit_action route
 Route::put('/assign-credit/{id}',[\App\Http\Controllers\CreditsController::class,'assign_credit'])->name('assign_credit_to_supplier');
 
-
 //send an email to
 Route::get('mail-to/{email}',function($mail){
 
-
 })->name('mail_to_supplier');
+
+
+
+//for logs
+Route::get('/administrative-log/{type}',[App\Http\Controllers\LoggerController::class,'getlog'])->name('sadmin.log');
+
 
 //all users with a type argument
 Route::get('/all-users/{type}',[App\Http\Controllers\UserController::class,'sa_all_users'])->name('sa_all_users');
@@ -258,12 +260,28 @@ Route::get('/switch-to-maintenance',function(){
 
 //see a user's profile
 Route::get('/see-user-profile/{id}',function($id){
+
     $profile = \App\Models\User::where('id',$id)->first();
 
     return view('marketplace.sadmin.viewprofile',['id'=>$id,'profileID'=>$profile]);
 
 })->name('seeuserprofile');
 
+//Delete user
+Route::get('/delete-user-confirmation/$id',function($id){
+    return view('pages.deleteuserconfirmation',['id'=>$id]);
+})->name('delete_user_confirmation');
+
+//delete the user using softdelete model
+Route::get('/delete-user/{id}',[\App\Http\Controllers\UserController::class, 'delete_user'])->name('delete_user');
+
+
+//send a message to the user
+Route::get('/send-message/{email}',function($email){
+
+return view('pages.send_a_message',['email'=>$email]);
+
+})->name('send_message');
 
 //create invoices
 Route::get('/create-invoice',function(){})->name('sadmin.create_invoice');

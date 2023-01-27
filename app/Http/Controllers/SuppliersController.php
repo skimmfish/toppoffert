@@ -40,10 +40,24 @@ class SuppliersController extends Controller
  */
 public static function getRatings($supplier_id){
 
-
-
-
 }
 
+/***
+ * this function retrieves a data in the supplier's table using the primary key field of the table
+ * @param String<$datafield>
+ * @param Integer <$supplier_id>
+ */
+public function get_supplier_data($datafield,$supplier_id){
+$columntoreturn = null;
+$data = \App\Models\Suppliers::where('supplier_id',$supplier_id)->first();
+
+if($data){
+
+$columntoreturn = $data->$datafield;
+
+}
+return $columntoreturn;
+
+}
 
 }

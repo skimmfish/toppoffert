@@ -36,11 +36,10 @@
             <td>{{ $x->credits }}</td>
             <td>{{ date('D, M Y',strtotime($x->updated_at)) }}</td>
             <td>
-
             <a href="#" data-attr="" data-target="#requestModal"  id="sendInvoice" data-toggle="modal" class="text-primary">Skicka en faktura</a><br/>
-            <a href="#" data-toggle="modal" data-attr="{{route('assign_credit',['supplier_id'=>$x->supplier_id,'img'=>$x->profile_img,'f_name'=>$x->f_name,'email'=>$x->email])}}" class="text-black" id="assignCredit" data-target="requestModal">Tilldela kredit</a><br/>
+            <a href="#" data-attr="{{route('assign_credit',['supplier_id'=>$x->supplier_id,'img'=>$x->profile_img,'f_name'=>$x->f_name,'email'=>$x->email,'l_name'=>$x->l_name])}}" class="text-black" data-toggle="modal" id="assignCredit" data-target="requestModal">Tilldela kredit</a><br/>
 
-            </td>                
+        </td>                
             </tr>
 
             </tbody>

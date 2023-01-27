@@ -7,7 +7,7 @@
 </tr>
 
 <tr>
-    <th>{{ $profileID->username }}</th>
+<th  class="grid-box"><span><img src="{{asset('img/avatar/'.$profile->profile_img)}}" class="img-responsive-sm" lazyloading/></span> <span>{{ $profile->username }}</span></th>
 </tr>
 
 <tr>
@@ -15,7 +15,7 @@
 </tr>
 
 <tr>
-    <th>{{ $profileID->f_name.' '.$profileID->l_name }}</th>
+<th>{{ $profile->f_name.' '.$profile->l_name }}</th>
 </tr>
 
 <tr>
@@ -23,7 +23,7 @@
 </tr>
 
 <tr>
-    <th>{{ $profileID->email }}</th>
+    <th>{{ $profile->email }}</th>
 </tr>
 
 <tr>
@@ -31,14 +31,8 @@
 </tr>
 
 <tr>
-    <th>{{ $profileID->address.' '.$profileID->city.', '.$profileID->zip_code.', '.$profileID->province }}</th>
+    <th>{{ $profile->address.' '.$profile->city.', '.$profile->zip_code.', '.$profile->province }}</th>
 </tr>
-
-
-
-
-
-
 
 </thead>
 </table>

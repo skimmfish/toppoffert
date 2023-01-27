@@ -44,7 +44,7 @@ class UserController extends Controller
         $allUsers = \App\Models\User::whereNotNull('email_verified_at')->where(['active'=>true,'user_cat'=>$type])->orderBy('created_at','DESC')->paginate(20);    
     }
     
-    return view('marketplace.sadmin.allusers',['allusers'=>$allUsers,'title'=>'Alla Användare']);
+    return view('marketplace.sadmin.allusers',['user_cat'=>strtoupper($type),'allusers'=>$allUsers,'title'=>'Alla Användare','supObj' => new \App\Http\Controllers\SuppliersController]);
 }
     /**
      * Show the form for creating a new resource.

@@ -48,7 +48,11 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
     <link href="{{asset('css/supplier.css')}}" rel="stylesheet">
     <link href="{{asset('css/fixed_footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
-    
+    <link href="{{asset('css/modal_pop_css.css')}}" rel="stylesheet" />
+
+    <!-- Script -->
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 
     <script>
       var isRTL = JSON.parse(localStorage.getItem('isRTL'));
@@ -68,6 +72,38 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
  
 <!--for local/dev testing-->
 <script src="{{asset('js/jquery-2.2.0.min.js')}}"></script>
+
+<!--view user-->
+<script>
+        // display a modal (small modal)
+        $(document).on('click', '#viewUsr', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
+
+<!--for approving requests-->
+<script>
 
 <script>
         // display a modal (small modal)
@@ -292,27 +328,22 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
 
                   <ul class="nav collapse" id="email">
                     <li class="nav-item">
-                      <a class="nav-link" href="" data-bs-toggle="" aria-expanded="false">
+                      <a class="nav-link" href="{{route('sadmin.log',['type'=>'notifications'])}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Inbox</span>
                       <p class="unread_notebox" style="font-family:GD Sherpa;font-size:10px;">{{ $unreadMessageCounter }}</p>
                       </div>
-                      </a><!-- more inner pages-->
+                      </a>
+                      <!--more inner pages-->
                     </li>
                     
                     <li class="nav-item">
-                      <a class="nav-link" href="" data-bs-toggle="" aria-expanded="false">
+                      <a class="nav-link" href="{{route('sadmin.log',['type'=>'log'])}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Logs</span>
                      
                       </div>
                       </a><!-- more inner pages-->
                     </li>
                     
-
-                    <li class="nav-item"><a class="nav-link" href="" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Ny sändning</span></div>
-                      </a><!-- more inner pages-->
-                    </li>
-
                   </ul><!-- parent pages-->
                   
                   <a class="nav-link dropdown-indicator" href="#invoices" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="invoices">

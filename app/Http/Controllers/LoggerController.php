@@ -31,4 +31,24 @@ public function setasread($id){
         return redirect()->back()->with(['message'=>'Log deleted successfully']);
 
     }
+
+    /**
+     * @param String <$type>
+     */
+public function getlog($type){
+
+if($type=='log'){
+
+    $allLogs = \App\Models\Logger::where("read_status",false)->orderBy('created_at','DESC')->paginate(20);
+    $title = '';
+}else if($type=='notifications'){
+
+    $messagesForAdmin = \App\Models\NotificationModel::where(["read_status"=>false,'receiver_id'=>'admin'])->orderBy('created_at','DESC')->paginate(20); 
+
+}
+
+
+return view('marketplace.sadmin.log',['title'=>$title,'notificationsAdmin'=>$messagesForAdmin,'logs'=>$alllogs]);
+}
+
 }
