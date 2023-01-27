@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewSupplier extends Mailable
+class SendMessage extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,17 +18,13 @@ class NewSupplier extends Mailable
      *
      * @return void
      */
-    protected $f_name;
-    protected $msg;
-    protected $email;
-    protected $ur_pw;
+    protected $message;
+    protected $name;
 
-    public function __construct($f_name,$msg,$email,$ur_pw)
+    public function __construct($msg,$name)
     {
-        $this->f_name = $f_name;
-        $this->msg = $msg;
-        $this->email = $email;
-        $this->ur_pw = $ur_pw;
+        $this->message = $msg;
+        $this->name = $name;
     }
 
     /**
@@ -44,6 +40,7 @@ class NewSupplier extends Mailable
                 new Address('hello@toppoffert.se', 'Abbel Ljung'),
             ],
             subject: 'Tack för att du ansluter'
+       
         );
     }
 
@@ -55,12 +52,11 @@ class NewSupplier extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'emails.newsupplier',
+            markdown: 'emails.sendmessage',
             with: [
-                'message' => $this->msg,
-                'f_name' => $this->f_name,
-                'ur_email'=>$this->email,
-                'ur_pw' => $this->ur_pw
+                'message' => $this->message,
+                'name' => $this->name,
+                
             ]
         );
     }

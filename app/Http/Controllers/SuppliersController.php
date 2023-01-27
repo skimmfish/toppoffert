@@ -20,7 +20,7 @@ class SuppliersController extends Controller
      public function store(Request $request){
 
         $supplier = new Suppliers;
-        $rule = ['email' => 'required | unique:suppliers | email'];
+        $rule = ['email' => 'required | unique:suppliers | email:rfc,dns'];
         $request->validate($rule);
 
         $supplier->supplier_email = $request->_email_address;

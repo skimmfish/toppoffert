@@ -44,7 +44,12 @@ class UserController extends Controller
         $allUsers = \App\Models\User::whereNotNull('email_verified_at')->where(['active'=>true,'user_cat'=>$type])->orderBy('created_at','DESC')->paginate(20);    
     }
     
-    return view('marketplace.sadmin.allusers',['user_cat'=>strtoupper($type),'allusers'=>$allUsers,'title'=>'Alla Användare','supObj' => new \App\Http\Controllers\SuppliersController]);
+    return view('marketplace.sadmin.allusers',[
+    'user_cat'=>strtoupper($type),
+    'type'=>$type,
+    'allusers'=>$allUsers,
+    'title'=>'Alla Användare',
+    'supObj' => new \App\Http\Controllers\SuppliersController]);
 }
     /**
      * Show the form for creating a new resource.
@@ -194,6 +199,20 @@ public function deleteaccount($id){
     return redirect()->route('login')->with(['message'=>"Your account has been deleted successfully, thank you."]);
 }
 
+
+/**
+ * This function softdeletes a resource
+ */
+public function delete_user($id){
+    $user = \App\Models\User::find($id);
+    $res = $user->delete();
+
+    if($res==1){
+return redirect()->route('sa_all_users')->with(['message'=>'Användaren Har Arkiverats!']);
+    }
+    //\App\Models\User::softDelete($id)
+
+}
 
 /**
      * Remove the specified resource from storage.

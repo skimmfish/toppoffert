@@ -10,6 +10,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head itemscope itemtype="http://schema.org/WebSite">
     <meta charset="utf-8">
+
     <title itemprop="name">@if(isset($title)){{$title}} @else - Pris - {{config('app.name')}}.se @endif</title>
 
     <link rel="dns-prefetch" href="https://static.doubleclick.net/" />
@@ -597,7 +598,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         </div>
     </div>
 </div>
-<form class="supplier-register-email email-form-small">
+<form class="supplier-register-email email-form-small" method="POST" action="">
     <label for="registerEmail" class="hidden">E-post</label>
     <input type="email" data-source="subscriptionSmall" name="registerEmail" class="supplier-register-input" placeholder="E-post" autocomplete="off">
     <button type="submit" class="supplier-register-submit">

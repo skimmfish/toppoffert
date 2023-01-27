@@ -85,29 +85,7 @@
     <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
 </head>
 <body class="supplier-register">
-    <script type="text/javascript">
-        var _paq;
-        if(_paq) {
-        _paq = _paq;
-        } else {
-        _paq = [];
-        }
-        if (window.location.href.includes('staging.offertadev') || window.location.href.includes('localhost:')) {
-            window.PiwikPROappID = '7dbc9a11-29d1-4b5a-806e-56dcb82507a4'
-        } else {
-            window.PiwikPROappID = '97384d4f-d41f-4ee9-8ff0-acf02a075074'
-        }
-        (function (window, document, dataLayerName, id) {
-            window[dataLayerName] = window[dataLayerName] || [], window[dataLayerName].push({ start: (new Date).getTime(), event: "stg.start" }); var scripts = document.getElementsByTagName('script')[0], tags = document.createElement('script');
-            function stgCreateCookie(a, b, c) { var d = ""; if (c) { var e = new Date; e.setTime(e.getTime() + 24 * c * 60 * 60 * 1e3), d = "; expires=" + e.toUTCString() } document.cookie = a + "=" + b + d + "; path=/" }
-            var isStgDebug = (window.location.href.match("stg_debug") || document.cookie.match("stg_debug")) && !window.location.href.match("stg_disable_debug"); stgCreateCookie("stg_debug", isStgDebug ? 1 : "", isStgDebug ? 14 : -1);
-            var qP = []; dataLayerName !== "dataLayer" && qP.push("data_layer_name=" + dataLayerName), isStgDebug && qP.push("stg_debug"); var qPString = qP.length > 0 ? ("?" + qP.join("&")) : "";
-            tags.async = !0, tags.src = "https://fortnox.containers.piwik.pro/" + id + ".js" + qPString, scripts.parentNode.insertBefore(tags, scripts);
-            !function (a, n, i) { a[n] = a[n] || {}; for (var c = 0; c < i.length; c++)!function (i) { a[n][i] = a[n][i] || {}, a[n][i].api = a[n][i].api || function () { var a = [].slice.call(arguments, 0); "string" == typeof a[0] && window[dataLayerName].push({ event: n + "." + i + ":" + a[0], parameters: [].slice.call(arguments, 1) }) } }(i[c]) }(window, "ppms", ["tm", "cm"]);
-        })(window, document, 'dataLayer', window.PiwikPROappID);
-    </script> 
-    
-    
+     
     
 
     <div class="legacy-browser-warning alert-site">
@@ -271,6 +249,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </div>
     <div class="splash-supplier-register__inner no-spacing__top">
         <div class="splash-supplier-register-column supplier-register-form-container">
+            <form action="{{route('register_supplier')}}" method="POST">
+                @csrf
 <div id="supplierRegisterForm" class="form-new">
     <!-- Email input -->
     <div id="formGroupEmail" class="form-group">
@@ -293,7 +273,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     <div id="formGroupSearch" class="form-group company-search-group">
         <div class="label">Företagsnamn eller org-nummer</div>
         <div class="register-input-container">
-            <input class="supplier-register-input search-input full-width" type="organization" name="company"
+            <input class="supplier-register-input search-input full-width" type="text" name="company"
                 autocomplete="off" placeholder=" ">
             <div id="companySearchSpinner" class="company-search-spinner hidden">
 
@@ -363,6 +343,17 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <span class="input-error-message">Det där ser inte ut som ett telefonnummer, testa igen!</span>
     </div>
 
+ <!-- Contact input -->
+ <div id="formGroupContact" class="form-group">
+        <div class="label">Företags Adress</div>
+        <div class="register-input-container">
+            <input class="supplier-register-input full-width" name="address" autocomplete="address" type="text">
+           
+        </div>
+        <span class="input-error-message">Du måste fylla i en kontaktperson</span>
+    </div>
+
+
     <!-- Contact input -->
     <div id="formGroupContact" class="form-group">
         <div class="label">Kontaktperson</div>
@@ -379,21 +370,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <span class="input-error-message">Du måste fylla i en kontaktperson</span>
     </div>
 
-    <!-- Campaign code input -->
-    <div id="supplierRegisterCampaignCode" class="form-group campaign-code hidden">
-        <div class="label">Kampanjkod</div>
-        <div class="register-input-container">
-            <input class="supplier-register-input full-width " name="campaignCode" type="text">
-            <span class="input-error-icon"> 
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E26987" class="icon">
-  <title>alert-circle</title>
-  <path d="M11.983 0a12.206 12.206 0 0 0-8.51 3.653A11.8 11.8 0 0 0 0 12.207 11.779 11.779 0 0 0 11.8 24h.214A12.111 12.111 0 0 0 24 11.791 11.766 11.766 0 0 0 11.983 0zM10.5 16.542a1.476 1.476 0 0 1 1.449-1.53h.027a1.527 1.527 0 0 1 1.523 1.47 1.475 1.475 0 0 1-1.449 1.53h-.027a1.529 1.529 0 0 1-1.523-1.47zM11 12.5v-6a1 1 0 0 1 2 0v6a1 1 0 1 1-2 0z" />
-</svg>
- </span>
-        </div>
-    </div>
-
     <!-- Submit button -->
     <div class="button-wrapper">
         <button type="submit" id="submitButton" class="supplier-register-submit">
@@ -407,13 +383,13 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
   </g>
 </svg>
 
-            
-
+        
 <svg viewBox="0 0 50 50" class="spinner">
   <circle class="path" cx="25" cy="25" r="16" fill="none" stroke-width="5" />
 </svg>
 
         </button>
+    </form>
     </div>
 </div>
 

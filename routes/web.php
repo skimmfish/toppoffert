@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +54,73 @@ Route::get('anslut-ditt-foretag',function(){
     return view('pages.anslut-ditt-foretag',['title'=>'Anslut Ditt Foretag']);
 })->name('anslut-ditt-foretag');
 
+
+//for registering new suppliers
+Route::post('/register-supplier',function(Request $req){
+    $newsupplier= new \App\Models\Suppliers;
+    $newUser = new \App\Models\User;
+
+    $s_email = $req->email;
+
+    $username =explode("@",$s_email)[0];
+    $pw = Str::random(8);
+    $password = Hash::make($pw);
+    $corp_name = $req->company;
+    $date_registered = date('Y-m-d');
+    $f_name = $req->contactPerson;
+    $phone_no = $req->phoneNumber;
+    $alt_phone = $req->alternate_phone;
+    $address = $req->address;
+    $city = $req->city;
+    $province = $req->province;
+    $zipcode = $req->zip_code;
+    $business_email = $req->business_email;
+
+    //creating a user
+   /* $newUser->email=$s_email;
+    $newUser->username=$username;
+    $newUser->password=$password;
+    $newUser->address = $address;
+    $newUser->province=$province;
+    $newUser->zip_code=$zipcode;
+    $newUser->phone_no = $phone_no;
+    $newUser->telephone = $alt_phone;
+    $newUser->user_cat = 'SUPPLIER';
+    $newUser->administrative_level = 0;
+    $resp = $newUser->save();
+*/
+  
+    $lastID = \App\Models\User::insertGetId([
+    //creating a user
+    'email'=> $s_email,
+    'business_email'=>$business_email,
+    'username'=>$username,
+    'f_name'=>$f_name,
+    'password'=>$password,
+    'address' => $address,
+    'province' => $province,
+    'zip_code' => $zipcode,
+    'phone_no' => $phone_no,
+    'telephone' => $alt_phone,
+    'user_cat' => 'SUPPLIER',
+    'created_at'=>date('Y-m-d h:i:s',time()),
+    'updated_at'=>date('Y-m-d h:i:s',time()),
+    'administrative_level' =>0
+    ]);
+
+    //$resp = $newU->id;
+
+    //setting the column fields
+    $newsupplier->supplier_email = $s_email;
+    $newsupplier->supplier_corp_name=$corp_name;
+    $newsupplier->date_registered=$date_registered;
+    $newsupplier->supplier_address = $address.', '.$zipcode.','.$province;
+    $newsupplier->supplier_id = $lastID;
+    $newsupplier->save();
+
+    return redirect()->route("marketplace_suppliers_staging")->with(['pw'=>$pw,'message'=>'Tack för att du anmäler ditt intresse för att arbeta med '.config('app.name').' vänligen kontrollera din e-post för ytterligare instruktioner']);
+
+})->name('register_supplier');
 
 //staging area for suppliers who just got their interest registered
 Route::get('suppliers-staging',function(){
@@ -135,7 +205,22 @@ Route::middleware(['auth','sadmin'])->prefix('marketplace/sa')->group(function()
 
     //super administrator's home
 Route::get('/',function(){
-return view('marketplace.sadmin.index',['title'=>"Administrator's Portal - ".config('app.name'), 'unreadMessageCounter'=>0]);
+
+$newSuppliers = 0;
+$no_of_clients = 0;
+$no_of_requests = 0;
+$no_of_sales_to_date = 0;
+
+$new_suppliers = \App\Models\Suppliers::where(['date_registered'=>date('Y-m-d')])->get();
+
+return view('marketplace.sadmin.index',['title'=>"Administrator's Portal - ".config('app.name'), 'unreadMessageCounter'=>0,
+'new_suppliers'=>$newSuppliers,
+'no_of_clients'=>$no_of_clients,
+'no_of_requests'=>$no_of_requests,
+'no_of_sales_to_date'=>$no_of_sales_to_date,
+'new_suppliers_list'=>$new_suppliers
+]);
+
 })->name('sadmin_index');
 
 //generate invoices
@@ -263,25 +348,46 @@ Route::get('/see-user-profile/{id}',function($id){
 
     $profile = \App\Models\User::where('id',$id)->first();
 
-    return view('marketplace.sadmin.viewprofile',['id'=>$id,'profileID'=>$profile]);
+    return view('marketplace.sadmin.viewprofile',['id'=>$id,'profile'=>$profile,'supObj'=>new \App\Http\Controllers\SuppliersController]);
 
 })->name('seeuserprofile');
+
+
+//this route shows a popup for sending an email to the user with a redirect to the notifications portal after sending
+Route::get('reply_to_msg/{email}',function($email){
+
+return view('marketplace.pages.reply_client',['email'=>$email]);
+})->name('reply_to_msg');
 
 //Delete user
 Route::get('/delete-user-confirmation/$id',function($id){
     return view('pages.deleteuserconfirmation',['id'=>$id]);
 })->name('delete_user_confirmation');
 
+
+//Delete notificatioin confirmation
+Route::get('/delete-msg/$id/{type}',function($id,$type){
+    return view('pages.deleteuserconfirmation',['id'=>$id,'type'=>$type]);
+})->name('delete_msg_confirmation');
+
+//delete the msg using softdelete model
+Route::get('/delete-msg/{id}/{type}',[\App\Http\Controllers\UserController::class, 'delete_msg'])->name('delete_user');
+
+
 //delete the user using softdelete model
 Route::get('/delete-user/{id}',[\App\Http\Controllers\UserController::class, 'delete_user'])->name('delete_user');
 
 
 //send a message to the user
-Route::get('/send-message/{email}',function($email){
+Route::get('/send-message/{id}/{email}/{subject}',function($id,$email,$subject){
 
-return view('pages.send_a_message',['email'=>$email]);
+return view('pages.send_a_message',['email'=>$email,'id'=>$id,'subject'=>$subject]);
 
 })->name('send_message');
+
+
+//send notification 
+Route::post('/send-notification',[\App\Http\Controllers\NotificationsController::class,'sendnotification'])->name('sendmsg_reply');
 
 //create invoices
 Route::get('/create-invoice',function(){})->name('sadmin.create_invoice');

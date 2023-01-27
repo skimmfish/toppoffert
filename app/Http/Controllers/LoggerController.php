@@ -28,27 +28,50 @@ public function setasread($id){
 
         }
 
-        return redirect()->back()->with(['message'=>'Log deleted successfully']);
+        return redirect()->back()->with(['message'=>'Loggen har raderats']);
 
     }
+
+
+    public function delete_msg($id,$type){
+        try{
+         if($type=='log'){
+        \DB::delete("DELETE from logger WHERE id=?",[$id]);
+         }else if($type=='notifications'){
+
+            $findMsg = \App\Models\NotificationModel::find($id);
+            $findMsg->delete();
+
+         }
+    }catch(\Exception $e){
+            return redirect()->back()->with(['error'=>'Fel! Vänligen försök igen senare.']);
+        }
+
+        return redirect()->back()->with(['message'=>'Loggen har raderats']);
+
+    }
+
 
     /**
      * @param String <$type>
      */
 public function getlog($type){
+$title=Null;
+$alllogs=null;
 
 if($type=='log'){
 
-    $allLogs = \App\Models\Logger::where("read_status",false)->orderBy('created_at','DESC')->paginate(20);
-    $title = '';
+    $alllogs = \App\Models\Logger::where("read_status",false)->orderBy('created_at','DESC')->paginate(20);
+    $title = 'Systemlogg för serveradministratör';
+
 }else if($type=='notifications'){
 
-    $messagesForAdmin = \App\Models\NotificationModel::where(["read_status"=>false,'receiver_id'=>'admin'])->orderBy('created_at','DESC')->paginate(20); 
+    $title='Alla aviseringar på ett ställe för administratörer';
+
+    $alllogs = \App\Models\NotificationModel::where(["read_status"=>false,'receiver_id'=>'admin'])->orderBy('created_at','DESC')->paginate(20); 
 
 }
-
-
-return view('marketplace.sadmin.log',['title'=>$title,'notificationsAdmin'=>$messagesForAdmin,'logs'=>$alllogs]);
+return view('marketplace.sadmin.log',['title'=>$title,'logs'=>$alllogs,'type'=>$type]);
 }
 
 }

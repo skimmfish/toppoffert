@@ -166,7 +166,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <div class="new-header__menu suppliers-register-active" role="navigation">
     <a href="{{route('anslut-ditt-foretag')}}" class="new-header__menu--item">Anslut företag</a>
     <a href="{{route('yrkeskategorier')}}" class="top-nav-link static new-header__menu--item topnav-supplier-register-layout">Yrkeskategorier</a>
-    <a href="{{route('pris')}}" class="new-header__menu--item topnav-supplier-register-layout">Pris</a>
+  <!--  <a href="{{route('pris')}}" class="new-header__menu--item topnav-supplier-register-layout">Pris</a>-->
     
         <a href="{{route('login')}}" class="new-header__menu--item">Logga in</a>
         <a href="{{route('intresseanmalan')}}" class="new-header__menu--item menu-link">
@@ -266,45 +266,40 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     <div class="splash-supplier-register-column show-on-large-only"></div>
 
     </div>
+
     <div class="splash-supplier-register__inner no-spacing__top">
         <div class="splash-supplier-register-column supplier-register-form-container">
 
 
-        <form class="form-new" id="supplier_form" method="POST" action="{{route('register')}}">
+        <form class="form-new" id="supplier_form" method="POST" action="{{route('register_supplier')}}">
           @csrf
             <label>Email</label>
-            <input type="email" name="_email_address"
-                class="supplier-register-input full-width" placeholder="" autocomplete="off" required>
-            <div class="email-action-container">
+            <input type="email" name="supplier_email" class="supplier-register-input full-width" placeholder="" autocomplete="off" required>
+            
+            <span class="text-black">@if($errors->has('supplier_email'))
+              {{ $errors->first('supplier_email') }}
+              @endif
+            </span>
+                <div class="email-action-container">
                 <div class="input-group option-with-zone">
                     <label>
-                        <input type="checkbox" class="checkbox-custom-large" id="terms" />
+                        <input type="checkbox" class="checkbox-custom-large" id="terms" required />
                         <label for="terms"></label>
                         <div>
-                            Jag godkänner {{config('app.name')}} <a href="../anvandarvillkor/leverantor/index.html"
-                                style="text-decoration: underline;">användarvillkor</a></div>
+                            Jag godkänner {{config('app.name')}} användarvillkor</div>
                     </label>
                 </div>
                 <div class="button-wrapper">
 
                     <button type="submit" class="supplier-register-submit">
                         <span class="button-text">Anm&#228;l intresse</span>
-                        <span class="button-text-send">Skickar...</span>
-                        
+                        <span class="button-text-send">Skickar...</span>                        
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon">
-  <g id="Layer_2" data-name="Layer 2">
-    <path d="M7.71 6.29l-6-6A1 1 0 0 0 .29 1.71L5.59 7l-5.3 5.29A1 1 0 1 0 1.7 13.7l6-6a1 1 0 0 0 .01-1.41z" id="Layer_1-2" data-name="Layer 1" />
-  </g>
-</svg>
-<svg viewBox="0 0 50 50" class="spinner">
-  <circle class="path" cx="25" cy="25" r="16" fill="none" stroke-width="5" />
-</svg>
-
-                    </button>
-                </div>
-            </div>
-        </form>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon"><g id="Layer_2" data-name="Layer 2"><path d="M7.71 6.29l-6-6A1 1 0 0 0 .29 1.71L5.59 7l-5.3 5.29A1 1 0 1 0 1.7 13.7l6-6a1 1 0 0 0 .01-1.41z" id="Layer_1-2" data-name="Layer 1" /></g></svg><svg viewBox="0 0 50 50" class="spinner">  <circle class="path" cx="25" cy="25" r="16" fill="none" stroke-width="5" /></svg>
+</button>
+    </div>
+       </div>
+          </form>
 
         <div class="suggest-login">
             Har du redan ett konto? <a href="{{route('login')}}" style="text-decoration: underline;"> Logga in </a>

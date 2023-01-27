@@ -73,10 +73,69 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
 <!--for local/dev testing-->
 <script src="{{asset('js/jquery-2.2.0.min.js')}}"></script>
 
+<!-- deleteUser -->
+<script>
+        // display a modal (small modal)
+        $(document).on('click', '#deleteUser', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
+
 <!--view user-->
 <script>
         // display a modal (small modal)
         $(document).on('click', '#viewUsr', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
+
+<!-- replyNotice -->
+
+<script>
+        // display a modal (small modal)
+        $(document).on('click', '#replyNotice', function(event) {
             event.preventDefault();
             let href = $(this).attr('data-attr');
             $.ajax({

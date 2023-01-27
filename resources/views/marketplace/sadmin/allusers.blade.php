@@ -47,7 +47,7 @@
 @if(sizeof($allusers)>0)
 
 
-@if($user_cat=='CLIENT')
+@if($user_cat=='CLIENT' || $type=='all')
 <div class="card mb-12 btn-reveal-trigger" id="dataFilter">	   
 
 <div class="scrollable_table">
@@ -78,9 +78,9 @@
             <td>{{ date('D, M Y',strtotime($x->updated_at)) }}</td>
             <td>
             <!--actions-->
-            <a href="#" data-toggle="modal" data-attr="{{route('seeuserprofile',['id'=>$x->id])}}" class="text-primary" title="View User" id="viewUsr" class="text-success" data-target="#requestModal">Visa användare</a><br/>
-            <a href="#" data-toggle="modal" data-attr="{{route('send_message',['email'=>$x->email])}}" title="Send a notification" id="notifyUsr" data-target="#requestModal">Skicka ett meddelande</a>
-            <a href="#" data-toggle="modal" data-attr="{{route('delete_user',['id'=>$x->id])}}" class="text-black" id="deleteUser" data-target="#requestModal" title="Delete User">Ta bort användare</a><Br/>
+            <a href="#" data-toggle="modal" data-attr="{{route('seeuserprofile',['id'=>$x->id])}}" class="text-primary" title="View User" id="viewUsr" data-target="#requestModal">Visa användare</a><br/>
+            <a href="#" data-toggle="modal" data-attr="{{route('send_message',['email'=>$x->email])}}" title="Send a notification" id="notifyUsr"  class="text-success" data-target="#requestModal">Skicka ett meddelande</a>
+            <a href="#" data-toggle="modal" data-attr="{{route('delete_user_confirmation',['id'=>$x->id])}}" class="text-black" id="deleteUser" data-target="#requestModal" title="Delete User">Ta bort användare</a><Br/>
 
 
 
@@ -153,4 +153,25 @@
 @endif
   <!-- ./ end of row m-3-->
 </div>
+
+
+      <!--modals-->
+		<!-- view modal -->
+    <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onClick="closeModal('#requestModal')" data-dismiss="modal" aria-label="Close"style="border-radius:50%;width:35px;height:35px;border:0;color:#0d2453;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="mediumBody">
+                    <div>
+                        <!-- the result to be displayed apply here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
