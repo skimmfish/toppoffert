@@ -132,18 +132,15 @@ return response()->json(['message'=>"User's profile saved successfully"],200);
  */
 public function modifyPasswordFromDashboard(Request $request,$uid){
 
-
     $request->validate([
         'old_password' => 'required',
-        'password' => 'required|confirmed',
+        'new_password' => 'required | min:8',
     ]);
 
-    
-  
 if(Hash::check($request->old_password, auth()->user()->password)){
 
-    User::whereId(auth()->user()->id)->update([
-        'password' => Hash::make($request->password)
+    $status = User::whereId(auth()->user()->id)->update([
+        'password' => Hash::make($request->new_password)
     ]);
 
     
@@ -156,7 +153,7 @@ if(Hash::check($request->old_password, auth()->user()->password)){
 
     }else{
         //return to the dashboard
-       return redirect()->back()->with('error','Your current passsword is invalid');
+       return redirect()->back()->with('error','Ditt nuvarande lösenord är ogiltigt');
     }
 }
 

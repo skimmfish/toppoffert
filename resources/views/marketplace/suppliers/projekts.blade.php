@@ -1,13 +1,12 @@
 @extends('layouts.supplierheader')
 @section('content')
-
 @include('layouts.admin_topbar')
 
+
 <h1>Hej! {{\Auth::user()->f_name}}</h1>
- <p class="line-height-auto">Välkommen till din instrumentpanel</p>
+ <p class="line-height-auto">Välkommen till din projektlista</p>
 
-
-        <div class="row g-3 mb-3" style="margin-bottom:30px;">
+<div class="row g-3 mb-3" style="margin-bottom:30px;">
             <div class="col-md-12 col-lg-12 col-xl-12 col-xs-12 tp-padding">
 
            <div class="nav-tex"><span>{{$category_count }} kategorier, alla områden,alla köpartyper,0 - 10 milj kr <a href="#" onClick="triggerRefresh()"> Ändra </a></span></div>
@@ -22,8 +21,8 @@
                     <!--./end of tp-padding-->
                       </div>
 
-    @if($request_count>0)
-    @foreach($requests as $x) 
+    @if(sizeof($projects)>0)
+    @foreach($projects as $x) 
     @php 
     $responderCount =  \App\Http\Controllers\RespondersController::get_responders_count($x->id);
     @endphp
@@ -60,19 +59,20 @@
   </div>
            </div>
 
-              <div class="col-md-2 col-lg-2 col-sm-2 col-xs-6 titles">
+              <div class="col-md-3 col-lg-3 col-sm-3 col-xs-6 titles">
                   <span>{{$x->executed_for}}</span><br/>
                   <span>ldag {{explode(" ", $x->created_at)[1]}}</span>
                          </div>
 
                   <div class="col-md-4 col-xs-4 col-xs-6 flex-rw titles">
-                    <p><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color svg-icon svg-icon--spacing-right-small" data-v-40d54a8c=""><path d="M5.6 9.6c0 .636.506 1.247 1.406 1.697.9.45 2.12.703 3.394.703 1.273 0 2.494-.253 3.394-.703.9-.45 1.406-1.06 1.406-1.697s-.506-1.247-1.406-1.697c-.9-.45-2.121-.703-3.394-.703-1.273 0-2.494.253-3.394.703-.9.45-1.406 1.06-1.406 1.697z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.6 9.6v3.2c0 1.325 2.149 2.4 4.8 2.4s4.8-1.075 4.8-2.4V9.6M.8 3.2c0 .315.124.627.365.918.242.292.595.556 1.04.78.447.222.976.399 1.558.52.582.12 1.207.182 1.837.182.63 0 1.255-.062 1.837-.183a6.42 6.42 0 001.557-.52c.446-.223.8-.487 1.04-.779.242-.29.366-.603.366-.918 0-.315-.124-.627-.365-.918-.242-.292-.595-.556-1.04-.779a6.42 6.42 0 00-1.558-.52A9.125 9.125 0 005.6.8c-.63 0-1.255.062-1.837.183a6.419 6.419 0 00-1.557.52c-.446.223-.8.487-1.04.779C.923 2.572.8 2.885.8 3.2z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M.8 3.2v8c0 .71.618 1.349 1.6 1.789M.8 7.2c0 .71.618 1.349 1.6 1.789" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> <span>Uppskattat värde:&nbsp; : 0 - {{$x->assignment_value}} kr</span></p>
+                    <p><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color svg-icon svg-icon--spacing-right-small" data-v-40d54a8c=""><path d="M5.6 9.6c0 .636.506 1.247 1.406 1.697.9.45 2.12.703 3.394.703 1.273 0 2.494-.253 3.394-.703.9-.45 1.406-1.06 1.406-1.697s-.506-1.247-1.406-1.697c-.9-.45-2.121-.703-3.394-.703-1.273 0-2.494.253-3.394.703-.9.45-1.406 1.06-1.406 1.697z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.6 9.6v3.2c0 1.325 2.149 2.4 4.8 2.4s4.8-1.075 4.8-2.4V9.6M.8 3.2c0 .315.124.627.365.918.242.292.595.556 1.04.78.447.222.976.399 1.558.52.582.12 1.207.182 1.837.182.63 0 1.255-.062 1.837-.183a6.42 6.42 0 001.557-.52c.446-.223.8-.487 1.04-.779.242-.29.366-.603.366-.918 0-.315-.124-.627-.365-.918-.242-.292-.595-.556-1.04-.779a6.42 6.42 0 00-1.558-.52A9.125 9.125 0 005.6.8c-.63 0-1.255.062-1.837.183a6.419 6.419 0 00-1.557.52c-.446.223-.8.487-1.04.779C.923 2.572.8 2.885.8 3.2z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M.8 3.2v8c0 .71.618 1.349 1.6 1.789M.8 7.2c0 .71.618 1.349 1.6 1.789" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> 
+                    <span>Uppskattat värde:&nbsp; : 0 - {{$x->assignment_value}} kr</span></p>
                     <p style="margin-top:-11px;">
                     <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color svg-icon svg-icon--spacing-right-small" data-v-40d54a8c=""><path d="M.8 2.4h14.4v12.8H.8V2.4zM4 .8V4M12 .8V4M.8 7.2h14.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> <span>{{$x->when_to}}</span></p>
 
                   </div>
 
-                    <div class="col-md-2 col-xs-4">
+                    <div class="col-md-1 col-lg-1 col-sm-1 col-xs-4">
                       <a href="#" data-toggle="modal" data-attr="{{route('request_clear',['id'=>$x->id])}}" class="btn-grey-bg" id="deleteRequest" data-target="#requestModal">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon svg-icon--size-small fill-current-color" data-v-467c38da=""><path d="M6.631 23.25a2.263 2.263 0 01-2.242-2.064L3.06 5.25H1.5a.75.75 0 010-1.5h6V3A2.252 2.252 0 019.75.75h4.5A2.252 2.252 0 0116.5 3v.75h6a.75.75 0 010 1.5h-1.56l-1.328 15.937a2.262 2.262 0 01-2.242 2.063H6.631zm-.748-2.188c.032.386.36.688.748.688H17.37a.753.753 0 00.747-.688L19.435 5.25H4.565l1.318 15.812zM15 3.75V3a.75.75 0 00-.75-.75h-4.5A.75.75 0 009 3v.75h6z"></path><path d="M9.75 18a.75.75 0 01-.75-.75v-7.5a.75.75 0 011.5 0v7.5a.75.75 0 01-.75.75zM14.25 18a.75.75 0 01-.75-.75v-7.5a.75.75 0 011.5 0v7.5a.75.75 0 01-.75.75z"></path></svg>
                       </a>
@@ -83,27 +83,13 @@
                 </a>
                 
                 @endforeach   
-                  @endif             
-              </div>
+                  @else
 
+                  <div classs="row">
+                    <h6><i>Oops!</i></h6><span>Det finns inga pågående projekt just nu!</span>
+                  </div>
 
-              <!--modal-->
-    <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" onClick="closeModal('#requestModal')" data-dismiss="modal" aria-label="Close"style="border-radius:50%;width:35px;height:35px;border:0;color:#0d2453;">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                @endif
                 </div>
-                <div class="modal-body" id="mediumBody">
-                    <div>
-                        <!-- the result to be displayed apply here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-
-    @endsection
+              @endsection

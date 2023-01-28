@@ -132,7 +132,7 @@ return view('marketplace.sadmin.buyer_requests',['title'=>"Förfrågningar vänd
 public function approve_request($request_id){
 
 $res = \DB::update("UPDATE service_requests SET publish_status=? WHERE id=?",[true,$request_id]);
-
+return redirect()->back()->with(['message'=>'Köparens Begäran Godkändes']);
 }
 
 /**
@@ -163,10 +163,27 @@ return view('pages.request_view')->with(['requestBody'=>$request,
  */
 public function getRelatedRequests($cat_id){
 
-   return $related = \App\Models\ServiceRequests::where('service_cat',$cat_id)->take(5)->get();
+   return $related = \App\Models\ServiceRequests::where('service_cat',$cat_id)->take(6)->paginate(2);
 
 }
 
+
+/**
+ * @param none
+ * @return $StdObj
+ */
+public function mysales(){
+   $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
+   $catCount = sizeof(\App\Models\Categories::all());
+   $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+   
+$sales =  \App\Models\ServiceRequests::where(['project_execution_status'=>1,'supplier_matched_with'=>auth()->id()])->get();
+return view('marketplace.suppliers.sales',['title'=>'Försäljning',
+'category_count'=>$catCount,
+'request_count'=>sizeof($requests),'supplierObj'=>new \App\Models\Suppliers,
+'sales'=>$sales]);
+
+}
 /**
  * This function prints out the tab for displaying number of responders yet to respond
  */

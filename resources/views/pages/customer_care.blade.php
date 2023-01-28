@@ -91,11 +91,11 @@ font-family:'GD Sherpa Regular' !important;font-size:14px;
 
 <div class="row mainx">
 
-<div class="col-md-10 col10" style="border:0">
+<div class="col-md-12 col10" style="border:0">
 
 <h1 class="kseerv_h1">Kundservice</h1>
 </div>
-<div class="col-md-10 col10">
+<div class="col-md-12 col10">
 
 <div class="row">
 
@@ -107,14 +107,12 @@ Du kan också kika om du hittar svar på din fråga bland våra <a href="{{route
 </p>
 
 
-<div class="line_item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon svg-icon--size-small svg-icon--spacing-right-small fill-current-color" data-v-095efe40=""><path d="M5.25 24a.747.747 0 01-.75-.75V19.5H2.25A2.252 2.252 0 010 17.25v-15A2.252 2.252 0 012.25 0h19.5A2.252 2.252 0 0124 2.25v15a2.252 2.252 0 01-2.25 2.25H11.5l-5.8 4.35a.753.753 0 01-.45.15zm-3-22.5a.75.75 0 00-.75.75v15c0 .414.336.75.75.75h3a.75.75 0 01.75.75v3l4.8-3.6a.753.753 0 01.45-.15h10.5a.75.75 0 00.75-.75v-15a.75.75 0 00-.75-.75H2.25z"></path><path d="M5.25 8.25a.75.75 0 010-1.5h13.5a.75.75 0 010 1.5H5.25zM5.25 12.75a.75.75 0 010-1.5h10.5a.75.75 0 010 1.5H5.25z"></path></svg> 
-
-
+<div class="line_item">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon svg-icon--size-small svg-icon--spacing-right-small fill-current-color" data-v-095efe40=""><path d="M5.25 24a.747.747 0 01-.75-.75V19.5H2.25A2.252 2.252 0 010 17.25v-15A2.252 2.252 0 012.25 0h19.5A2.252 2.252 0 0124 2.25v15a2.252 2.252 0 01-2.25 2.25H11.5l-5.8 4.35a.753.753 0 01-.45.15zm-3-22.5a.75.75 0 00-.75.75v15c0 .414.336.75.75.75h3a.75.75 0 01.75.75v3l4.8-3.6a.753.753 0 01.45-.15h10.5a.75.75 0 00.75-.75v-15a.75.75 0 00-.75-.75H2.25z"></path><path d="M5.25 8.25a.75.75 0 010-1.5h13.5a.75.75 0 010 1.5H5.25zM5.25 12.75a.75.75 0 010-1.5h10.5a.75.75 0 010 1.5H5.25z"></path></svg> 
 @if($dayOfWeek=='Sat' || $dayOfWeek=='Sun')
 <b>Chatten är stängd</b> 
 <span class="alert-danger">StängdÖppnar</span> 
 <b>igen måndag kl. 10.</b></div>
-
 @else
 <b>Chatt med oss</b> 
 
@@ -127,7 +125,6 @@ Du kan också kika om du hittar svar på din fråga bland våra <a href="{{route
 <div class="other_info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon svg-icon--size-small svg-icon--spacing-right-small fill-current-color" data-v-095efe40=""><path d="M3 20.5a2.252 2.252 0 01-2.25-2.25v-12a2.22 2.22 0 01.498-1.411l.023-.027A2.238 2.238 0 013 4h18a2.245 2.245 0 011.757.845l.018.026c.311.399.475.875.475 1.379v12A2.252 2.252 0 0121 20.5H3zm-.75-2.25c0 .414.336.75.75.75h18a.75.75 0 00.75-.75V6.562l-7.276 5.596a4.077 4.077 0 01-2.474.841c-.891 0-1.77-.299-2.474-.841L2.25 6.562V18.25zm8.19-7.281c.444.342.998.53 1.56.53s1.115-.188 1.559-.53l7.111-5.47H3.329l7.111 5.47z"></path></svg>
 Maila oss på <a href="mailto:info@toppoffert.se"><u>info@toppoffert.se</u></a></div>
 </p>
-</div>
 </div>
 
 <div class="col-md-3 col-xs-2 col-lg-3 col-sm-4 open_close">

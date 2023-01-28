@@ -20,9 +20,9 @@ class InvoicesController extends Controller
      * @param Integer <$uid>
      * @param Illuminate\Http\Response <$reponse>
      */
-    public function getall($uid){
+    public static function getall($uid){
 
-    return Invoices::where(['supplier_id',$uid])->orderBy('created_at','DESC')->get();
+    return Invoices::where(['supplier_id'=>$uid])->orderBy('created_at','DESC')->get();
 
     }
 

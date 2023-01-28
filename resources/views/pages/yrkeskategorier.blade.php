@@ -213,7 +213,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </div>
     <ul class="new-main-menu__footer">
         <li class="new-main-menu__footer--item">
-            Toppoffert Group AB
+            {{config('app.name')}} Group AB
         </li>
         <li class="new-main-menu__footer--item">
             <a href="tel:010-33 020 11">010-33 020 11</a>
@@ -232,7 +232,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
             </a>
-            <a href="https://www.facebook.com/offerta.se/" class="social-icons">
+            <a href="https://www.facebook.com/toppoffert.se/" class="social-icons">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
@@ -240,7 +240,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
             </a>
-            <a href="https://www.instagram.com/offerta.se/" class="social-icons">
+            <a href="https://www.instagram.com/toppoffert.se/" class="social-icons">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
@@ -282,7 +282,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             </h3>
 
             <nav>
-                    <a href="../tomt-mark-och-tradgard/tradgardsmastare/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -293,7 +293,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                         Tr&#228;dg&#229;rdsm&#228;stare
                     </a>
-                    <a href="../tomt-mark-och-tradgard/markfirmor/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -315,7 +315,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             </h3>
 
             <nav>
-                    <a href="../arkitekt-och-inredning/arkitekter/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -326,9 +326,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                         Arkitekter
                     </a>
-                    <a href="../arkitekt-och-inredning/inredare/index.html" class="categories-grid__link">
-                        
-
+                    <a href="#" class="categories-grid__link">
+                      
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
   <g id="Layer_2" data-name="Layer 2">
     <path d="M7.71 6.29l-6-6A1 1 0 0 0 .29 1.71L5.59 7l-5.3 5.29A1 1 0 1 0 1.7 13.7l6-6a1 1 0 0 0 .01-1.41z" id="Layer_1-2" data-name="Layer 1" />
@@ -348,9 +347,9 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             </h3>
 
             <nav>
-                    <a href="../bygg-och-renovering/hantverkare/index.html" class="categories-grid__link">
-                        
-
+    
+            <a href="" class="categories-grid__link">
+                      
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
   <g id="Layer_2" data-name="Layer 2">
     <path d="M7.71 6.29l-6-6A1 1 0 0 0 .29 1.71L5.59 7l-5.3 5.29A1 1 0 1 0 1.7 13.7l6-6a1 1 0 0 0 .01-1.41z" id="Layer_1-2" data-name="Layer 1" />
@@ -359,7 +358,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                         Hantverkare
                     </a>
-                    <a href="../bygg-och-renovering/elfirmor/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -381,7 +380,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             </h3>
 
             <nav>
-                    <a href="../fastighets-och-maklartjanster/fastighetsforvaltning/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -392,7 +391,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                         Fastighetsf&#246;rvaltning
                     </a>
-                    <a href="../fastighets-och-maklartjanster/tekniska-byggkonsulter/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -414,7 +413,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             </h3>
 
             <nav>
-                    <a href="../flytt-och-transport/flyttfirmor/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -436,7 +435,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             </h3>
 
             <nav>
-                    <a href="../ekonomi-och-juridik/ekonomitjanster/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -447,9 +446,9 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                         Ekonomitj&#228;nster
                     </a>
-                    <a href="../ekonomi-och-juridik/jurister/index.html" class="categories-grid__link">
-                        
 
+    <a href="#" class="categories-grid__link">
+                      
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
   <g id="Layer_2" data-name="Layer 2">
     <path d="M7.71 6.29l-6-6A1 1 0 0 0 .29 1.71L5.59 7l-5.3 5.29A1 1 0 1 0 1.7 13.7l6-6a1 1 0 0 0 .01-1.41z" id="Layer_1-2" data-name="Layer 1" />
@@ -469,7 +468,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             </h3>
 
             <nav>
-                    <a href="../stadning-och-hushallstjanster/kommersiella-stadfirmor/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -480,7 +479,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                         Kommersiella St&#228;dfirmor
                     </a>
-                    <a href="../stadning-och-hushallstjanster/stadfirmor/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -502,7 +501,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             </h3>
 
             <nav>
-                    <a href="../webb-it-och-design/webbdesigners/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">
@@ -513,7 +512,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                         Webbdesigners
                     </a>
-                    <a href="../webb-it-och-design/profilreklamsforetag/index.html" class="categories-grid__link">
+                    <a href="#" class="categories-grid__link">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-tiny">

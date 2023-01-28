@@ -1,7 +1,7 @@
 @php
 
 $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_status'=>0,'receiver_id'=>'admin'])->get());
-	
+$supplierObj = new \App\Models\Suppliers;	
 @endphp
 
 <!DOCTYPE html>
@@ -48,6 +48,8 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
     <link href="{{asset('css/supplier.css')}}" rel="stylesheet">
     <link href="{{asset('css/fixed_footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
+    <link href="{{asset('css/clients.css')}}" rel="stylesheet">
+
        <!-- Script -->
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
@@ -388,12 +390,12 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
                       </a><!-- more inner pages-->
                     </li>
                     
-                    <li class="nav-item"><a class="nav-link" href="{{route('recent_messages')}}" data-bs-toggle="" aria-expanded="false">
+                   <!-- <li class="nav-item"><a class="nav-link" href="{{route('recent_messages')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center sidenav">
                         <svg viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><g clip-path="url(#clip0_1060_2513)"><path d="M18.588 15.88h-8.75l-5 3.75v-3.75h-2.5a1.25 1.25 0 01-1.25-1.25V2.13A1.25 1.25 0 012.338.88h16.25a1.25 1.25 0 011.25 1.25v12.5a1.25 1.25 0 01-1.25 1.25z" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></g><defs><clipPath id="clip0_1060_2513"><path transform="translate(.463 .254)" d="M0 0h20v20H0z"></path></clipPath></defs></svg>  
                         <span class="nav-link-text ps-1">Meddelanden</span></div>
-                      </a><!-- more inner pages-->
-                    </li>
+                      </a>
+                      </li>-->
                     
                     
                     <li class="nav-item">
@@ -434,27 +436,28 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
                       </a><!-- more inner pages-->
                     </li>
 
+                    <!--
                     <li class="nav-item"><a class="nav-link" href="{{route('settings.profile')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Företagsprofil</span></div>
-                      </a><!-- more inner pages-->
+                      </a>
                     </li>
 
-                    <!--<li class="nav-item"><a class="nav-link" href="{{route('settings.ratings')}}" data-bs-toggle="" aria-expanded="false">
+                    <li class="nav-item"><a class="nav-link" href="{{route('settings.ratings')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Omdömen</span></div>
                       </a>
-                    </li>-->
+                    </li>
 
                     <li class="nav-item"><a class="nav-link" href="{{route('settings.stamps')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Certifikat och kvalitetsstämplar</span></div>
-                      </a><!-- more inner pages-->
+                      </a>
                     </li>
 
-                    <!-- <li class="nav-item"><a class="nav-link" href="{{route('settings.labels')}}" data-bs-toggle="" aria-expanded="false">
+                     <li class="nav-item"><a class="nav-link" href="{{route('settings.labels')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Etiketter</span></div>
                       </a>
-                    </li>-->
+                    </li>
 
-                  <!--  <li class="nav-item"><a class="nav-link" href="{{route('cannedresponses')}}" data-bs-toggle="" aria-expanded="false">
+                   <li class="nav-item"><a class="nav-link" href="{{route('cannedresponses')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Svarsmallar</span></div>
                       </a>
                     </li>-->
@@ -471,7 +474,7 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
                   </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link" href="{{route('customer_care')}}" data-bs-toggle="" aria-expanded="false">
+                <li class="nav-item"><a class="nav-link" href="{{route('supplier_customer_care')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center sidenav">
                         <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><path d="M10 18.203L2.01 9.87a4.727 4.727 0 01-.886-5.46 4.728 4.728 0 017.571-1.228L10 4.487l1.305-1.305a4.727 4.727 0 016.686 6.685L10 18.203z" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>  
                         <span class="nav-link-text ps-1">Kundservice</span></div>
@@ -554,8 +557,8 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
                       </a><!-- more inner pages-->
                     </li>
                     
-                    <li class="nav-item"><a class="nav-link" href="{{route('sa_all_users',['type'=>'client'])}}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">Kunder</span></div>
+                    <li class="nav-item"><a class="nav-link" href="{{route('supplier_customer_care')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1 text-black">KunderService</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
@@ -661,8 +664,12 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
 			  
   @yield('content')
 
-		@include('layouts.admin_copyright_footer')
+  <p style="margin-top:35px;"></p>
+
+ @include('layouts.fixed_footer') 
+
 </main>
+
 <!-- ===============================================-->
 <!--    End of Main Content-->
 <!-- ===============================================-->

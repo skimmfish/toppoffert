@@ -195,6 +195,7 @@ $dayOfWeek = explode(',',$dt->toDayDateTimeString())[0];
  return view('pages.customer_care',['title'=>'Kundservice','dayOfWeek'=>$dayOfWeek]);
 })->name('customer_care');
 
+//for faqs page
 Route::get('faq',function(){
 
     return view('pages.faqs',['title'=>'Vanliga frågor och svar']);
@@ -291,6 +292,9 @@ Route::get('site-configuration')->name('site_configuration');
 
 //grouping all routes under the dashboard/admin namespace for authenticated users
 Route::middleware(['auth','verified'])->prefix('marketplace/clients')->group(function(){
+
+
+    Route::put('modify-password/{id}','\App\Http\Controllers\UserController@modifyPasswordFromDashboard')->name('modifypass');
 
     //consumers' home page
     Route::get('/',[App\Http\Controllers\ServiceRequestsController::class,'index'])->name('marketplace.clients');
@@ -451,14 +455,43 @@ Route::get('/show-interest/{hash}',function(){
 
 })->name('show_interest');
 
+//customer care_for suppliers page
+Route::get('/services/customer-care',function(){
+$dt = \Carbon\Carbon::now();   
+$dayOfWeek = explode(',',$dt->toDayDateTimeString())[0];
+
+$requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
+$catCount = sizeof(\App\Models\Categories::all());
+$credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+
+return view('marketplace.suppliers.customer_care',[
+'title'=>'Kundservice',
+'dayOfWeek'=>$dayOfWeek,
+'requests'=>$requests,
+'request_count'=>sizeof($requests),
+'category_count'=>$catCount,
+'credit'=>$credits]);
+
+})->name('supplier_customer_care');
+   
+
 //suppliers settings snapshot page this displays ratings, starsm company name and registration date
 Route::get('/projects',function(){
+    $uid=auth()->id();
+    $credits= \App\Http\Controllers\CreditsController::getCredits($uid)->credits;
+    $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
+    $catCount = sizeof(\App\Models\Categories::all());
+    $projects = \App\Models\ServiceRequests::where(['matched'=>1,'publish_status'=>true,'project_execution_status'=>2])->get();
 
-    return view('marketplace.suppliers.projekts',['title'=>'Projekts']);
+    return view('marketplace.suppliers.projekts',[
+        'title'=>'Projekts',
+        'request_count'=>sizeof($requests),
+        'credit'=>$credits,
+        'category_count'=>$catCount,
+        'projects'=>$projects
+    ]);
 
 })->name('suppliers.project');
-
-
 
 //for settings display for suppliers
 Route::get('/settings',function(){
@@ -504,9 +537,7 @@ Route::get('contact-information',function(){
 
 
 //for supplier's contact information
-Route::get('/sales',function(){
-
-})->name('supplier_sales');
+Route::get('/sales',[App\Http\Controllers\ServiceRequestsController::class,'mysales'])->name('supplier_sales');
 
 
 //for finished projects that ends up in sales
@@ -551,7 +582,8 @@ Route::get('/settings/invoices',function(){
     $ratingObj = new \App\Models\Ratings;
     $ratings = \App\Models\Ratings::where('provider_id',$uid)->first();
     $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
-    $invoices = \App\Http\Controllers\InvoiceController::getall($uid);
+    $invoices = \App\Http\Controllers\InvoicesController::getall($uid);
+    
     return view('marketplace.suppliers.invoices',['title'=>'Fakturor Och','ratings'=>$ratings->rating,
     'review_count'=>$ratings->review_count, 'request_count'=>sizeof($requests),
     'credit'=>$credits,'invoices'=>$invoices

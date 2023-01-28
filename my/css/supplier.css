@@ -14,7 +14,7 @@ body,html{
 overflow-x:hidden;
 }
 .row{
-margin-top:15px;
+margin-top:8px;
 }
 .form .form-control{
     height:45px;font-family:'GD Sherpa Regular';font-weight:500;font-size:13.5px;
@@ -221,7 +221,8 @@ width:9px;fill:#333;
 .navigation_control .btn:hover, .btn-grey-bg{
     background:#e7f5d6;border-radius:50%;width:50px;height:50px;line-height: 37px;
 }
-.requests{background:#fff;border-radius: 10px;padding:15px 5px 15px 5px;height:auto;margin-bottom:5px !important;}
+.requests{background:#fff;border-radius: 10px;padding:15px 5px 15px 5px;height:auto;
+    margin-bottom:5px !important;}
 .other_details_area{
     line-height: 32px;
 }

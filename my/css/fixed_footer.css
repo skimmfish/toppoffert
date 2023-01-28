@@ -1,8 +1,9 @@
 /** fixed_footer.css **/
-@media(max-width:1024px){
-    body{
-        overflow-x:hidden;
-    }
+.fixed-footer{
+    display:none;
+}
+
+@media(max-width:768){
 .fixed-footer{
     width: 100vw;
     position: fixed;        
@@ -35,7 +36,7 @@ nav a{
 }
 .container
 .container p{
-    line-height: 200px; /* Create scrollbar to test positioning */
+    line-height: 100px; /* Create scrollbar to test positioning */
 }
 
 }

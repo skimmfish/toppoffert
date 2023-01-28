@@ -37,7 +37,8 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
                     @foreach($personalNotification as $notes)
                     <div class="notification_bar">
                       <div class="avatar avatar-2xl me-3">
-                         <img class="rounded-circle" lazylaoding src="{{ asset('img/avatar/'.\App\Models\User::get_profile_data($notes->sender_id,'profile_img')) }}" alt="{{\App\Models\User::get_profile_data($notes->sender_id,'username')}}" />
+                         
+                      <img class="rounded-circle" lazylaoding src="{{ asset('img/avatar/'.\App\Models\User::get_profile_data($notes->sender_id,'profile_img')) }}" alt="{{\App\Models\User::get_profile_data($notes->sender_id,'username')}}" />
                            </div>
  
                     <div class="subject">

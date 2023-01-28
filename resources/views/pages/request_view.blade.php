@@ -41,8 +41,9 @@
 </div>
 
 <!--right section-->
-<div class="col-md-4 col-lg-4 col-xs-12 col-sm-4">
-<table class="table table-bordered table-stripped table-responsive table_rws" style="color:#000 !important;">
+<div class="col-md-4 col-lg-4 col-xs-12 col-sm-4" style="background:#efefef;border-radius:7px;">
+<div style="background:#fff;marginb-ttom:9px;border-radius:10px;">
+<table class="table table-stripped table-responsive table_rws" style="color:#000 !important;">
 <thead>
 <tr>
 <th><span><svg width="14px" height="14px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -114,7 +115,7 @@ M15.383,15.076a1,1,0,0,0-1.09.217l-3,3a1,1,0,0,0,1.414,1.414L14,18.414V23a1,1,0,
 </tr>
 </thead>
 </table>
-
+</div>
 <!--other sections-->
 <div class="other_info">
 <h6 class="text-sm">Liknande förfrågningar</h6>
@@ -124,7 +125,7 @@ M15.383,15.076a1,1,0,0,0-1.09.217l-3,3a1,1,0,0,0,1.414,1.414L14,18.414V23a1,1,0,
 <div class="related_item">
 
 <p><svg fill="#000000" width="14px" height="14px" viewBox="0 0 24 24" id="link-alt-2" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><path id="primary" d="M14.5,9.5a3.54,3.54,0,0,1,0,5l-5,5a3.54,3.54,0,0,1-5,0h0a3.54,3.54,0,0,1,0-5" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary-2" data-name="primary" d="M19.5,9.5a3.54,3.54,0,0,0,0-5h0a3.54,3.54,0,0,0-5,0l-5,5a3.54,3.54,0,0,0,0,5h0" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
-<a href="https://toppoffert.se/marketplace/suppliers/view-service-request/{{x->hash}}"><b>{{$x->request_title}}</b></a></p>
+<a href="https://toppoffert.se/se/home/marketplace/suppliers/view-service-request/{{$x->request_hash}}"><b>{{$x->request_title}}</b></a></p>
 <p><svg width="14px" height="14px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>Users</title><g id="Users" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 <rect id="Container" x="0" y="0" width="24" height="24"></rect><path d="M9,11 C10.3807119,11 11.5,9.88071187 11.5,8.5 C11.5,7.11928813 10.3807119,6 9,6 C7.61928813,6 6.5,7.11928813 6.5,8.5 C6.5,9.88071187 7.61928813,11 9,11 Z" id="shape-1" stroke="#030819" stroke-width="2" stroke-linecap="round" stroke-dasharray="0,0">
@@ -173,6 +174,12 @@ for($i=0;$i<($responderCount);$i++){
 @endif
 </div>
 </div>
+
+<!--end of .row-->
+</div>
+
+<div class="fixed_footer">
+
 </div>
 
 @endsection
