@@ -39,7 +39,7 @@ class NewSupplier extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('Aluh1@hotmail.com',config('app.name')),
+            from: new Address('hello@toppoffert.se',config('app.name')),
             replyTo: [
                 new Address('hello@toppoffert.se', 'Abbel Ljung'),
             ],

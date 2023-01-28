@@ -77,7 +77,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
       <a href="{{route('login')}}">Logga In</a>
     @endif
     </li>
-      <li><a href="{{route('pris')}}">Pris</a></li>
+<!--      <li><a href="{{route('pris')}}">Pris</a></li>-->
       <li><a href="{{route('kontactos-pg')}}">Kontakta Oss</a></li>
 
       <li class="hr"><hr/></li>

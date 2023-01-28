@@ -6,6 +6,29 @@ use Illuminate\Http\Request;
 class ConfigController extends Controller
 {
 
+
+    	/*
+	*@param column whose value to get
+	*@return String 
+	*/
+public static function get_value($column_to_fetch){
+
+    $val = null;
+    $response=NULL;
+    try{
+    $response = \App\Models\Config::where(['conf_option'=>$column_to_fetch, 'autoload'=>true])->get();
+    foreach($response as $x){    
+    $val = $x->conf_value;
+    }
+
+    return $val;
+
+}catch(\Exception $e){
+    return 0;
+}
+
+}
+    
         /**
      * Store a newly created resource in storage.
      *

@@ -162,3 +162,20 @@ fill:#fff !important;stroke:#fff !important;line-height: 46px;
 .unread_notebox{
     width:25px;height:25px;border-radius:50%;border:0;line-height: 26px;text-align: center;background-color: #0d2453;color:#fff;
 }
+
+/***************
+================
+FOR REQUESTS
+================
+****************/
+
+#viewRequest, .requests{
+    cursor:pointer;
+}
+.requests{line-height: 34px;}
+.balls{
+    font-size:45px;color:green;
+}
+.emptyballs{
+    font-size:45px;color:#bfbfbf;
+}

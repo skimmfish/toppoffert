@@ -48,9 +48,7 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
     <link href="{{asset('css/supplier.css')}}" rel="stylesheet">
     <link href="{{asset('css/fixed_footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
-    <link href="{{asset('css/modal_pop_css.css')}}" rel="stylesheet" />
-
-    <!-- Script -->
+       <!-- Script -->
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 
@@ -132,6 +130,36 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
 </script>
 
 <!-- replyNotice -->
+
+<!--view user-->
+<script>
+        // display a modal (small modal)
+        $(document).on('click', '#viewRequest', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
+
 
 <script>
         // display a modal (small modal)
@@ -278,6 +306,11 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
         });
 </script>
 
+<style>
+.navbar-vertical.navbar-expand-lg .nav-link{
+    line-height:35px;
+}
+</style>
 
   </head>
 <body>
@@ -303,9 +336,6 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
             }
           </script>
 		  
-		  <!--wallet modals-->
-				  
-		  
 		  <!------------------------end-->
 		  
           <div class="d-flex align-items-center">
@@ -329,42 +359,128 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
                   
                   <ul class="nav collapse show" id="dashboard" style="line-height:26px;">
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('sadmin_all_requests')}}" aria-expanded="false">
-                        <div class="d-flex align-items-left">
-                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><g clip-path="url(#clip0_1514_6104)" stroke-width="1.429" stroke-linecap="round" stroke-linejoin="round"><path d="M2.143 12.143v6.428a.714.714 0 00.714.715h14.286a.714.714 0 00.714-.715v-6.428M11.429 12.143v7.143M2.143 14.286h9.286M.714 5.714l2.143-5h14.286l2.143 5H.714zM6.786 5.714v1.429A2.857 2.857 0 013.929 10h-.4A2.857 2.857 0 01.67 7.143V5.714"></path><path d="M13.214 5.714v1.429A2.857 2.857 0 0110.357 10h-.714a2.857 2.857 0 01-2.857-2.857V5.714M19.286 5.714v1.429A2.857 2.857 0 0116.428 10h-.357a2.857 2.857 0 01-2.857-2.857V5.714"></path></g><defs><clipPath id="clip0_1514_6104"><path fill="#fff" d="M0 0h20v20H0z"></path></clipPath></defs></svg>
-                       	<span class="nav-link-text ps-1 text-black">Köpares Begäran</span></div>
-                      </a><!-- more inner pages-->
-                    </li>
+                  <a class="nav-link active" href="{{route('suppliers.dashboard')}}" data-bs-toggle="" aria-expanded="false">
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('sadmin_all_sales')}}" aria-expanded="false">
-                        <div class="d-flex align-items-left">
+<div class="d-flex align-items-center sidenav" id="sidenav">
+    
+  <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><g clip-path="url(#clip0_1514_6104)" stroke-width="1.429" stroke-linecap="round" stroke-linejoin="round"><path d="M2.143 12.143v6.428a.714.714 0 00.714.715h14.286a.714.714 0 00.714-.715v-6.428M11.429 12.143v7.143M2.143 14.286h9.286M.714 5.714l2.143-5h14.286l2.143 5H.714zM6.786 5.714v1.429A2.857 2.857 0 013.929 10h-.4A2.857 2.857 0 01.67 7.143V5.714"></path><path d="M13.214 5.714v1.429A2.857 2.857 0 0110.357 10h-.714a2.857 2.857 0 01-2.857-2.857V5.714M19.286 5.714v1.429A2.857 2.857 0 0116.428 10h-.357a2.857 2.857 0 01-2.857-2.857V5.714"></path></g><defs><clipPath id="clip0_1514_6104"><path fill="#fff" d="M0 0h20v20H0z"></path></clipPath></defs></svg>
+  <span class="nav-link-text ps-1">Marknad</span> <div class="request_box">{{$request_count}}</div>
+  </div>
+</a><!-- more inner pages-->
+</li>
+<li class="nav-item"><a class="nav-link" href="{{route('supplier_sales')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center" id="sidenav">
                         <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><path d="M16.908 11.825l-4.616.917M3.067 11.833h2.041l2.925 3.284a1.176 1.176 0 00.834.383 38.494 38.494 0 004.783-4.075c.092-.258-.083-.517-.242-.733l-2.091-2.7M8.817 5.9l-.292-.25A1.8 1.8 0 007.5 5.317c-.223 0-.443.042-.65.125L3.125 6.925" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M.625 5.5h1.667a.833.833 0 01.833.767v5.35a.833.833 0 01-.833.758H.625M19.375 12.375h-1.667a.834.834 0 01-.833-.758v-5.35a.834.834 0 01.833-.767h1.667M12.292 7.667l-2.875.95A1.342 1.342 0 017.75 7.9a1.358 1.358 0 01.617-1.783l2.8-1.409c.273-.139.576-.21.883-.208.227.002.452.04.667.117l4.166 1.516" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>  
-                       <span class="nav-link-text ps-1 text-black">Försäljning</span></div>
+                        <span class="nav-link-text ps-1">Försäljning</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('sadmin_credit_mgt')}}" aria-expanded="false">
-                        <div class="d-flex align-items-left">
-                        <svg width="800px" height="800px" class="svg-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M21 12V14M12 6H5C3.89543 6 3 6.89543 3 8V14M3 14V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V14M3 14H21M23 4L18 9L16 7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-                        <span class="nav-link-text ps-1 text-black">Kredithantering</span></div>
+                    <li class="nav-item"><a class="nav-link" href="{{route('suppliers.project')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center sidenav">
+                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><path d="M9.997 13.125v2.5M15.3 19.375a5.626 5.626 0 00-10.607 0H15.3zM13.75.625h3.125a1.25 1.25 0 011.25 1.25V5a8.125 8.125 0 11-16.25 0V1.875a1.25 1.25 0 011.25-1.25H6.25" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.442 2.144l1.04 2.049h1.773a.485.485 0 01.35.833l-1.628 1.598.901 2.071a.49.49 0 01-.699.614L10 8.083 7.82 9.31a.49.49 0 01-.698-.614l.901-2.07-1.627-1.602a.485.485 0 01.349-.834h1.773l1.04-2.045a.495.495 0 01.884 0z" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>  
+                        <span class="nav-link-text ps-1">Projekt</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('suppliers_dashboard')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center sidenav">
+                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><path d="M.714 19.286h18.572M6.429 19.286V.714H.714v18.572M12.143 19.286v-10H6.429v10" stroke-width="1.429" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17.857 19.286V5h-5.714v14.286" stroke-width="1.429" stroke-linecap="round" stroke-linejoin="round"></path></svg>  
+                        <span class="nav-link-text ps-1">Överblick</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="{{route('recent_messages')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center sidenav">
+                        <svg viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><g clip-path="url(#clip0_1060_2513)"><path d="M18.588 15.88h-8.75l-5 3.75v-3.75h-2.5a1.25 1.25 0 01-1.25-1.25V2.13A1.25 1.25 0 012.338.88h16.25a1.25 1.25 0 011.25 1.25v12.5a1.25 1.25 0 01-1.25 1.25z" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></g><defs><clipPath id="clip0_1060_2513"><path transform="translate(.463 .254)" d="M0 0h20v20H0z"></path></clipPath></defs></svg>  
+                        <span class="nav-link-text ps-1">Meddelanden</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+                    
+                    
+                    <li class="nav-item">
+                  <!-- label-->
+                  
+               <!-- parent pages-->
+               
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-indicator" href="#orders" data-bs-toggle="collapse" aria-expanded="false" aria-controls="e-commerce">
+                        <div class="d-flex align-items-center sidenav">
+                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-69441b5d=""><path d="M5.625 5a4.375 4.375 0 108.75 0 4.375 4.375 0 00-8.75 0zM1.875 19.375a8.125 8.125 0 1116.25 0" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        <span class="nav-link-text ps-1">Mina Sidor</span></div>
+                      </a><!-- more inner pages-->
+                      <ul class="nav collapse" id="orders">
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{route('suppliers_dashboard')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Överblick</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('contact-information')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Kontaktinformation</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="#" aria-expanded="false">
-                        <div class="d-flex align-items-left">
-                        <svg viewBox="0 0 1024 1024" class="svg-icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M877.685565 727.913127l-0.584863-0.365539a32.898541 32.898541 0 0 1-8.041866-46.423497 411.816631 411.816631 0 1 0-141.829267 145.777092c14.621574-8.992268 33.62962-5.117551 43.645398 8.772944l0.146216 0.073108a30.412874 30.412874 0 0 1-7.968758 43.206751l-6.141061 4.020933a475.201154 475.201154 0 1 1 163.615412-164.419599 29.974227 29.974227 0 0 1-42.841211 9.357807z m-537.342843-398.584106c7.164571-7.091463 24.71046-9.650239 33.26408 0 10.600641 11.185504 7.164571 29.462472 0 37.138798l-110.612207 107.468569L370.901811 576.14119c7.164571 7.091463 8.114974 27.342343 0 35.384209-9.796455 9.723347-29.828011 8.188081-36.480827 1.535265L208.309909 487.388236a18.423183 18.423183 0 0 1 0-25.953294l132.032813-132.032813z m343.314556 0l132.032813 132.032813a18.423183 18.423183 0 0 1 0 25.953294L689.652124 613.133772c-6.652816 6.579708-25.587754 10.746857-36.553935 0-10.30821-10.235102-7.091463-31.290168 0-38.381632l108.345863-100.669537-111.855041-108.638294c-7.164571-7.676326-9.504023-26.611265 0-36.04218 9.284699-9.138484 26.903696-7.091463 34.068267 0z m-135.54199-26.318833c3.582286-9.504023 21.347498-15.498868 32.679217-11.258612 10.819965 4.020933 17.180349 19.008046 14.256035 28.512069l-119.896906 329.716493c-3.509178 9.504023-20.616419 13.305632-30.193551 9.723347-10.161994-3.509178-21.201282-17.545889-17.545888-26.976804l120.627985-329.716493z" fill="#000000" /></svg>
-                        <span class="nav-link-text ps-1 text-black">API-Integrationer</span></div>
+                    <li class="nav-item"><a class="nav-link" href="{{route('settings.password')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Byt lösenord</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+                 
+
+                    <li class="nav-item"><a class="nav-link" href="{{route('accountsummary')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Kontosammanställning</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+                 
+                    <li class="nav-item"><a class="nav-link" href="{{route('settings.invoices')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Fakturor och betalningar</span></div>
                       </a><!-- more inner pages-->
                     </li>
 
-                                
+                    <li class="nav-item"><a class="nav-link" href="{{route('settings.profile')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Företagsprofil</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+
+                    <!--<li class="nav-item"><a class="nav-link" href="{{route('settings.ratings')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Omdömen</span></div>
+                      </a>
+                    </li>-->
+
+                    <li class="nav-item"><a class="nav-link" href="{{route('settings.stamps')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Certifikat och kvalitetsstämplar</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+
+                    <!-- <li class="nav-item"><a class="nav-link" href="{{route('settings.labels')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Etiketter</span></div>
+                      </a>
+                    </li>-->
+
+                  <!--  <li class="nav-item"><a class="nav-link" href="{{route('cannedresponses')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Svarsmallar</span></div>
+                      </a>
+                    </li>-->
+                    
+                    <li class="nav-item"><a class="nav-link" href="{{route('settings.notifications')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Pushnotiser</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="{{route('settings.cookie')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Cookie-inställningar</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
                   </ul>
                 </li>
+
+                <li class="nav-item"><a class="nav-link" href="{{route('customer_care')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center sidenav">
+                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color" data-v-22c13665=""><path d="M10 18.203L2.01 9.87a4.727 4.727 0 01-.886-5.46 4.728 4.728 0 017.571-1.228L10 4.487l1.305-1.305a4.727 4.727 0 016.686 6.685L10 18.203z" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>  
+                        <span class="nav-link-text ps-1">Kundservice</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+
 				@if(Auth::user()->is_admin)
                 <li class="nav-item">
-          	
+                  	
                   <div class="row navbar-vertical-label-wrapper mt-3 mb-2">                    
                     <a class="nav-link text-black" role="button" data-bs-toggle="collapse" aria-expanded="true">
                     <div class="d-flex align-items-left"><span class="nav-link-text ps-1" style="font-weight:600;font-size:14px;">Administration</span>
@@ -558,9 +674,7 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
     	
 	<script src="{{ asset('css/admin/vendors/popper/popper.min.js') }}"></script>
     <script src="{{ asset('css/admin/vendors/bootstrap/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('css/admin/vendors/anchorjs/anchor.min.js') }}"></script>
-    <script src="{{ asset('css/admin/vendors/echarts/echarts.min.js') }}"></script>
-	<script src="{{ asset('css/admin/vendors/fontawesome/all.min.js') }}"></script>
+	  <script src="{{ asset('css/admin/vendors/fontawesome/all.min.js') }}"></script>
     <script src="{{ asset('css/admin/vendors/lodash/lodash.min.js') }}"></script>
     <script src="{{ asset('css/admin/polyfill.io/v3/polyfill.min58be.js?features=window.scroll') }}"></script>
     <script src="{{ asset('css/admin/vendors/is/is.min.js') }}"></script>

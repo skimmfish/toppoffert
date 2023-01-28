@@ -110,11 +110,11 @@ padding-left:170px;padding-right:170px;
 
 @media(max-width:425px){
     .body{
-        padding:150px 70px 0 70px;
+        padding:150px 30px 0 30px;
     }
 }.body{
     display:flex;justify-content:center;flex-direction:column;
-}
+}h4{color:#fff;font-weight:800;}
 </style>
 </head>
 <body class="supplier-register" style="background:#41509a">
@@ -124,7 +124,7 @@ padding-left:170px;padding-right:170px;
 
 <div style="display:block;marin:auto">
 <svg fill="#fff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	 width="100px" height="100px" viewBox="0 0 40 40" xml:space="preserve">
+	 width="80px" height="80px" viewBox="0 0 40 40" xml:space="preserve">
 <g>
 	<path d="M20,0C8.974,0,0,8.973,0,20c0,11.027,8.974,20,20,20c11.029,0,20-8.973,20-20C40,8.973,31.029,0,20,0z M28.818,17.875
 		l-8.562,8.564c-0.596,0.595-1.377,0.893-2.158,0.893c-0.779,0-1.561-0.298-2.156-0.893l-4.758-4.758
@@ -134,8 +134,10 @@ padding-left:170px;padding-right:170px;
 </svg>
 </div>
 
-<div>Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.
-<Br/><span><small style="font-weight:600;font-size:12px;"> &copy;{{ date('Y') }}. All Rights Reserved <a href="{{route('index') }}">{{ config('app.name') }}</small></span>
+<div>
+<h4>Snart ar du igang!</h4>    
+Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.
+<Br/><span><small style="font-weight:500;font-size:12px;"> &copy;{{ date('Y') }}. All Rights Reserved <a href="{{route('index') }}">{{ config('app.name') }}</small></span>
 
 </div>
 

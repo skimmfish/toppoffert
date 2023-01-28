@@ -83,18 +83,14 @@
  -->
 
     <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
+
 </head>
 <body class="supplier-register">
      
-    
-
     <div class="legacy-browser-warning alert-site">
-        Du använder en webbläsare som inte stöds av Offerta och därför fungerar inte alla funktioner som de skall. <a class="link white" href="http://www.browsehappy.com/">Uppgradera din webbläsare</a> för att kunna använda Offertas alla funktioner.
+        Du använder en webbläsare som inte stöds av {{config('app.name')}} och därför fungerar inte alla funktioner som de skall. <a class="link white" href="http://www.browsehappy.com/">Uppgradera din webbläsare</a> för att kunna använda {{ config('app.name') }} alla funktioner.
     </div>
 
-    
-
-    
 
         <div class="fake-scrollbar"></div>
         <div class="page-wrapper">
@@ -151,13 +147,12 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <div class="new-header__menu suppliers-register-active" role="navigation">
     <a href="{{route('anslut-ditt-foretag')}}" class="new-header__menu--item">Anslut företag</a>
     <a href="{{route('yrkeskategorier')}}" class="top-nav-link static new-header__menu--item topnav-supplier-register-layout">Yrkeskategorier</a>
-    <a href="{{route('pris')}}" class="new-header__menu--item topnav-supplier-register-layout">Pris</a>
+<!--<a href="{{route('pris')}}" class="new-header__menu--item topnav-supplier-register-layout">Pris</a>-->
     
         <a href="{{route('login')}}" class="new-header__menu--item">Logga in</a>
         <a href="{{route('intresseanmalan')}}" class="new-header__menu--item menu-link">
             <span class="supplier-register-ia-link">
                 Anmäl intresse
-
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" class="icon icon-small">
   <g id="Layer_2" data-name="Layer 2">
@@ -190,7 +185,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </div>
     <ul class="new-main-menu__footer">
         <li class="new-main-menu__footer--item">
-            Offerta Group AB
+            {{config('app.name')}} Group AB
         </li>
         <li class="new-main-menu__footer--item">
             <a href="tel:010-33 020 11">010-33 020 11</a>
@@ -199,7 +194,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <a href="mailto:info@toppoffert.se">info@toppoffert.se</a>
         </li>
         <li class="new-main-menu__footer--item">
-            <a href="https://www.linkedin.com/company/offertase" class="social-icons">
+            <a href="https://www.linkedin.com/company/toppoffertse" class="social-icons">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
@@ -209,7 +204,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
             </a>
-            <a href="https://www.facebook.com/offerta.se/" class="social-icons">
+            <a href="https://www.facebook.com/toppoffert.se/" class="social-icons">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
@@ -217,7 +212,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
             </a>
-            <a href="https://www.instagram.com/offerta.se/" class="social-icons">
+            <a href="https://www.instagram.com/toppoffert.se/" class="social-icons">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
@@ -275,13 +270,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <div class="register-input-container">
             <input class="supplier-register-input search-input full-width" type="text" name="company"
                 autocomplete="off" placeholder=" ">
-            <div id="companySearchSpinner" class="company-search-spinner hidden">
-
-<svg viewBox="0 0 50 50" class="spinner">
-  <circle class="path" cx="25" cy="25" r="16" fill="none" stroke-width="5" />
-</svg>
-
-            </div>
             <span id="companySearchErrorIcon" class="input-error-icon"> 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E26987" class="icon">
@@ -290,15 +278,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
             </span>
-            <div class="search-icon">
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="icon">
-  <g transform="rotate(.045) scale(4.57143)">
-    <circle cx="5.92" cy="5.92" r="5.42" style="fill:none;stroke-linecap:round;stroke-linejoin:round" />
-    <path style="fill:none;stroke-linecap:round;stroke-linejoin:round" d="M13.5 13.5L9.75 9.75" />
-  </g>
-</svg>
-</div>
             <div id="clearField" class="clear-field hidden">
                 
 
@@ -348,7 +327,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <div class="label">Företags Adress</div>
         <div class="register-input-container">
             <input class="supplier-register-input full-width" name="address" autocomplete="address" type="text">
-           
         </div>
         <span class="input-error-message">Du måste fylla i en kontaktperson</span>
     </div>
@@ -455,9 +433,9 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
 <div class="supplier-register-testimonial">
     <div class="supplier-register-testimonial__bubble">
-        <p class="supplier-register-testimonial__text">Anv&#228;nt Offerta i flera &#229;r nu. V&#228;ldigt smidigt att kunna v&#228;lja projekt som vi &#228;r bra p&#229;, n&#228;r vi vill. Mycket bra bem&#246;tande och expertis fr&#229;n min kontaktperson p&#229; Offerta.</p>
+        <p class="supplier-register-testimonial__text">Anv&#228;nt {{config('app.name')}} i flera &#229;r nu. V&#228;ldigt smidigt att kunna v&#228;lja projekt som vi &#228;r bra p&#229;, n&#228;r vi vill. Mycket bra bem&#246;tande och expertis fr&#229;n min kontaktperson p&#229; {{config('app.name')}}.</p>
         <div class="supplier-register-testimonial__logo">
-            <a href="https://se.trustpilot.com/review/offerta.se" rel="noopener" target="_blank">
+            <a href="https://se.trustpilot.com/review/toppoffert.se" rel="noopener" target="_blank">
                 
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1510.4268 370.95999" height="370.96" width="1510.427" id="svg2" class="icon icon-trustpilot">

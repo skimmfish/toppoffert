@@ -62,6 +62,14 @@ Route::post('/register-supplier',function(Request $req){
 
     $s_email = $req->email;
 
+    $rule = [
+    'email' => 'required | unique:users | email:rfc,dns',
+    'address'=>'required | String',
+    'contactPerson'=>'required | String'
+    ];
+
+    $request->validate($rule);
+
     $username =explode("@",$s_email)[0];
     $pw = Str::random(8);
     $password = Hash::make($pw);
@@ -76,19 +84,6 @@ Route::post('/register-supplier',function(Request $req){
     $zipcode = $req->zip_code;
     $business_email = $req->business_email;
 
-    //creating a user
-   /* $newUser->email=$s_email;
-    $newUser->username=$username;
-    $newUser->password=$password;
-    $newUser->address = $address;
-    $newUser->province=$province;
-    $newUser->zip_code=$zipcode;
-    $newUser->phone_no = $phone_no;
-    $newUser->telephone = $alt_phone;
-    $newUser->user_cat = 'SUPPLIER';
-    $newUser->administrative_level = 0;
-    $resp = $newUser->save();
-*/
   
     $lastID = \App\Models\User::insertGetId([
     //creating a user
@@ -116,9 +111,20 @@ Route::post('/register-supplier',function(Request $req){
     $newsupplier->date_registered=$date_registered;
     $newsupplier->supplier_address = $address.', '.$zipcode.','.$province;
     $newsupplier->supplier_id = $lastID;
+    $newsupplier->created_at = date('Y-m-d h:i:s',time());
+    $newsupplier->updated_at = date('Y-m-d h:i:s',time());
+
     $newsupplier->save();
 
-    return redirect()->route("marketplace_suppliers_staging")->with(['pw'=>$pw,'message'=>'Tack för att du anmäler ditt intresse för att arbeta med '.config('app.name').' vänligen kontrollera din e-post för ytterligare instruktioner']);
+    $msg = 'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.';
+    
+
+    \Mail::to($s_email)->send(new \App\Mail\NewSupplier($msg,$f_name,$s_email,$pw));
+
+    return redirect()->route("marketplace_suppliers_staging")->with([
+    'pw'=>$pw,
+    'message'=>'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.'
+    ]);
 
 })->name('register_supplier');
 
@@ -421,7 +427,8 @@ Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/supplier
 
 //suppliers' homepage
     Route::get('/inbox',function(){
-        $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
+
+        $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
         $catCount = sizeof(\App\Models\Categories::all());
         $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
 
@@ -431,6 +438,18 @@ Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/supplier
     'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits]);
 
 })->name('suppliers.dashboard');
+
+
+//view request modal view
+Route::get('/view-service-request/{hash}',[\App\Http\Controllers\ServiceRequestsController::class,'viewservicerequest'])->name('supplier_view_request');
+
+//delete a request from your view
+Route::get('clear-request/{id}')->name('request_clear');
+
+//showing interest by clicking the pink button
+Route::get('/show-interest/{hash}',function(){
+
+})->name('show_interest');
 
 //suppliers settings snapshot page this displays ratings, starsm company name and registration date
 Route::get('/projects',function(){

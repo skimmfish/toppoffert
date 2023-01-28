@@ -136,7 +136,7 @@ justify-items: self-end;position:relative;top:15px;
     font-size:11px; font-weight: 800;
 }
 #navbarVerticalNav{
-    line-height: 35px !important;padding-left:15px;padding-right:15px;
+    line-height: 35px !important;
 }
 .sidenav .svg-icon, #sidenav .svg-icon{
     fill:none;stroke:#0d2453;width:15px !important;height:15px !important;
@@ -221,7 +221,19 @@ width:9px;fill:#333;
 .navigation_control .btn:hover, .btn-grey-bg{
     background:#e7f5d6;border-radius:50%;width:50px;height:50px;line-height: 37px;
 }
-.requests{background:#fff;border-radius: 10px;padding:10px 5px 10px 5px;height:auto;margin-bottom:15px;}
+.requests{background:#fff;border-radius: 10px;padding:15px 5px 15px 5px;height:auto;margin-bottom:5px !important;}
+.other_details_area{
+    line-height: 32px;
+}
+.related_item{
+    background-color: #fff;
+    min-height: 100px;
+    border-radius: 7px;padding:10px 8px 5px 8px;
+    margin-bottom: 10px;
+}
+.ders_box{
+    margin-top:-35px;
+}
 .requests .request_title{color:#000;font-weight:600;}
 .titles{line-height:29px;}
 .titles p{

@@ -131,7 +131,48 @@ return view('marketplace.sadmin.buyer_requests',['title'=>"Förfrågningar vänd
  */
 public function approve_request($request_id){
 
-\DB::update("UPDATE service_requests SET publish_status=? WHERE id=?",[true,$request_id]);
+$res = \DB::update("UPDATE service_requests SET publish_status=? WHERE id=?",[true,$request_id]);
 
+}
+
+/**
+ * This set of functions deals directly with the requests sent in by buyers
+ */
+public function viewservicerequest($hash){
+
+   $request = \App\Models\ServiceRequests::where('request_hash','=',$hash)->first();
+
+/*   $request = \DB::table('service_requests')->join('categories',function($join){
+
+      $join->on('categories.id','=','service_requests.service_cat')->where('service_requests.request_hash','=',$rhash);
+  })->get();
+*/
+$requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
+$catCount = sizeof(\App\Models\Categories::all());
+$credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+
+
+return view('pages.request_view')->with(['requestBody'=>$request,
+'supplierObj'=>new \App\Models\Suppliers,
+'title'=>'Se Serviceförfrågan','request_count'=>sizeof($requests),'related'=>$this->getRelatedRequests($request->service_cat)]);
+}
+
+/**
+ * @param Integer <$cat_id> for the request beeing shown
+ * @return $responseObj containing resources with the same request type
+ */
+public function getRelatedRequests($cat_id){
+
+   return $related = \App\Models\ServiceRequests::where('service_cat',$cat_id)->take(5)->get();
+
+}
+
+/**
+ * This function prints out the tab for displaying number of responders yet to respond
+ */
+
+public function createresponderstab($responders){
+
+   
 }
 }

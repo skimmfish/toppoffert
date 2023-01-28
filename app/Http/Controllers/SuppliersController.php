@@ -23,7 +23,7 @@ class SuppliersController extends Controller
         $rule = ['email' => 'required | unique:suppliers | email:rfc,dns'];
         $request->validate($rule);
 
-        $supplier->supplier_email = $request->_email_address;
+        $supplier->supplier_email = $request->email;
         //saving the supplier
         $supplier->save();
         

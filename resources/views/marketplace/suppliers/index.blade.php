@@ -1,5 +1,7 @@
-@extends('layouts.suppliers_header')
+@extends('layouts.supplierheader')
 @section('content')
+
+@include('layouts.admin_topbar')
 
         <div class="row g-3 mb-3" style="margin-bottom:30px;">
             <div class="col-md-12 col-lg-12 col-xl-12 col-xs-12 tp-padding">
@@ -17,16 +19,41 @@
                       </div>
 
     @if($request_count>0)
-    @foreach($requests as $x)                  
+    @foreach($requests as $x) 
+    @php 
+    $responderCount =  \App\Http\Controllers\RespondersController::get_responders_count($x->id);
+    @endphp
+
+    <a hre="#" data-attr="{{route('supplier_view_request',['hash'=>$x->request_hash])}}"  id="viewRequest" data-toggle="modal" data-target="#requestModal">
      <div class="row requests">
             <!--request_title_and_no. of_interested_suppliers-->
             <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6 titles">
-            <a href="{{route('suppliers.offerta_pages',['hash'=>$x->request_hash])}}" class="request_title">{{$x->request_title}}</a>
+            <a href="{{route('supplier_view_request',['hash'=>$x->request_hash])}}" class="request_title">{{$x->request_title}}</a>
             <br/>
       <div class="responders_box">
-            <span></span>
-      <span>{{\App\Http\Controllers\RespondersController::get_responders_count($x->id)}} till kan besvara</span>
-          </div>
+
+      <div>
+       <span>
+      @php 
+      $maxResponder = \App\Http\Controllers\ConfigController::get_value('max_responder');
+      for($i=0;$i<((int)$maxResponder-$responderCount);$i++){
+        echo "<span class='emptyballs'>.</span>";
+      }
+      @endphp
+    </span>
+
+      <span>
+      @php 
+      for($i=0;$i<($responderCount);$i++){
+        echo "<span class='balls'>.</span>";
+      }
+      @endphp
+      </span>
+    
+      <span>{{ (int)$maxResponder-$responderCount }} till kan besvara</span>
+    </div>
+
+  </div>
            </div>
 
               <div class="col-md-2 col-lg-2 col-sm-2 col-xs-6 titles">
@@ -42,16 +69,36 @@
                   </div>
 
                     <div class="col-md-2 col-xs-4">
-                      <a href="#" data-toggle="toggle" data-attr="" class="btn-grey-bg" id="deleteRequest" data-target="requestModal">
+                      <a href="#" data-toggle="modal" data-attr="{{route('request_clear',['id'=>$x->id])}}" class="btn-grey-bg" id="deleteRequest" data-target="#requestModal">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon svg-icon--size-small fill-current-color" data-v-467c38da=""><path d="M6.631 23.25a2.263 2.263 0 01-2.242-2.064L3.06 5.25H1.5a.75.75 0 010-1.5h6V3A2.252 2.252 0 019.75.75h4.5A2.252 2.252 0 0116.5 3v.75h6a.75.75 0 010 1.5h-1.56l-1.328 15.937a2.262 2.262 0 01-2.242 2.063H6.631zm-.748-2.188c.032.386.36.688.748.688H17.37a.753.753 0 00.747-.688L19.435 5.25H4.565l1.318 15.812zM15 3.75V3a.75.75 0 00-.75-.75h-4.5A.75.75 0 009 3v.75h6z"></path><path d="M9.75 18a.75.75 0 01-.75-.75v-7.5a.75.75 0 011.5 0v7.5a.75.75 0 01-.75.75zM14.25 18a.75.75 0 01-.75-.75v-7.5a.75.75 0 011.5 0v7.5a.75.75 0 01-.75.75z"></path></svg>
                       </a>
                     </div>
 
                     <!--./end of .row .requests-->
                   </div> 
-                  @endforeach   
+                </a>
+                
+                @endforeach   
                   @endif             
               </div>
+
+              <!--modal-->
+    <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onClick="closeModal('#requestModal')" data-dismiss="modal" aria-label="Close"style="border-radius:50%;width:35px;height:35px;border:0;color:#0d2453;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="mediumBody">
+                    <div>
+                        <!-- the result to be displayed apply here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     @endsection
