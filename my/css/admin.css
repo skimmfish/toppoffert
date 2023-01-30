@@ -101,6 +101,10 @@ p{font-size:15.5px;font-weight: 600;}
 .btn-grey-bg .svg-icon{
     width:16px;height:16px;stroke:#000;
 }
+.imgbox .svg-icon{
+width:30px;height:30px;
+}
+
 .btn-grey-bg:hover{
     width:50px !important;height:50px !important;border-radius: 50%;background-color:#0d2453;line-height: 30px;
 }.info_board .svg-icon{width:15px;height:15px;stroke:#000;}
@@ -156,6 +160,19 @@ font-size:12px;font-weight:600;
 .dialer .svg-icon{
     fill:none;display:block;margin:auto;line-height: 46px;
 }
+.dialer .invoice{
+fill:#0F1F3C !important;stroke:#0f1f3c;
+}
+
+.dialer .invoice:hover{
+    fill:#fff;stroke:#fff;
+}
+
+
+.select_controls .sels{
+    height:40px !important;color:#000;
+}
+
 .dialer .svg-icon:hover{
 fill:#fff !important;stroke:#fff !important;line-height: 46px;
 }

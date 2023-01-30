@@ -49,6 +49,8 @@ $supplierObj = new \App\Models\Suppliers;
     <link href="{{asset('css/fixed_footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
     <link href="{{asset('css/clients.css')}}" rel="stylesheet">
+    <link href="{{asset('css/tabs.css')}}" rel="stylesheet">
+    
 
        <!-- Script -->
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -436,6 +438,13 @@ $supplierObj = new \App\Models\Suppliers;
                       </a><!-- more inner pages-->
                     </li>
 
+                    
+                    <li class="nav-item"><a class="nav-link" href="{{route('settings.coverage')}}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Bevakning</span></div>
+                      </a><!-- more inner pages-->
+                    </li>
+
+
                     <!--
                     <li class="nav-item"><a class="nav-link" href="{{route('settings.profile')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Företagsprofil</span></div>
@@ -680,6 +689,7 @@ $supplierObj = new \App\Models\Suppliers;
     <!-- ===============================================-->
     	
 	<script src="{{ asset('css/admin/vendors/popper/popper.min.js') }}"></script>
+  
     <script src="{{ asset('css/admin/vendors/bootstrap/bootstrap.min.js') }}"></script>
 	  <script src="{{ asset('css/admin/vendors/fontawesome/all.min.js') }}"></script>
     <script src="{{ asset('css/admin/vendors/lodash/lodash.min.js') }}"></script>

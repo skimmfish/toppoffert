@@ -72,12 +72,12 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
                   <div class="bg-white dark__bg-1000 rounded-2 py-2">
 				  @if((\Auth::user()->is_admin==true && \Auth::user()->administrative_level>2))
 				
-          <a class="dropdown-item" href="">Maintenance</a>				  
+          <a class="dropdown-item" href="{{route('switch_to_maintenance')}}">Underhåll</a>				  
         
           @endif
-                    <a class="dropdown-item" href="">Profile &amp; settings</a>
+                    <a class="dropdown-item" href="{{route('pages.profile')}}">Profil &amp; Inställningar</a>
 
-                    <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                    <a class="dropdown-item" href="{{route('logout')}}">Logga ut</a>
                   </div>
                 </div>
               </li>

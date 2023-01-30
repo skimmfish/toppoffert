@@ -1,6 +1,7 @@
 @extends('layouts.supplierheader')
 @section('content')
 
+
 @include('layouts.admin_topbar')
 
 <h1>Hej! {{\Auth::user()->f_name}}</h1>

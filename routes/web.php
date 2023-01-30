@@ -210,7 +210,7 @@ Grouped routes for both authenticated users and unauthenticated users
 //grouping all routes under the dashboard/admin namespace for authenticated users
 Route::middleware(['auth','sadmin'])->prefix('marketplace/sa')->group(function(){
 
-    //super administrator's home
+//super administrator's home
 Route::get('/',function(){
 
 $newSuppliers = 0;
@@ -229,6 +229,23 @@ return view('marketplace.sadmin.index',['title'=>"Administrator's Portal - ".con
 ]);
 
 })->name('sadmin_index');
+
+//switch to maintenance
+Route::get('/switch-to-maintenance',function(){
+
+\Artisan::call('down --secret=toppoffert');
+
+return redirect()->route('sadmin_index')->with(['message'=>'Portalen bytte till underhåll']);
+
+})->name('switch_to_maintenance');
+
+//send offer invoice
+Route::get('/send-offer-invoice/{sid}',function($sid){
+
+    return view('marketplace.sadmin.invoicegenerator',['sid'=>$sid,'title'=>'Skicka erbjudandenoteringar och faktura']);
+
+})->name('send_offer_invoice');
+
 
 //generate invoices
 Route::get('/invoices',function(){
@@ -442,6 +459,16 @@ Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/supplier
     'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits]);
 
 })->name('suppliers.dashboard');
+
+//supplier's coverage
+Route::get('/suppliers-coverage',function(){
+    $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
+    $catCount = sizeof(\App\Models\Categories::all());
+    $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+
+    return view('marketplace.suppliers.coverage',['title'=>'Bevakning','requests'=>$requests,
+    'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits]);
+})->name('settings.coverage');
 
 
 //view request modal view
@@ -692,3 +719,8 @@ Route::get('/logout',function(){
 Route::get('/home', function(){
     return redirect()->route('redirect_to_dashboard');
 })->name('home');
+
+
+
+//for profile pages for all users
+Route::get('/user-profile',[App\Http\Controllers\UserController::class,'profile'])->name('pages.profile')->middleware(['auth','verified']);

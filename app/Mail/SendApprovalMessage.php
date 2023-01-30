@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SendMessage extends Mailable
+class SendApprovalMessage extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,13 +18,15 @@ class SendMessage extends Mailable
      *
      * @return void
      */
-    protected $message;
-    protected $name;
+    protected $f_name;
+    protected $title;
+    protected $no_of_coy;
 
-    public function __construct($msg,$name)
+    public function __construct($fname,$title,$no_of_coy)
     {
-        $this->message = $msg;
-        $this->name = $name;
+        $this->f_name=$fname;
+        $this->title=$title;
+        $this->no_of_coy = $no_of_coy;
     }
 
     /**
@@ -39,8 +41,7 @@ class SendMessage extends Mailable
             replyTo: [
                 new Address('info@toppoffert.se', 'Abbel Ljung'),
             ],
-            subject: 'Tack för att du ansluter'
-       
+            subject: 'Tack för att du ansluter'    
         );
     }
 
@@ -52,12 +53,11 @@ class SendMessage extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'emails.sendmessage',
-            with: [
-                'message' => $this->message,
-                'name' => $this->name,
-                
-            ]
+            markdown: 'sendapprovalmessage',
+            title:      $this->title,
+            name:       $this->name,
+            no_of_coy: $this->no_of_coy
+
         );
     }
 

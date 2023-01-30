@@ -156,7 +156,7 @@ display:block;
   .text-sm{font-family:'Open Sans';font-size:13px !important;color:#434345 !important;font-weight:900 !important;}
 
 .grid_case{
-		display:grid;grid-template-columns:25% 25% 25% 25%;
+		display:grid;grid-template-columns:28% 23% 23% 25%;
 	}
 	.grid_case .social{
 		position:relative;top:-30px;

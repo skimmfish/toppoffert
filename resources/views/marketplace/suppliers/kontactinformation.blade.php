@@ -1,5 +1,6 @@
-@extends('layouts.suppliers_header')
+@extends('layouts.supplierheader')
 @section('content')
+@include('layouts.admin_topbar')
 
 <div class="container">
 <h4>Kontaktinformation (visas ej för kund)</h4>

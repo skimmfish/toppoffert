@@ -36,7 +36,7 @@ class UserController extends Controller
     $allUsers = \App\Models\User::whereNotNull('email_verified_at')->where(['active'=>true])->orderBy('created_at','DESC')->paginate(20);
     }else if($type=='deleted_users'){
 
-        $allUsers = \App\Models\User::onlyThrashed()->get();
+        $allUsers = \App\Models\User::whereNotNull('deleted_at')->get();
 
     
     }else{
@@ -249,6 +249,25 @@ return redirect()->route('sa_all_users')->with(['message'=>'Användaren Har Arki
                 
             }
             
+
+/***
+ * this function retrieves a data in the supplier's table using the primary key field of the table
+ * @param String<$datafield>
+ * @param Integer <$supplier_id>
+ */
+public static function get_data($datafield,$id){
+    $columntoreturn = null;
+    $data = \App\Models\User::where('id',$id)->first();
+    
+    if($data){
+    
+    $columntoreturn = $data->$datafield;
+    
+    }
+    return $columntoreturn;
+    
+    }
+    
 
 
     }

@@ -301,9 +301,24 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <section class="page-section gray-bg">
     <div class="page-section__inner two-col">
         <div class="col">
-            <h2 class="page-section__heading">Få ditt företag att växa du med</h2>
-            <p class="page-section__paragraph">
-                Ta del av nya kunder varje dag. Tusentals företag använder Offerta för att öka sin omsättning, lönsamhet och för att få en roligare vardag.
+            <h2 class="page-section__heading">Varför anlita flyttfirma?</h2>
+            <p class="page-section__paragraph" style="line-height:34px;">
+           
+            När du flyttar kommer du att vara trött, stressad, less – och säkert lite irriterad. Efteråt kommer du vakna upp i en stökig dimma av flyttlådor och lortiga golv. Det kommer att göra ont i kroppen och ta minst en dag till innan allt är på plats.
+
+Vi ska vara ärliga: Det är varken glamoröst eller roligt att flytta.
+
+Om du inte anlitar en flyttfirma, förstås.
+
+<p>Då kan du fokusera på allt det spännande och skojiga som en flytt faktiskt innebär. Du slipper bära tunga lådor eller kånka soffa, bord och småprylar upp- och nedför trapphusets smala spiraltrappa. Du slipper kämpa för att få plats med alla dina ägodelar i en för trång flyttbil. Du slipper stressa och oroa dig.
+    </p>
+
+<p>    Istället får du tid över till att planera ditt nya hem och se till att allt blir så bra som möjligt. Så luta dig tillbaka och låt någon annan göra grovjobbet. Du har tillräckligt att tänka på som det är.
+    </p>
+Om du vill kan du också låta flyttfirman eller en städfirma sköta flyttstädningen åt dig.
+
+För att hitta rätt flyttfirma för dig är det bra att ta in offerter från flera olika firmor. Det gör du enkelt och gratis på en minut genom att fylla i vårt formulär. Sedan kan du enkelt jämföra flyttfirmornas erbjudanden och offerter – och förhandla priset.
+
             </p>
             <a class="footer-menu__item btn__action" href="{{route('anslut-ditt-foretag')}}">
                 Anslut ditt företag  

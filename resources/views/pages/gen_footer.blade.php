@@ -115,16 +115,14 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     <div class="new-footer__inner--item">
       <div>
         <span class="footer-menu__item no-link">
-          {{config('app.name')}} Group AB
+          Toppoffert Sverige AB
         </span>
         <div class="media">
           <span>
             <a href="mailto:info@toppoffert.se" class="footer-menu__item">
               info@toppoffert.se
             </a>
-            <a href="tel:010-33 020 11" class="footer-menu__item">
-              010-33 020 11
-            </a>
+          
             <a class="footer-menu__item" href="{{route('kontactos-pg')}}">
               Skicka meddelande
             </a>

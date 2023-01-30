@@ -106,7 +106,7 @@ public static function get_request_metadata($field,$request_id){
 
 public function allbuyersrequest(){
 
-$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->orderBy('created_at','DESC')->paginate(2);
+$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->orderBy('created_at','DESC')->orderBy('publish_status','DESC')->paginate(2);
 
 return view('marketplace.sadmin.buyer_requests',['title'=>"Köparnas önskemål",'allrequest'=>$allrequests]);
 
@@ -132,6 +132,17 @@ return view('marketplace.sadmin.buyer_requests',['title'=>"Förfrågningar vänd
 public function approve_request($request_id){
 
 $res = \DB::update("UPDATE service_requests SET publish_status=? WHERE id=?",[true,$request_id]);
+
+//send a notification to buyer of his request been approved
+$buyer_id = $this->get_request_metadata('customer_id',$request_id);
+$request_title =$this->get_request_metadata('request_title',$request_id);
+$email = \App\Models\User::get_profile_data('email',$buyer_id);
+$f_name = \App\Models\User::get_profile_data('f_name',$buyer_id);
+
+$no_of_coy = 10;
+
+\Mail::to($email)->send(\App\Mail\SendApprovalMessage($f_name,$request_title,$no_of_coy));
+
 return redirect()->back()->with(['message'=>'Köparens Begäran Godkändes']);
 }
 
@@ -177,7 +188,7 @@ public function mysales(){
    $catCount = sizeof(\App\Models\Categories::all());
    $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
    
-$sales =  \App\Models\ServiceRequests::where(['project_execution_status'=>1,'supplier_matched_with'=>auth()->id()])->get();
+$sales =  \App\Models\ServiceRequests::where(['project_execution_status'=>1])->get();
 return view('marketplace.suppliers.sales',['title'=>'Försäljning',
 'category_count'=>$catCount,
 'request_count'=>sizeof($requests),'supplierObj'=>new \App\Models\Suppliers,

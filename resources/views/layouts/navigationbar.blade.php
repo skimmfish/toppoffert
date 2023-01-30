@@ -1,7 +1,10 @@
 <div class="new-header__menu" role="navigation">
 
     <a href="{{route('anslut-ditt-foretag')}}" class="new-header__menu--item">Anslut företag</a>  
-        @if(\Auth::check())
+
+    <a href="{{ route('intresseanmalan') }}" class="new-header__menu--item">Anmäl intresse</a>  
+
+    @if(\Auth::check())
       <a href="{{route('redirect_to_dashboard')}}" class="new-header__menu--item"><img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
       @else
       <a href="{{route('login')}}" class="new-header__menu--item">Logga In</a>
@@ -69,7 +72,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
       <div class="wrapper">
       <ul>
-      <li><a href="{{route('yrkeskategorier')}}">Yrkeskategorier</a></li>
+<!--      <li><a href="{{route('yrkeskategorier')}}">Yrkeskategorier</a></li>-->
       <li class="show_768">
       @if(\Auth::check())
       <a href="{{route('redirect_to_dashboard')}}"><img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
@@ -78,12 +81,14 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     @endif
     </li>
 <!--      <li><a href="{{route('pris')}}">Pris</a></li>-->
+      <li><a href="{{ route('intresseanmalan') }}">Anmäl intresse</a> </li> 
+
       <li><a href="{{route('kontactos-pg')}}">Kontakta Oss</a></li>
 
       <li class="hr"><hr/></li>
       <li class="grid_case">
-    <span><a class="href">{{config('app.name')}} Group</a></span>
-    <span class="hidden_375"><a href="tel:010-33 020 11" class="href">010-33 020 11</a></span>
+    <span><a class="href">Toppoffert Sverige AB</a></span>
+    <span class="hidden_375"><a href="tel:010-33 020 11" class="href"></a></span>
     <span class="hidden_425"><a href="mailto:info@toppoffert.se" class="href">info@toppoffert.se</a></span>
     <span class="social">
 
