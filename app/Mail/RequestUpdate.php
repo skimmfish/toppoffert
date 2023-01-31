@@ -8,6 +8,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
+
 
 class RequestUpdate extends Mailable
 {
@@ -41,9 +43,9 @@ class RequestUpdate extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('Aluh1@hotmail.com',config('app.name')),
+            from: new Address('info@toppoffert.se',config('app.name')),
             replyTo: [
-                new Address('hello@toppoffert.se', 'Abbel Ljung'),
+                new Address('info@toppoffert.se', config('app.name')),
             ],
             subject: 'Request Update'
 

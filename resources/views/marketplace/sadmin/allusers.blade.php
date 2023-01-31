@@ -4,6 +4,17 @@
 @include('layouts.admin_topbar')
 
 <div class="row m-3">
+
+<div class="notify_div">
+@if (session('message')) 
+ <div class="alert alert-info text-md">  {{ session('message') }} </div>
+              @elseif(session('error'))
+              <div class="alert alert-danger text-md">  {{ session('error') }}
+                  </div>  
+                      @endif      
+                        </div>
+
+
 <h1>Hej! {{\Auth::user()->f_name}}</h1>
 <p class="line-height-auto">Hantera alla användare inklusive leverantörer och kunder här</p>
 
@@ -42,12 +53,16 @@
 </div>
 
 <!--table section for all users-->
+
 @php $id=1; @endphp
+
 
 @if(sizeof($allusers)>0)
 
 
-@if($user_cat=='CLIENT' || $type=='all')
+
+@if($user_cat=='CLIENT' || $user_cat=='ALL')
+
 <div class="card mb-12 btn-reveal-trigger" id="dataFilter">	   
 
 <div class="scrollable_table">
@@ -73,7 +88,11 @@
             <td><a href="mailto:{{$x->email}}">{{$x->email}}</a></td>
             <td></td>
             <td>{{$x->phone_no}} <hr/> {{$x->telephone}}</td>
-            <td><img src="{{ asset('img/avatar/'.$x->profile_img) }}" lazyloading class="img-responsive-sm" /></td>
+            <td>@if($x->profile_img!=NULL)<img src="{{ asset('img/avatar/'.$x->profile_img) }}" lazyloading class="img-responsive-sm" />
+                @else
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon svg-icon--size-medium svg-icon--spacing-right-tiny fill-current-color"><path d="M12 15.75c-3.308 0-6-2.692-6-6s2.692-6 6-6 6 2.692 6 6-2.692 6-6 6zm0-10.5c-2.481 0-4.5 2.019-4.5 4.5s2.019 4.5 4.5 4.5 4.5-2.019 4.5-4.5-2.019-4.5-4.5-4.5z"></path><path d="M12 24c-2.677 0-5.211-.868-7.332-2.51a.507.507 0 01-.126-.099C1.655 19.094 0 15.674 0 12 0 5.383 5.383 0 12 0s12 5.383 12 12c0 3.674-1.655 7.094-4.543 9.391l-.015.016c-.043.043-.087.069-.112.084A11.868 11.868 0 0112 24zm-5.716-3.199A10.408 10.408 0 0012 22.5a10.41 10.41 0 005.717-1.699 8.966 8.966 0 00-5.716-2.045 8.965 8.965 0 00-5.717 2.045zM12 1.5C6.21 1.5 1.5 6.21 1.5 12c0 3.023 1.294 5.875 3.562 7.874A10.449 10.449 0 0112 17.257c2.573 0 5.023.927 6.938 2.616 2.268-2 3.562-4.851 3.562-7.874C22.5 6.21 17.79 1.5 12 1.5z"></path></svg>
+                @endif
+            </td>
             <td>{{$x->user_cat}}</td>
             <td>{{ date('D, M Y',strtotime($x->updated_at)) }}</td>
             <td>
@@ -81,8 +100,6 @@
             <a href="#" data-toggle="modal" data-attr="{{route('seeuserprofile',['id'=>$x->id])}}" class="text-primary" title="View User" id="viewUsr" data-target="#requestModal">Visa användare</a><br/>
             <a href="#" data-toggle="modal" data-attr="{{route('send_message',['id'=>$x->id,'email'=>$x->email,'subject'=>'Notification'])}}" title="Send a notification" id="notifyUsr"  class="text-success" data-target="#requestModal">Skicka ett meddelande</a>
             <a href="#" data-toggle="modal" data-attr="{{route('delete_user_confirmation',['id'=>$x->id])}}" class="text-black" id="deleteUser" data-target="#requestModal" title="Delete User">Ta bort användare</a><Br/>
-
-
 
             </td>                
             </tr>
@@ -114,6 +131,10 @@
 {{date('D, M, Y',strtotime($x->created_at))}}
 </small>
 </h6>
+@if($x->active==false)
+<hr/>
+ <a href="#" class="text-primary underline" data-attr="{{route('send_agreement_documents')}}" data-toggle="modal" id="sendDocs" data-target="#requestModal">Send Agreement Documents  </a> | <a href="{{route('approve_supplier',['supplier_id'=>$x->id])}}" class="underline">Approve Supplier</a> 
+ @endif
 </div>
 
 

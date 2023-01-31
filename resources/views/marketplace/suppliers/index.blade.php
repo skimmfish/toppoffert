@@ -4,7 +4,7 @@
 
 @include('layouts.admin_topbar')
 
-<h1>Hej! {{\Auth::user()->f_name}}</h1>
+<h1 style="color:#000;text-align:left;">Hej! {{\Auth::user()->f_name}}</h1><Br/>
  <p class="line-height-auto">Välkommen till din instrumentpanel</p>
 
 

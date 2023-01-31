@@ -56,77 +56,13 @@ Route::get('anslut-ditt-foretag',function(){
 
 
 //for registering new suppliers
-Route::post('/register-supplier',function(Request $req){
-    $newsupplier= new \App\Models\Suppliers;
-    $newUser = new \App\Models\User;
+Route::post('/register-supplier','\App\Http\Controllers\UserController@savesupplier')->name('register_supplier');
 
-    $s_email = $req->email;
+//for saving buyer_Types
+Route::post('/save-buyer-type/{id}','\App\Http\Controllers\CategoriesController@savebuyertype')->name('save_buyer_type');
 
-    $rule = [
-    'email' => 'required | unique:users | email:rfc,dns',
-    'address'=>'required | String',
-    'contactPerson'=>'required | String'
-    ];
 
-    $request->validate($rule);
-
-    $username =explode("@",$s_email)[0];
-    $pw = Str::random(8);
-    $password = Hash::make($pw);
-    $corp_name = $req->company;
-    $date_registered = date('Y-m-d');
-    $f_name = $req->contactPerson;
-    $phone_no = $req->phoneNumber;
-    $alt_phone = $req->alternate_phone;
-    $address = $req->address;
-    $city = $req->city;
-    $province = $req->province;
-    $zipcode = $req->zip_code;
-    $business_email = $req->business_email;
-
-  
-    $lastID = \App\Models\User::insertGetId([
-    //creating a user
-    'email'=> $s_email,
-    'business_email'=>$business_email,
-    'username'=>$username,
-    'f_name'=>$f_name,
-    'password'=>$password,
-    'address' => $address,
-    'province' => $province,
-    'zip_code' => $zipcode,
-    'phone_no' => $phone_no,
-    'telephone' => $alt_phone,
-    'user_cat' => 'SUPPLIER',
-    'created_at'=>date('Y-m-d h:i:s',time()),
-    'updated_at'=>date('Y-m-d h:i:s',time()),
-    'administrative_level' =>0
-    ]);
-
-    //$resp = $newU->id;
-
-    //setting the column fields
-    $newsupplier->supplier_email = $s_email;
-    $newsupplier->supplier_corp_name=$corp_name;
-    $newsupplier->date_registered=$date_registered;
-    $newsupplier->supplier_address = $address.', '.$zipcode.','.$province;
-    $newsupplier->supplier_id = $lastID;
-    $newsupplier->created_at = date('Y-m-d h:i:s',time());
-    $newsupplier->updated_at = date('Y-m-d h:i:s',time());
-
-    $newsupplier->save();
-
-    $msg = 'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.';
-    
-
-    \Mail::to($s_email)->send(new \App\Mail\NewSupplier($msg,$f_name,$s_email,$pw));
-
-    return redirect()->route("marketplace_suppliers_staging")->with([
-    'pw'=>$pw,
-    'message'=>'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.'
-    ]);
-
-})->name('register_supplier');
+Route::put('/save-assignment-size/{id}','\App\Http\Controllers\CategoriesController@saveassignmentsize')->name('save_assignment_size');
 
 //staging area for suppliers who just got their interest registered
 Route::get('suppliers-staging',function(){
@@ -238,6 +174,13 @@ Route::get('/switch-to-maintenance',function(){
 return redirect()->route('sadmin_index')->with(['message'=>'Portalen bytte till underhåll']);
 
 })->name('switch_to_maintenance');
+
+
+//approve supplier
+Route::get('approve-supplier/{supplier_id}','\App\Http\Controllers\UserController@approvesupplier')->name('approve_supplier');
+
+//Route for sending document to suppliers
+Route::get('/send-agreement-documents','\App\Http\Controllers\DocumentController@senddocuments')->name('send_agreement_documents');
 
 //send offer invoice
 Route::get('/send-offer-invoice/{sid}',function($sid){
@@ -460,14 +403,21 @@ Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/supplier
 
 })->name('suppliers.dashboard');
 
+
+//for submitting suppliers' category
+Route::put('/save-categories/{id}','\App\Http\Controllers\CategoriesController@updatesuppliercategorizaton')->name('fix_supplier_category');
+
 //supplier's coverage
 Route::get('/suppliers-coverage',function(){
     $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
-    $catCount = sizeof(\App\Models\Categories::all());
+    $cats = \App\Models\Categories::all();
+    $catCount = sizeof($cats);
     $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
 
     return view('marketplace.suppliers.coverage',['title'=>'Bevakning','requests'=>$requests,
-    'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits]);
+    'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits,
+    'categories'=>$cats]);
+
 })->name('settings.coverage');
 
 
@@ -704,7 +654,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
  
-    return back()->with('message', 'Verification link sent!');
+    return back()->with('message', 'Verifieringslänk har skickats!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
@@ -712,7 +662,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get('/logout',function(){
     //log user out
     Auth::logout();
-    return redirect()->route('login')->with(['message'=>'You have been successfully logged out!']);
+    return redirect()->route('login')->with(['message'=>'Du har loggats ut']);
 })->name('auth.logout');
 
 

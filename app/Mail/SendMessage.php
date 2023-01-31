@@ -8,6 +8,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
+
 
 class SendMessage extends Mailable
 {
@@ -37,7 +39,7 @@ class SendMessage extends Mailable
         return new Envelope(
             from: new Address('info@toppoffert.se',config('app.name')),
             replyTo: [
-                new Address('info@toppoffert.se', 'Abbel Ljung'),
+                new Address('info@toppoffert.se', config('app.name')),
             ],
             subject: 'Tack för att du ansluter'
        

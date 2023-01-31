@@ -27,7 +27,7 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="format-detection" content="telephone=no">
 
-    <meta content="Har du frågor kring hur Offertas tjänst fungerar eller hur vi kan hjälpa ditt företag att växa? Kontakta kundservice på info@offerta.se eller 010-33 020 11." name="description" />
+    <meta content="Har du frågor kring hur {{config('app.name')}} tjänst fungerar eller hur vi kan hjälpa ditt företag att växa? Kontakta kundservice på info@toppoffert.se eller 010-33 020 11." name="description" />
     <link href="{{route('kontactos-pg')}}" rel="canonical" />
     <meta content="INDEX,FOLLOW" name="GOOGLEBOT" />
 <meta content="INDEX,FOLLOW" name="ROBOTS" />
@@ -50,11 +50,10 @@
                 <!-- End Visual Website Optimizer Asynchronous Code -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>        
-<link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/icons/apple-touch-icon.png')}}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/icons/favicon-32x32.png')}}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/icons/favicon-16x16.png')}}">
-<link rel="mask-icon" href="{{asset('img/icons/safari-pinned-tab.svg')}}" color="#8bc343">
+<link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>   
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
+    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
 
 <meta name="theme-color" content="#2F3033">
 <script>
@@ -172,13 +171,13 @@
 	background:none;
   }
   .wrapper ul li{
-	margin: 15px 0;text-align: left !important;
+	margin: 12.5px 0;text-align: left !important;
   }
   .wrapper ul li a{
 	color: none;
 	text-decoration: none;
-	font-size: 48px;
-	font-weight: 900 !important;
+	font-size: 31px;
+	font-weight: 800 !important;
 	padding: 5px 30px;
 	color: #434345;
 	background:none;
@@ -221,54 +220,161 @@
   .icon-small{
 top:37px;
   }
+
+  .svg_logo{
+   display:none; 
+  }
+
+  .grid_case{
+		display:grid;grid-template-columns:28% 23% 23% 25%;
+	}
+	.grid_case .social{
+		position:relative;top:-30px;
+	}
+	.texts_href{
+		display:grid;grid-template-columns: 33% 33% 33%;grid-gap:3px;
+	}
+
+	.grid_case .href{
+		font-size:11px !important;font-weight:800;color:#434345;
+	}
+
+  @media(max-width:1024px){
+	.wrapper ul li a{
+		color: none;
+		text-decoration: none;
+		font-size: 31px;
+		font-weight: 800 !important;
+		padding: 5px 30px;
+		color: #434345;
+		background:none;
+		position: relative;
+		line-height: 50px;
+		transition: all 0.3s ease;
+		text-align:left !important;
+	  }
+	
+	  .grid_case{
+		display:grid;grid-template-columns:34% 22% 20% 29%;
+	}
+	.grid_case .social{
+		position:relative;top:-15px;left:28px !important;
+	}
+	}
+
+ @media(max-width:425px){
+	.wrapper ul li a{
+		color: none;
+		text-decoration: none;
+		font-size: 22px !important;
+		font-weight: 900 !important;
+		padding: 0 35px;
+		color: #434345;
+		background:none;
+		position: relative;
+		line-height: 48px;
+		transition: all 0.3s ease;
+		text-align:left !important;
+	  }
+	  .hidden-425{
+		display:none;
+	  }
+
+	  .hr{
+		display:relative !important;top:-45px;left:18px !important;
+	}
+	.grid_case{display:grid;grid-template-columns:54% 23% 23% !important;
+  grid-gap:0;}
+	  .grid_case .href{
+		font-size:7px !important;
+	  }
+
+	  .social{top:-24px;display:flex;flex-direction:row;}
+    
+	  .icon-small{
+		top: 22px !important;
+		left: -20px;
+	 }
+}
+	 @media(max-width:320px){
+		.icon-small{
+			top: 22px !important;
+			left: -40px;
+		 }
+		
+		}
+		 
+		@media(max-width:375px){
+			#_dropdown_logo,  .menu-btn-left{
+				position: absolute;
+				z-index: 3;
+				right: 20px;
+				 left: 9px !important;
+				top: -21.2px !important;
+				height: 50px;
+				width: 50px;
+				text-align: center;
+				line-height: 50px;
+				color: #fff;
+				cursor: pointer;
+				transition: all 0.3s ease-in-out;
+			  }
+
+			  .grid_case{display:grid;grid-template-columns: 55% 45% !important;}
+			  .grid_case .href{
+				font-size:8px !important;
+			  }
+			  .hidden_375{display:none;}
+			  
+			
+		 }
+ 
+		 .img_avatar{
+			width:34px;height:34px;border-radius:50%;position:relative;left:-4px;
+		 }
+
+  @media(max-width:768px){
+  .svg-logo{
+display:block;
+  }
+  .svg_logo{
+display:none;
+float:left;
+  }
+
+  .grid_case{
+		display:grid;grid-template-columns:36% 22% 20% 29%;
+	}
+	.grid_case .social{
+		position:relative;top:-30px;
+	}
+	.texts_href{
+		display:grid;grid-template-columns: 33% 33% 33%;grid-gap:3px;
+	}
+
+	.grid_case .href{
+		font-size:9px !important;font-weight:800;color:#434345;
+	}
+
+}
     </style>
 </head>
 
 <body class="info info contactus">
-    <script type="text/javascript">
-        var _paq;
-        if(_paq) {
-        _paq = _paq;
-        } else {
-        _paq = [];
-        }
-        if (window.location.href.includes('staging.offertadev') || window.location.href.includes('localhost:')) {
-            window.PiwikPROappID = '7dbc9a11-29d1-4b5a-806e-56dcb82507a4'
-        } else {
-            window.PiwikPROappID = '97384d4f-d41f-4ee9-8ff0-acf02a075074'
-        }
-        (function (window, document, dataLayerName, id) {
-            window[dataLayerName] = window[dataLayerName] || [], window[dataLayerName].push({ start: (new Date).getTime(), event: "stg.start" }); var scripts = document.getElementsByTagName('script')[0], tags = document.createElement('script');
-            function stgCreateCookie(a, b, c) { var d = ""; if (c) { var e = new Date; e.setTime(e.getTime() + 24 * c * 60 * 60 * 1e3), d = "; expires=" + e.toUTCString() } document.cookie = a + "=" + b + d + "; path=/" }
-            var isStgDebug = (window.location.href.match("stg_debug") || document.cookie.match("stg_debug")) && !window.location.href.match("stg_disable_debug"); stgCreateCookie("stg_debug", isStgDebug ? 1 : "", isStgDebug ? 14 : -1);
-            var qP = []; dataLayerName !== "dataLayer" && qP.push("data_layer_name=" + dataLayerName), isStgDebug && qP.push("stg_debug"); var qPString = qP.length > 0 ? ("?" + qP.join("&")) : "";
-            tags.async = !0, tags.src = "https://fortnox.containers.piwik.pro/" + id + ".js" + qPString, scripts.parentNode.insertBefore(tags, scripts);
-            !function (a, n, i) { a[n] = a[n] || {}; for (var c = 0; c < i.length; c++)!function (i) { a[n][i] = a[n][i] || {}, a[n][i].api = a[n][i].api || function () { var a = [].slice.call(arguments, 0); "string" == typeof a[0] && window[dataLayerName].push({ event: n + "." + i + ":" + a[0], parameters: [].slice.call(arguments, 1) }) } }(i[c]) }(window, "ppms", ["tm", "cm"]);
-        })(window, document, 'dataLayer', window.PiwikPROappID);
-    </script> 
-    
-    
-    
 
     <div class="legacy-browser-warning alert-site">
-        Du använder en webbläsare som inte stöds av {{config('app.name')}}och därför fungerar inte alla funktioner som de skall. <a class="link white" href="http://www.browsehappy.com/">Uppgradera din webbläsare</a> för att kunna använda Offertas alla funktioner.
+        Du använder en webbläsare som inte stöds av {{config('app.name')}}och därför fungerar inte alla funktioner som de skall. <a class="link white" href="http://www.browsehappy.com/">Uppgradera din webbläsare</a> för att kunna använda {{config('app.name')}} alla funktioner.
     </div>
-
-    
-
-    
 
         <div class="fake-scrollbar"></div>
         <div class="page-wrapper">
             <header class="new-header">
                 <div class="new-header-container">
                     <a class="new-header__logo" href="{{route('index')}}" aria-label="Hem">
-                        
-
                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" viewBox="0 0 500.000000 500.000000"
  preserveAspectRatio="xMidYMid meet">
 <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
-fill="#0d2663" stroke="none">
+fill="#005aad" stroke="none" class="svg-logo">
 <path d="M943 3272 c-156 -51 -248 -200 -274 -446 -17 -163 2 -336 50 -448 23
 -55 81 -121 133 -155 l38 -23 0 -125 0 -126 132 111 132 110 1484 0 c1321 0
 1491 2 1545 16 153 39 250 149 293 331 22 91 22 311 0 412 -31 142 -103 255
@@ -355,7 +461,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <div class="white-box content">
                 <p>
                     Du är alltid välkommen att höra av dig till oss om du har några frågor kring tjänsten eller vill komma i kontakt med oss.
-                    Du hittar även många svar under <a class="link" href="https://toppoffert.se/om-offerta/sa-fungerar-offerta/#faq">vanliga frågor.</a>
+                    Du hittar även många svar under <a class="link" href="{{route('faqs')}}">vanliga frågor.</a>
                 </p>
                 <div class="block hidden-small">
                     <div class="h5 hidden-small block-small">
@@ -380,13 +486,13 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
   </g>
 </svg>
 
-                        <a class="link" href="tel:+46103302011">
-                            010-33 020 11
+                        <a class="link" href="tel:+{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}">
+                        {{\App\Http\Controllers\ConfigController::get_value('phone_no')}}
                         </a>
                     </div>
                 </div>
                 <div class="block visible-small">
-                    <a class="button-large button button-email full-width visible-small block" href="mailto:info@offerta.se">
+                    <a class="button-large button button-email full-width visible-small block" href="mailto:info@toppoffert.se">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 18" class="icon icon-faded">
@@ -395,9 +501,9 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
   </g>
 </svg>
 
-                        info@offerta.se
+                        info@toppoffert.se
                     </a>
-                    <a class="button-large button button-phone full-width visible-small block" href="tel:+46103302011">
+                    <a class="button-large button button-phone full-width visible-small block" href="tel:{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}">
                         
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.89 21.93" class="icon icon-faded">
@@ -466,28 +572,27 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                     </div>
                 </div>
             </div>
+
             <aside class="aside">
                 <div class="box">
                     <div class="h4 title">{{config('app.name')}} Group AB</div>
                     <div class="title-info subtitle">556743-5887</div>
                     <address class="h6 block">
-                        Sveavägen 98<br />
-                        113 50 Stockholm<br /><br />
-                        <span class="subtitle">Tel</span> 010-33 020 11<br />
-                        <span class="subtitle">Fax</span> 08-551 119 09
+                      {{\App\Http\Controllers\ConfigController::get_value('address')}}<br/><br/>
+
+                    <span class="title-info subtitle">Tel</span> <a href="tel:{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}">{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}</a><br />
                     </address>
                 </div>
                 <div class="box block">
                     <div class="block text-center">
-                        <img class="non-block" src="{{asset('img/logos/fortnox-logo.png')}}" alt="Fortnox Logo">
-                    </div>
-                    <p class="strong">{{config('app.name')}} - en del av Fortnox</p>
-                    <p>{{config('app.name')}} ägs numera av <a href="https://www.fortnox.se/" class="link" title="www.fortnox.se" target="_blank">www.fortnox.se</a>. Fortnox gör det enklare att vara företagare och erbjuder SaaS-baserade produkter och tjänster inom bland annat bokföring, fakturering, finansiering och anställda. {{config('app.name')}}bedrivs som ett eget varumärke inom Fortnox.</p>
+                       
+                  </div>
                 </div>
             </aside>
         </div>
     </div>
 </section>
+<!--
 <section class="section-alt">
     <div class="container">
         <h2 class="section-title">Kontaktpersoner</h2>
@@ -527,10 +632,10 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         </div>
     </div>
 </section>
-            </main>
+-->
+</main>
         </div>
         
-
         @include('pages.gen_footer')
 
     </body>

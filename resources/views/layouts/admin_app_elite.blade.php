@@ -20,9 +20,9 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.ico') }} ">
-    <link rel="icon" type="image/ico" sizes="32x32" href="{{ asset('favicon.ico') }}" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
+    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
 
     <meta name="msapplication-TileImage" content="">
     <meta name="theme-color" content="#ffffff">
@@ -49,6 +49,8 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
     <link href="{{asset('css/fixed_footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
     <link href="{{asset('css/modal_pop_css.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/tabs.scss')}}" rel="stylesheet" />
+    <link href="{{asset('css/tabs.css')}}" rel="stylsheet" />
 
     <!-- Script -->
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -77,6 +79,34 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
 <script>
         // display a modal (small modal)
         $(document).on('click', '#deleteUser', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
+
+<script>
+        // display a modal (small modal)
+        $(document).on('click', '#sendDocs', function(event) {
             event.preventDefault();
             let href = $(this).attr('data-attr');
             $.ajax({
@@ -541,9 +571,9 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
           </ul>
         </nav>
 			  <!--end of sidebar navigation-->
-			  
-			  
-  @yield('content')
+			  <!--notification bar-->
+
+        @yield('content')
 
 		@include('layouts.admin_copyright_footer')
 </main>

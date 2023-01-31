@@ -49,7 +49,7 @@ class LoginController extends Controller
     public function customLogin(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'email' =>    'required',
+            'email' =>    ['required','email'],
             'password' => 'required',
           ]);
 
@@ -62,13 +62,16 @@ class LoginController extends Controller
               ]);
             }
     
-           $user_cred = $request->only('email', 'password');
+            $user_cred = $request->only('email', 'password');
+         
             if (\Auth::attempt($user_cred)) {
+
                  //if user is logged in as a client
-                if(\Auth()->user()->user_cat=='CLIENT'){  
+                 $request->session()->regenerate();
+
+                 if(\Auth()->user()->user_cat=='CLIENT'){  
                    //return response()->json([[1]]);
                    return redirect()->route('marketplace.clients');
-
 
                 }  
     
@@ -84,14 +87,12 @@ class LoginController extends Controller
                //return response()->json([[3]]);
                return redirect()->route('sadmin_index');
                
-            }else{
-               $error = ["Invalid login credentials"];
-
-               $messageBag = new \Illuminate\Support\MessageBag($error);
-
-               return redirect()->route('auth.login')->with(['message'=>$messageBag]);
-               
             }
+
+            return back()->withErrors([
+               'email' => 'De angivna uppgifterna stämmer inte överens med våra uppgifter.',
+           ])->onlyInput('email');
+
             //$error = 'Invalid Login Credentials';
             //flash::fail($error);
             //return redirect()->route('login')->with(['error'=>$error]);

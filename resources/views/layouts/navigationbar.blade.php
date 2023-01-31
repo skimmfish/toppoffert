@@ -19,10 +19,10 @@
         <label for="active" class="menu-btn-left">
           <!--logo-->
 <a href="{{route('index')}}" aria-label="Hem" id="_dropdown_logo">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" viewBox="0 0 500.000000 500.000000"
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" class="svg_logo" viewBox="0 0 500.000000 500.000000"
  preserveAspectRatio="xMidYMid meet">
 <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
-fill="#0d2663" stroke="none">
+fill="#005aad" stroke="none">
 <path d="M943 3272 c-156 -51 -248 -200 -274 -446 -17 -163 2 -336 50 -448 23
 -55 81 -121 133 -155 l38 -23 0 -125 0 -126 132 111 132 110 1484 0 c1321 0
 1491 2 1545 16 153 39 250 149 293 331 22 91 22 311 0 412 -31 142 -103 255
@@ -86,10 +86,12 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
       <li><a href="{{route('kontactos-pg')}}">Kontakta Oss</a></li>
 
       <li class="hr"><hr/></li>
+
       <li class="grid_case">
     <span><a class="href">Toppoffert Sverige AB</a></span>
-    <span class="hidden_375"><a href="tel:010-33 020 11" class="href"></a></span>
+    <span class="hidden_375"><a href="tel:{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}" class="href">{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}</a></span>
     <span class="hidden_425"><a href="mailto:info@toppoffert.se" class="href">info@toppoffert.se</a></span>
+    
     <span class="social">
 
                             <a href="https://www.facebook.com/toppoffert.se/" class="social-icons social-icon-y">

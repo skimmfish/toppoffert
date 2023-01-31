@@ -1,7 +1,5 @@
 <x-mail::message>
-# Introduction
-
-<img src="{{ $message->embed('img/logos/site_logo.png')}}" lazyloading style="display:block;margin:auto;">
+<img src="{{ asset('img/logos/site_logo.png')}}" lazyloading style="display:block;margin:auto;width:130px;height:auto">
 
 Hej {{$f_name}}
 

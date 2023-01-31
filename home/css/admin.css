@@ -1,0 +1,213 @@
+/***
+admin.css
+**/
+@font-face {font-family: "GD Sherpa Regular";
+    src: url("../font/0aee6008b82cde991ec28387169bb13e.eot'"); /* IE9*/
+    src: url("../font/0aee6008b82cde991ec28387169bb13e.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../font/0aee6008b82cde991ec28387169bb13e.woff2") format("woff2"), /* chrome、firefox */
+    url("../font/0aee6008b82cde991ec28387169bb13e.woff") format("woff"), /* chrome、firefox */
+    url("../font/0aee6008b82cde991ec28387169bb13e.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../font/0aee6008b82cde991ec28387169bb13e.svg#GD Sherpa Regular") format("svg"); /* iOS 4.1- */
+  }
+
+  .img-responsive-logo{
+display:relative;width:90px;height:auto;margin-top:-30px !important;
+  }
+  .navbar-vertical-toggle{
+    margin-top:-30px;
+  }
+  .no-padding{
+    padding:0 !important;
+  }
+  .form-control{
+    font-size:13.5px;height:50px !important;font-family: Spartan;
+  }
+  .form-control::placeholder{
+    color:#333;font-size:13px;
+  }
+  #dataFilter{ margin-top:20px;  }
+
+  body{font-family:'Spartan','GD Sherpa Regular','Work Sans','Brandon Grotesque' !important;font-size:13px;color:#000;font-weight:500;color:#000;line-height:auto; }
+      .nav-link .svg-icon{
+        stroke:#0d2453;width:17px;height:17px;fill:none;
+      }
+.grid-box{
+    display:grid;grid-template-columns: 20% 80%;margin-top: 10px;padding-left:10px;
+}
+.grid-box .img-responsive-sm{
+    width:50px;height:50px;border-radius:50%;border:0;position:relative;left:20px;
+}
+.dark_bg{
+    height:45px;border-radius:45px !important;width:auto;border:0;padding:0 30px 6px 30px;background-color: #0d2453;font-size:12.5px;color:#fff !important;
+    position:relative;float:right;top:-47.5px;left:-3.5px;
+}
+.dark_bg .svg-icon{stroke:#fff !important;fill:none;}
+.text-md{
+    font-size:11.5px;font-weight: 400;
+}
+.border-input-field{
+    border:1px solid #333 !important;border-radius:7px !important;
+}
+.text-lg{
+    font-size:15px;
+}
+.text-sm{font-size:11.5px}
+
+      .nav-link, .nav-link-text, .dropdown-item, .mb-1,.mb-0, .form-control, label{
+      font-family:'Spartan','GD Sherpa','Work Sans','Brandon Grotesque';font-size:11.8px !important;
+      }
+      .line-height-auto{
+        line-height: 29px;
+      }
+      .mb-1, .cust-link{font-weight:400;font-size:12px;}
+  .form .form-control{
+          font-size:12px;border:1px solid #ddd;
+      }
+      label{font-weight:700;}
+
+      .div-success{
+    background-color: rgb(170, 236, 214) !important;
+}        
+.btn-grey-bg .svgg{
+    fill:#000;position:relative;left:-2px;
+}
+.btn-grey-bg .svgg:hover{
+fill:#fff !important;
+}
+
+.div-pending{background-color: #0088ff;}
+
+.py-3 .svgicon{
+    position:relative !important;
+    top:-50px !important;
+}
+.navbar-vertical.navbar-expand-lg .nav-link{
+    line-height: 25px;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'GD Sherpa Regular';
+}
+h1{font-size:35px;}h2{font-size: 30px;}h3{font-size:26px;}h4{font-size: 20px;}h5{font-size:18px;}h6{font-size:15px;}
+p{font-size:15.5px;font-weight: 600;}
+
+.img-responsive-sm{
+    width:24px;height:24px;border-radius:50%;fill:#000;
+}
+.svga{fill:#000 !important;stroke:none;width:16px;height:16px;}
+.btn-grey-bg{
+    border-radius: 50% !important;
+}
+.btn-grey-bg .svg-icon{
+    width:16px;height:16px;stroke:#000;
+}
+.imgbox .svg-icon{
+width:30px;height:30px;
+}
+
+.btn-grey-bg:hover{
+    width:50px !important;height:50px !important;border-radius: 50%;background-color:#0d2453;line-height: 30px;
+}.info_board .svg-icon{width:15px;height:15px;stroke:#000;}
+.btn-grey-bg .svg-icon:hover{
+    fill:none;stroke:#fff !important;width:15px;height:15px;
+}
+.rq_info{
+    margin-bottom:10px;background-color: #fff;border-radius: 9px;padding-bottom: 19px;line-height: 24px;
+}
+
+.price_quote span{
+font-size:12px;font-weight:600;
+}
+.rq_info span, b{
+    font-size:12px;font-weight:700;
+}
+.rq_info .price_quote{
+    padding:15px 0;
+}
+.pad-top{
+    padding-top:10px;
+}
+.mission_type{
+    display:grid;grid-template-columns: 15% 85%;grid-gap:0;
+}
+.scrollable_table{
+    overflow-x:auto !important;width:100%;
+}
+.table_rws{
+    margin-top:25px;font-size:11px !important;
+}
+.table_rws thead > th{
+    color:#000;font-size:10px !important;text-transform: uppercase !important;
+}
+.table_rws tbody>td{
+    color:#000 !important;font-size:12px !important
+}
+.table_rws a{font-size:11.5px !important;text-decoration:underline;font-family:'Spartan','GD Sherpa Regular' !important;}
+.form .grid-box{
+    display:grid;grid-template-columns: 20% 80%;grid-gap:0;
+}
+
+.pagination{
+    margin-top:20px;
+    vertical-align:middle;
+    vertical-align: -webkit-baseline-middle;
+}
+.move-down{
+    margin-bottom:5px;background-color: #fff;padding-left:15px;padding-top:10px;padding-bottom:15px;border-radius: 8px;
+
+}
+.dialer{background-color: #fff !important;width:50px;height:50px;border-radius:50%;line-height: 46px;padding-top: 15px;}
+.dialer .svg-icon{
+    fill:none;display:block;margin:auto;line-height: 46px;
+}
+.dialer .invoice{
+fill:#0F1F3C !important;stroke:#0f1f3c;
+}
+
+.dialer .invoice:hover{
+    fill:#fff;stroke:#fff;
+}
+
+
+.select_controls .sels{
+    height:40px !important;color:#000;
+}
+
+.dialer .svg-icon:hover{
+fill:#fff !important;stroke:#fff !important;line-height: 46px;
+}
+.dialer:hover{background-color: #0d2453 !important;padding-top:15px;}
+
+.unread_notebox{
+    width:25px;height:25px;border-radius:50%;border:0;line-height: 26px;text-align: center;background-color: #0d2453;color:#fff;
+}
+
+/***************
+================
+FOR REQUESTS
+================
+****************/
+
+#viewRequest, .requests{
+    cursor:pointer;
+}
+.requests{line-height: 29px;margin-bottom: -8px !important;}
+.balls{
+    font-size:45px;color:green;
+}
+.emptyballs{
+    font-size:45px;color:#bfbfbf;
+}
+.shif-dw{
+    margin-top:20px;border-radius:8px;
+}
+.rw_check{font-weight:700;}
+.wht-bg button{
+    border:0;background-color: #fff !important;font-weight: 700;background:#fff;
+}
+.wht-bg button:visited, .wht-bg button:hover{
+border-bottom: #0d2453 !important;
+}
+.shft-dw{
+position:relative;top:60px;right:0;
+}

@@ -20,10 +20,11 @@
     <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net/" />
     <link rel="dns-prefetch" href="https://www.youtube.com/" />
 
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
+    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/icons/favicon.ico')}}" />
     <meta name="author" content="Toppoffert AB" />
-    <meta name="X-Recruiting" content="Vi söker utvecklare! Titta in på https://toppoffert.se/jobb" />
     <meta property="fb:admins" content="753251562" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="format-detection" content="telephone=no">
@@ -253,13 +254,17 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <div class="register-input-container">
             <input class="supplier-register-input full-width" type="email" name="email" autocomplete="email"
                 pattern="[a-z0-9._%+-]+\u0040[a-z0-9.-]+\.[a-z]{2,}$">
-            <span class="input-error-icon"> 
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E26987" class="icon">
-  <title>alert-circle</title>
-  <path d="M11.983 0a12.206 12.206 0 0 0-8.51 3.653A11.8 11.8 0 0 0 0 12.207 11.779 11.779 0 0 0 11.8 24h.214A12.111 12.111 0 0 0 24 11.791 11.766 11.766 0 0 0 11.983 0zM10.5 16.542a1.476 1.476 0 0 1 1.449-1.53h.027a1.527 1.527 0 0 1 1.523 1.47 1.475 1.475 0 0 1-1.449 1.53h-.027a1.529 1.529 0 0 1-1.523-1.47zM11 12.5v-6a1 1 0 0 1 2 0v6a1 1 0 1 1-2 0z" />
-</svg>
- </span>
+                <span class="input-error-icon">  
+                    
+                   
+ @if($errors->has('email'))
+   <span class="help-block">
+   <strong class="text-tiny weight-400 red">{{ $errors->first('email') }}</strong>
+    </span>
+    @endif
+
+</span>
         </div>
         <span class="input-error-message">Du måste fylla i email</span>
     </div>
@@ -270,21 +275,16 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <div class="register-input-container">
             <input class="supplier-register-input search-input full-width" type="text" name="company"
                 autocomplete="off" placeholder=" ">
-            <span id="companySearchErrorIcon" class="input-error-icon"> 
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E26987" class="icon">
-  <title>alert-circle</title>
-  <path d="M11.983 0a12.206 12.206 0 0 0-8.51 3.653A11.8 11.8 0 0 0 0 12.207 11.779 11.779 0 0 0 11.8 24h.214A12.111 12.111 0 0 0 24 11.791 11.766 11.766 0 0 0 11.983 0zM10.5 16.542a1.476 1.476 0 0 1 1.449-1.53h.027a1.527 1.527 0 0 1 1.523 1.47 1.475 1.475 0 0 1-1.449 1.53h-.027a1.529 1.529 0 0 1-1.523-1.47zM11 12.5v-6a1 1 0 0 1 2 0v6a1 1 0 1 1-2 0z" />
-</svg>
-
-            </span>
+            <span id="companySearchErrorIcon" class="input-error-icon">
+            @if($errors->has('company'))
+   <span class="help-block">
+   <strong class="text-tiny weight-400 red">{{ $errors->first('company') }}</strong>
+    </span>
+    @endif
+   
+        </span>
             <div id="clearField" class="clear-field hidden">
                 
-
-<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" class="icon clear">
-  <path d="M54.91 49.41L37.21 31.7l17.61-17.62.09-.08a3.26 3.26 0 0 0 0-4.05 3.21 3.21 0 0 0-4.62-.57L32.5 27.08 14.88 9.47l-.56-.57a3.3 3.3 0 0 0-4.62.57 3.26 3.26 0 0 0-.7 2.44 3.39 3.39 0 0 0 1.22 2.17L27.88 31.7 10.17 49.41a3.12 3.12 0 0 0-.94 2.35 3.34 3.34 0 0 0 3.3 3.3 3.37 3.37 0 0 0 2.35-1l17.71-17.75L50.3 54a3.12 3.12 0 0 0 2.35.94 3.29 3.29 0 0 0 2.26-.94 3.36 3.36 0 0 0 0-4.59z" />
-</svg>
-
             </div>
             <ul id="showResultsContainer" class="showresults-container">
                 <ul id="showResults"></ul>

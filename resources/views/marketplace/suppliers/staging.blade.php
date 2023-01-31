@@ -23,10 +23,12 @@
     <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net/" />
     <link rel="dns-prefetch" href="https://www.youtube.com/" />
 
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
+    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/icons/favicon.ico')}}" />
-    <meta name="author" content="Toppoffert AB" />
-    <meta name="X-Recruiting" content="Vi söker utvecklare! Titta in på https://toppoffert.se/jobb" />
+    <meta name="author" content="Toppoffert Sverige AB" />
+
     <meta property="fb:admins" content="753251562" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="format-detection" content="telephone=no">

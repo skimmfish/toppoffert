@@ -5,20 +5,36 @@
 .form-group label{
     font-size:90%;
 }
-    </style>
-<div id="app">
+.text-center{
+diplay:block;
+margin:auto;
+text-align:center;
+}
+.alert{
+    background:#9dddc2;padding:10px;border-radius:5px;color:#000;
+}
 
-<div id="show_error"><div class="text-danger">@if(isset($error)) {{$error}} </div> @elseif(isset($message)) <div class="alert alert-success"> {{$message}} </div> @endif </div>
+    </style>
+
+<div id="app">
 
 <div class="container-wrapper">
     <div class="login-container">
         <div class="login-wrapper">
-            <div class="login-inner">
-                <a href="{{route('index')}}" class="logo-offerta">
+        <div class="login-inner">
+
+        @if (session('message')) 
+        <div class="alert alert-success text-center">  {{ session('message') }} </div>
+              @elseif(session('error'))
+              <div class="alert alert-danger text-center">  {{ session('error') }}
+                  </div>  
+                      @endif      
+
+        <a href="{{route('index')}}" class="logo-offerta">
                    
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1900.000000pt" height="1900.000000pt" viewBox="0 0 310 310.31" preserveAspectRatio="xMidYMid meet" class="logo">
 <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
-fill="#0d2453" stroke="none">
+fill="#005aad" stroke="none">
 <path d="M943 3272 c-156 -51 -248 -200 -274 -446 -17 -163 2 -336 50 -448 23
 -55 81 -121 133 -155 l38 -23 0 -125 0 -126 132 111 132 110 1484 0 c1321 0
 1491 2 1545 16 153 39 250 149 293 331 22 91 22 311 0 412 -31 142 -103 255

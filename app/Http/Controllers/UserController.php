@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -31,17 +32,20 @@ class UserController extends Controller
      * @param String <$type>
      */
     public function sa_all_users($type){
+        $allUsers = NULL;
 
     if($type=='all'){
-    $allUsers = \App\Models\User::whereNotNull('email_verified_at')->where(['active'=>true])->orderBy('created_at','DESC')->paginate(20);
+    
+        $allUsers = \App\Models\User::paginate(20);
+
     }else if($type=='deleted_users'){
 
         $allUsers = \App\Models\User::whereNotNull('deleted_at')->get();
 
-    
     }else{
-        $type = strtoupper($type);
-        $allUsers = \App\Models\User::whereNotNull('email_verified_at')->where(['active'=>true,'user_cat'=>$type])->orderBy('created_at','DESC')->paginate(20);    
+    
+        $allUsers = \App\Models\User::where(['user_cat'=>strtoupper($type)])->orderBy('created_at','DESC')->paginate(20);    
+    
     }
     
     return view('marketplace.sadmin.allusers',[
@@ -50,6 +54,104 @@ class UserController extends Controller
     'allusers'=>$allUsers,
     'title'=>'Alla Användare',
     'supObj' => new \App\Http\Controllers\SuppliersController]);
+}
+
+
+/***
+ * SaveSupplier() function retrieves suppleir details and save them to database
+ */
+public function savesupplier(Request $req){
+    $newsupplier= new \App\Models\Suppliers;
+    $newUser = new \App\Models\User;
+
+    $s_email = $req->email;
+
+    $rule = [
+    'email' => ['required','unique:users','unique:suppliers','email:rfc,dns'],
+    'address'=>['required','string'],
+    'contactPerson'=>['required','string'],
+    'company' => ['required','string'],
+    'phoneNumber' => ['phoneNumber','required']
+    ];
+
+    $req->validate($rule);
+
+    $username =explode("@",$s_email)[0];
+    $pw = Str::random(8);
+    $password = Hash::make($pw);
+    $corp_name = $req->company;
+    $date_registered = date('Y-m-d');
+    $f_name = $req->contactPerson;
+    $phone_no = $req->phoneNumber;
+    $alt_phone = $phone_no;
+    $address = $req->address;
+    $city = $req->city;
+    $province = $req->province;
+    $zipcode = $req->zip_code;
+    $business_email = $req->business_email;
+
+  
+    $lastID = \App\Models\User::insertGetId([
+    //creating a user
+    'email'=> $s_email,
+    'business_email'=>$business_email,
+    'username'=>$username,
+    'f_name'=>$f_name,
+    'password'=>$password,
+    'address' => $address,
+    'province' => $province,
+    'zip_code' => $zipcode,
+    'phone_no' => $phone_no,
+    'telephone' => $alt_phone,
+    'user_cat' => 'SUPPLIER',
+    'active'=>0,
+    'email_verified_at'=>NULL,
+    'created_at'=>date('Y-m-d h:i:s',time()),
+    'updated_at'=>date('Y-m-d h:i:s',time()),
+    'administrative_level'=>0
+    ]);
+
+    //$resp = $newU->id;
+
+    //setting the column fields
+    $newsupplier->email = $s_email;
+    $newsupplier->supplier_corp_name=$corp_name;
+    $newsupplier->date_registered=$date_registered;
+    $newsupplier->supplier_address = $address.', '.$zipcode.','.$province;
+    $newsupplier->supplier_id = $lastID;
+    $newsupplier->created_at = date('Y-m-d h:i:s',time());
+    $newsupplier->updated_at = date('Y-m-d h:i:s',time());
+
+        $res = $newsupplier->save();
+
+    $msg = 'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.';
+    
+   // \Mail::to($s_email)->send(new \App\Mail\NewSupplier($msg,$f_name,$s_email));
+if($res!=NULL){
+    return redirect()->route("marketplace_suppliers_staging")->with(['message'=>'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.']);
+}
+
+}
+/**
+ * This function approves supplier
+ * @param Integer <$supplier_id>
+ */
+
+public function approvesupplier($supplier_id){
+$findSupplier = \App\Models\User::find($supplier_id);
+$pw = Str::random(8);
+$password = Hash::make($pw);
+
+$response = \DB::update("UPDATE users SET active=?, password=?, email_verified_at=? WHERE id=?",[
+true,$password,date('Y-m-d h:i:s',time()),$supplier_id]);
+
+$email = $findSupplier->email;
+$f_name = $findSupplier->f_name;
+
+//send an email to the supplier with a login credentials
+\Mail::to($email)->send(new \App\Mail\ApproveSupplier($f_name,$email,$pw));
+
+return redirect()->back()->with(['message'=>'Leverantören har godkänts, ett välkomstmail med inloggning har skickats!']);
 }
     /**
      * Show the form for creating a new resource.
