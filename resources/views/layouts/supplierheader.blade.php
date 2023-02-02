@@ -20,9 +20,10 @@ $supplierObj = new \App\Models\Suppliers;
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.ico') }} ">
-    <link rel="icon" type="image/ico" sizes="32x32" href="{{ asset('favicon.ico') }}" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
+    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
 
     <meta name="msapplication-TileImage" content="">
     <meta name="theme-color" content="#ffffff">
@@ -49,12 +50,11 @@ $supplierObj = new \App\Models\Suppliers;
     <link href="{{asset('css/fixed_footer.css')}}" rel="stylesheet">
     <link href="{{asset('css/admin.css')}}" rel="stylesheet">
     <link href="{{asset('css/clients.css')}}" rel="stylesheet">
-    <link href="{{asset('css/tabs.css')}}" rel="stylesheet">
     
 
        <!-- Script -->
-<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="{{asset('js/navtabs.js')}}" type="text/javascript"></script>
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="{{asset('js/navtabs.js')}}" type="text/javascript"></script>
 
     <script>
       var isRTL = JSON.parse(localStorage.getItem('isRTL'));
@@ -72,7 +72,8 @@ $supplierObj = new \App\Models\Suppliers;
       }
     </script>
  
-<!--for local/dev testing-->
+
+ <!--for local/dev testing-->
 <script src="{{asset('js/jquery-2.2.0.min.js')}}"></script>
 
 <!-- deleteUser -->

@@ -15,7 +15,7 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>@if($title) {{ $title }} @else Administrator's Dashboard @endif - {{config('app.name')}} Project</title>
+    <title>@if($title) {{ $title }} @else Administrator's Dashboard @endif - {{config('app.name')}} Projekt</title>
 
     <!-- ===============================================-->
     <!--    Favicons-->
@@ -308,7 +308,12 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
         });
 </script>
 
-
+<style>
+.grey_border{
+  border:3px solid #222;
+  border-radius:50%;
+}
+</style>
   </head>
 <body>
     <!-- ===============================================-->
@@ -343,7 +348,7 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
               <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
             </div><a class="navbar-brand" href="{{route('sadmin_index')}}">
               <div class="d-flex align-items-center py-3">
-              <img src="{{asset('img/logos/logo.svg')}}" class="img-responsive-logo" lazyloading/>
+              <img src="{{asset('img/logos/png.png')}}" class="img-responsive-logo" lazyloading/>
             </div>
             </a>
           </div>
@@ -538,7 +543,7 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
           <a class="navbar-brand me-1 me-sm-3" href="{{ route('index') }}">
             <div class="d-flex align-items-center">
               
-            <img src="{{asset('img/logos/logo.svg')}}" class="img-responsive-logo" lazyloading/>
+            <img src="{{asset('img/logos/png.png')}}" class="img-responsive-logo" lazyloading/>
                
               <span class="font-sans-serif">{{config('app.name')}}</span>
             

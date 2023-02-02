@@ -8,7 +8,7 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
             <a class="navbar-brand me-1 me-sm-3" href="https://toppoffert.se/">
               
             <div class="d-flex align-items-center">
-  {{--           <img src="{{ asset('img/'.\App\Models\Config::get_value('site_logo')) }}" alt="" class="top_logo" lazyloading /> --}}
+             <img src="{{ asset('img/logos'.\App\Http\Controllers\ConfigController::get_value('site_logo')) }}" class="img-responsive-logo" alt="" lazyloading /> 
   
               </div>
             </a>
@@ -62,9 +62,9 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
               <li class="nav-item dropdown"><a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="avatar avatar-xl">
                   @if(\Auth::user()->profile_img!=NULL)
-                    <img class="rounded-circle" src="{{ asset('img/avatar/'.\Auth::user()->profile_img) }}" alt="{{ \Auth::user()->username }}" lazyloading/>
+                    <img class="rounded-circle grey_border" src="{{ asset('img/avatar/'.\Auth::user()->profile_img) }}" alt="{{ \Auth::user()->username }}" lazyloading/>
                   @else
-                    <img class="rounded-circle" src="{{ asset('img/avatar/img1.jpg') }}" alt="{{ \Auth::user()->username }}" lazyloading />
+                    <img class="rounded-circle grey_border" src="{{ asset('img/avatar/img1.jpg') }}" alt="{{ \Auth::user()->username }}" lazyloading />
                       @endif
                   </div>
                 </a>

@@ -220,7 +220,7 @@ div.style.display = block;
 <section class="page-section">
     <div class="page-section__inner two-col">
         <div class="col show-on-medium-and-down block">
-            <img src="{{asset('img/campaign/brf-campaign.jpg')}}"  alt="Vi hjälper dig hitta rätt tjänsteföretag!" lazyloading>
+            <img src="{{asset('img/ningen.jpg')}}"  alt="Vi hjälper dig hitta rätt tjänsteföretag!" lazyloading>
         </div>
         <div class="col">
             <h2 class="page-section__heading">Få hjälp i föreningen eller på arbetsplatsen</h2>
@@ -231,7 +231,7 @@ div.style.display = block;
             </div>
         </div>
         <div class="col show-on-large-only">
-            <img src="{{asset('img/campaign/brf-campaign.jpg')}}" lazyloading alt="Vi hjälper dig hitta rätt tjänsteföretag!" lazyloading>
+            <img src="{{asset('img/ningen.jpg')}}" lazyloading alt="Vi hjälper dig hitta rätt tjänsteföretag!" lazyloading>
         </div>
     </div>
 </section>

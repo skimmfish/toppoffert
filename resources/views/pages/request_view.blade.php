@@ -3,16 +3,30 @@
 
 @include('layouts.admin_topbar')
 
+<style>
+@media(max-width:768px){
 
-<a href="{{route('suppliers.dashboard')}}"><svg width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#231f20;}</style></defs><g data-name="arrow left" id="arrow_left">
+    .fixed-footer{
+        display:none;
+    }
+    .request_credit_footer{
+background:#fff !important;
+    }
+
+}
+
+    </style>
+
+
+<a href="{{route('suppliers.dashboard')}}" class="text-black btn btn-white"><svg width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#231f20;}</style></defs><g data-name="arrow left" id="arrow_left">
 <path class="cls-1" d="M22,29.73a1,1,0,0,1-.71-.29L9.93,18.12a3,3,0,0,1,0-4.24L21.24,2.56A1,1,0,1,1,22.66,4L11.34,15.29a1,1,0,0,0,0,1.42L22.66,28a1,1,0,0,1,0,1.42A1,1,0,0,1,22,29.73Z"/></g></svg> back
 </a>
 
 <div class="row m-3">
-<h3>{{$requestBody->request_title}} #{{$requestBody->id}}</h3>
+<h3 class="text-black">{{$requestBody->request_title}} <span class="text-grey">#{{$requestBody->id}}</span></h3>
 
 <div class="row">
-<div class="col-md-8 col-lg-8 col-xs-12 col-xl-8 col-sm-8">
+<div class="col-md-8 col-lg-8 col-xs-12 col-xl-8 col-sm-8 wht-bg" style="border-radius:9px;">
 <h5>Description</h5>
 <span>Hej! 
     <br/>{{$requestBody->mission_type}}</span>
@@ -42,7 +56,7 @@
 
 <!--right section-->
 <div class="col-md-4 col-lg-4 col-xs-12 col-sm-4" style="background:#efefef;border-radius:7px;">
-<div style="background:#fff;marginb-ttom:9px;border-radius:10px;">
+<div style="background:#fff;margin-bottom:9px;border-radius:10px;">
 <table class="table table-stripped table-responsive table_rws" style="color:#000 !important;">
 <thead>
 <tr>
@@ -59,7 +73,8 @@
 </clipPath>
 </defs>
 </svg></span>
-</th><th><span>{{ \App\Http\Controllers\CategoriesController::get_cat_data($requestBody->service_cat)->cat_name }}</span>
+</th><th>
+  <span>{{ \App\Http\Controllers\CategoriesController::get_cat_data('cat_name',$requestBody->service_cat) }}</span>
 </th>
 </tr>
 
@@ -103,7 +118,7 @@ M15.383,15.076a1,1,0,0,0-1.09.217l-3,3a1,1,0,0,0,1.414,1.414L14,18.414V23a1,1,0,
 <path d="M20 9.83984H4C3.45 9.83984 3 10.2898 3 10.8398V16.9998C3 19.9998 4.5 21.9998 8 21.9998H12.93C13.62 21.9998 14.1 21.3298 13.88 20.6798C13.68 20.0998 13.51 19.4598 13.51 18.9998C13.51 15.9698 15.98 13.4998 19.01 13.4998C19.3 13.4998 19.59 13.5198 19.87 13.5698C20.47 13.6598 21.01 13.1898 21.01 12.5898V10.8498C21 10.2898 20.55 9.83984 20 9.83984ZM9.21 18.2098C9.02 18.3898 8.76 18.4998 8.5 18.4998C8.24 18.4998 7.98 18.3898 7.79 18.2098C7.61 18.0198 7.5 17.7598 7.5 17.4998C7.5 17.2398 7.61 16.9798 7.79 16.7898C7.89 16.6998 7.99 16.6298 8.12 16.5798C8.49 16.4198 8.93 16.5098 9.21 16.7898C9.39 16.9798 9.5 17.2398 9.5 17.4998C9.5 17.7598 9.39 18.0198 9.21 18.2098ZM9.21 14.7098C9.16 14.7498 9.11 14.7898 9.06 14.8298C9 14.8698 8.94 14.8998 8.88 14.9198C8.82 14.9498 8.76 14.9698 8.7 14.9798C8.63 14.9898 8.56 14.9998 8.5 14.9998C8.24 14.9998 7.98 14.8898 7.79 14.7098C7.61 14.5198 7.5 14.2598 7.5 13.9998C7.5 13.7398 7.61 13.4798 7.79 13.2898C8.02 13.0598 8.37 12.9498 8.7 13.0198C8.76 13.0298 8.82 13.0498 8.88 13.0798C8.94 13.0998 9 13.1298 9.06 13.1698C9.11 13.2098 9.16 13.2498 9.21 13.2898C9.39 13.4798 9.5 13.7398 9.5 13.9998C9.5 14.2598 9.39 14.5198 9.21 14.7098ZM12.71 14.7098C12.52 14.8898 12.26 14.9998 12 14.9998C11.74 14.9998 11.48 14.8898 11.29 14.7098C11.11 14.5198 11 14.2598 11 13.9998C11 13.7398 11.11 13.4798 11.29 13.2898C11.67 12.9198 12.34 12.9198 12.71 13.2898C12.89 13.4798 13 13.7398 13 13.9998C13 14.2598 12.89 14.5198 12.71 14.7098Z" fill="#292D32"/>
 </svg>     
 </th>
-<th>{{ date('d, M, Y',strtotime($requestBody->date_from)) .' - '. date('d, M, Y',strtotime($requestBody->date_to)) }}</th>
+<th>Kunden önskar bli kontaktad på {{ $requestBody->when_to_be_contacted }}</th>
 </tr>
 
 
@@ -125,7 +140,11 @@ M15.383,15.076a1,1,0,0,0-1.09.217l-3,3a1,1,0,0,0,1.414,1.414L14,18.414V23a1,1,0,
 <div class="related_item">
 
 <p><svg fill="#000000" width="14px" height="14px" viewBox="0 0 24 24" id="link-alt-2" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><path id="primary" d="M14.5,9.5a3.54,3.54,0,0,1,0,5l-5,5a3.54,3.54,0,0,1-5,0h0a3.54,3.54,0,0,1,0-5" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><path id="primary-2" data-name="primary" d="M19.5,9.5a3.54,3.54,0,0,0,0-5h0a3.54,3.54,0,0,0-5,0l-5,5a3.54,3.54,0,0,0,0,5h0" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>
-<a href="https://toppoffert.se/se/home/marketplace/suppliers/view-service-request/{{$x->request_hash}}"><b>{{$x->request_title}}</b></a></p>
+
+<a href="{{route('sa_preview_request',['hash'=>$x->request_hash])}}"><b style="line-height:15px !important;font-size:11.5px !important;">{{$x->request_title}}</b></a>
+
+</p>
+
 <p><svg width="14px" height="14px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>Users</title><g id="Users" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 <rect id="Container" x="0" y="0" width="24" height="24"></rect><path d="M9,11 C10.3807119,11 11.5,9.88071187 11.5,8.5 C11.5,7.11928813 10.3807119,6 9,6 C7.61928813,6 6.5,7.11928813 6.5,8.5 C6.5,9.88071187 7.61928813,11 9,11 Z" id="shape-1" stroke="#030819" stroke-width="2" stroke-linecap="round" stroke-dasharray="0,0">
@@ -142,11 +161,11 @@ M13,12V7a1,1,0,0,0-2,0v4H8a1,1,0,0,0,0,2h4A1,1,0,0,0,13,12Z
 M23,2a1,1,0,0,0-1,1V5.374A12,12,0,1,0,7.636,23.182,1.015,1.015,0,0,0,8,23.25a1,1,0,0,0,.364-1.932A10,10,0,1,1,20.636,7H18a1,1,0,0,0,0,2h3a3,3,0,0,0,3-3V3A1,1,0,0,0,23,2Z
 M15.383,15.076a1,1,0,0,0-1.09.217l-3,3a1,1,0,0,0,1.414,1.414L14,18.414V23a1,1,0,0,0,2,0V16A1,1,0,0,0,15.383,15.076Z"/></svg>
 
-<b>{{$x->when_to}}</b></p>
+<b>{{$x->when_to_be_contacted}}</b></p>
 <p>
 
 <div class="ders_box">
- <span>
+<span>
 @php 
 $responderCount =  \App\Http\Controllers\RespondersController::get_responders_count($requestBody->id);
 $maxResponder = \App\Http\Controllers\ConfigController::get_value('max_responder');
@@ -172,14 +191,53 @@ for($i=0;$i<($responderCount);$i++){
 
 @endforeach
 @endif
+
+
+<!--request_footer-->
+<div class="fixed-footer request_credit_footer">
+@if(\Auth::user()->is_admin==false)
+<a class="btn btn-info dark_bg" href="{{route('reach_out_to_buyer',['id'=>$requestBody->id,'supplier_id'=>\Auth::user()->id])}}"><svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Iconly/Curved/Buy"><g id="Buy"><path id="Stroke 1" d="M5.69415 6.43034C15.5425 5.0931 17.9695 5.25722 19.5 7C21.0305 8.74278 20.6721 14.4881 18.8831 16.0871C17.0951 17.6861 9.33015 17.8381 6.87015 16.0871C4.27115 14.2361 5.77915 8.5421 5.69415 5.0931C5.74515 3.1631 3.65015 2.8501 3.65015 2.8501" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path id="Stroke 3" d="M14.156 10.7197H16.929" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Stroke 5" fill-rule="evenodd" clip-rule="evenodd" d="M7.26399 20.1274C7.56399 20.1274 7.80799 20.3714 7.80799 20.6714C7.80799 20.9724 7.56399 21.2164 7.26399 21.2164C6.96299 21.2164 6.71899 20.9724 6.71899 20.6714C6.71899 20.3714 6.96299 20.1274 7.26399 20.1274Z" fill="#fff" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path id="Stroke 7" fill-rule="evenodd" clip-rule="evenodd" d="M17.5954 20.1274C17.8964 20.1274 18.1404 20.3714 18.1404 20.6714C18.1404 20.9724 17.8964 21.2164 17.5954 21.2164C17.2954 21.2164 17.0514 20.9724 17.0514 20.6714C17.0514 20.3714 17.2954 20.1274 17.5954 20.1274Z" fill="#ffffff" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg>    
+1 kredit | Skicka Intresse
+</a>
+@else
+<a class="btn btn-info dark_bg" href="#" data-toggle="modal" id="approveRequest" data-target="#requestModal" data-attr="{{route('sadmin_approve_request',['request_id'=>$requestBody->id,'buyer_id'=>$requestBody->customer_id])}}">
+<svg width="25px" height="25px" viewBox="0 0 512 512" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style type="text/css">	.st0{fill:#fff;}</style><g id="Layer_1"/><g id="Layer_2"><g><path class="st0" d="M256,27.5c-61.03,0-118.42,23.77-161.57,66.93C51.27,137.58,27.5,194.97,27.5,256s23.77,118.42,66.93,161.57    C137.58,460.73,194.97,484.5,256,484.5s118.42-23.77,161.57-66.93C460.73,374.42,484.5,317.03,484.5,256    s-23.77-118.42-66.93-161.57C374.42,51.27,317.03,27.5,256,27.5z M256,452.5c-108.35,0-196.5-88.15-196.5-196.5    S147.65,59.5,256,59.5S452.5,147.65,452.5,256S364.35,452.5,256,452.5z"/>
+<path class="st0" d="M347.7,131.81c-16.03,0-31.09,6.24-42.43,17.57l-85.16,85.16l-13.39-13.39    c-11.33-11.33-26.4-17.58-42.43-17.58c-16.03,0-31.1,6.24-42.43,17.57c-11.32,11.32-17.56,26.39-17.56,42.43    s6.24,31.1,17.56,42.43l57.17,57.17c10.97,10.97,25.56,17.01,41.08,17.01s30.1-6.04,41.08-17.01l128.94-128.94    c11.32-11.32,17.56-26.39,17.56-42.43c0-16.04-6.24-31.1-17.56-42.42C378.8,138.05,363.73,131.81,347.7,131.81z M367.5,211.61    L238.57,340.55c-4.93,4.93-11.48,7.64-18.45,7.64s-13.52-2.71-18.45-7.64l-57.17-57.17c-5.28-5.28-8.18-12.31-8.18-19.8    s2.91-14.52,8.19-19.8c5.29-5.29,12.32-8.2,19.8-8.2s14.51,2.91,19.8,8.2l24.71,24.7c6.25,6.25,16.38,6.25,22.63,0l96.47-96.47    c5.29-5.29,12.32-8.2,19.8-8.2s14.51,2.91,19.8,8.2c5.28,5.28,8.18,12.31,8.18,19.8S372.78,206.33,367.5,211.61z"/></g>
+</g>
+</svg>    
+
+  Godkänn begäran
+</a>
+@endif
 </div>
+</div>
+
+
 </div>
 
 <!--end of .row-->
 </div>
 
-<div class="fixed_footer">
 
-</div>
+      <!--modals-->
+		<!-- view modal -->
+        <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onClick="closeModal('#requestModal')" data-dismiss="modal" aria-label="Close"style="border-radius:50%;width:35px;height:35px;border:0;color:#0d2453;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="mediumBody">
+                    <div>
+                        <!-- the result to be displayed apply here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection

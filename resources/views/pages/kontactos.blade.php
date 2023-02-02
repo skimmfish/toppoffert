@@ -36,19 +36,9 @@
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.lazy.min.js')}}"></script>
     
-                <!-- Start Visual Website Optimizer Asynchronous Code -->
-                <script type='text/javascript'>
-                    var _vwo_code = (function () {
-                        var account_id = 339643,
-                            settings_tolerance = 2000,
-                            library_tolerance = 2500,
-                            use_existing_jquery = false,
-                            /* DO NOT EDIT BELOW THIS LINE */
-                            f = false, d = document; return { use_existing_jquery: function () { return use_existing_jquery; }, library_tolerance: function () { return library_tolerance; }, finish: function () { if (!f) { f = true; var a = d.getElementById('_vis_opt_path_hides'); if (a) a.parentNode.removeChild(a); } }, finished: function () { return f; }, load: function (a) { var b = d.createElement('script'); b.src = a; b.type = 'text/javascript'; b.innerText; b.onerror = function () { _vwo_code.finish(); }; d.getElementsByTagName('head')[0].appendChild(b); }, init: function () { settings_timer = setTimeout('_vwo_code.finish()', settings_tolerance); var a = d.createElement('style'), b = 'body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}', h = d.getElementsByTagName('head')[0]; a.setAttribute('id', '_vis_opt_path_hides'); a.setAttribute('type', 'text/css'); if (a.styleSheet) a.styleSheet.cssText = b; else a.appendChild(d.createTextNode(b)); h.appendChild(a); this.load('http://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&r=' + Math.random()); return settings_timer; } };
-                    }()); _vwo_settings_timer = _vwo_code.init();
-                </script>
-                <!-- End Visual Website Optimizer Asynchronous Code -->
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+               
+ <!-- End Visual Website Optimizer Asynchronous Code -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>   
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
@@ -58,11 +48,7 @@
 <meta name="theme-color" content="#2F3033">
 <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js js-loading');
-    
-    
-    
-    
-</script>
+    </script>
 
     
 
@@ -367,6 +353,7 @@ float:left;
     </div>
 
         <div class="fake-scrollbar"></div>
+
         <div class="page-wrapper">
             <header class="new-header">
                 <div class="new-header-container">

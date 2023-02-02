@@ -25,7 +25,7 @@ class Categories extends Model
     //establishing a relationship between service_requests and categories
     public function ServiceRequests(){
 
-        return $this->hasOne('\App\Models\ServiceRequests');
+        return $this->hasMany('\App\Models\ServiceRequests');
 
     }
 

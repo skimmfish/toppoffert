@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <!--[if lt IE 7 ]> <html lang="sv" class="no-js ie ie7 ie-legacy"> <![endif]-->
@@ -23,8 +22,11 @@
     <link rel="dns-prefetch" href="https://www.youtube.com/" />
 
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/icons/favicon.ico')}}" />
-    <meta name="author" content="{{config('app.name')}}.SE AB" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
+    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
+
+    <meta name="author" content="{{config('app.name')}} Sverige AB" />
     <meta property="fb:admins" content="753251562" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="format-detection" content="telephone=no">
@@ -32,8 +34,8 @@
     
     <link href="{{route('skapa')}}" rel="canonical" />
     <meta content="NOINDEX,FOLLOW" name="GOOGLEBOT" />
-<meta content="NOINDEX,FOLLOW" name="ROBOTS" />
-<meta name="viewport" content="width=device-width" />
+    <meta content="NOINDEX,FOLLOW" name="ROBOTS" />
+    <meta name="viewport" content="width=device-width" />
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.lazy.min.js')}}"></script>
@@ -68,48 +70,319 @@ document.documentElement.className = document.documentElement.className.replace(
     
 
     <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
+    <style>
+.new-header.scrolled{
+	background-color: #fff !important;
+	transition: background-color 200ms linear;
+  }
+  
+  .new-header__menu--item{
+	font-family:'Open Sans';
+  }
+  
+  *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+  }
+  *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+  }
+  *{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+  }
+  .wrapper{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	/*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+	/* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+	/* clip-path: circle(25px at calc(0% + 45px) 45px); */
+	background:#fff;
+	clip-path: circle(25px at calc(100% - 45px) 45px);
+	transition: all 0.3s ease-in-out;
+  }
+  
+  #active:checked ~ .wrapper{
+	clip-path: circle(75%);
+  }
+  .menu-btn{
+	position: absolute;
+	z-index: 2;
+	right: 20px;
+	/* left: 20px; */
+	top: 30px;
+	height: 50px;
+	width: 60px;
+	text-align: center;
+	font-size: 30px;font-weight:400;
+	color: #434345 !important;
+	cursor: pointer;
+	border-radius: 50%;
+	line-height: 10px !important;
+	/*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+	/* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+	/*background: #41509a !important;*/
+	background-color: none !important;
+  }
+
+  #active:checked ~ .menu-btn{
+	color: #434343 !important;
+  }
+  #active:checked ~ .menu-btn i:before{
+	content: "\f00d";
+  }
+   
+ 
+  .wrapper ul{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	list-style: none;
+	text-align: center;
+	background:none;
+  }
+  .wrapper ul li{
+	margin: 12.5px 0;text-align: left !important;
+  }
+  .wrapper ul li a{
+	color: none;
+	text-decoration: none;
+	font-size: 31px;
+	font-weight: 800 !important;
+	padding: 5px 30px;
+	color: #434345;
+	background:none;
+	position: relative;
+	line-height: 50px;
+	transition: all 0.3s ease;
+	text-align:left !important;
+  }
+  .wrapper ul li a:after{
+	position: absolute;
+	content: "";
+	background:none;
+	width: 104%;
+	height: 110%;
+	left: -2%;
+	top: -5%; /* if the font is 'Oswald'*/
+	transform: scaleY(0);
+	z-index: -1;
+	animation: rotate 1.5s linear infinite;
+	transition: transform 0.3s ease;
+  }
+  .wrapper ul li a:hover:after{
+	transform: scaleY(1);
+  }
+  .wrapper ul li a:hover{
+	color: #434345;
+  }
+  input[type="checkbox"]{
+	display: none;
+  }
+  
+
+
+  .grid_base{
+	display:grid;grid-template-columns: repeat(3);
+  }
+  .text-sm{
+	font-size:13px !important;color:#434345 !important;font-weight:900 !important;
+  }
+  .icon-small{
+top:37px;
+  }
+
+  .svg_logo{
+   display:none; 
+  }
+
+  .grid_case{
+		display:grid;grid-template-columns:28% 23% 23% 25%;
+	}
+	.grid_case .social{
+		position:relative;top:-30px;
+	}
+	.texts_href{
+		display:grid;grid-template-columns: 33% 33% 33%;grid-gap:3px;
+	}
+
+	.grid_case .href{
+		font-size:11px !important;font-weight:800;color:#434345;
+	}
+
+  @media(max-width:1024px){
+	.wrapper ul li a{
+		color: none;
+		text-decoration: none;
+		font-size: 31px;
+		font-weight: 800 !important;
+		padding: 5px 30px;
+		color: #434345;
+		background:none;
+		position: relative;
+		line-height: 50px;
+		transition: all 0.3s ease;
+		text-align:left !important;
+	  }
+	
+	  .grid_case{
+		display:grid;grid-template-columns:34% 22% 20% 29%;
+	}
+	.grid_case .social{
+		position:relative;top:-15px;left:28px !important;
+	}
+	}
+
+ @media(max-width:425px){
+	.wrapper ul li a{
+		color: none;
+		text-decoration: none;
+		font-size: 22px !important;
+		font-weight: 900 !important;
+		padding: 0 35px;
+		color: #434345;
+		background:none;
+		position: relative;
+		line-height: 48px;
+		transition: all 0.3s ease;
+		text-align:left !important;
+	  }
+	  .hidden-425{
+		display:none;
+	  }
+
+	  .hr{
+		display:relative !important;top:-45px;left:18px !important;
+	}
+	.grid_case{display:grid;grid-template-columns:54% 23% 23% !important;
+  grid-gap:0;}
+	  .grid_case .href{
+		font-size:7px !important;
+	  }
+
+	  .social{top:-24px;display:flex;flex-direction:row;}
+    
+	  .icon-small{
+		top: 22px !important;
+		left: -20px;
+	 }
+}
+	 @media(max-width:320px){
+		.icon-small{
+			top: 22px !important;
+			left: -40px;
+		 }
+		
+		}
+		 
+		@media(max-width:375px){
+			#_dropdown_logo,  .menu-btn-left{
+				position: absolute;
+				z-index: 3;
+				right: 20px;
+				 left: 9px !important;
+				top: -21.2px !important;
+				height: 50px;
+				width: 50px;
+				text-align: center;
+				line-height: 50px;
+				color: #fff;
+				cursor: pointer;
+				transition: all 0.3s ease-in-out;
+			  }
+
+			  .grid_case{display:grid;grid-template-columns: 55% 45% !important;}
+			  .grid_case .href{
+				font-size:8px !important;
+			  }
+			  .hidden_375{display:none;}
+			  
+			
+		 }
+ 
+		 .img_avatar{
+			width:34px;height:34px;border-radius:50%;position:relative;left:-4px;
+		 }
+
+  @media(max-width:768px){
+  .svg-logo{
+display:block;
+  }
+  .svg_logo{
+display:none;
+float:left;
+  }
+
+  .grid_case{
+		display:grid;grid-template-columns:36% 22% 20% 29%;
+	}
+	.grid_case .social{
+		position:relative;top:-30px;
+	}
+	.texts_href{
+		display:grid;grid-template-columns: 33% 33% 33%;grid-gap:3px;
+	}
+
+	.grid_case .href{
+		font-size:9px !important;font-weight:800;color:#434345;
+	}
+
+}
+    </style>
+
+
+<!--this function fetches all the associated sub_Cat_names-->
+<script type="text/javascript">
+function fetchCategories(category){
+    if(category){
+    $.ajax({
+    type: 'GET',
+    url: "{{ route('categories') }}",
+   
+    data: {
+    cat_name: category,
+    },
+    success: function (response) {
+     // We get the element having id of display_info and put the response inside it
+     $( '#subcategories_fetcher' ).html(response);
+    }
+    });
+   }else
+   {
+    $( '#subcategories_fetcher' ).html("<small class='text-danger'>Kontrollera Ditt Val</small>");
+   }
+} //end of fetchServersList() function
+</script>
 
 </head>
 
 
 <body class="enquiry-create">
-    <script type="text/javascript">
-        var _paq;
-        if(_paq) {
-        _paq = _paq;
-        } else {
-        _paq = [];
-        }
-        if (window.location.href.includes('staging.offertadev') || window.location.href.includes('localhost:')) {
-            window.PiwikPROappID = '7dbc9a11-29d1-4b5a-806e-56dcb82507a4'
-        } else {
-            window.PiwikPROappID = '97384d4f-d41f-4ee9-8ff0-acf02a075074'
-        }
-        (function (window, document, dataLayerName, id) {
-            window[dataLayerName] = window[dataLayerName] || [], window[dataLayerName].push({ start: (new Date).getTime(), event: "stg.start" }); var scripts = document.getElementsByTagName('script')[0], tags = document.createElement('script');
-            function stgCreateCookie(a, b, c) { var d = ""; if (c) { var e = new Date; e.setTime(e.getTime() + 24 * c * 60 * 60 * 1e3), d = "; expires=" + e.toUTCString() } document.cookie = a + "=" + b + d + "; path=/" }
-            var isStgDebug = (window.location.href.match("stg_debug") || document.cookie.match("stg_debug")) && !window.location.href.match("stg_disable_debug"); stgCreateCookie("stg_debug", isStgDebug ? 1 : "", isStgDebug ? 14 : -1);
-            var qP = []; dataLayerName !== "dataLayer" && qP.push("data_layer_name=" + dataLayerName), isStgDebug && qP.push("stg_debug"); var qPString = qP.length > 0 ? ("?" + qP.join("&")) : "";
-            tags.async = !0, tags.src = "https://fortnox.containers.piwik.pro/" + id + ".js" + qPString, scripts.parentNode.insertBefore(tags, scripts);
-            !function (a, n, i) { a[n] = a[n] || {}; for (var c = 0; c < i.length; c++)!function (i) { a[n][i] = a[n][i] || {}, a[n][i].api = a[n][i].api || function () { var a = [].slice.call(arguments, 0); "string" == typeof a[0] && window[dataLayerName].push({ event: n + "." + i + ":" + a[0], parameters: [].slice.call(arguments, 1) }) } }(i[c]) }(window, "ppms", ["tm", "cm"]);
-        })(window, document, 'dataLayer', window.PiwikPROappID);
-    </script> 
-
     
     <div class="legacy-browser-warning alert-site">
         Du använder en webbläsare som inte stöds av {{config('app.name')}} och därför fungerar inte alla funktioner som de skall. <a class="link white" href="http://www.browsehappy.com/">Uppgradera din webbläsare</a> för att kunna använda {{config('app.name')}} alla funktioner.
     </div>
 
         <div class="fake-scrollbar"></div>
-        <div class="page-wrapper">
-            <header class="new-header">
+        <header class="new-header">
                 <div class="new-header-container">
                     <a class="new-header__logo" href="{{route('index')}}" aria-label="Hem">
                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" viewBox="0 0 500.000000 500.000000"
  preserveAspectRatio="xMidYMid meet">
-<g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
-fill="#0d2663" stroke="none">
-<path d="M943 3272 c-156 -51 -248 -200 -274 -446 -17 -163 2 -336 50 -448 23
+<g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)" fill="#005aad" stroke="none" class="svg-logo"><path d="M943 3272 c-156 -51 -248 -200 -274 -446 -17 -163 2 -336 50 -448 23
 -55 81 -121 133 -155 l38 -23 0 -125 0 -126 132 111 132 110 1484 0 c1321 0
 1491 2 1545 16 153 39 250 149 293 331 22 91 22 311 0 412 -31 142 -103 255
 -194 306 -102 57 -33 55 -1727 54 -1436 0 -1564 -2 -1612 -17z m2210 -329 c4
@@ -139,88 +412,16 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 20 12 18 24 22 69 22 55 0 55 0 48 -27 -15 -60 -71 -93 -160 -93 -65 0 -110
 17 -145 54 -19 21 -25 40 -28 89 -6 114 47 167 168 167 47 0 74 -6 97 -20z"/>
 <path d="M2668 2829 c-50 -19 -64 -134 -22 -180 24 -27 87 -26 114 3 27 29 29
-126 3 156 -22 26 -59 34 -95 21z"/>
-<path d="M1482 2748 c-7 -7 -12 -35 -12 -63 0 -57 12 -75 50 -75 38 0 50 18
-50 75 0 57 -12 75 -50 75 -14 0 -31 -5 -38 -12z"/>
-<path d="M1877 2742 c-20 -22 -23 -92 -5 -110 17 -17 65 -15 72 4 3 9 6 35 6
-59 0 34 -5 47 -19 55 -27 14 -35 13 -54 -8z"/>
-<path d="M2256 2744 c-19 -18 -22 -94 -4 -112 7 -7 21 -12 33 -12 32 0 45 20
-45 66 0 43 -19 74 -45 74 -7 0 -21 -7 -29 -16z"/>
-<path d="M3538 2759 c-36 -21 -21 -39 32 -39 52 0 60 8 34 34 -18 18 -41 20
--66 5z"/>
-</g>
-</svg>
-</a>
-                    
+126 3 156 -22 26 -59 34 -95 21z"/><path d="M1482 2748 c-7 -7 -12 -35 -12 -63 0 -57 12 -75 50 -75 38 0 50 18
+50 75 0 57 -12 75 -50 75 -14 0 -31 -5 -38 -12z"/><path d="M1877 2742 c-20 -22 -23 -92 -5 -110 17 -17 65 -15 72 4 3 9 6 35 6
+59 0 34 -5 47 -19 55 -27 14 -35 13 -54 -8z"/><path d="M2256 2744 c-19 -18 -22 -94 -4 -112 7 -7 21 -12 33 -12 32 0 45 20
+45 66 0 43 -19 74 -45 74 -7 0 -21 -7 -29 -16z"/><path d="M3538 2759 c-36 -21 -21 -39 32 -39 52 0 60 8 34 34 -18 18 -41 20
+-66 5z"/></g></svg></a>
 
+@include('layouts.navigationbar')
+</header>
 
-<div class="new-header__menu" role="navigation">
-    <a href="{{route('anslut-ditt-foretag')}}" class="new-header__menu--item">Anslut företag</a>
-    
-            <a href="{{route('login')}}" class="new-header__menu--item">Logga in</a>
-        
-    <a class="nav-icon" data-toggle-menu="mobile-nav">
-        <div class="text-close">Stäng</div>
-        <div class="text-menu">Meny</div>
-        <div class="menu-icon"></div>
-    </a>
-</div>
-<nav class="new-main-menu">
-    <div class="new-main-menu__inner">
-        <div class="new-main-menu__menu">
-            <a href="{{route('anslut-ditt-foretag')}}" class="new-main-menu__menu--item mobile">Anslut företag</a>
-            <a href="{{route('login')}}" class="new-main-menu__menu--item mobile">Logga in</a>
-            <a href="{{route('kontactos-pg')}}" class="new-main-menu__menu--item">Kontakta oss</a>
-            </div>
-        </div>
-    <ul class="new-main-menu__footer">
-        <li class="new-main-menu__footer--item">
-            {{config('app.name')}} Group AB
-        </li>
-        <li class="new-main-menu__footer--item">
-            <a href="tel:010-33 020 11">010-33 020 11</a>
-        </li>
-        <li class="new-main-menu__footer--item">
-            <a href="mailto:info@toppoffert.se">info@toppoffert.se</a>
-        </li>
-        <li class="new-main-menu__footer--item">
-            <a href="https://www.linkedin.com/company/toppoffertse" class="social-icons">
-                
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
-  <rect x="2" y="8.5" width="5" height="14" rx=".5" ry=".5" />
-  <ellipse cx="4.48" cy="4" rx="2.48" ry="2.5" />
-  <path d="M18.5 22.5h3a.5.5 0 0 0 .5-.5v-8.4C22 9.83 19.87 8 16.89 8a4.21 4.21 0 0 0-3.17 1.27A.41.41 0 0 1 13 9a.5.5 0 0 0-.5-.5h-3A.5.5 0 0 0 9 9v13a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-7.5a2.5 2.5 0 0 1 5 0V22a.5.5 0 0 0 .5.5z" />
-</svg>
-
-            </a>
-            <a href="https://www.facebook.com/toppoffert.se/" class="social-icons">
-                
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
-  <path d="M18.14 7.17a.5.5 0 0 0-.37-.17H14V5.59c0-.28.06-.6.51-.6h3a.44.44 0 0 0 .35-.15.5.5 0 0 0 .14-.34v-4a.5.5 0 0 0-.5-.5h-4.33C8.37 0 8 4.1 8 5.35V7H5.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5H8v11.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V12h3.35a.5.5 0 0 0 .5-.45l.42-4a.5.5 0 0 0-.13-.38z" />
-</svg>
-
-            </a>
-            <a href="https://www.instagram.com/toppoffert.se/" class="social-icons">
-                
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
-  <path d="M17.5 0h-11A6.51 6.51 0 0 0 0 6.5v11A6.51 6.51 0 0 0 6.5 24h11a6.51 6.51 0 0 0 6.5-6.5v-11A6.51 6.51 0 0 0 17.5 0zM12 17.5a5.5 5.5 0 1 1 5.5-5.5 5.5 5.5 0 0 1-5.5 5.5zm6.5-11A1.5 1.5 0 1 1 20 5a1.5 1.5 0 0 1-1.5 1.5z" />
-</svg>
-
-            </a>
-        </li>
-    </ul>
-</nav>
-                    
-                    <div class="header-material-circle"></div>
-                </div>
-            </header>
-            <main class="content-main" role="main">
-                
-                
-
+<main class="content-main" role="main">         
 <section class="section">
     <div class="container">
         <h1 class="page-title">Vi introducerar dig till f&#246;retag <br/>redo att hjälpa dig
@@ -228,8 +429,10 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <p class="page-subtitle text-center">Beskriv ditt behov och ta emot upp till sex offerter från lokala tjänsteföretag</p>
         <div class="grid">
             <div class="content">
-<form action="{{route('skapa_request')}}" method="post">
-    <div class="box box-enquiry-create has-button-bar">
+<form method="POST" action="{{route('skapa_request')}}">
+@csrf
+@method('POST')
+<div class="box box-enquiry-create has-button-bar">
         <div class="media media-center block">
             <div class="media-left">
                 
@@ -245,32 +448,33 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                 Vad behöver du hjälp med?
             </div>
         </div>
-        <div class="block">
-            
 
-<div data-allow-parent-select="false" data-parent-select-only="false"
-     data-show-featured="true" data-inline-options="false"
-     data-id="" data-parent-id="" data-parent-human-id=""
-     class="what-select-wrapper whatwhere-select-wrapper">
-    <div class="what-select whatwhere-select flex-input combo-box js-loading" >
-<input autocomplete="off" class="autocomplete what-autocomplete whatwhere-input" id="WhatText" maxlength="100" name="WhatText" placeholder="Ange uppdragstyp" tabindex="1" title="Ange uppdragstyp" type="text" value="" />        
-<div data-toggle="modal" data-target="#what-parents" data-backdrop="false"
-             class="what-dropdown options-loading">
-            <div id="what-display-text" class="whatwhere-dropdown-text">
-                Ange uppdragstyp
-            </div>
-        </div>
+<div class="block">            
+<div class="row" >
+
+<input id="WhatText" name="catName" maxlength="100" list="cat_name" onChange="fetchCategories(this.value)" tabindex="1" title="Ange uppdragstyp" placeholder="Ange uppdragstyp" onClick="fetchCategories(this.value)" name="cat_name" class="form-control-lg input-lg flex-input" placeholder="Ange uppdragstyp">
+
+<datalist id="cat_name" onChange="fetchCategories(catName.value)" onClick="fetchCategories(catName.value)">
+ <option value="">Select an option</option>
+   @foreach($categories as $s)
+   <option value="{{$s->cat_name}}">{{ ucfirst($s->cat_name) }}</option>
+   @endforeach
+</datalist> 
+
+
+<div class="row" >
+<label for='sub_category'>Välj en underkategori för din förfrågan</label>
+
+<div class="flex-input dropdown">
+
+<div id="subcategories_fetcher"></div>
     </div>
-
-    <input class="what-field whatwhere-field" id="WhatId" name="WhatId" type="hidden" value="" />
-
-    
-
-        <div class="what-options what-options-placeholder hidden"></div>
-</div>
+        </div>
+            </div>
 
 <div class="whatwhere-modal-cover modal-cover" data-dismiss="modal"></div>
         </div>
+
         <hr class="divider-full-width" />
         <div class="media media-center block block-first">
         <div class="media-left">
@@ -293,7 +497,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     <div class="two-columns no-margins">
             <div class="column">
                 <label for="WhoId">Uppdraget ska utf&#246;ras &#229;t</label>
-                <div class="flex-input dropdown"><select id="WhoId" name="WhoId" tabindex="4"><option value="1">Privatperson</option>
+                <div class="flex-input dropdown">
+            <select id="WhoId" name="executed_for" tabindex="4"><option value="1">Privatperson</option>
 <option value="2">F&#246;retag</option>
 <option value="3">Byggherre/Entrepren&#246;r</option>
 <option value="4">Bostadsr&#228;ttsf&#246;rening</option>
@@ -305,7 +510,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
             <div class="column">
                 <label for="WhenId">N&#228;r ska uppdraget p&#229;b&#246;rjas</label>
-                <div class="flex-input dropdown"><select id="WhenId" name="WhenId" tabindex="5"><option value="1">Snarast m&#246;jligt</option>
+                <div class="flex-input dropdown">
+                    <select id="WhenId" name="when_to" tabindex="5"><option value="1">Snarast m&#246;jligt</option>
 <option value="3">Inom 1 m&#229;nad</option>
 <option value="4">Inom 3 m&#229;nader</option>
 <option value="5">Inom 6 m&#229;nader</option>
@@ -313,6 +519,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <option value="7">Tidpunkt mindre viktig</option>
 </select></div>
             </div>
+
+            
         <input id="PriceId" name="PriceId" type="hidden" value="1" />    </div>
 
     <input id="ShowBygghemma" name="ShowBygghemma" type="hidden" value="False" />
@@ -382,7 +590,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <div class="column">
                 <div class="form-group form-group-half">
                     <label for="ContactPreferencesId">N&#228;r vill du bli kontaktad</label>
-                    <div class="flex-input dropdown"><select id="ContactPreferencesId" name="ContactPreferencesId" tabindex="18"><option value="1">N&#228;r som helst</option>
+                    <div class="flex-input dropdown"><select id="ContactPreferencesId" name="whentobecontacted" tabindex="18"><option value="1">N&#228;r som helst</option>
 <option value="2">Omg&#229;ende</option>
 <option value="3">F&#246;rmiddag</option>
 <option value="4">Eftermiddag</option>

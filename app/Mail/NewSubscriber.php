@@ -8,10 +8,8 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Address;
 
-
-class SendApprovalMessage extends Mailable
+class NewSubscriber extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,19 +18,9 @@ class SendApprovalMessage extends Mailable
      *
      * @return void
      */
-    protected $f_name;
-    protected $title;
-    protected $no_of_coy;
-    protected $psw;
-    protected $email;
-
-    public function __construct($fname,$title,$no_of_coy,$email,$password)
+    public function __construct()
     {
-        $this->f_name=$fname;
-        $this->title=$title;
-        $this->no_of_coy = $no_of_coy;
-        $this->psw = $password;
-        $this->email = $email;
+        //
     }
 
     /**
@@ -43,11 +31,7 @@ class SendApprovalMessage extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('info@toppoffert.se',config('app.name')),
-            replyTo: [
-                new Address('info@toppoffert.se', config('app.name')),
-            ],
-            subject: 'Tack för att du ansluter'    
+            subject: 'New Subscriber',
         );
     }
 
@@ -59,13 +43,7 @@ class SendApprovalMessage extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'sendapprovalmessage',
-            title:      $this->title,
-            name:       $this->name,
-            no_of_coy: $this->no_of_coy,
-            ur_email: $this->email,
-            ur_pass: $this->psw
-
+            markdown: 'emails.newsubscriber',
         );
     }
 

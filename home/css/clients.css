@@ -124,7 +124,8 @@ display:block;margin:auto;    margin-top:45px;position:relative;
 .open_close b{
     font-size:13px;font-weight:800;
 }
-.tel_phone, .other_info{line-height: 45px !important;}
+.tel_phone{line-height: 35px !important;}
+.other_info{line-height: auto !important;}
 .open_close .open_info{line-height: 30px !important; font-size:13px;}
 .tel_phone .other_info svg, .svg-icon, .line_item svg{
     width:20px;fill:#afafaf;

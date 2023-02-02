@@ -8,29 +8,12 @@
     <link rel="stylesheet" href="{{asset('css/login/toppoffert.css')}}">
     
     <script src="{{asset('css/js/toppoffert.js')}}"></script>
-    <link rel="icon" href="{{asset('img/icons/favicon.ico')}}" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="{{asset('css/icons/apple-touch-icon.png')}}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="{{asset('css/icons/favicon-32x32.png')}}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="{{asset('icons/favicon-16x16.png')}}"
-    />
-    <link
-      rel="mask-icon"
-      href="asset('css/icons/safari-pinned-tab.svg')}}"
-      color="#8bc343"
-    />
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
+    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

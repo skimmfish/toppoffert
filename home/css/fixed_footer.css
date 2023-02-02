@@ -3,6 +3,32 @@
     display:none;
 }
 
+/**This class ensures the request_credit_footer is shown to the supplier when on every */
+.request_credit_footer{
+display:block !important;
+}
+@media(min-width:375px){
+    .request_credit_footer{
+        width: 70vw;
+        border-top-left-radius:8px;
+        position: fixed;        
+        background: #fff !important;
+        z-index:100000;
+        padding: 20px 30px 20px 0px !important;
+        color: #fff;
+        left:auto;
+        text-align: center;
+        bottom:0;
+        right:0 !important;
+        height:75px;
+    }
+    
+}
+
+.request_credit_footer .dark_bg{
+padding-top:11px;position:relative;top:2px;
+}
+
 @media(max-width:768px){
 .fixed-footer{
     width: 100vw;

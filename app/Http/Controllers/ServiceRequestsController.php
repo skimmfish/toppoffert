@@ -4,14 +4,111 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ServiceRequests;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
 
 class ServiceRequestsController extends Controller
 {
-    
+
+   protected $serviceObj;
+   protected $serviceModel;
+
     public function __construct(){
+      $this->serviceModel = new ServiceRequests;
+   }
 
-    }
 
+
+   /**
+    * @param Request <$req>
+    * @return Resultset
+    */
+public function searchservicecat(Request $req){
+
+   $service_type = $req->get('query');
+   return response()->json($filterResult);
+   $filterResult = Categories::where('cat_name', 'LIKE', '%'. $service_type. '%')->get();
+   return response()->json($filterResult);
+
+}
+
+/**
+ * this function retrieves and stores a sample buyer request, tagged with a supplier whose line of service category fits in
+ * @param Request <$request>
+ * @return NULL
+ */
+public function store(Request $request){
+
+   $newRequest = new ServiceRequests;
+   $f_name = $request->Name;
+   $pw = Str::random(8);
+   $password = Hash::make($pw);
+      $email = $request->Email;
+      $last_id = $user = User::insertGetId([
+      'f_name' => $f_name,
+      'username' => explode('@',$email)[0],
+      'email' => $email,
+      'password' => $password,
+      'business_email' => $email,
+      'user_cat' => 'CLIENT',
+      'phone_no' => $request->Phone,
+      'zip_code' => $request->postCode,
+      'active'=>0,
+      'email_verified_at'=>NULL,
+      'created_at'=>date('Y-m-d h:i:s',time()),
+      'updated_at'=>date('Y-m-d h:i:s',time()),
+      'administrative_level'=>0
+   ]);
+
+
+   $subCategory = $request->sub_category;
+
+   $main_service_cat = explode("_",$subCategory)[1];
+   $subcat_id = explode("_",$subCategory)[2];
+   $newRequest->request_hash = $this->createhypenatedstring(36);
+   $newRequest->postcode = $request->PostCode;
+   $newRequest->when_to_be_contacted = $request->whentobecontacted;
+   $newRequest->customer_id = $last_id;
+   $newRequest->when_to = $request->When_to;
+   $newRequest->request_title = $request->Description;
+   $newRequest->mission_type=$request->Description;
+   $newRequest->service_cat = $main_service_cat;
+   $newRequest->subservice_cat = $subcat_id;
+   $newRequest->postal_code_of_assignment = $request->PostCode;
+   $newRequest->executed_for = $request->executed_for;
+   $newRequest->request_type = explode("_",$subCategory)[0];
+   $newRequest->buyer_telephone = $request->Phone;
+   $newRequest->save();
+   //$newRequest-save();
+   $msg = null;
+   $requestScope=null;
+   
+   $supplier_count = 0;
+   \Mail::to($email)->queue(new \App\Mail\RequestUpdate($requestScope,$f_name,$msg,$supplier_count,
+   $request->Description));
+
+   return redirect()->route('clients_staging_area')->with(['message'=>'Din förfrågan har skickats till 100-tals företag, vänligen vänta tills de når dig']);
+}
+
+
+
+/**
+ * this function returns hypenated string with dashes in between
+ * @param Integer <$size>
+ */
+public function createhypenatedstring($size){
+
+ $string =  Str::random($size);
+
+ return strtolower(substr(chunk_split($string, 4, '-'), 0, 24));
+
+}
+
+   /**
+    * This function redirects to the clients dashboard where they can look into the requests and respond to suppliers' feeds
+    */
     public function index(){
 
         $top_request = \App\Models\ServiceRequests::where('customer_id','=',\Auth::user()->id)->first();
@@ -129,19 +226,25 @@ return view('marketplace.sadmin.buyer_requests',['title'=>"Förfrågningar vänd
  * @param Integer $request_id
  * @param Integer $action_id
  */
-public function approve_request($request_id){
+public function approve_request($request_id,$buyer_id){
 
 $res = \DB::update("UPDATE service_requests SET publish_status=? WHERE id=?",[true,$request_id]);
 
 //send a notification to buyer of his request been approved
 $buyer_id = $this->get_request_metadata('customer_id',$request_id);
 $request_title =$this->get_request_metadata('request_title',$request_id);
-$email = \App\Models\User::get_profile_data('email',$buyer_id);
-$f_name = \App\Models\User::get_profile_data('f_name',$buyer_id);
+$email = \App\Models\User::get_data('email',$buyer_id);
+$f_name = \App\Models\User::get_data('f_name',$buyer_id);
+
+$pw = Str::random(8);
+$password = Hash::make($pw);
+
+//update the password first before sending it to the user
+\DB::update("UPDATE users SET password=? WHERE id=?",[$password,$buyer_id]);
 
 $no_of_coy = 10;
 
-\Mail::to($email)->send(\App\Mail\SendApprovalMessage($f_name,$request_title,$no_of_coy));
+\Mail::to($email)->send(new \App\Mail\SendApprovalMessage($f_name,$request_title,$no_of_coy,$email,$pw));
 
 return redirect()->back()->with(['message'=>'Köparens Begäran Godkändes']);
 }
@@ -160,12 +263,15 @@ public function viewservicerequest($hash){
 */
 $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
 $catCount = sizeof(\App\Models\Categories::all());
-$credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+
+//$credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
 
 
 return view('pages.request_view')->with(['requestBody'=>$request,
 'supplierObj'=>new \App\Models\Suppliers,
-'title'=>'Se Serviceförfrågan','request_count'=>sizeof($requests),'related'=>$this->getRelatedRequests($request->service_cat)]);
+'title'=>$request->request_title,
+'request_count'=>sizeof($requests),
+'related'=>$this->getRelatedRequests($request->service_cat)]);
 }
 
 /**
@@ -203,4 +309,14 @@ public function createresponderstab($responders){
 
    
 }
+
+/***
+ * This function sends message to the buyer who submitted the request
+ */
+public function sendmessagetobuyer($id,$supplier_id){
+
+
+
+}
+
 }

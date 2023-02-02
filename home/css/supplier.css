@@ -408,7 +408,7 @@ font-weight: 700;
 }
 
 .rw_check .checkbox{
-    width:30px;height:30px;
+    width:20px;height:20px;
 }
 .rw_check span{font-size: 13.5px !important; font-weight:700;position:relative;top:-10px;left:5px;}
 .adjusted_row{
@@ -425,6 +425,12 @@ width:20px;height:20px;border-radius:50%;
 }
 .tabs a{font-weight:800;color:#333;}
 .tabs a:hover{text-decoration: underline;
+}
+.text-grey{
+    color:#999;
+}
+.btn-white{
+    background-color: #fff !important;border-radius:50px;width:auto;padding:auto 10px auto 10px;
 }
 /**
 ======================

@@ -26,7 +26,7 @@
 <div id="category" class="row city main-container wht-bg shif-dw">
 <!--tabbed pane-->
 <form action="{{route('fix_supplier_category',['id'=>\Auth::user()->id])}}" method="POST">
-@csrf 
+@csrf
 @method('PUT')
 <input type="hidden" name="supplier_id" value="{{\Auth::user()->id}}" />
 <div class="form-group" style="padding-top:14px;">
@@ -34,18 +34,19 @@
 
 @foreach($categories as $x)
 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-6">
-    <label class="rw_check"><input type="checkbox" name="service_categories[]" class="checkbox" value="{{$x->cat_name}}"/> <span>{{$x->cat_name}}</span></label>
+    <label class="rw_check"><input type="checkbox" name="service_categories[]" class="checkbox" value="{{$x->id}}"/> <span>{{$x->cat_name}}</span></label>
 
     @php
     $subcats = \App\Http\Controllers\CategoriesController::get_sub_cats($x->id);    @endphp
 
     <div class="left-adjust sub_cats">
-@if(sizeof($subcats)<=0)
 
-@else
+    @if(sizeof($subcats)<=0)
+
+    @else
     @foreach($subcats as $e)
     <div class="row adjusted_row">
-        <label class="rw_check"><input type="checkbox" name="service_sub_categories[]" class="checkbox" value="{{$e->subcat_name}}"/> <span>{{$e->subcat_name}}</span></label>
+        <label class="rw_check"><input type="checkbox" name="service_sub_categories[]" class="checkbox" value="{{$e->id}}"/> <span>{{$e->subcat_name}}</span></label>
             </div>
         @endforeach
             @endif

@@ -81,17 +81,27 @@ return view('pages.integritetspolicy',['title'=>'integritets Policy']);
 //Authentication and authorization interfaces route
 Auth::routes(['verify'=>true]);
 
+
+//for clients sending in their requests
+Route::get('/buyer-request-complete',function(){
+
+    return view('marketplace.clients.staging',['title'=>'Din förfrågan har skickats till 100-tals företag']);
+
+})->name('clients_staging_area');
+
+
 //for contact-oss page
 Route::get('/kontact-os',function(){
     return view('pages.kontactos',['title'=>'Kontakta Oss']);
 })->name('kontactos-pg');
 
 Route::get('skapa',function(){
-    return view('pages.skapa',['title'=>'Skapa förfrågan']);
+    return view('pages.skapa',['title'=>'Skapa förfrågan','categories'=>\App\Http\Controllers\CategoriesController::getcatnames()]);
 })->name('skapa');
 
+
 //taking new buyers' requests
-Route::post('skapa_request','\App\Http\Controllers\ServiceRequests@newrequest')->name('skapa_request');
+Route::post('skapa_request','\App\Http\Controllers\ServiceRequestsController@store')->name('skapa_request');
 
 //this route redirects user to their respective dashboard if properly logged in previously
 Route::get('redirecting',function(){
@@ -166,6 +176,11 @@ return view('marketplace.sadmin.index',['title'=>"Administrator's Portal - ".con
 
 })->name('sadmin_index');
 
+
+//view request modal view
+Route::get('/sa-request-preview/{hash}',[\App\Http\Controllers\ServiceRequestsController::class,'viewservicerequest'])->name('sa_preview_request')->middleware(['sadmin']);
+
+
 //switch to maintenance
 Route::get('/switch-to-maintenance',function(){
 
@@ -185,7 +200,8 @@ Route::get('/send-agreement-documents','\App\Http\Controllers\DocumentController
 //send offer invoice
 Route::get('/send-offer-invoice/{sid}',function($sid){
 
-    return view('marketplace.sadmin.invoicegenerator',['sid'=>$sid,'title'=>'Skicka erbjudandenoteringar och faktura']);
+    return view('marketplace.sadmin.invoicegenerator',['sid'=>$sid,
+    'title'=>'Skicka erbjudandenoteringar och faktura']);
 
 })->name('send_offer_invoice');
 
@@ -208,7 +224,7 @@ Route::get('confirm-resource-action/{action_type}/{id}/{resource}',function(){})
 Route::get('all-sales',[App\Http\Controllers\ServiceRequestsController::class,'get_all_sales'])->name('sadmin_all_sales');
 
 //approving service buyer requests
-Route::get('/approve-request/{request_id}',[App\Http\Controllers\ServiceRequestsController::class,'approve_request'])->name('sadmin_approve_request');
+Route::get('/approve-request/{request_id}/{buyer_id}',[App\Http\Controllers\ServiceRequestsController::class,'approve_request'])->name('sadmin_approve_request');
 
 //delete an invoice
 Route::delete('delete-invoice/{id}')->name('sadmin.delete_invoice');
@@ -250,9 +266,25 @@ Route::get('/all-users/{type}',[App\Http\Controllers\UserController::class,'sa_a
 Route::get('site-configuration')->name('site_configuration');
 });
 
+//fetch categories
+Route::get('/get-cat-names',function(){
+    if(isset($_GET['cat_name'])){
+        
+        $cat_name = $_GET['cat_name'];
+
+    \App\Http\Controllers\CategoriesController::getsubcatnames($cat_name); 
+}
+}
+//'\App\Http\Controllers\CategoriesController@getsubcatnames')
+)->name('categories');
+
+
 //grouping all routes under the dashboard/admin namespace for authenticated users
 Route::middleware(['auth','verified'])->prefix('marketplace/clients')->group(function(){
 
+
+//for searching service areas
+Route::get('/auto-search-cat',[App\Http\Controllers\ServiceRequestsController::class,'searchservicecat'])->name('searchservicecat');
 
     Route::put('modify-password/{id}','\App\Http\Controllers\UserController@modifyPasswordFromDashboard')->name('modifypass');
 
@@ -289,7 +321,7 @@ Route::get('/',function(){
 
 $active_user = \App\Models\User::whereNull('deleted_at')->orderBy('created_at','DESC')->take(5)->get();
 $messages = \App\Models\NotificationModel::where('receiver_id',\Auth::user()->id)->orderBy('created_at','DESC')->get();
-return view('marketplace.sadmin.index',['title'=>'Administrators Portal',
+return view('marketplace.sadmin.index',['title'=>'Administratörens Instrumentpanel',
 'active_user'=>$active_user,'personalNotification'=>$messages]);
 
 })->name('sadmin_index');
@@ -432,6 +464,9 @@ Route::get('/show-interest/{hash}',function(){
 
 })->name('show_interest');
 
+
+Route::get('/send-message-buyer/{id}/{supplier_id}',[App\Http\Controllers\ServiceRequestsController::class,'sendmessagetobuyer'])->name('reach_out_to_buyer');
+
 //customer care_for suppliers page
 Route::get('/services/customer-care',function(){
 $dt = \Carbon\Carbon::now();   
@@ -477,15 +512,19 @@ Route::get('/settings',function(){
     $credits= \App\Http\Controllers\CreditsController::getCredits($uid)->credits;
     $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
     $catCount = sizeof(\App\Models\Categories::all());
-    $ratingObj = new \App\Models\Ratings;
+    $ratingObj = new \App\Http\Controllers\RatingsController;
   
-    $ratings = \App\Models\Ratings::where('provider_id',$uid)->first();
     $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials($uid);
 
+    $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+    
+    $review_count = $ratingObj->getRatings($uid);
+
+
     return view('marketplace.suppliers.dashboard',['title'=>'Överblick',
-    'supplierObj'=>new \App\Models\Suppliers,'requests'=>$requests,'ratings'=>$ratings->rating,
+    'supplierObj'=>new \App\Models\Suppliers,'requests'=>$requests,'ratings'=>$review_count['rating'],
     'testimonials'=>$testimonials,
-    'review_count'=>$ratings->review_count, 'request_count'=>sizeof($requests),'credit'=>$credits]);
+    'review_count'=>$review_count['review_count'], 'request_count'=>sizeof($requests),'credit'=>$credits]);
 
 })->name('suppliers_dashboard');
 
@@ -500,15 +539,22 @@ Route::get('contact-information',function(){
 
     $uid = \Auth::user()->id;
     $credits= \App\Http\Controllers\CreditsController::getCredits($uid)->credits;
+
     $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
+    $request_count = 0;
+    if(sizeof($requests)<=0){
+        $request_count = 0;
+    }
+    
     $catCount = sizeof(\App\Models\Categories::all());
-    $ratingObj = new \App\Models\Ratings;
-  
-    $ratings = \App\Models\Ratings::where('provider_id',$uid)->first();
+    $ratingObj = new \App\Http\Controllers\RatingsController;
+
+    $review_count = $ratingObj->getRatings($uid);
+
     $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials($uid);
 
     return view('marketplace.suppliers.kontactinformation',['title'=>'Kontaktuppgifter',
-    'review_count'=>$ratings->review_count, 'request_count'=>sizeof($requests),'credit'=>$credits]);
+    'review_count'=>$review_count['review_count'], 'request_count'=>$request_count,'credit'=>$credits]);
 
 })->name('contact-information');
 
@@ -529,17 +575,20 @@ Route::get('/settings/accountsummary',function(){
 
 //for resetting supplier's password from the dashboard
 Route::get('/settings/password',function(){
-    
-  $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials(\Auth::user()->id);  
+    $uid = \Auth::user()->id;
+  $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials($uid);  
   $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
   $catCount = sizeof(\App\Models\Categories::all());
-  $ratingObj = new \App\Models\Ratings;
-  $ratings = \App\Models\Ratings::where('provider_id',\Auth::user()->id)->first();
+
+  $ratingObj = new \App\Http\Controllers\RatingsController;
+
+  $review_count = $ratingObj->getRatings($uid);
+
   $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
 
     return view('marketplace.suppliers.password',['title'=>'Byt lösenord',
-    'ratings'=>$ratings->rating,
-    'review_count'=>$ratings->review_count, 'request_count'=>sizeof($requests),
+    'ratings'=>$review_count['rating'],
+    'review_count'=>$review_count['review_count'], 'request_count'=>sizeof($requests),
     'credit'=>$credits,
     ]);
 
@@ -556,13 +605,17 @@ Route::get('/settings/invoices',function(){
     
     $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
     $catCount = sizeof(\App\Models\Categories::all());
-    $ratingObj = new \App\Models\Ratings;
-    $ratings = \App\Models\Ratings::where('provider_id',$uid)->first();
+    $ratingObj = new \App\Http\Controllers\RatingsController;
     $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
     $invoices = \App\Http\Controllers\InvoicesController::getall($uid);
+    $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+
+    $review_count = $ratingObj->getRatings($uid);
+
     
-    return view('marketplace.suppliers.invoices',['title'=>'Fakturor Och','ratings'=>$ratings->rating,
-    'review_count'=>$ratings->review_count, 'request_count'=>sizeof($requests),
+    return view('marketplace.suppliers.invoices',['title'=>'Fakturor Och',
+    'ratings'=>$review_count['rating'],
+    'review_count'=>$review_count['review_count'], 'request_count'=>sizeof($requests),
     'credit'=>$credits,'invoices'=>$invoices
     ]);
 
@@ -575,15 +628,15 @@ Route::get('/settings/ratings',function(){
   $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials(\Auth::user()->id);  
   $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
   $catCount = sizeof(\App\Models\Categories::all());
-  $ratingObj = new \App\Models\Ratings;
-
-  $ratings = \App\Models\Ratings::where('provider_id',\Auth::user()->id)->first();
+  $ratingObj = new \App\Http\Controllers\RatingsController;
 
   $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
 
+  $review_count = $ratingObj->getRatings($uid);
+
     return view('marketplace.suppliers.ratings',['title'=>'Omdömen ',
-    'ratings'=>$ratings->rating,
-    'review_count'=>$ratings->review_count, 'request_count'=>sizeof($requests),
+    'ratings'=>$review_count['rating'],
+    'review_count'=>$review_count['review_count'], 'request_count'=>sizeof($requests),
     'credit'=>$credits,
     'testimonials'=>$testimonials]);
 

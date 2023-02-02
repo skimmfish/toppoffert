@@ -25,7 +25,8 @@ class RequestUpdate extends Mailable
     protected $msg;
     protected $matchedSupplierCount;
     protected $request_title;
-    
+    protected $email;
+
     public function __construct($requestScope,$f_name,$msg,$supplier_count,$request_title)
     {
         $this->request_scope=$requestScope;
@@ -33,6 +34,7 @@ class RequestUpdate extends Mailable
         $this->msg = $msg;
         $this->matchedSupplierCount = $supplier_count;
         $this->request_title = $request_title;
+//        $this->email = $email;
     }
 
     /**
@@ -59,6 +61,7 @@ class RequestUpdate extends Mailable
      */
     public function content()
     {
+        
         return new Content(
             markdown: 'emails.requestupdate',
             with: [
@@ -69,6 +72,14 @@ class RequestUpdate extends Mailable
                 'request_title'=>$this->request_title
             ]
         );
+        
+/*
+        return $this->from(config('mail.mailer.username'), config('app.name'))
+            ->to($this->email, $this->f_name)
+            ->view('emails.requestupdate')
+            ->with([
+                'contact' => $this->contact
+            ]);*/
     }
 
     /**
