@@ -21,7 +21,8 @@ use Illuminate\Support\Facades\Hash;
 
 //homepage
 Route::get('/', function () {
-    return view('index')->with(['title'=>'Vi hjälper dig hitta rätt tjänsteföretag']);
+    $cats = \App\Models\Categories::all();
+    return view('index')->with(['title'=>'Vi hjälper dig hitta rätt tjänsteföretag','categories'=>$cats]);
 })->name('index');
 
 //unauthorized/non/unauthenticated users goes here
@@ -445,10 +446,10 @@ Route::get('/suppliers-coverage',function(){
     $cats = \App\Models\Categories::all();
     $catCount = sizeof($cats);
     $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
-
+    $buyersType = \DB::table('buyers_type')->get();
     return view('marketplace.suppliers.coverage',['title'=>'Bevakning','requests'=>$requests,
     'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits,
-    'categories'=>$cats]);
+    'categories'=>$cats,'buyers_type'=>$buyersType]);
 
 })->name('settings.coverage');
 

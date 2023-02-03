@@ -84,9 +84,11 @@ class CategoriesController extends Controller
         $service_sub_category = [];
         $service_category = [];
         $assignment_size = [];
+        $buyer_type = [];
 
-                    for($i=0;$i<sizeof($request->service_categories);$i++){
-            $service_category[] = @($request->service_categories)[$i];
+        for($i=0;$i<sizeof($request->service_categories);$i++){
+
+        $service_category[] = @($request->service_categories)[$i];
             
         }
 
@@ -98,12 +100,12 @@ class CategoriesController extends Controller
 
         for($i=0;$i<sizeof($request->assignment_size);$i++){
             $assignment_size[] = @($request->assignment_size)[$i];
+        }
+
+
+    for($i=0;$i<sizeof($request->buyer_type);$i++){
+        $buyer_type[] = @($request->buyer_type)[$i];
     }
-
-
-    for($i=0;$i<sizeof($request->assignment_size);$i++){
-        $assignment_size[] = @($request->assignment_size)[$i];
-}
 
     $res = null;
     $res = \DB::update("UPDATE suppliers SET service_category=?,service_sub_categories=?, 
@@ -111,6 +113,7 @@ class CategoriesController extends Controller
     json_encode($service_category,true),
     json_encode($service_sub_category,true),
     json_encode($assignment_size,true),
+    json_encode($buyer_type,true),
     $request->supplier_id]);
 
 

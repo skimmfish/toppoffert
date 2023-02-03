@@ -29,9 +29,7 @@ $supplierObj = new \App\Models\Suppliers;
     <meta name="theme-color" content="#ffffff">
     <link href="//db.onlinewebfonts.com/c/0aee6008b82cde991ec28387169bb13e?family=GD+Sherpa" rel="stylesheet" type="text/css"/>
     <script src="{{ asset('css/admin/js/config.js') }}"></script>
-
     <script src="{{ asset('css/admin/vendors/overlayscrollbars/OverlayScrollbars.min.js') }}"></script>
-
 
     <!-- ===============================================-->
     <!--    Stylesheets-->
@@ -76,7 +74,44 @@ $supplierObj = new \App\Models\Suppliers;
  <!--for local/dev testing-->
 <script src="{{asset('js/jquery-2.2.0.min.js')}}"></script>
 
+<script type="text/javascript">  
+            function selects(checkboxName){  
+                var ele=document.getElementsByName(checkboxName);  
+                for(var i=0; i<ele.length; i++){  
+                    if(ele[i].type=='checkbox')  
+                        ele[i].checked=true;  
+                }  
+
+                //disable checkall box and enable deselect all
+                var div = document.getElementById('deselectAllBuyers');
+                var selAll = document.getElementById('selectAllBuyers');
+
+                selAll.style.display = 'none';
+                div.style.display = 'block';
+            }  
+
+            function deSelect(checkboxName){  
+                var ele=document.getElementsByName(checkboxName);  
+                for(var i=0; i<ele.length; i++){  
+                    if(ele[i].type=='checkbox')  
+                        ele[i].checked=false;  
+                      
+                }  
+
+                                //disable checkall box and enable deselect all
+                var div = document.getElementById('deselectAllBuyers');
+                var selAll = document.getElementById('selectAllBuyers');
+
+                selAll.style.display = 'block';
+                div.style.display = 'none';
+            }             
+
+        </script>  
+<style>
+#deselectAllBuyers{display:none;}
+  </style>
 <!-- deleteUser -->
+
 <script>
         // display a modal (small modal)
         $(document).on('click', '#deleteUser', function(event) {

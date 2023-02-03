@@ -30,7 +30,14 @@
 @method('PUT')
 <input type="hidden" name="supplier_id" value="{{\Auth::user()->id}}" />
 <div class="form-group" style="padding-top:14px;">
-<label class="form-label rw_check" style="font-size:14.5px;">Välj kategorier av tjänster du kan erbjuda</label>
+
+<div id="selectAllBuyers">
+<input type="checkbox" class="checkbox" name="service_cats[]" style="width:25px;height:25px;margin-right:6px;position:relative;top:2px;" onClick="selects('service_categories[]')" value="Select All"/><label class="form-label rw_check" style="font-size:16.5px;">Välj kategorier av tjänster du kan erbjuda</label>
+</div>
+
+<div id="deselectAllBuyers"><input type="checkbox" class="checkbox" style="width:25px;height:25px;" name="service_cats[]" onClick="deSelect('service_categories[]')" value="Select All"/><span>Avmarkera alla</span></div>
+
+
 
 @foreach($categories as $x)
 <div class="col-md-6 col-lg-6 col-xs-12 col-sm-6">
@@ -48,11 +55,10 @@
     <div class="row adjusted_row">
         <label class="rw_check"><input type="checkbox" name="service_sub_categories[]" class="checkbox" value="{{$e->id}}"/> <span>{{$e->subcat_name}}</span></label>
             </div>
-        @endforeach
-            @endif
-            </div>
-
-</div>
+            @endforeach
+                @endif
+                    </div>
+                        </div>
 @endforeach
 </div>
 
@@ -67,7 +73,10 @@
 
 <div class="form-group" style="padding-top:14px;">
 <label class="form-label rw_check">
-<input type="checkbox" class="checkbox" name="checkallassignment[]" value="checkallassignment"/> <span>Välj alla uppdragsvärden</span>
+
+<div id="selectAllBuyers"><input type="checkbox" class="checkbox" name="checkallassignment[]" onClick="selects('assignment_size[]')" value="Select All"/><span>Välj alla uppdragsvärden</span><br/></div>
+<div id="deselectAllBuyers"><input type="checkbox" class="checkbox" name="deselectallassignment[]" onClick="deSelect('assignment_size[]')" value="Select All"/><span>Avmarkera alla uppdragsvärden</span></div>
+
 
 </label>
 </div>
@@ -140,53 +149,21 @@
 <!--tabbed pane-->
 <div class="form-group" style="padding-top:14px;">
 <label class="form-label rw_check">
-<input type="checkbox" class="checkbox" name="buyer_type_checkall[]" value="checkallbuyer_type"/><span>Välj alla kunder</span>
+<div id="selectAllBuyers"><input type="checkbox" class="checkbox" name="buyer_type_checkall" onClick="selects('buyer_type[]')" value="Select All"/><span>Välj alla</span><br/></div>
+<div id="deselectAllBuyers"><input type="checkbox" class="checkbox" name="buyer_type_checkall" onClick="deSelect('buyer_type[]')" value="Select All"/><span>Avmarkera alla</span></div>
+
 </label>
 </div>
     
-
+@foreach($buyers_type as $s)
 <div class="form-group" style="padding-top:14px;">
 <label class="form-label rw_check">
-<input type="checkbox" name="buyer_type[]" class="checkbox" value="bostadsrättsförening" /><span>Bostadsrättsförening</span>
+<input type="checkbox" name="buyer_type[]" class="checkbox" value="{{$s->id}}" /><span>{{$s->buyers_type_name}}</span>
 </label>
 </div>
-
-<div class="form-group" style="padding-top:14px;">
-<label class="form-label rw_check">
-<input type="checkbox" name="buyer_type[]" class="checkbox" value="byggherre/entreprenör"/><span>Byggherre/Entreprenör</span>
-</label>
-</div>
-
-<div class="form-group" style="padding-top:14px;">
-<label class="form-label rw_check">
-<input type="checkbox" name="buyer_type[]" class="checkbox" value="företag"/><span>Företag</span>
-</label>
-</div>
-
-<div class="form-group" style="padding-top:14px;">
-<label class="form-label rw_check">
-<input type="checkbox" name="buyer_type[]" class="checkbox" value="ideell förening"/><span>Ideell förening</span>
-</label>
-</div>
-
-<div class="form-group" style="padding-top:14px;">
-<label class="form-label rw_check">
-<input type="checkbox" name="buyer_type[]" class="checkbox" value="kommun/myndighet"/><span>Kommun/Myndighet</span>
-</label>
-</div>
+@endforeach
 
 
-<div class="form-group" style="padding-top:14px;">
-<label class="form-label rw_check">
-<input type="checkbox" name="buyer_type[]" class="checkbox" value="Privatperson"/><span>Privatperson</span>
-</label>
-</div>
-
-<div class="form-group" style="padding-top:14px;">
-<label class="form-label rw_check">
-<input type="checkbox" name="buyer_type[]" class="checkbox" value="villaförening"/><span>Villaförening</span>
-</label>
-</div>
 
 </div>
 </div>

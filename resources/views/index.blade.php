@@ -65,6 +65,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/campaign_v638066915600000000.css')}}" />
 <link rel="stylesheet" type="text/css" href="{{asset('css/custom_def.css')}}" />
 <link rel="stylesheet" type="text/css" href="{{asset('css/header_nav.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{asset('css/searchbox.css')}}" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/icons/apple-touch-icon.png')}}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/icons/favicon-32x32.png')}}">
@@ -95,6 +96,30 @@ var div = document.getElementById('_dropdown_logo');
 div.style.display = block;
 }
 
+</script>
+
+
+<!--this function fetches all the associated sub_Cat_names-->
+<script type="text/javascript">
+function fetchCategories(category){
+    if(category){
+    $.ajax({
+    type: 'GET',
+    url: "{{ route('categories') }}",
+   
+    data: {
+    cat_name: category,
+    },
+    success: function (response) {
+     // We get the element having id of display_info and put the response inside it
+     $( '#subcategories_fetcher' ).html(response);
+    }
+    });
+   }else
+   {
+    $( '#subcategories_fetcher' ).html("<small class='text-danger'>Kontrollera Ditt Val</small>");
+   }
+} //end of fetchServersList() function
 </script>
 
 
@@ -138,7 +163,58 @@ div.style.display = block;
                 </h1>
                 <label for="autocomplete" class="top-section__subheading">Sveriges största marknadsplats för tjänster med <strong style="white-space: nowrap">888 102</strong> förmedlade uppdrag.</label>
             
-                <div id="deepquote-app" data-worktype-id=""></div>
+                <!--<div id="deepquote-app" data-worktype-id=""></div>-->
+                <h3><b>Få offerter på ToppOffert från flera tjänsteföretag</b></h3>
+
+                <div class="toppoffert_searchbox">
+                        <form action="" method="POST">
+                                <div class="grid_search_box">
+                            <input type="text" autocomplete placeholder="Vad behöver du hjälp med?" class="input-control toppoffert_search" id="searchService" list="cat_name" onChange="fetchCategories(this.value)"/>
+
+                                <button type="submit" class="btn_search_sok">Sök</button>
+
+                                <datalist id="cat_name" onChange="fetchCategories(catName.value)" onClick="fetchCategories(catName.value)" style="font-weight:800;">
+ <option value="">Select an option</option>
+   @foreach($categories as $s)
+   <option value="{{$s->cat_name}}">{{ ucfirst($s->cat_name) }}</option>
+   @endforeach
+</datalist> 
+
+                                <div id="subcategories_fetcher"></div>
+
+                            </form>
+                                </div>
+
+                                    <div class="icons_box">
+                                    
+                                    <div>
+                                    <img src="{{asset('img/bygg.jpg')}}" class="img-responsive-cat" />
+                                    <br/>
+                                    <b>Bygg & Renovering</b></div>
+
+                                    <div>
+                                    <img src="{{asset('img/transport.jpg')}}" class="img-responsive-cat" />
+                                    <br/>
+                                    <b>Flytt & Transport</b>
+                                    </div>
+
+                                    <a href=""><div>
+                                    <img src="{{asset('img/stadning.jpg')}}" class="img-responsive-cat" alt="Städning" />    
+                                    <Br/>
+                                    <b>Städning</b>
+                                    </div></a>
+
+                                    <div class="">
+                                    <img src="{{asset('img/ovriga.jpg')}}" class="img-responsive-cat" />
+                                        <b>Övriga</b>
+                                    </div>
+                                    </div>
+
+
+
+                                        </div>
+                                            </div>
+
            
         </div>
     </div>
@@ -193,23 +269,8 @@ div.style.display = block;
     <div class="col">
         <h2 class="page-section__heading">Störst i Sverige</h2>
         <p class="page-section__paragraph">
-        Förverkliga ditt drömprojekt eller anlita ett företag som gör din vardag lite enklare. Skapa en gratis förfrågan så matchar vi ihop dig med kompetenta företag som får jobbet gjort.     
-      </p>
-        <div class="stats">
-            <div class="stats-block">
-                <h4 class="stats__heading">15 000</h4>
-                <p class="stats__paragraph">Kontrollerade företag</p>
-                <h4 class="stats__heading">45 738</h4>
-                <p class="stats__paragraph">Validerade omdömen</p>
-            </div>
-            <div class="stats-block">
-                <h4 class="stats__heading">2 190 782</h4>
-                <p class="stats__paragraph">Skickade offerter</p>
-                <h4 class="stats__heading">5 320</h4>
-                <p class="stats__paragraph">Användare per dag</p>
-            </div>
-        </div>
-    </div>
+        När det är dags att påbörja ett hus- eller hemprojekt är det inte alltid helt lätt att veta vilka hantverkare du kan kontakta eller vad det kostar. Därför har vi på ToppOffert samlat olika företag på samma plats så att du enkelt kan få flera offerter genom en enda prisförfrågan. Det kostar ingenting att lägga in en förfrågan och det finns inga krav på att anlita någon. Jämför offerterna i lugn och ro och välj det företag som passar dig bäst!
+    </p>
     
     </div>
     </div>
