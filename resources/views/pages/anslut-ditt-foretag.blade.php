@@ -26,7 +26,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
 
     <meta name="author" content="Toppoffert Sverige AB" />
-    <meta property="fb:admins" content="753251562" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="format-detection" content="telephone=no">
 
@@ -147,8 +146,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
 <div class="new-header__menu suppliers-register-active" role="navigation">
     <a href="{{route('anslut-ditt-foretag')}}" class="new-header__menu--item">Anslut företag</a>
-    <a href="{{route('yrkeskategorier')}}" class="top-nav-link static new-header__menu--item topnav-supplier-register-layout">Yrkeskategorier</a>
-  <!--  <a href="{{route('pris')}}" class="new-header__menu--item topnav-supplier-register-layout">Pris</a>-->
+  <!--  <a href="{{route('yrkeskategorier')}}" class="top-nav-link static new-header__menu--item topnav-supplier-register-layout">Yrkeskategorier</a>
+    <a href="{{route('pris')}}" class="new-header__menu--item topnav-supplier-register-layout">Pris</a>-->
     
         <a href="{{route('login')}}" class="new-header__menu--item">Logga in</a>
         <a href="{{route('intresseanmalan')}}" class="new-header__menu--item menu-link">
@@ -176,9 +175,11 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <nav class="new-main-menu">
     <div class="new-main-menu__inner">
         <div class="new-main-menu__menu">
-            <a href="{{route('anslut-ditt-foretag')}}" class="new-main-menu__menu--item mobile">Anslut företag</a>
-            <a href="{{route('yrkeskategorier')}}" class="new-main-menu__menu--item mobile">Yrkeskategorier</a>
-            <a href="{{route('pris')}}" class="new-main-menu__menu--item mobile">Pris</a>
+
+        <a href="{{route('anslut-ditt-foretag')}}" class="new-main-menu__menu--item mobile">Anslut företag</a>
+            
+            <!--<a href="{{route('yrkeskategorier')}}" class="new-main-menu__menu--item mobile">Yrkeskategorier</a>
+            <a href="{{route('pris')}}" class="new-main-menu__menu--item mobile">Pris</a>-->
             
                 <a href="{{route('login')}}" class="new-main-menu__menu--item mobile">Logga in</a>         
             
@@ -187,28 +188,17 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </div>
     <ul class="new-main-menu__footer">
         <li class="new-main-menu__footer--item">
-            {{config('app.name')}} Group AB
+            {{config('app.name')}} Sverige AB
         </li>
         <li class="new-main-menu__footer--item">
-            <a href="tel:010-33 020 11">010-33 020 11</a>
+            <a href="tel:{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}">{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}</a>
         </li>
         <li class="new-main-menu__footer--item">
             <a href="mailto:info@toppoffert.se">info@toppoffert.se</a>
         </li>
-        <li class="new-main-menu__footer--item">
-            <a href="https://www.linkedin.com/company/toppoffertse" class="social-icons">
+
+  <a href="https://www.facebook.com/profile.php?id=100089330416542" class="social-icons">
                 
-
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
-  <rect x="2" y="8.5" width="5" height="14" rx=".5" ry=".5" />
-  <ellipse cx="4.48" cy="4" rx="2.48" ry="2.5" />
-  <path d="M18.5 22.5h3a.5.5 0 0 0 .5-.5v-8.4C22 9.83 19.87 8 16.89 8a4.21 4.21 0 0 0-3.17 1.27A.41.41 0 0 1 13 9a.5.5 0 0 0-.5-.5h-3A.5.5 0 0 0 9 9v13a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-7.5a2.5 2.5 0 0 1 5 0V22a.5.5 0 0 0 .5.5z" />
-</svg>
-
-            </a>
-            <a href="https://www.facebook.com/toppoffert.se/" class="social-icons">
-                
-
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-small">
   <path d="M18.14 7.17a.5.5 0 0 0-.37-.17H14V5.59c0-.28.06-.6.51-.6h3a.44.44 0 0 0 .35-.15.5.5 0 0 0 .14-.34v-4a.5.5 0 0 0-.5-.5h-4.33C8.37 0 8 4.1 8 5.35V7H5.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5H8v11.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5V12h3.35a.5.5 0 0 0 .5-.45l.42-4a.5.5 0 0 0-.13-.38z" />
 </svg>
@@ -225,15 +215,11 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         </li>   
     </ul>
 </nav>
-
-                    <div class="header-material-circle"></div>
-                </div>
-            </header>
-            <main class="content-main" role="main">
-                
-                
-
-
+  <div class="header-material-circle"></div>
+     </div>
+        </header>
+          <main class="content-main" role="main">
+                            
 <section class="splash-supplier-register" >
     <div class="splash-supplier-register__inner no-spacing__bottom">
         <div class="splash-supplier-register-column supplier-register-form-container">

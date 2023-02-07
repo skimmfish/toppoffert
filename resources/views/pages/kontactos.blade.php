@@ -21,9 +21,11 @@
     <link rel="dns-prefetch" href="https://www.youtube.com/" />
 
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/icons/favicon.ico')}}" />
-    <meta name="author" content="TOPPOFFERT.SE AB" />
-    <meta property="fb:admins" content="753251562" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
+    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
+    
+    <meta name="author" content="TOPPOFFERT Sverige AB"/>
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="format-detection" content="telephone=no">
 
@@ -40,10 +42,7 @@
  <!-- End Visual Website Optimizer Asynchronous Code -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>   
-<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
-    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>   ') }}">
 
 <meta name="theme-color" content="#2F3033">
 <script>
@@ -522,7 +521,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <input class="flex-input input-phone" id="FormModel_Telephone" name="FormModel.Telephone" placeholder="Telefon" type="text" value="" />                    <button type="submit" class="button-primary">Skicka</button>
 </form>                <div class="block">
                     <hr />
-                    <a href="https://www.facebook.com/toppoffert.se/" class="black block" target="_blank">
+                    <a href="https://www.facebook.com/profile.php?id=100089330416542" class="black block" target="_blank">
                         <div class="media">
                             <div class="media-left">
                                 
@@ -562,8 +561,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
             <aside class="aside">
                 <div class="box">
-                    <div class="h4 title">{{config('app.name')}} Group AB</div>
-                    <div class="title-info subtitle">556743-5887</div>
+                    <div class="h4 title">{{config('app.name')}} Sverige AB</div>
+                    <div class="title-info subtitle"></div>
                     <address class="h6 block">
                       {{\App\Http\Controllers\ConfigController::get_value('address')}}<br/><br/>
 

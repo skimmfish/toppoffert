@@ -1,9 +1,19 @@
+.footer-menu__item{
+font-family:'GD Sherpa Regular';
+}
+
 .new-header.scrolled{
 	background-color: #fff !important;
 	transition: background-color 200ms linear;
   }
   .show_768{
 	display:none;
+  }
+  #campaign-heading{
+font-size:40px;font-weight: 900 !important;color: #005aad;
+  }
+  .h_toppofferta b{
+	font-family:'GD Sherpa Regular';
   }
 
 #_dropdown_logo,  .menu-btn-left{
@@ -36,7 +46,6 @@
   .wrapper{
 	position: fixed;
 	top: 0;
-	left: 0;
 	height: 100%;
 	width: 100%;
 	/*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
@@ -195,6 +204,27 @@ display:block;
 		display:block;
 	  }
   }
+
+  @media(max-width:1440px){
+	.wrapper{
+		left:0;
+	}
+  }
+
+  @media(min-width:2559px){
+	.fa{
+	display:inline-block;
+    position: relative;
+    /* left: 0; */
+    right: -560px;
+    top: 0;
+	}
+	.wrapper{
+		left:0;
+	}
+}	
+
+ 
  @media(max-width:1024px){
 	.wrapper ul li a{
 		color: none;
@@ -216,9 +246,15 @@ display:block;
 	.grid_case .social{
 		position:relative;top:-15px;left:28px !important;
 	}
+
+
 	}
 
  @media(max-width:425px){
+	.h_toppofferta b{
+		font-size:14px;position:relative;top:-30px;
+	  }
+	
 	.wrapper ul li a{
 		color: none;
 		text-decoration: none;

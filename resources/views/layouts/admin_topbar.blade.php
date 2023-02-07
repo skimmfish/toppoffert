@@ -8,7 +8,7 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
             <a class="navbar-brand me-1 me-sm-3" href="https://toppoffert.se/">
               
             <div class="d-flex align-items-center">
-             <img src="{{ asset('img/logos'.\App\Http\Controllers\ConfigController::get_value('site_logo')) }}" class="img-responsive-logo" alt="" lazyloading /> 
+             <img src="{{ asset('img/logos/png.png')}}" class="img-responsive-logo" alt="" lazyloading /> 
   
               </div>
             </a>
@@ -23,6 +23,10 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
 				
       </div>
               </li>
+              
+              <li class="nav-item dropdown">
+              <div class="credit_box">{{$credit}} Kreditas</div>
+                </li>
               <li class="nav-item dropdown">
                 <a class="nav-link notification-indicator notification-indicator-primary px-0 fa-icon-wait" id="navbarDropdownNotification" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hide-on-body-scroll="data-hide-on-body-scroll"><span class="fas fa-bell" data-fa-transform="shrink-6" style="font-size: 33px;"></span></a>
                   <div class="dropdown-menu dropdown-menu-end dropdown-menu-card dropdown-menu-notification dropdown-caret-bg" aria-labelledby="navbarDropdownNotification">
@@ -42,7 +46,7 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
                            </div>
  
                     <div class="subject">
-                      <a class="text-black subj mb-1" href=""><b>{{$notes->subject}}</b></a>
+                      <a class="text-black subj mb-1" href="{{route('marketplace.suppliers.messages',['note_id'=>$notes->subject])}}"><b>{{$notes->subject}}</b></a>
                       
                       <div class="notification-body">
                             <span class="notification-time text-tiny" style="font-size:10px;color:#afafaf"><span class="me-2" role="img" aria-label="Emoji"><i class="fa fa-clock"></i></span>{{ date('d, F Y h:i:s A' , strtotime($notes->created_at)) }}</span>
@@ -53,7 +57,7 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
                       <hr/>
                       @endforeach
 
-                      <a href=""><small>View All Notifications</small></a>
+                      <a href="{{route('marketplace.suppliers.message_board')}}"><small>View All Notifications</small></a>
 
                       @endif
                       </div>
@@ -75,7 +79,7 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
           <a class="dropdown-item" href="{{route('switch_to_maintenance')}}">Underhåll</a>				  
         
           @endif
-                    <a class="dropdown-item" href="{{route('pages.profile')}}">Profil &amp; Inställningar</a>
+                    <a class="dropdown-item" href="{{route('contact-information')}}">Profil &amp; Inställningar</a>
 
                     <a class="dropdown-item" href="{{route('logout')}}">Logga ut</a>
                   </div>

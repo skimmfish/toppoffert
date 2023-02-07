@@ -218,14 +218,27 @@ width:9px;fill:#333;
 .position-relative .dropdown{
     position:relative;top:7.5px;left:5px;
 }
-.navigation_control .btn:hover, .btn-grey-bg{
-    background:#e7f5d6;border-radius:50%;width:50px;height:50px;line-height: 37px;
+.navigation_control .btn:hover, .btn-grey-bg:hover{
+    background:#e7f5d6;border-radius:50%;width:50px !important;height:50px !important;line-height: 37px;
 }
 .requests{background:#fff;border-radius: 10px;padding:15px 5px 15px 5px;height:auto;
     margin-bottom:5px !important;}
 .other_details_area{
     line-height: 32px;
 }
+.underline{
+    text-decoration: underline !important;
+}
+.tk_up{
+    position:relative;top:-8px;
+}
+
+.scrollable_table{width:100%; overflow-x:scroll;}
+.credit_box{
+    width:auto;height:28px;padding:6px 10px;border-radius:50px;background-color: #0d2453;color:#fff;font-size:10px;
+    font-weight:600;font-family:'GD Sherpa Regular';position:Relative;right:5px;
+}
+
 .related_item{
     background-color: #fff;
     min-height: 100px;

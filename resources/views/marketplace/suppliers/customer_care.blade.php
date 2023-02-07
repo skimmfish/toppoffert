@@ -6,10 +6,10 @@
 <div class="container" style="margin:0;">
 
 <h1 class="kseerv_h1">Kundservice</h1>
-
-<div class="row" style="background:#fff;border-radius:8px;padding-top:15px;padding-right:15px;margin-top:20px;">
-<div class="col-md-9 col-sm-9 col-lg-9 col-xs-12 gen_body">
 <h3>Har du frågor? Vår kundservice finns här för att hjälpa till </h3>
+
+<div class="row man">
+<div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 gen_body">
 
 <p class="text">Du har tillgång till vår email och telefonsupport.
 Du kan också kika om du hittar svar på din fråga bland våra <a href="{{route('faqs')}}"><u><b>Vanliga frågor och svar</b></u></a>.
@@ -36,9 +36,8 @@ Du kan också kika om du hittar svar på din fråga bland våra <a href="{{route
 Maila oss på <a href="mailto:info@toppoffert.se"><u>info@toppoffert.se</u></a></div>
 </p>
 </div>
-</div>
 
-<div class="col-md-3 col-xs-2 col-lg-3 col-sm-4 open_close">
+<div class="col-md-3 col-xs-2 col-lg-3 col-sm-3 open_close" style="padding:9px;">
 <b>Öppettider</b>
 <p><div class="open_info">Måndag-fredag 9-17.</div>
 <div class="open_info"> Lunchstängt 12-13.</div>

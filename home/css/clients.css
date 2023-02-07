@@ -121,6 +121,8 @@ display:block;margin:auto;    margin-top:45px;position:relative;
 .col10{
     display:block;margin:auto;border-radius:7px;border:1px solid #efefef;padding:20px;
 }
+.man{background:#fff;border-radius:8px;padding-top:15px;padding-right:15px;margin-top:20px;}
+
 .open_close b{
     font-size:13px;font-weight:800;
 }
@@ -133,7 +135,7 @@ display:block;margin:auto;    margin-top:45px;position:relative;
 .text{line-height: 32px;}
 .line_item b{color:#666;}
 .open_close{
-    background:#efefef;border-radius:9px;max-height:125px;line-height:28px;border:1px solid #bfbfbf;
+    background:#efefef;border-radius:9px;line-height:22px;border:1px solid #bfbfbf;
 }
 
 .rw_control{

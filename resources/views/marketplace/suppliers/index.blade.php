@@ -1,17 +1,29 @@
 @extends('layouts.supplierheader')
 @section('content')
 
-
 @include('layouts.admin_topbar')
 
-<h1 style="color:#000;text-align:left;">Hej! {{\Auth::user()->f_name}}</h1><Br/>
+<div class="row">
+<div class="col-md-9 col-lg-9 col-sm-9 col-xs-12"><h1>Hej! {{\Auth::user()->f_name}}</h1>
  <p class="line-height-auto">Välkommen till din instrumentpanel</p>
-
+ </div>
+<!--./row-->
+</div>
 
         <div class="row g-3 mb-3" style="margin-bottom:30px;">
             <div class="col-md-12 col-lg-12 col-xl-12 col-xs-12 tp-padding">
+@php
+$categoriesCount = sizeof(json_decode($supplierCoverage['categories'],true));
+$buyerTypes = null;
+$buyersTypes = json_decode($supplierCoverage['buyers_type'],true);
 
-           <div class="nav-tex"><span>{{$category_count }} kategorier, alla områden,alla köpartyper,0 - 10 milj kr <a href="#" onClick="triggerRefresh()"> Ändra </a></span></div>
+for($i=0;$i< sizeof($buyersTypes);$i++){
+  $buyerTypes .= \App\Http\Controllers\SuppliersController::getBuyerTypeName($buyersTypes[$i]).',';
+}
+@endphp
+
+<div class="nav-tex"><span><b>{{$categoriesCount }} kategorier, alla områden,
+  {{$buyerTypes}} 0 - 10 milj kr</b> <a href="#" onClick="triggerRefresh()"> Ändra </a></span></div>
 
           <div class="navigation_control">
             <a href="#" class="btn"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color icon no-fill"><g clip-path="url(#clip0_289_161)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.674 13.588C15.525 16.19 12.97 18 10 18c-2.969 0-5.525-1.81-6.674-4.412M17 8.294C16.08 5.23 13.294 3 10 3S3.92 5.229 3 8.294"></path><path d="M13.376 13.486l4.234-.372.372 4.234M6.72 7.472L2.694 8.836 1.33 4.81"></path></g><defs><clipPath id="clip0_289_161"><path fill="#fff" d="M0 0h20v20H0z"></path></clipPath></defs></svg></a>
@@ -23,19 +35,28 @@
                     <!--./end of tp-padding-->
                       </div>
 
+
     @if($request_count>0)
+
     @foreach($requests as $x) 
     @php 
-    $responderCount =  \App\Http\Controllers\RespondersController::get_responders_count($x->id);
+    $responderCount = \App\Http\Controllers\RespondersController::get_responders_count($x->id);  
+    $subservice_cat = $x->subservice_cat;
+    $service_category=$x->service_cat;
+    $buyersType = $x->executed_for; $buyersTypeName = \App\Http\Controllers\SuppliersController::getBuyerTypeName($buyersType);
+
     @endphp
 
+
+    @if(in_array($service_category,json_decode($supplierCoverage['categories'],true)) && 
+    in_array($subservice_cat,json_decode($supplierCoverage['subcategories'],true)) && in_array($buyersType,json_decode($supplierCoverage['buyers_type'],true)))
     <a hre="#" data-attr="{{route('supplier_view_request',['hash'=>$x->request_hash])}}"  id="viewRequest" data-toggle="modal" data-target="#requestModal">
      <div class="row requests">
             <!--request_title_and_no. of_interested_suppliers-->
             <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6 titles">
-            <a href="{{route('supplier_view_request',['hash'=>$x->request_hash])}}" class="request_title">{{$x->request_title}}</a>
-            <br/>
-      <div class="responders_box">
+            <a href="{{route('supplier_view_request',['hash'=>$x->request_hash])}}" class="request_title underline">{{$x->request_title}}</a>
+              <br/>
+               <div class="responders_box">
 
       <div>
        <span>
@@ -62,7 +83,7 @@
            </div>
 
               <div class="col-md-3 col-lg-3 col-sm-3 col-xs-6 titles">
-                  <span>{{$x->executed_for}}</span><br/>
+                  <span>{{$buyersTypeName}}</span><br/>
                   <span>ldag {{explode(" ", $x->created_at)[1]}}</span>
                          </div>
 
@@ -82,7 +103,7 @@
                     <!--./end of .row .requests-->
                   </div> 
                 </a>
-                
+                @endif
                 @endforeach   
                   @endif             
               </div>

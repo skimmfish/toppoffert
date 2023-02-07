@@ -3,15 +3,24 @@
 for the search box on the home page
 ==========
 ***/
+@font-face {font-family: "GD Sherpa Regular";
+    src: url("../fonts/0aee6008b82cde991ec28387169bb13e.eot'"); /* IE9*/
+    src: url("../fonts/0aee6008b82cde991ec28387169bb13e.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/0aee6008b82cde991ec28387169bb13e.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/0aee6008b82cde991ec28387169bb13e.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/0aee6008b82cde991ec28387169bb13e.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/0aee6008b82cde991ec28387169bb13e.svg#GD Sherpa Regular") format("svg"); /* iOS 4.1- */
+  }
+
 .grid_search_box{
     display:grid;grid-template-columns: 80% 20%;
 }
 .toppoffert_search{
 
-    width:98%;border:1px solid #aaa;height:60px;border-radius:10px;padding:10px;font-weight:700;
+    width:99%;border:2px solid #efefef;box-shadow:3px solid #efefef;height:60px;border-radius:10px;padding:10px;font-weight:700;
 }
 .grid_search_box button{
-    border-radius:10px;background:#005aad;padding:5px 15px;width:100%;border:0;color:#fff;
+    border-radius:10px;background:#005aad;padding:5px 15px;width:100%;border:0 !important;color:#fff;
 }
 .home_title{
     font-weight: 800;color:#005aad;
@@ -19,27 +28,75 @@ for the search box on the home page
 
 .icons_box{
 margin-top:15px;text-align: center;font-size:12.5px;
-   display:grid;grid-template-columns: 25% 25% 25% 25% !important;justify-content: center;align-items: center;grid-gap: 5px;
+   display:grid;grid-template-columns: 25% 25% 25% 25% !important;justify-content: center;
+   align-items: center;grid-gap: 10px;
+   padding:10px 15px;
 }
 
 #cat_name option{
 font-weight:800;
 }
+
 .img-responsive-cat{
 width:85px;height:85px;
     border-radius:50%;
 }
-.icons_box div{
-    width:100%;min-height:200px !important;box-shadow:2px 2px 2px 2px #cfcfcf;border-radius:10px;padding:15px;line-height: 40px;
-    vertical-align: middle;font-family: 'GD Sherpa Regular','Open Sans' !important;font-size:11.5px;font-weight:800;
-}
-.icons_box a{
-    font-family: 'GD Sherpa Regular','Open Sans' !important;
 
+.icons_box div{
+    width:100%;min-height:100px !important;border-radius:10px;padding:15px;line-height: 40px;
+    vertical-align: middle;font-family: 'GD Sherpa Regular','Open Sans' !important;font-size:11.5px;font-weight:800;
+    background-color: #dfdfdf;
+}
+
+.icons_box a, .icons_box b{
+    font-family: 'GD Sherpa Regular','Open Sans' !important;font-size:11.5px;
 }
 
 .icons_box svg{
     width:40px;height:40px;fill:#005aad;
 }
 
+@media(max-width:768px){
+    .icons_box div{
+    background:#fff;
+    }
+}
 
+@media(max-width:325px){
+    .icons_box a, .icons_box b{
+        font-family: 'GD Sherpa Regular','Open Sans' !important;font-size:10px !important;
+    }
+    
+}
+
+@media(max-width:425px){
+    .img-responsive-cat{
+        width:95px;height:95px;
+            border-radius:50%;
+        }
+.toppoffert_searchbox{
+    position:relative;top:-40px;
+}
+#campaign-heading{
+font-size:30px;font-weight: 1000 !important;
+}
+        
+    .icons_box{
+        margin-top:15px;text-align: center;font-size:12.5px;
+           display:grid;grid-template-columns: 48% 48% !important;grid-gap:15px;justify-content: center;align-items: center;grid-gap: 5px;
+           padding:2px 3px;
+        }
+
+        .icons_box div{
+            width:100%;min-height:154px !important;box-shadow:1px 1px 1px 1px #fff;
+            border-radius:10px;padding:15px 2px 5px 2px;line-height: 40px;
+            vertical-align: middle;font-family: 'GD Sherpa Regular','Open Sans' !important;
+            font-size:11.5px;font-weight:800;
+            background-color: #fff;
+        }
+        .icons_box a, .icons_box b{
+            font-family: 'GD Sherpa Regular','Open Sans' !important;font-size:13.5px;
+        }
+                
+
+    }

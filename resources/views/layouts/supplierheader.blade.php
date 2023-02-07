@@ -75,7 +75,7 @@ $supplierObj = new \App\Models\Suppliers;
 <script src="{{asset('js/jquery-2.2.0.min.js')}}"></script>
 
 <script type="text/javascript">  
-            function selects(checkboxName){  
+            function selects(checkboxName,divSel,divDesel){  
                 var ele=document.getElementsByName(checkboxName);  
                 for(var i=0; i<ele.length; i++){  
                     if(ele[i].type=='checkbox')  
@@ -83,14 +83,14 @@ $supplierObj = new \App\Models\Suppliers;
                 }  
 
                 //disable checkall box and enable deselect all
-                var div = document.getElementById('deselectAllBuyers');
-                var selAll = document.getElementById('selectAllBuyers');
+                var div = document.getElementById(divDesel);
+                var selAll = document.getElementById(divSel);
 
                 selAll.style.display = 'none';
                 div.style.display = 'block';
             }  
 
-            function deSelect(checkboxName){  
+            function deSelect(checkboxName,divSel,divDesel){  
                 var ele=document.getElementsByName(checkboxName);  
                 for(var i=0; i<ele.length; i++){  
                     if(ele[i].type=='checkbox')  
@@ -99,16 +99,54 @@ $supplierObj = new \App\Models\Suppliers;
                 }  
 
                                 //disable checkall box and enable deselect all
-                var div = document.getElementById('deselectAllBuyers');
-                var selAll = document.getElementById('selectAllBuyers');
+                var div = document.getElementById(divDesel);
+                var selAll = document.getElementById(divSel);
 
                 selAll.style.display = 'block';
                 div.style.display = 'none';
             }             
 
         </script>  
+
+
+<script type="text/javascript">  
+            function selectBuyer(checkboxName){  
+                var ele=document.getElementsByName(checkboxName);  
+                for(var i=0; i<ele.length; i++){  
+                    if(ele[i].type=='checkbox')  
+                        ele[i].checked=true;  
+                }  
+
+                //disable checkall box and enable deselect all
+                var div = document.getElementById('deselectAllBuyersType');
+                var selAll = document.getElementById('selectAllBuyersType');
+
+                selAll.style.display = 'none';
+                div.style.display = 'block';
+            }  
+
+            function deselectBuyer(checkboxName){  
+                var ele=document.getElementsByName(checkboxName);  
+                for(var i=0; i<ele.length; i++){  
+                    if(ele[i].type=='checkbox')  
+                        ele[i].checked=false;  
+                      
+                }  
+
+                                //disable checkall box and enable deselect all
+                var div = document.getElementById('deselectAllBuyersType');
+                var selAll = document.getElementById('selectAllBuyersType');
+
+                selAll.style.display = 'block';
+                div.style.display = 'none';
+            }             
+
+        </script>  
+        
+
+
 <style>
-#deselectAllBuyers{display:none;}
+#deselectAllBuyers, #deselectAllCat, #deselectPrice{display:none;}
   </style>
 <!-- deleteUser -->
 
@@ -229,9 +267,7 @@ $supplierObj = new \App\Models\Suppliers;
         });
 </script>
 
-<!--for approving requests-->
-<script>
-
+<!--for deleting requests-->
 <script>
         // display a modal (small modal)
         $(document).on('click', '#deleteRequest', function(event) {
@@ -381,12 +417,17 @@ $supplierObj = new \App\Models\Suppliers;
           <div class="d-flex align-items-center">
             <div class="toggle-icon-wrapper">
               <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-            </div><a class="navbar-brand" href="{{route('sadmin_index')}}">
+            </div>
+          
+            <a class="navbar-brand" href="@if(\Auth::user()->user_cat=='SADMIN'){{route('sadmin_index')}} @elseif(\Auth::user()->user_cat=='SUPPLIER')
+            {{route('suppliers.dashboard')}} @endif">
               <div class="d-flex align-items-center py-3">
-              <img src="{{asset('img/logos/logo.svg')}}" class="img-responsive-logo" lazyloading/>
+              <img src="{{asset('img/logos/png.png')}}" class="img-responsive-logo" lazyloading/>
             </div>
             </a>
-          </div>
+          
+          
+            </div>
           <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
             <div class="navbar-vertical-content scrollbar">
               <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
@@ -653,7 +694,8 @@ $supplierObj = new \App\Models\Suppliers;
 
               <div class="grid-2-y">
               <div class="footer-item">
-              <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-mini fill-current-color" style="fill: none;" data-v-270f2b45=""><g clip-path="url(#clip0_1810_41320)" stroke="#B8C3D5" stroke-width=".75" stroke-linecap="round" stroke-linejoin="round"><path d="M11.625.374L.375 11.624M11.625 3.749V.374H8.25M.375.374L4.5 4.499M11.625 8.249v3.375H8.25M7.5 7.499l4.125 4.125"></path></g><defs><clipPath id="clip0_1810_41320"><path fill="#fff" d="M0 0h12v12H0z"></path></clipPath></defs></svg><a href="{{route('sadmin_index')}}" target="_blank"><span class="text-black">Home</span></a>
+              <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-mini fill-current-color" style="fill: none;" data-v-270f2b45=""><g clip-path="url(#clip0_1810_41320)" stroke="#B8C3D5" stroke-width=".75" stroke-linecap="round" stroke-linejoin="round"><path d="M11.625.374L.375 11.624M11.625 3.749V.374H8.25M.375.374L4.5 4.499M11.625 8.249v3.375H8.25M7.5 7.499l4.125 4.125"></path></g><defs><clipPath id="clip0_1810_41320"><path fill="#fff" d="M0 0h12v12H0z"></path></clipPath></defs></svg>
+              <a href="{{route('suppliers.dashboard')}}" target="_blank"><span class="text-black">Home</span></a>
               </div>
               <div class="footer-item">
               <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-mini fill-current-color" style="fill: none;" data-v-270f2b45=""><g clip-path="url(#clip0_738_26060)" stroke="#B8C3D5" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M19.375 10.003H6.25M9.375 13.128L6.25 10.003l3.125-3.125"></path><path d="M13.125 13.75v3.75a1.197 1.197 0 01-1.137 1.25H1.761A1.197 1.197 0 01.625 17.5v-15a1.197 1.197 0 011.136-1.25h10.227a1.197 1.197 0 011.137 1.25v3.75"></path></g><defs><clipPath id="clip0_738_26060"><path fill="#fff" d="M0 0h20v20H0z"></path></clipPath></defs></svg>  
@@ -672,7 +714,7 @@ $supplierObj = new \App\Models\Suppliers;
           <a class="navbar-brand me-1 me-sm-3" href="{{ route('index') }}">
             <div class="d-flex align-items-center">
               
-            <img src="{{asset('img/logos/logo.svg')}}" class="img-responsive-logo" lazyloading/>
+            <img src="{{asset('img/logos/png.png')}}" class="img-responsive-logo" lazyloading/>
                
               <span class="font-sans-serif">{{config('app.name')}}</span>
             

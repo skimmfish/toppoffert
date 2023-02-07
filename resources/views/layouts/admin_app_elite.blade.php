@@ -192,7 +192,6 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
 </script>
 
 <!--for approving requests-->
-<script>
 
 <script>
         // display a modal (small modal)

@@ -39,13 +39,6 @@
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.lazy.min.js')}}"></script>
-            
-<link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>        
-<link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/icons/apple-touch-icon.png')}}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/icons/favicon-32x32.png')}}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/icons/favicon-16x16.png')}}">
-<link rel="mask-icon" href="{{asset('img/icons/safari-pinned-tab.svg')}}" color="#8bc343">
-
 <meta name="theme-color" content="#2F3033">
 
 <script>
@@ -380,8 +373,7 @@ function fetchCategories(category){
         <header class="new-header">
                 <div class="new-header-container">
                     <a class="new-header__logo" href="{{route('index')}}" aria-label="Hem">
-                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" viewBox="0 0 500.000000 500.000000"
- preserveAspectRatio="xMidYMid meet">
+                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="130.000000pt" height="130.000000pt" viewBox="0 0 500.000000 500.000000" preserveAspectRatio="xMidYMid meet">
 <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)" fill="#005aad" stroke="none" class="svg-logo"><path d="M943 3272 c-156 -51 -248 -200 -274 -446 -17 -163 2 -336 50 -448 23
 -55 81 -121 133 -155 l38 -23 0 -125 0 -126 132 111 132 110 1484 0 c1321 0
 1491 2 1545 16 153 39 250 149 293 331 22 91 22 311 0 412 -31 142 -103 255
@@ -436,7 +428,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <div class="media media-center block">
             <div class="media-left">
                 
-
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.5 18.5" class="icon-round-bg">
   <path d="M5.2 5.3H12v1.1H5.2zm10.2 8.3c.5-.9.4-2.1-.4-2.9-.4-.4-1-.7-1.7-.7-.6 0-1.3.3-1.7.7-.5.5-.7 1.1-.7 1.7 0 .6.3 1.3.7 1.7.5.5 1.1.7 1.7.7.4 0 .8-.1 1.2-.3l2.7 2.7.9-.9-2.7-2.7zm-1.1-.1c-.5.5-1.5.5-2 0-.6-.6-.6-1.5 0-2 .3-.3.6-.4 1-.4s.7.1 1 .4c.3.3.4.6.4 1s-.1.7-.4 1z" />
   <path d="M14.1 15.5H4.5c-.2 0-.3-.1-.3-.3V3.3c0-.2.2-.3.3-.3H14c.2 0 .3.1.3.3v6.1c.4.1.8.3 1.1.5V3.3c0-.8-.6-1.4-1.4-1.4H4.5c-.8 0-1.4.6-1.4 1.4v11.9c0 .8.6 1.4 1.4 1.4H14c.6 0 .8-.1 1-.6l-.5-.5h-.4z" />
@@ -498,13 +489,15 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <div class="column">
                 <label for="WhoId">Uppdraget ska utf&#246;ras &#229;t</label>
                 <div class="flex-input dropdown">
-            <select id="WhoId" name="executed_for" tabindex="4"><option value="1">Privatperson</option>
-<option value="2">F&#246;retag</option>
-<option value="3">Byggherre/Entrepren&#246;r</option>
-<option value="4">Bostadsr&#228;ttsf&#246;rening</option>
-<option value="5">Villaf&#246;rening</option>
-<option value="6">Ideell f&#246;rening</option>
-<option value="7">Kommun/Myndighet</option>
+<select id="WhoId" name="executed_for" tabindex="4">
+<option value="1">Bostadsr&#228;ttsf&#246;rening</option>
+<option value="2">Byggherre/Entrepren&#246;r</option>
+<option value="3">F&#246;retag</option>
+<option value="4">Ideell f&#246;rening</option>
+<option value="5">Kommun/Myndighet</option>
+<option value="6">Privatperson</option>
+<option value="7">Villaf&#246;rening</option>
+
 </select></div>
             </div>
 
@@ -529,8 +522,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     <hr class="divider-full-width" />
     <div class="media media-center block">
         <div class="media-left">
-            
-
+          
 <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 218 218" class="icon-round-bg">
   <path d="M181 22.16H50.45a6 6 0 0 0-6 6v34.43H37a6 6 0 0 0 0 12h7.5V103H37a6 6 0 1 0 0 12h7.5v28.48H37a6 6 0 0 0 0 12h7.5v34.46a6 6 0 0 0 6 6H181a6 6 0 0 0 6-6V28.13a6 6 0 0 0-6-5.97zm-6 161.73H56.43v-28.48h7.5a6 6 0 0 0 0-12h-7.5V115h7.5a6 6 0 0 0 0-12h-7.5V74.54h7.5a6 6 0 1 0 0-12h-7.5V34.11H175v149.78z" />
   <path d="M120 111.75a24.58 24.58 0 1 0-24.56-24.58A24.6 24.6 0 0 0 120 111.75zm0-37.21a12.63 12.63 0 1 1-12.63 12.63A12.64 12.64 0 0 1 120 74.54zM92.65 156.44a6 6 0 0 0 6-6v-10.3a12 12 0 0 1 12-12h18.87a12 12 0 0 1 12 12v10.33a6 6 0 1 0 12 0v-10.33a24 24 0 0 0-24-24h-18.87a24 24 0 0 0-24 24v10.33a6 6 0 0 0 6 5.97z" />
@@ -566,19 +558,16 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <div class="column">
             <div class="form-group form-group-half">
                 <label for="Name">Telefon</label>
+                <div class="where-postcode-container form-group no-label ">
                 <input autocomplete="tel" class="full-width input-phone" id="Phone" name="Phone" tabindex="14" type="tel" value="" />
-            </div>
+            </div></div>
         </div>
 
             <div class="column">
                 <div class="form-group form-group-whatwhere">
                     <label for="Name">Postnummer (d&#228;r uppdraget ska utf&#246;ras)</label>
-                    
-
-    <div 
-        class="where-postcode-container form-group no-label ">
+    <div class="where-postcode-container form-group no-label ">
         <input autocomplete="postal-code" class="where-postcode-field input-address full-width no-validation" data-regexp="^(?:[ ]*[0-9]){5}[?:[ ]*]*$" id="PostCode" name="PostCode" placeholder="" tabIndex="16" title="Postnr." type="number" value="" />
-        
     </div>
 
                 </div>
@@ -603,16 +592,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
 
 <div class="fileuploader-wrapper">
-    <div class="fileuploader-button tooltip-fileuploader button-fileuploader flex-input button-paper-clip js" data-tooltip="&lt;ul class=&#39;tooltip-list&#39;&gt;&lt;li&gt;Det &#228;r valfritt att bifoga filer.&lt;/li&gt;&lt;li&gt;Du kan v&#228;lja att bifoga t.ex. bilder, ritningar och kravspecifikation som hj&#228;lper till att beskriva ditt uppdrag.&lt;/li&gt;&lt;li&gt;Du kan bifoga filer upp till 5 filer som vardera &#228;r upp till 5 Mb stora.&lt;/li&gt;&lt;/ul&gt;">
-        
-
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="206 -206 512 512" class="icon icon-fileuploader">
-  <path d="M541.5-29.2L513.7-57l-139 139c-23 23-23 60.4 0 83.4 23 23 60.4 23 83.4 0L625-1.4c38.4-38.4 38.4-100.6 0-139-38.4-38.4-100.6-38.4-139 0L310.8 34.8c-.1.1-.3.2-.4.4-53.5 53.5-53.5 140.3 0 193.8s140.3 53.5 193.9 0l.4-.4 119.6-119.5-27.8-27.8-119.6 119.5-.4.4c-38.1 38.1-100.1 38.1-138.3 0-38.1-38.1-38.1-100.1 0-138.2.1-.1.3-.2.4-.4l175.2-175.1c23-23 60.4-23 83.4 0 23 23 23 60.4 0 83.4L430.3 137.6c-7.7 7.7-20.1 7.7-27.8 0-7.7-7.7-7.7-20.1 0-27.8l139-139z" />
-</svg>
-
-        <span class="p fileuploader-text">Bifoga filer</span>
-        <input type="file" class="fileuploader flex-input" name="filesAttache" multiple="multiple" tabindex="19" />
-   </div>
     
     <div class="progress-bar hidden">
         <div class="progress" style="width: 0%;"></div>
@@ -621,8 +600,9 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     <div class="uploaded-files hidden">
         
     </div>
-</div>        </div>
-    </div>
+      </div>        
+       </div>
+          </div>
 
 
     <input class="what-selection-method-field" id="WhatSelectionMethod" name="WhatSelectionMethod" type="hidden" value="preset" />

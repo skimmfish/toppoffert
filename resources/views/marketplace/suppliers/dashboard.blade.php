@@ -1,5 +1,7 @@
-@extends('layouts.suppliers_header')
+@extends('layouts.supplierheader')
 @section('content')
+
+@include('layouts.admin_topbar')
 
 <h1 class="h1_m_30">Hej! {{\Auth::user()->f_name}} {{\Auth::user()->l_name }}</h1>
 <h3 class="redc_grey">{{$supplierObj->where('supplier_id',\Auth::user()->id)->first()->supplier_corp_name}}. {{\Auth::user()->phone_no}}

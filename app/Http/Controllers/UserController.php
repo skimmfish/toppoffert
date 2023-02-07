@@ -153,7 +153,38 @@ $f_name = $findSupplier->f_name;
 
 return redirect()->back()->with(['message'=>'Leverantören har godkänts, ett välkomstmail med inloggning har skickats!']);
 }
-    /**
+
+
+/**
+ * @param Integer <$id>
+ * This functin updates the 
+ */
+public function updateUser(Request $req, $id){
+
+$user = \App\Models\User::findOrFail($id);
+
+    $user->f_name = $req->first_name;
+    $user->l_name = $req->last_name;
+    $user->business_email = $req->business_email;
+    $user->telephone = $req->telephone;
+    $user->phone_no = $req->alt_telephone;
+    $user->address = $req->address;
+    $user->province = $req->province;
+    $user->pobox = $req->pobox;
+    $user->c_o_address = $req->c_o_address;
+    $user->receive_top_offers = $req->receive_top_offers;
+    $user->save();
+
+    return redirect()->back()->with(['message'=>'Dina kontaktuppgifter har uppdaterats!']);
+
+}
+
+
+
+
+
+
+/**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

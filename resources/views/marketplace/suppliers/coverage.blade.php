@@ -18,7 +18,7 @@
 <button href="#" onclick="openCity('category')">Kategorier</button>
 <button href="#" onclick="openCity('uppdragstorlekar')">Uppdragstorlekar</button>
 <button href="#" onclick="openCity('kopartyper')">Köpartyper</button>
-<button href="#" onclick="openCity('omrade')">Omrade</button>
+<!--<button href="#" onclick="openCity('omrade')">Omrade</button>-->
 
 </div>
 
@@ -31,11 +31,8 @@
 <input type="hidden" name="supplier_id" value="{{\Auth::user()->id}}" />
 <div class="form-group" style="padding-top:14px;">
 
-<div id="selectAllBuyers">
-<input type="checkbox" class="checkbox" name="service_cats[]" style="width:25px;height:25px;margin-right:6px;position:relative;top:2px;" onClick="selects('service_categories[]')" value="Select All"/><label class="form-label rw_check" style="font-size:16.5px;">Välj kategorier av tjänster du kan erbjuda</label>
-</div>
-
-<div id="deselectAllBuyers"><input type="checkbox" class="checkbox" style="width:25px;height:25px;" name="service_cats[]" onClick="deSelect('service_categories[]')" value="Select All"/><span>Avmarkera alla</span></div>
+<div id="selectAllCat"><input type="checkbox" class="checkbox" name="service_cats[]" style="width:25px;height:25px;margin-right:6px;position:relative;top:2px;" onClick="selects('service_categories[]','selectAllCat','deselectAllCat')" value="Select All"/><label class="form-label rw_check" style="font-size:16.5px;">Välj kategorier av tjänster du kan erbjuda</label></div>
+<div id="deselectAllCat"><input type="checkbox" class="checkbox" style="width:25px;height:25px;" name="service_cats[]" onClick="deSelect('service_categories[]','selectAllCat','deselectAllCat')" value="Select All"/><span>Avmarkera alla</span></div>
 
 
 
@@ -74,8 +71,8 @@
 <div class="form-group" style="padding-top:14px;">
 <label class="form-label rw_check">
 
-<div id="selectAllBuyers"><input type="checkbox" class="checkbox" name="checkallassignment[]" onClick="selects('assignment_size[]')" value="Select All"/><span>Välj alla uppdragsvärden</span><br/></div>
-<div id="deselectAllBuyers"><input type="checkbox" class="checkbox" name="deselectallassignment[]" onClick="deSelect('assignment_size[]')" value="Select All"/><span>Avmarkera alla uppdragsvärden</span></div>
+<div id="selectPrice"><input type="checkbox" class="checkbox" name="checkallassignment[]" onClick="selects('assignment_size[]','selectPrice','deselectPrice')" value="Select All"/><span>Välj alla uppdragsvärden</span><br/></div>
+<div id="deselectPrice"><input type="checkbox" class="checkbox" name="deselectallassignment[]" onClick="deSelect('assignment_size[]','selectPrice','deselectPrice')" value="Deselect All"/><span>Avmarkera alla uppdragsvärden</span></div>
 
 
 </label>
@@ -149,8 +146,8 @@
 <!--tabbed pane-->
 <div class="form-group" style="padding-top:14px;">
 <label class="form-label rw_check">
-<div id="selectAllBuyers"><input type="checkbox" class="checkbox" name="buyer_type_checkall" onClick="selects('buyer_type[]')" value="Select All"/><span>Välj alla</span><br/></div>
-<div id="deselectAllBuyers"><input type="checkbox" class="checkbox" name="buyer_type_checkall" onClick="deSelect('buyer_type[]')" value="Select All"/><span>Avmarkera alla</span></div>
+<div id="selectAllBuyersType"><input type="checkbox" class="checkbox" name="buyer_type_checkall" onClick="selectBuyer('buyer_type[]')" value="Select All"/><span>Välj alla</span><br/></div>
+<div id="deselectAllBuyersType"><input type="checkbox" class="checkbox" name="buyer_type_checkall" onClick="deselectBuyer('buyer_type[]')" value="Deselect All"/><span>Avmarkera alla</span></div>
 
 </label>
 </div>
@@ -162,9 +159,6 @@
 </label>
 </div>
 @endforeach
-
-
-
 </div>
 </div>
 

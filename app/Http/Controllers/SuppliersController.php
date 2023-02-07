@@ -34,8 +34,64 @@ class SuppliersController extends Controller
         
     }
 
+    /**
+     * this function fetches and parses the service category areas for a supplier based on the supplier's id
+     * @param Integer $uid
+     */
+public static function getServiceAreas($uid){
+
+    try{
+$supplier = Suppliers::where(['supplier_id'=>$uid])->first();
+if($supplier!=null){
+
+return $suppliersCoverage = [
+'categories'=>$supplier->service_category,
+'subcategories'=>$supplier->service_sub_categories,
+'assignment_size'=>$supplier->assignment_size,
+'buyers_type'=>$supplier->buyers_type
+]; 
+
+}
+    }catch(\Exception $e){
+        echo $e->getMessage();
+        return [];
+}
+
+}
+
+
 
 /**
+ * @param Integer <$type_id>
+ * @return String <$buyer_type_name>
+ * This function fetches the buyer_type's name for the supplied type_id
+ */
+public static function getBuyerTypeName($type_id){
+$buyer_type_name = null;
+    try{
+
+       $typeObj = \App\Models\BuyerType::where('id',$type_id)->first();
+        if($typeObj!=NULL)
+      return $buyer_type_name = $typeObj->buyers_type_name;
+    }catch(\Exception $e){
+
+        echo $e->getMessage();
+    }
+}
+
+/**
+ * @param Request <$req>
+ * @return boolean
+ * this function sends message to the buyer as bid for the request
+ */
+public function sendbid(Request $req){
+
+
+
+    
+}
+
+ /**
  * supplier_s rating
  */
 public static function getRatings($supplier_id){

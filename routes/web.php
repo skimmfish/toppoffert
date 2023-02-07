@@ -424,14 +424,22 @@ Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/supplier
 
 //suppliers' homepage
     Route::get('/inbox',function(){
+        $uid = \Auth::user()->id;
 
-        $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
+        $requests = \App\Models\ServiceRequests::where([
+        'matched'=>0,
+        'publish_status'=>true,
+        'archival_status'=>false
+        ])->get();
+        
         $catCount = sizeof(\App\Models\Categories::all());
-        $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+        $credits= \App\Http\Controllers\CreditsController::getCredits($uid)->credits;
+        $supplierCoverage = \App\Http\Controllers\SuppliersController::getServiceAreas($uid);
 
     return view('marketplace.suppliers.index',[
     'title'=>'Marknadsplatsen - '.config('app.name'),
     'supplierObj'=>new \App\Models\Suppliers,'requests'=>$requests,
+    'supplierCoverage'=>$supplierCoverage,
     'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits]);
 
 })->name('suppliers.dashboard');
@@ -442,6 +450,7 @@ Route::put('/save-categories/{id}','\App\Http\Controllers\CategoriesController@u
 
 //supplier's coverage
 Route::get('/suppliers-coverage',function(){
+
     $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
     $cats = \App\Models\Categories::all();
     $catCount = sizeof($cats);
@@ -466,7 +475,50 @@ Route::get('/show-interest/{hash}',function(){
 })->name('show_interest');
 
 
-Route::get('/send-message-buyer/{id}/{supplier_id}',[App\Http\Controllers\ServiceRequestsController::class,'sendmessagetobuyer'])->name('reach_out_to_buyer');
+//send bid message to buyers via popup modal
+Route::get('/send-message-buyer/{id}/{supplier_id}',function($id,$supplier_id){
+
+    $title = \App\Models\ServiceRequests::where('id',$id)->first()->request_title;
+
+    $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
+    $cats = \App\Models\Categories::all();
+    $catCount = sizeof($cats);
+    $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+
+    return view('pages.sendmessagebox',['requests'=>$requests,
+    'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits,'id'=>$id,'supplier_id'=>$supplier_id,'title'=>'Lämna intresse för köparens begäran - '.$title]);
+
+})->name('reach_out_to_buyer');
+
+//message board for suppliers
+Route::get('/message-board')->name('marketplace.suppliers.message_board');
+
+
+
+//for reading single messages
+Route::get('/read-inbox/{note_id}',function($note_id){})->name('marketplace.suppliers.messages');
+
+//sending message to a buyer
+Route::post('/send-bid','\App\Http\Controllers\SuppliersController@sendbid')->name('marketplace.supplier.sendbid');
+
+
+//for viewing invoice
+Route::get('/view_invoice/{id}')->name('view_invoice');
+
+//this route is for softdeleting invoices
+Route::get('/delete-invoice/{id}',function($id){
+
+    return view("pages.delete_invoice_confirmation",['id'=>$id]);
+
+})->name('delete_invoice');
+
+
+//this deletes the invoices
+Route::get('/delete-invoice-now',function($id){
+$res = \DB::delete("DELETE from invoices WHERE id=?",[$id]);
+return redirect()->back()->with(['message'=>'Invoice deleted successfully!']);
+})->name('delete_invoice_now');
+
 
 //customer care_for suppliers page
 Route::get('/services/customer-care',function(){
@@ -560,6 +612,12 @@ Route::get('contact-information',function(){
 })->name('contact-information');
 
 
+
+//updating kontact info for suppliers
+Route::put('save-kontact-info/{id}','\App\Http\Controllers\UserController@updateUser')->name('save_kontact');
+
+
+
 //for supplier's contact information
 Route::get('/sales',[App\Http\Controllers\ServiceRequestsController::class,'mysales'])->name('supplier_sales');
 
@@ -617,7 +675,7 @@ Route::get('/settings/invoices',function(){
     return view('marketplace.suppliers.invoices',['title'=>'Fakturor Och',
     'ratings'=>$review_count['rating'],
     'review_count'=>$review_count['review_count'], 'request_count'=>sizeof($requests),
-    'credit'=>$credits,'invoices'=>$invoices
+    'credit'=>$credits,'invoices'=>$invoices,'id'=>1,
     ]);
 
 })->name('settings.invoices');

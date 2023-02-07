@@ -24,8 +24,7 @@
     <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
 
-    <meta name="author" content="Toppoffert AB" />
-    <meta property="fb:admins" content="753251562" />
+    <meta name="author" content="Toppoffert Sverige AB" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="format-detection" content="telephone=no">
 
@@ -147,8 +146,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                     
 <div class="new-header__menu suppliers-register-active" role="navigation">
     <a href="{{route('anslut-ditt-foretag')}}" class="new-header__menu--item">Anslut företag</a>
-    <a href="{{route('yrkeskategorier')}}" class="top-nav-link static new-header__menu--item topnav-supplier-register-layout">Yrkeskategorier</a>
-<!--<a href="{{route('pris')}}" class="new-header__menu--item topnav-supplier-register-layout">Pris</a>-->
+<!--    <a href="{{route('yrkeskategorier')}}" class="top-nav-link static new-header__menu--item topnav-supplier-register-layout">Yrkeskategorier</a>
+<a href="{{route('pris')}}" class="new-header__menu--item topnav-supplier-register-layout">Pris</a>-->
     
         <a href="{{route('login')}}" class="new-header__menu--item">Logga in</a>
         <a href="{{route('intresseanmalan')}}" class="new-header__menu--item menu-link">

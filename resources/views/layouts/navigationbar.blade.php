@@ -12,7 +12,7 @@
    
 
     <a class="nav-icon" data-toggle-menu="mobile-nav" onClick="showLogo()">
-        <div class="text-menu">Meny</div>
+        <div class="text-menu"></div>
         </a>
 </div>
         <input type="checkbox" id="active">
@@ -72,7 +72,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
       <div class="wrapper">
       <ul>
-<!--      <li><a href="{{route('yrkeskategorier')}}">Yrkeskategorier</a></li>-->
       <li class="show_768">
       @if(\Auth::check())
       <a href="{{route('redirect_to_dashboard')}}"><img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
@@ -80,8 +79,10 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
       <a href="{{route('login')}}">Logga In</a>
     @endif
     </li>
-<!--      <li><a href="{{route('pris')}}">Pris</a></li>-->
-      <li><a href="{{ route('intresseanmalan') }}">Anmäl intresse</a> </li> 
+ 
+ <li>   <a href="{{route('anslut-ditt-foretag')}}">Anslut företag</a>  </li>
+
+    <li><a href="{{ route('intresseanmalan') }}">Anmäl intresse</a> </li> 
 
       <li><a href="{{route('kontactos-pg')}}">Kontakta Oss</a></li>
 

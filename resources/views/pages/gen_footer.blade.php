@@ -59,7 +59,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </div>
     <div class="new-footer__inner--item">
       <nav class="footer-icons">
-        <a href="https://www.linkedin.com/company/toppoffert" class="footer-icons__item"
+     <!--   <a href="https://www.linkedin.com/company/toppoffert" class="footer-icons__item"
           aria-label="{{config('app.name')}} på LinkedIn">
           
 
@@ -67,8 +67,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
   <path d="M.81 7.95a.75.75 0 0 0-.75.75v13.93a.75.75 0 0 0 .75.75h4.86a.75.75 0 0 0 .75-.75V8.7a.75.75 0 0 0-.75-.75zm4.11 13.93H1.56V9.45h3.36zM17.89 7.94a7.35 7.35 0 0 0-3.53.93V8.7a.75.75 0 0 0-.75-.75h-5.1a.75.75 0 0 0-.75.75v13.93a.75.75 0 0 0 .75.75h5.11a.75.75 0 0 0 .75-.75v-7.25a1.39 1.39 0 0 1 2.79 0v7.25a.75.75 0 0 0 .75.75h5.36a.75.75 0 0 0 .75-.75V15.5c-.02-4.67-2.35-7.56-6.13-7.56zm4.62 13.94h-3.86v-6.5a2.89 2.89 0 0 0-5.79 0v6.5h-3.6V9.45h3.61v.84a.75.75 0 0 0 1.26.55 6.07 6.07 0 0 1 3.77-1.4c2.93 0 4.62 2.21 4.62 6.06zM3.24 7.13A3.25 3.25 0 1 0 0 3.88a3.25 3.25 0 0 0 3.24 3.25zm0-5a1.75 1.75 0 1 1-1.75 1.75 1.75 1.75 0 0 1 1.75-1.75z" />
 </svg>
 
-        </a>
-        <a href="https://www.facebook.com/toppoffert.se/" class="footer-icons__item" aria-label="Offerta på Facebook">
+        </a>-->
+        <a href="https://www.facebook.com/profile.php?id=100089330416542" class="footer-icons__item" aria-label="{{config('app.name')}} på Facebook">
           
 
 <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
@@ -76,7 +76,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </svg>
 
         </a>
-        <a href="https://www.instagram.com/toppoffert.se/" class="footer-icons__item" aria-label="Offerta på Instagram">
+        <a href="https://www.instagram.com/toppoffert.se/" class="footer-icons__item" aria-label="{{config('app.name')}} på Instagram">
           
 
 <svg data-name="Outline Version" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-medium">
@@ -112,6 +112,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         </span>
       </nav>
     </div>
+    
     <div class="new-footer__inner--item">
       <div>
         <span class="footer-menu__item no-link">
@@ -135,7 +136,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
  preserveAspectRatio="xMidYMid meet" class="logo-offerta-footer site-logo">
 
 <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
-fill="#0099cc" stroke="none">
+fill="#005aad" stroke="none">
 <path d="M943 3272 c-156 -51 -248 -200 -274 -446 -17 -163 2 -336 50 -448 23
 -55 81 -121 133 -155 l38 -23 0 -125 0 -126 132 111 132 110 1484 0 c1321 0
 1491 2 1545 16 153 39 250 149 293 331 22 91 22 311 0 412 -31 142 -103 255

@@ -2,9 +2,20 @@
 @section('content')
 @include('layouts.admin_topbar')
 
-<h1>Hej! {{\Auth::user()->f_name}}</h1>
- <p class="line-height-auto">Välkommen till din försäljningslista</p>
 
+<div class="row">
+<div class="col-md-9 col-lg-9 col-sm-9 col-xs-12"><h1>Hej! {{\Auth::user()->f_name}}</h1>
+ <p class="line-height-auto">Välkommen till din försäljningslista</p>
+</div>
+
+<div class="col-md-3 col-sm-3 col-lg-3" style="padding-top:15px;">
+<a href="{{route('suppliers.dashboard')}}" class="text-black btn btn-white"><svg width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#231f20;}</style></defs><g data-name="arrow left" id="arrow_left">
+<path class="cls-1" d="M22,29.73a1,1,0,0,1-.71-.29L9.93,18.12a3,3,0,0,1,0-4.24L21.24,2.56A1,1,0,1,1,22.66,4L11.34,15.29a1,1,0,0,0,0,1.42L22.66,28a1,1,0,0,1,0,1.42A1,1,0,0,1,22,29.73Z"/></g></svg> back
+</a>
+<!--./row-->
+</div>
+
+</div>
 <div class="row">
             <div class="col-md-12 col-lg-12 col-xl-12 col-xs-12 tp-padding">
 
@@ -62,7 +73,7 @@
     </span>
     @endif
 
-    <div class="row requests @if($x->supplier_matched_with!=\Auth::user()->id) blur @endif" style="margin-bottom:10px !important;">
+    <div class="row requests @if($x->supplier_matched_with!=\Auth::user()->id) blur @endif" style="margin:-9px 0 -10px 0 !important;">
 
     <!--request_title_and_no. of_interested_suppliers-->
             <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6 titles">
