@@ -73,7 +73,7 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
     </script>
  
 <!--for local/dev testing-->
-<script src="{{asset('js/jquery-2.2.0.min.js')}}"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
 
 <!-- deleteUser -->
 <script>
@@ -104,6 +104,7 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
         });
 </script>
 
+<!--for sending docs-->
 <script>
         // display a modal (small modal)
         $(document).on('click', '#sendDocs', function(event) {
@@ -279,6 +280,35 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
         });
 </script>
 
+
+<script>
+        // display a modal (small modal) for sending business agreements to supplier
+        $(document).on('click', '#sendDocuments', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
+
 <script>
         // display a modal (small modal) for sending invoice to user
         $(document).on('click', '#sendInvoice', function(event) {
@@ -306,6 +336,26 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
             })
         });
 </script>
+
+
+<!--copying texts to clipboard-->
+<script>
+function copyToClipBoard(textFieldToCopy) {
+  /* Get the text field */
+  var copyText = document.getElementById(textFieldToCopy);
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+   /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+
+  /* Alert the copied text */
+  alert("Wallet Copied to Clipboard");
+}
+</script>
+
 
 <style>
 .grey_border{

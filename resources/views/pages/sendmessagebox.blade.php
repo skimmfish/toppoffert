@@ -5,7 +5,6 @@
 
 <!--send message box to buyers showing interest-->
 
-
 <div class="row">
 
 <form action="{{route('marketplace.supplier.sendbid')}}" method="POST">

@@ -211,3 +211,14 @@ border-bottom: #0d2453 !important;
 .shft-dw{
 position:relative;top:60px;right:0;
 }
+
+.yes, .no{
+    padding:9px 15px 5px 15px !important;width:auto;
+}
+.yes{background:#33cc33;}
+.no{background-color: #ff0000;}
+
+.circl_img{
+ background-repeat: no-repeat;background-size:cover;width:400px;
+height:300px;
+}

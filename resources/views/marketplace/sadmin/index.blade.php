@@ -3,6 +3,9 @@
 @include('layouts.admin_topbar')
 
 <div class="row m-3">
+<div class="row" > @if (session('message'))   <div class="alert alert-info text-md" style="font-size:14.5px;">  {{ session('message') }}</div>@endif</div>
+
+
 <h1>Hej! {{\Auth::user()->f_name}}</h1>
  <p class="line-height-auto">Välkommen till din instrumentpanel</p>
 

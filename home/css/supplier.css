@@ -239,6 +239,13 @@ width:9px;fill:#333;
     font-weight:600;font-family:'GD Sherpa Regular';position:Relative;right:5px;
 }
 
+.table_rws{
+font-size:12.5px;
+}
+.hidden{
+    display:none;
+}
+
 .related_item{
     background-color: #fff;
     min-height: 100px;
@@ -445,6 +452,14 @@ width:20px;height:20px;border-radius:50%;
 .btn-white{
     background-color: #fff !important;border-radius:50px;width:auto;padding:auto 10px auto 10px;
 }
+
+.preview_board .circl_img{
+    display:block;margin:auto;
+}
+.img-rounded{
+    border-radius:14px;
+}
+
 /**
 ======================
 MOBILE DESIGN STYLES

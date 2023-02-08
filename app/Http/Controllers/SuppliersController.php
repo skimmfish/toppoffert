@@ -80,6 +80,70 @@ $buyer_type_name = null;
 }
 
 /**
+ * This function sends docs link to the supplier to sign
+ * @param Integer <$uid>
+ */
+public function senddocs($username){
+
+    $this->username = $username;
+
+    try{
+
+    $supplier = \App\Models\User::where('username',$username)->first();
+    
+     $this->uid = $supplier->id;
+
+    $request = \DB::table('suppliers')->join('users',function($join){
+        $join->on('users.id','=','suppliers.supplier_id')->where('users.id','=',$this->uid);
+    })->first();
+
+   print_r($request);
+    $hyphenatedStr = $this->createhypenatedstring(128);
+    //update Supplier's record
+  
+    if($request->docs_hash==NULL){   
+    \DB::update("UPDATE suppliers SET docs_hash=?,updated_at=? WHERE supplier_id=?",[$hyphenatedStr,date('Y-m-d h:i:s',time()),$this->uid]);     
+    }
+
+}catch(\Exeption $e){
+    echo $e->getMessage();
+}
+    //send email to the user with the url
+
+}
+
+/**
+ * This function generate the info for the documents
+ */
+public function getSupplierInfoForDocs($hash){
+
+    $this->hash = $hash;
+    
+    $request = \DB::table('users')->join('suppliers',function($join){
+        
+        $join->on('users.id','=','suppliers.supplier_id')->where('suppliers.docs_hash','=',$this->hash);
+
+    })->first();
+
+ 
+    return view('marketplace.suppliers.view_docs_details',['hash'=>$request->docs_hash.'_'.$request->supplier_id,
+    'title'=>'Affärsdokument och avtalsundertecknare','last_updated'=>$request->updated_at]);
+
+}
+
+/**
+ * this function returns hypenated string with dashes in between
+ * @param Integer <$size>
+ */
+public function createhypenatedstring($size){
+
+    $string =  Str::random($size);
+   
+    return strtolower(substr(chunk_split($string, 10, '-'), 0, 24));
+   
+   }
+   
+/**
  * @param Request <$req>
  * @return boolean
  * this function sends message to the buyer as bid for the request

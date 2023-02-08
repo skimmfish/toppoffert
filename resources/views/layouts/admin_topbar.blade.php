@@ -24,10 +24,12 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
       </div>
               </li>
               
-              <li class="nav-item dropdown">
+          @if(\Auth::user()->user_cat=='SUPPLIER')    <li class="nav-item dropdown">
               <div class="credit_box">{{$credit}} Kreditas</div>
                 </li>
-              <li class="nav-item dropdown">
+                @endif
+
+                <li class="nav-item dropdown">
                 <a class="nav-link notification-indicator notification-indicator-primary px-0 fa-icon-wait" id="navbarDropdownNotification" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hide-on-body-scroll="data-hide-on-body-scroll"><span class="fas fa-bell" data-fa-transform="shrink-6" style="font-size: 33px;"></span></a>
                   <div class="dropdown-menu dropdown-menu-end dropdown-menu-card dropdown-menu-notification dropdown-caret-bg" aria-labelledby="navbarDropdownNotification">
                     <div class="card card-notification shadow-none">
@@ -66,9 +68,9 @@ $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'r
               <li class="nav-item dropdown"><a class="nav-link pe-0 ps-2" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="avatar avatar-xl">
                   @if(\Auth::user()->profile_img!=NULL)
-                    <img class="rounded-circle grey_border" src="{{ asset('img/avatar/'.\Auth::user()->profile_img) }}" alt="{{ \Auth::user()->username }}" lazyloading/>
+                    <img class="rounded-circle" src="{{ asset('img/avatar/'.\Auth::user()->profile_img) }}" alt="{{ \Auth::user()->username }}" lazyloading/>
                   @else
-                    <img class="rounded-circle grey_border" src="{{ asset('img/avatar/img1.jpg') }}" alt="{{ \Auth::user()->username }}" lazyloading />
+                    <img class="rounded-circle" src="{{ asset('img/avatar/img1.jpg') }}" alt="{{ \Auth::user()->username }}" lazyloading />
                       @endif
                   </div>
                 </a>

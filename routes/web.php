@@ -90,6 +90,36 @@ Route::get('/buyer-request-complete',function(){
 
 })->name('clients_staging_area');
 
+//route to docstart
+Route::get('/su/offerter/{hash}',function($hash){
+    return view('pages.docstart',['title'=>'Se affärsavtalsdokument','docHash'=>$hash,config('app.name').'Affärsavtalsdokumentstartare']);
+})->name('docstart');
+
+
+//send business docs
+Route::get('/doc-offerter/see-business-docs/{hash}','\App\Http\Controllers\SuppliersController@getSupplierInfoForDocs')->name('see_agreement_documents');
+
+
+//send message to abbeh
+Route::get('/send-message-to-abbeh/{email}',function($email){
+    return view('pages.sendmsgtoabbeh',['email'=>$email]);
+})->name('send_message_to_abbeh');
+
+Route::get('/accept-offert/{hash}',function($hash){
+
+    
+
+})->name('accept_offert');
+
+
+//send message to Abbeh
+Route::post('sendmsg',function(Request $request){
+    $email = $request->email__to;
+    $msg = $request->msgto_send;
+    $contactPerson = \App\Http\Controllers\ConfigController::get_value('contact_person');
+    \Mail::to($email)->send(new \App\Mail\SendMessage($msg,$contactPerson));
+
+})->name('sendmsg');
 
 //for contact-oss page
 Route::get('/kontact-os',function(){
@@ -195,16 +225,69 @@ return redirect()->route('sadmin_index')->with(['message'=>'Portalen bytte till 
 //approve supplier
 Route::get('approve-supplier/{supplier_id}','\App\Http\Controllers\UserController@approvesupplier')->name('approve_supplier');
 
+//send business docs
+Route::get('/confirm-sending-docs/{username}',function($username){
+
+    return view('pages.confirm_sending_docs',['usr'=>$username]);
+
+})->name('confirm-sending_docs');
+
+
+//this route generates a url and send it to the user via the email, this is the route you are redirected to aftr clicking
+//confirm-sending_docs named route
+    Route::get('/send-docs/{usr}',function($usr){
+
+    $user = \App\Models\User::where('username',$usr)->first();
+    $f_name = $user->f_name;
+     $uid = $user->id;
+     $supplier_dochash = \App\Models\Suppliers::where('supplier_id',$uid)->first()->docs_hash;
+    
+    //the url to send will lead to docstart
+    $url = 'http://localhost:8000/su/offerter/'.$supplier_dochash;
+    
+    $supob = new \App\Http\Controllers\SuppliersController;
+
+    $supob->senddocs($usr);
+
+    \Mail::to($user)->queue(new \App\Mail\SendBusinessDocs($f_name,$url));
+
+    return redirect()->route('sa_all_users',['type'=>'supplier'])->with([
+    'message'=>'Affärsdokument har skickats till leverantören framgångsrikt!']);
+
+})->name('sendbusinessdocs');
+
+
+
+//business doc viewing
+Route::get('/offerter-business-doc/{hash}',function($hash){
+
+    return view('marketplace.suppliers.view_docs_details',['title'=>'Affärsdokument och avtalsundertecknare','hash'=>$hash]);
+
+})->name('view_docs_details');
+
 //Route for sending document to suppliers
-Route::get('/send-agreement-documents','\App\Http\Controllers\DocumentController@senddocuments')->name('send_agreement_documents');
+Route::get('/send-invoice-supplier/{uid}',function($uid){
+$supp=new \App\Http\Controllers\SuppliersController;
+//get users' details and show them in a popup
+$user = \App\Models\User::where('id',$uid)->first();
+$first_name = $user->f_name;
+$last_name = $user->l_name;
+$email = $user->email;
+$company_name = $supp->get_supplier_data('supplier_corp_name',$uid);
+$OrganzNumber = $supp->get_supplier_data('org_reg_number',$uid);
 
-//send offer invoice
-Route::get('/send-offer-invoice/{sid}',function($sid){
+$address = $user->address.' '.$user->zip_code.', '.$user->province;
 
-    return view('marketplace.sadmin.invoicegenerator',['sid'=>$sid,
-    'title'=>'Skicka erbjudandenoteringar och faktura']);
+return view('pages.supplier_info',['org_reg_no'=>$OrganzNumber,
+'email'=>$email,
+'contactPerson'=>$first_name.' '.$last_name,'postalCode'=>$user->pobox,
+'company_name'=>$company_name,'address'=>$address,
+'city'=>$user->city,
+'Number'=>$user->phone_no,
+]);
+})->name('send_fakturor');
 
-})->name('send_offer_invoice');
+
 
 
 //generate invoices
