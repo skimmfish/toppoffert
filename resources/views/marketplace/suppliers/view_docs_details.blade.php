@@ -1,6 +1,12 @@
 @extends('layouts.plain_header')
 @section('content')
 
+@php
+$currentDateTime = \Carbon\Carbon::now();
+$sevDaysLater = $currentDateTime->addDay(7);
+$oneYearLater = $currentDateTime->addDay(365)
+@endphp
+
 <div class="container-fluid" style="padding-left:0;padding-right:0;overflow-x:hidden;">
 
 <div class="row header_area" style="padding-top:25px;padding-bottom:50px;">
@@ -46,28 +52,31 @@
                                 </div>
 
                                     <!--offer details section-->
+<div class="row alert alert-primary resize_div">
 
-<div class="row accept_box">
+<div class="row accept_box" style="background:#fff;box-shadow:2px 2px 2px 2px #fff">
 <h3 class="text-center">Offert</h3>
-<div class="alert alert-primary">
+
+<div class="offertbox" style="background:#f3f9fd;padding:5px 10px;border-radius:10px;">
     <b class="text-center">Godkänn Offert</b>
-<Br/>
-<form action="" method="POST">
+    <Br/>
+    <form action="" method="POST" STYLE="padding:10px 6px;">
     @csrf
     @method('PUT')
-
    <div class="form-group" style="display:flex;justify-content:space-between;margin-top:15px;">
-    <input type="checkbox" name="accept_offer" value="off" class="checkbox" onClick="enableBtn('acceptBtn')"> 
-    <label class="form-label" style="text-align:left"> Jag godtar erbjudandet i denna offert samt <b>{{config('app.name')}} allmanna avtal och vilkor</b>
-</label>
-</div>
-<a class="btn btn-primary accept" name="accept" id="acceptBtn" href="{{route('accept_offert',['hash'=>$hash])}}">Godkänn</a>
+    <input type="checkbox" name="accept_offer" class="checkbox" onchange="document.getElementById('acceptBtn').disabled = !this.checked;"> 
+        <label class="form-label" style="text-align:left"> Jag godtar erbjudandet i denna offert samt <b>{{config('app.name')}} allmanna avtal och vilkor</b>
+            </label>
+                </div>
+<button class="btn btn-primary accept" name="accept" id="acceptBtn" disabled type="button" href="{{route('accept_offert',['hash'=>$hash])}}">Godkänn</button>
 </form>
 </div>
 </div>
 
+
+
                 <div class="row offert_details">
-                  <div class="info_box alert alert-primary">
+                  <div class="info_box">
                     <div class="info_line" style="display:flex;justify-content:space-between">
                         <div><h6><b>Medlemskap</b></h6>
                             <ul><li> Premiumkontakter: 10 st/år</li>
@@ -157,7 +166,41 @@
                                    </div>
                                         </div>
 
+                                        <!--categories box-->
+   <div class="row resize_div categories_bx">
+        <div>
+            <p><h6>Offertvillkor</h6>
+            <Hr/>
+            <div class="offertill">
+            <span>Erbjudandet gäller till:</span>
+            <span>{{$sevDaysLater}}</span>
+            </div>
+            </p>
 
+<p><div class="offertill">
+<span>Abonnemangsstart:</span>
+<span>{{$oneYearLater}}</span>
+</div>
+</p>
+
+<p>
+<div class="offertill">
+<span>Avtalstid:</span>
+<span>12 månaders </span>
+</div>
+</p>
+
+
+
+            </div>
+
+
+        </div>
+
+        <div class="resize_div" style="background:#fff !important;">
+        <small><i>* Faktisk abonnemangsstart kan ha justerats efter offertens godkännande<Br/>
+        ** Efter avtalstiden löper avtalet vidare månadsvis med 3 månaders uppsägningstid</i></small>
+            </div>
     <!-- container-fluid-->
 
 </div>

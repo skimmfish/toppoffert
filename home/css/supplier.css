@@ -41,9 +41,9 @@ body, a{
 }
 h1,h2,h3,h4,h5,h6{font-family: 'GD Sherpa Regular'; font-weight:900;line-height:32px;margin:10px 0;}
 .h1_m_30{
-    margin-top:30px;
+    margin-top:30px;line-height: 30px;
 }
-h1{font-size:45px;}h2{font-size:38px}h3{font-size:25px;}h4{font-size:20px;}h5{font-size:18px;}h6{font-size:15px;}
+h1{font-size:38px;}h2{font-size:32px}h3{font-size:25px;}h4{font-size:20px;}h5{font-size:18px;}h6{font-size:15px;}
 .text-gray,.redc_grey{color:#64748b;font-size:14px;}
 .text-gray{font-size:inherit;}
 .bevel_border, .bevel_border_q{
@@ -459,7 +459,31 @@ width:20px;height:20px;border-radius:50%;
 .img-rounded{
     border-radius:14px;
 }
+.circle{
+    width:35px !important;height:35px !important;background:#0055aa;
+    border-radius: 50%;position:relative;right:-50%;top:10px;
+}
+.info_item span{
+    font-size:12.5px;
+}
+.flex-btn .btn{
+    padding-top:10px;border-radius:50px;
+}
 
+.dark-md{
+    height:40px !important;background:#0d2453 !important;border:0;
+}
+.message_footer{
+    height:300px !important;width:350px !important;right:5px;bottom:40px !important;
+    padding-left:10px !important;border-radius:20px;background:none !important;
+}
+.message_footer .msg_box{
+    height:190px !important;margin-bottom:5px;color:#000;margin-left:10px;
+    width:100% !important;border:1px solid #bfbfbf;border-radius: 10px;text-align:left;
+}
+.message_footer .btn{
+    background:#0d2453 !important;height:50px;color:#fff !important;border:0 !important;
+}
 /**
 ======================
 MOBILE DESIGN STYLES

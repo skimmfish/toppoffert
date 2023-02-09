@@ -559,21 +559,43 @@ Route::get('/show-interest/{hash}',function(){
 
 
 //send bid message to buyers via popup modal
-Route::get('/send-message-buyer/{id}/{supplier_id}',function($id,$supplier_id){
+Route::get('/send-message-buyer/{id}/{supplier_id}/{buyer_id}',function($id,$supplier_id,$buyer_id){
 
     $title = \App\Models\ServiceRequests::where('id',$id)->first()->request_title;
-
     $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
     $cats = \App\Models\Categories::all();
     $catCount = sizeof($cats);
     $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+    $isDeducted = \App\Models\Responders::where(['supplier_id'=>$supplier_id,'buyer_id'=>$buyer_id,'request_id'=>$id])->get();
 
-    return view('pages.sendmessagebox',['requests'=>$requests,
+    if(sizeof($isDeducted)>0){
+        $status=true;
+    }
+
+    //create an entry in the responder table first
+
+    return view('pages.sendmessagebox',['requests'=>$requests,'buyer_id'=>$buyer_id,
     'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits,'id'=>$id,'supplier_id'=>$supplier_id,'title'=>'Lämna intresse för köparens begäran - '.$title]);
 
+
+})->name('reach_out_to_buyer_action')->middleware(['creditdeduct']);
+
+
+
+
+//send bid message popup to confirm action
+Route::get('/send-message-popup/{id}/{supplier_id}/{buyer_id}',function($id,$supplier_id,$buyer_id){
+
+    return view('pages.confirm_deduction_popup',[
+    'id'=>$id,
+    'supplier_id'=>$supplier_id,
+    'buyer_id'=>$buyer_id]);
 })->name('reach_out_to_buyer');
 
+
+
 //message board for suppliers
+
 Route::get('/message-board')->name('marketplace.suppliers.message_board');
 
 
@@ -582,6 +604,8 @@ Route::get('/message-board')->name('marketplace.suppliers.message_board');
 Route::get('/read-inbox/{note_id}',function($note_id){})->name('marketplace.suppliers.messages');
 
 //sending message to a buyer
+//THIS FUNCTION ENSURES THAT THE PERSON SENDING MSG WOULD  HAVE HIS ID APPENDED TO the end to the message
+//for quality assurance purposes
 Route::post('/send-bid','\App\Http\Controllers\SuppliersController@sendbid')->name('marketplace.supplier.sendbid');
 
 

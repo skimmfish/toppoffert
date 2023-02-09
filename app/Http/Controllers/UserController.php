@@ -113,6 +113,17 @@ public function savesupplier(Request $req){
 
     //$resp = $newU->id;
 
+    //create a record for the supplier in the credits table
+   $cr =  \App\Models\Credits([
+    'credits'=>0,
+    'supplier_id'=>$lastID,
+    'created_at'=>date('Y-m-d h:i:s',time()),
+    'updated_at'=>date('Y-m-d h:i:s',time()),
+   ]);
+
+   //save recrod to credits table
+   $cr->save();
+   
     //setting the column fields
     $newsupplier->email = $s_email;
     $newsupplier->supplier_corp_name=$corp_name;
@@ -122,7 +133,7 @@ public function savesupplier(Request $req){
     $newsupplier->created_at = date('Y-m-d h:i:s',time());
     $newsupplier->updated_at = date('Y-m-d h:i:s',time());
 
-        $res = $newsupplier->save();
+    $res = $newsupplier->save();
 
     $msg = 'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.';
     

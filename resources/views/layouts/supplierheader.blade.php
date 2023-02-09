@@ -2,6 +2,7 @@
 
 $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_status'=>0,'receiver_id'=>'admin'])->get());
 $supplierObj = new \App\Models\Suppliers;	
+
 @endphp
 
 <!DOCTYPE html>
@@ -108,6 +109,15 @@ $supplierObj = new \App\Models\Suppliers;
 
         </script>  
 
+        <!--for closing msg box-->
+        <script>
+          function closeDiv(dv){
+            var div = document.getElementById(dv);
+            div.style.display = 'none';
+          }
+
+            </script>
+
 
 <script type="text/javascript">  
             function selectBuyer(checkboxName){  
@@ -177,6 +187,37 @@ $supplierObj = new \App\Models\Suppliers;
             })
         });
 </script>
+
+
+<!--confirmation popup to request for buyer's contact and send bid message-->
+<script>
+        // display a modal (small modal)
+        $(document).on('click', '#sendResponse', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
+
 
 <!--view user-->
 <script>
@@ -385,6 +426,9 @@ $supplierObj = new \App\Models\Suppliers;
 <style>
 .navbar-vertical.navbar-expand-lg .nav-link{
     line-height:35px;
+}
+body{
+  font-family:'Spartan','GD Sherpa Regular' !important;
 }
 </style>
 

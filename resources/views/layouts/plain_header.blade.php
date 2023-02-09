@@ -53,6 +53,7 @@
 body{
 background:rgb(235, 238, 239) !important;
 display:flex;justify-content:center;
+font-family:'Spartan','GD Sherpa Regular';
 }
 .circl_img{
 background:none;
@@ -104,33 +105,33 @@ h3{
     margin:50px 0;
     font-family:'Spartan','GD Sherpa Regular' !important;
     font-size:13.5px;
-    font-weight:400;background:#fff !important;margin:0 !important;padding:90px 70px;
+    font-weight:400;background:#fff !important;margin:0 !important;padding:90px 110px;
 }
 .form-label{
     font-family:'Spartan','GD Sherpa Regular';
 }
 
-.body h2{font-weight:400 !important;font-size:24px;line-height:38px; }
-.body h4{font-size:24px;line-height:35px;font-weight:500;}
+.body h2{font-weight:400 !important;font-size:24px;line-height:34px; }
+.body h4{font-size:21px;line-height:35px;font-weight:500;}
 
 .sd_msg{
     display:flex;justify-content:center;
-text-align:center;
+text-align:center;margin-top:-50px;
 }
 .btncs{
     background:#0099cc;border-radius:3px;width:80%;
 }
 
 .offert_details{
-    background:#fff;padding:40px 20px;text-align:justify;
+    padding:40px 20px;text-align:justify;
     display:flex;justify-content:center;
 }
 
 .accept_box{
-    width:25%;
+    width:40%;
     display:block;margin:auto;margin-top:35px;
-    justify-content:center !important;
-    border:1px solid #efefef;
+    justify-content:center !important;border-radius:15px;
+    
     padding:20px 25px;border-radius:10px;
 }
 .text-center{text-align:center;}
@@ -138,7 +139,7 @@ text-align:center;
     width:30px;height:30;margin-right:15px;
 }
 .accept{text-transform:uppercase;padding:10px 15px;font-weight:700;font-size:10.5px;width:100%;
-    pointer-events: none;background:#333;color:#fff;border:0;
+    background:#0d2453;color:#fff;border:0;
 }
 
 .info_box{
@@ -161,18 +162,44 @@ b{
 .info_line ul > li{
     font-style:italic;font-size:75% !important;
 }
+.resize_div{
+    background:#f3f9fd !important;width:80%;display:block;margin:auto;margin-top:20px;
+}
+.categories_bx{
+
+    display:flex;flex:1 1 1;flex-direction
+
+}
+.offertill{
+    display:grid;
+grid-template-columns:50% 50%;grid-gap:20px;
+}
+.offertill span{font-family:'Spartan','GD Sherpa Regular';font-weight:700;font-size:11.5px;}
+.textarea, .dark_bg{
+width:100% !important;border-radius:9px;font-family:inherit;font-size:12.5px;
+}
+.textarea{height:110px !important;resize:none;}
+.dark_bg{
+    background:#0d2453 !important;border-radius:4px;height:45px;border:0;
+}
+.categories_bx{
+    padding:15px 20px;
+}
 /**For mobile designs */
 @media(max-width:768px){
     .info_box{
         width:80%;
     }
     .accept_box{
-    width:50%;
+    width:100%;
     }
 }
 @media(max-width:425px){
     .info_box{width:90%;
-    padding:10px 0;
+    padding:10px 17px;
+}
+.info_line b{
+    font-size:11.5px !important;
 }
 }
 </style>
@@ -204,10 +231,6 @@ b{
             })
         });
 </script>
-
-<script>
-
-    </script>
 
 </head>
 <body>
