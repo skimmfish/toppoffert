@@ -124,13 +124,20 @@ justify-items: self-end;position:relative;top:15px;
 }
 
 
-
-.text-md{font-size:13.5px;font-weight: 600;}.text-lg{font-size:17px;font-weight: 700;}
+.text-md, .text-lg{font-family: 'Spartan','GD Sherpa Regular' !important;}
+.text-md{font-size:13.5px;font-weight: 600;}.text-lg{font-size:19px;font-weight: 700;}
 .bevel_border p{font-size:14px;font-weight:700;color:#64748b;}
 .bevel_border h5{
     font-size:30px;font-weight: 800 !important;
 }
 
+.img-responsive-lg{
+    width:100px;height:100px;border-radius:10px;
+}
+.grid-box-img{
+display:grid;grid-template-columns: 15% 15% 15% 15%;grid-gap:5px;
+}
+.mesg_box{padding-left:0 !important;}
 .fuzzy-search{border:1px solid #dfdfdf;background-color: #efefef;}
 .fuzzy-search:placeholder{
     font-size:11px; font-weight: 800;
@@ -145,7 +152,14 @@ justify-items: self-end;position:relative;top:15px;
     fill:none;stroke:#888;width:27px;height:28px;min-width:30px !important;
     position: relative;right:15px;top:-4px;font-weight:lighter;
 }
-
+.grey_bg{background:#dfdfdf !important;border-radius:50%;width:60px !important;height:60px !important;}
+.bmsgg span{font-size:12.5px;line-height:34px;font-weight:500 !important;color:#000 !important;}
+.bmsgg,.msgg{
+    padding:10px 0 15px 0;
+}
+.certification_section{
+    padding:15px 15px;margin:15px 15px;
+}
 .nav_img{
 width:25px !important;height:25px !important;position:relative;left:-10px;top:-3px;z-index:-1;
 }
@@ -441,7 +455,20 @@ font-weight: 700;
 width:20px;height:20px;border-radius:50%;
 }
 .tabs{
-    display:grid;grid-template-columns:15% 15% 15% 15%;margin:15px 0 -5px -4px;border-radius:4px
+    display:grid;grid-template-columns:15% 15% 15% 15%;margin:15px 0 -5px -4px;border-radius:4px;grid-gap:5px;
+}
+.flex-box{
+    display:flex;flex-direction: row;justify-content: space-between;padding:10px 15px;
+}
+#displayOnDivClose{
+    position:relative;left:45%;top:15px;border-radius:50px;height:40px;background:#0d2453;color:#fff;
+    font-size:9px;width:140px;padding-top:7px;
+}
+#displayOnDivClose span{
+    margin-left:5px;
+}
+.flex-box span{
+    margin:15px;
 }
 .tabs a{font-weight:800;color:#333;}
 .tabs a:hover{text-decoration: underline;
@@ -463,9 +490,25 @@ width:20px;height:20px;border-radius:50%;
     width:35px !important;height:35px !important;background:#0055aa;
     border-radius: 50%;position:relative;right:-50%;top:10px;
 }
-.info_item span{
-    font-size:12.5px;
+.btn-svg svg{
+    display:block;
+    float:right;
+    position:relative;
+    top:12px;
 }
+
+.buyers_info{
+background:#fff;border-radius:10px;padding:10px 8px;
+}
+
+.info_item span{
+    font-size:12px;
+}
+
+.tabs button{
+border-bottom: 2px solid #0d2453 !important;margin:3px;
+}
+
 .flex-btn .btn{
     padding-top:10px;border-radius:50px;
 }
@@ -474,15 +517,16 @@ width:20px;height:20px;border-radius:50%;
     height:40px !important;background:#0d2453 !important;border:0;
 }
 .message_footer{
-    height:300px !important;width:350px !important;right:5px;bottom:40px !important;
+    height:300px !important;width:101% !important;bottom:40px !important;
     padding-left:10px !important;border-radius:20px;background:none !important;
 }
 .message_footer .msg_box{
-    height:190px !important;margin-bottom:5px;color:#000;margin-left:10px;
-    width:100% !important;border:1px solid #bfbfbf;border-radius: 10px;text-align:left;
+    height:190px !important;margin-bottom:5px;color:#000;
+    width:100% !important;border:1px solid #bfbfbf;border-radius: 10px;text-align:left;margin-left:0;margin-right:0;
 }
 .message_footer .btn{
-    background:#0d2453 !important;height:50px;color:#fff !important;border:0 !important;
+    background:#0d2453 !important;height:50px;border-radius:5px !important;font-size:11.5px;color:#fff !important;border:0 !important;
+    width:100% !important;
 }
 /**
 ======================

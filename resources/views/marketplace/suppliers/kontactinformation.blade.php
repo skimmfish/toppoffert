@@ -138,10 +138,9 @@ value="{{\Auth::user()->c_o_address }}" required/>
 
 
 </div>
-
-
 </form>
 </div>
+
 
 
 @endsection

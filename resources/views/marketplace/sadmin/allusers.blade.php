@@ -21,6 +21,8 @@
 <!--filter formgroup-->
 <div class="row">
 <span class="text-black text-primary">Använd sökfiltret nedan för att hitta användare</span>
+<Br/><Br/>
+<hr/>
 <form class="form" method="POST" action="">  
 @csrf 
 @method('GET')
@@ -134,7 +136,10 @@
 @if($x->active==false)
 <hr/>
 <a href="#" class="text-primary underline" data-attr="{{route('send_fakturor',['uid'=>$x->id])}}" data-toggle="modal" id="sendDocs" data-target="#requestModal">Send Invoice </a> | 
+
+@if($x->approval_status==false)
 <a href="{{route('approve_supplier',['supplier_id'=>$x->id])}}" class="text-danger underline">Approve Supplier</a> | 
+@endif
 <a data-toggle="modal" id="sendDocuments" data-target="#requestModal" href="#" data-attr="{{route('confirm-sending_docs',['username'=>$x->username])}}" class="text-black underline">Send Documents</a> 
 @endif
 </div>

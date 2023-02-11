@@ -3,6 +3,25 @@
 
 @include('layouts.admin_topbar')
 
+
+<div class="notify_div">
+@if (session('message')) 
+ <div class="alert alert-info text-md">  {{ session('message') }} </div>
+              @elseif(session('error'))
+              <div class="alert alert-danger text-md">  {{ session('error') }}   </div>  
+                      @endif 
+                    <!--./notify-->
+                    </div>
+
+
+<div class="row" style="margin-bottom:15px;">
+<a href="{{url()->previous()}}"  class="text-black btn btn-white" style="height:40px;border-radius:40px;padding-top:6px !IMPORTANT;margin-bottom:15px;">
+<svg width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#231f20;}</style></defs><g data-name="arrow left" id="arrow_left">
+<path class="cls-1" d="M22,29.73a1,1,0,0,1-.71-.29L9.93,18.12a3,3,0,0,1,0-4.24L21.24,2.56A1,1,0,1,1,22.66,4L11.34,15.29a1,1,0,0,0,0,1.42L22.66,28a1,1,0,0,1,0,1.42A1,1,0,0,1,22,29.73Z"/></g></svg> Tillbaka
+</a>
+</div>
+
+
 <div class="row m-3">
 <h1>Hej! {{\Auth::user()->f_name}}</h1>
 <p class="line-height-auto">Här hanterar du alla dina leverantörers krediter, tilldelar krediter, baserat på fakturauppfyllelse</p>
@@ -36,10 +55,15 @@
             <td>{{ $x->credits }}</td>
             <td>{{ date('D, M Y',strtotime($x->updated_at)) }}</td>
             <td>
-            <a href="#" data-attr="" data-target="#requestModal"  id="sendInvoice" data-toggle="modal" class="text-primary">Skicka en faktura</a><br/>
-            <a href="#" data-attr="{{route('assign_credit',['supplier_id'=>$x->supplier_id,'img'=>$x->profile_img,'f_name'=>$x->f_name,'email'=>$x->email,'l_name'=>$x->l_name])}}" class="text-black" data-toggle="modal" id="assignCredit" data-target="requestModal">Tilldela kredit</a><br/>
-
-        </td>                
+            <button class="btn btn-falcon-default btn-sm dropdown-toggle ms-2 dropdown-caret-none" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h"></span></button>                  
+                    <div class="dropdown-menu">
+                    <a href="#" data-attr="" data-target="#requestModal"  id="sendInvoice" data-toggle="modal" class="text-primary dropdown-item">Skicka en faktura</a><br/>
+                    <a href="#" data-attr="{{route('assign_credit',['supplier_id'=>$x->supplier_id])}}" class="text-black dropdown-item" data-toggle="modal" id="assignCredit" data-target="#requestModal">Tilldela kredit</a><br/>
+                    <div class="dropdown-divider"></div>
+<!--                    <a class="dropdown-item text-danger" href="#">Delete user</a>-->
+                    </div>
+                    </div>
+                    </td>                
             </tr>
 
             </tbody>

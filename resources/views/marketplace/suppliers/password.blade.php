@@ -3,7 +3,10 @@
 @include('layouts.admin_topbar')
 
 <!--./row starting-->
+
 <div class="row">
+<div class="row" > @if (session('message'))   <div class="alert alert-info text-md" style="font-size:14.5px;">  {{ session('message') }}</div>@endif</div>
+
 <h4>Byt lösenord</h4>
 
 

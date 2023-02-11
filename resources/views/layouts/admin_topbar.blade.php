@@ -1,7 +1,9 @@
 @php
 $personalNotification = \App\Models\NotificationModel::where(['pub_status'=>1,'read_status'=>false,'receiver_id'=>Auth::user()->id])->orderBy('created_at','DESC')->paginate(5);
+$credit =0;
+if(\Auth::user()->user_cat=='SUPPLIER'){
 $credit = \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
-
+}
 @endphp
 
 <div class="content">

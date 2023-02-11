@@ -71,7 +71,7 @@ public function savesupplier(Request $req){
     'address'=>['required','string'],
     'contactPerson'=>['required','string'],
     'company' => ['required','string'],
-    'phoneNumber' => ['phoneNumber','required']
+    'phoneNumber' => ['required']
     ];
 
     $req->validate($rule);
@@ -81,7 +81,9 @@ public function savesupplier(Request $req){
     $password = Hash::make($pw);
     $corp_name = $req->company;
     $date_registered = date('Y-m-d');
-    $f_name = $req->contactPerson;
+    $name = explode(" ",$req->contactPerson);
+    $f_name = $name[0];
+    $l_name = $name[1];
     $phone_no = $req->phoneNumber;
     $alt_phone = $phone_no;
     $address = $req->address;
@@ -95,8 +97,9 @@ public function savesupplier(Request $req){
     //creating a user
     'email'=> $s_email,
     'business_email'=>$business_email,
-    'username'=>$username,
+    'username'=>strtolower($username),
     'f_name'=>$f_name,
+    'l_name'=>$l_name,
     'password'=>$password,
     'address' => $address,
     'province' => $province,
@@ -114,7 +117,7 @@ public function savesupplier(Request $req){
     //$resp = $newU->id;
 
     //create a record for the supplier in the credits table
-   $cr =  \App\Models\Credits([
+   $cr =  new \App\Models\Credits([
     'credits'=>0,
     'supplier_id'=>$lastID,
     'created_at'=>date('Y-m-d h:i:s',time()),
@@ -139,10 +142,101 @@ public function savesupplier(Request $req){
     
    // \Mail::to($s_email)->send(new \App\Mail\NewSupplier($msg,$f_name,$s_email));
 if($res!=NULL){
-    return redirect()->route("marketplace_suppliers_staging")->with(['message'=>'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.']);
+ return redirect()->route("marketplace_suppliers_staging")->with(['message'=>'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.']);
+}
+}
+
+
+/***
+ * SaveSupplier() function retrieves suppleir details and save them to database
+ */
+public function createsupplier(Request $req){
+    $newsupplier= new \App\Models\Suppliers;
+    $newUser = new \App\Models\User;
+
+    $s_email = $req->email;
+
+    $rule = [
+    'email' => ['required','unique:users','unique:suppliers'],
+    'contactPerson'=>['required','string'],
+    'company' => ['required','string'],
+    'phoneNumber'=>['required']
+    ];
+
+    $req->validate($rule);
+
+    $username =explode("@",$s_email)[0];
+    $pw = Str::random(8);
+    $password = Hash::make($pw);
+    $corp_name = $req->company;
+    $date_registered = date('Y-m-d');
+    $name = explode(" ",$req->contactPerson);
+    $f_name = $name[0];
+    $l_name = $name[1];
+    $phone_no = $req->phoneNumber;
+    $alt_phone = $phone_no;
+    $address = $req->address;
+    $city = $req->city;
+    $province = $req->province;
+    $zipcode = $req->zip_code;
+    $business_email = $req->business_email;
+
+  
+    $lastID = \App\Models\User::insertGetId([
+    //creating a user
+    'email'=> $s_email,
+    'business_email'=>$business_email,
+    'username'=>strtolower($username),
+    'f_name'=>$f_name,
+    'l_name'=>$l_name,
+    'password'=>$password,
+    'address' => $address,
+    'province' => $province,
+    'zip_code' => $zipcode,
+    'phone_no' => $phone_no,
+    'telephone' => $alt_phone,
+    'user_cat' => 'SUPPLIER',
+    'active'=>0,
+    'email_verified_at'=>NULL,
+    'created_at'=>date('Y-m-d h:i:s',time()),
+    'updated_at'=>date('Y-m-d h:i:s',time()),
+    'administrative_level'=>0
+    ]);
+
+    //$resp = $newU->id;
+
+    //create a record for the supplier in the credits table
+   $cr =  new \App\Models\Credits([
+    'credits'=>0,
+    'supplier_id'=>$lastID,
+    'created_at'=>date('Y-m-d h:i:s',time()),
+    'updated_at'=>date('Y-m-d h:i:s',time()),
+   ]);
+
+   //save recrod to credits table
+   $cr->save();
+   
+    //setting the column fields
+    $newsupplier->email = $s_email;
+    $newsupplier->supplier_corp_name=$corp_name;
+    $newsupplier->date_registered=$date_registered;
+    $newsupplier->supplier_address = $address.', '.$zipcode.','.$province;
+    $newsupplier->supplier_id = $lastID;
+    $newsupplier->created_at = date('Y-m-d h:i:s',time());
+    $newsupplier->updated_at = date('Y-m-d h:i:s',time());
+
+    $res = $newsupplier->save();
+
+    $msg = 'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.';
+    
+    \Mail::to($s_email)->send(new \App\Mail\NewSupplier($msg,$f_name,$s_email));
+if($res!=NULL){
+   return redirect()->back()->with(['message'=>'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.']);
 }
 
 }
+
+
 /**
  * This function approves supplier
  * @param Integer <$supplier_id>

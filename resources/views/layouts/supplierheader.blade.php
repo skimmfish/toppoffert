@@ -27,6 +27,8 @@ $supplierObj = new \App\Models\Suppliers;
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
 
     <meta name="msapplication-TileImage" content="">
+    <meta name="author" content="Toppoffert Sverige AB" />
+
     <meta name="theme-color" content="#ffffff">
     <link href="//db.onlinewebfonts.com/c/0aee6008b82cde991ec28387169bb13e?family=GD+Sherpa" rel="stylesheet" type="text/css"/>
     <script src="{{ asset('css/admin/js/config.js') }}"></script>
@@ -114,8 +116,20 @@ $supplierObj = new \App\Models\Suppliers;
           function closeDiv(dv){
             var div = document.getElementById(dv);
             div.style.display = 'none';
+
+            var chatbubble = document.getElementById('displayOnDivClose');
+            chatbubble.style.display = 'block';
           }
 
+//to open chat window after closure
+          function openChatWindow(dv){
+            var div = document.getElementById(dv);
+            div.style.display = 'block';
+
+            var chatbubble = document.getElementById('displayOnDivClose');
+            chatbubble.style.display = 'none';
+            
+          }
             </script>
 
 
@@ -395,6 +409,35 @@ $supplierObj = new \App\Models\Suppliers;
         });
 </script>
 
+
+<script>
+        // display a modal (small modal) for previewing images
+        $(document).on('click', '#viewImage', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
+
 <script>
         // display a modal (small modal) for sending invoice to user
         $(document).on('click', '#sendInvoice', function(event) {
@@ -424,11 +467,12 @@ $supplierObj = new \App\Models\Suppliers;
 </script>
 
 <style>
+  
 .navbar-vertical.navbar-expand-lg .nav-link{
     line-height:35px;
 }
 body{
-  font-family:'Spartan','GD Sherpa Regular' !important;
+  font-family:'Spartan','GD Sherpa Regular' !important;overflow-y:auto;
 }
 </style>
 

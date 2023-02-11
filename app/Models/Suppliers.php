@@ -44,5 +44,8 @@ class Suppliers extends Model
         return $this->hasOne('\App\Models\Ratings');
     }
 
+    public function RequestChats(){
+        return $this->hasMany('\App\Models\RequestChats');
+    }
 
 }

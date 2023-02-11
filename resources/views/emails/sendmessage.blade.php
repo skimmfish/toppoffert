@@ -1,7 +1,6 @@
 <x-mail::message>
-# Introduction
+Dear, {{$name}},
 
-Dear, {{$name}},<Br/>
 {{$msg}}.
 
 

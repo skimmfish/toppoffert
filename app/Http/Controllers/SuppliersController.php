@@ -56,7 +56,6 @@ return $suppliersCoverage = [
         echo $e->getMessage();
         return [];
 }
-
 }
 
 
@@ -97,7 +96,6 @@ public function senddocs($username){
         $join->on('users.id','=','suppliers.supplier_id')->where('users.id','=',$this->uid);
     })->first();
 
-   print_r($request);
     $hyphenatedStr = $this->createhypenatedstring(128);
     //update Supplier's record
   
@@ -149,11 +147,62 @@ public function createhypenatedstring($size){
  * this function sends message to the buyer as bid for the request
  */
 public function sendbid(Request $req){
+    $this->obj = new \App\Http\Controllers\SuppliersController;
 
+  $messageToSend =  $req->request_response;
+  $main_file= NULL; $other_file = NULL; $quote_file_name = NULL;
 
+  if($req->file('filer')!=NULL && $req->file('filer')->isValid()){
+     echo $main_file = $this->saveFile($req,'filer','img/requests');
+  }
 
-    
+  if($req->file('other_filer')!=NULL && $req->file('other_filer')->isValid()){
+    echo $other_file = $this->saveFile($req,'other_filer','img/requests');
+  }
+
+  if($req->file('quote_filer')!=NULL &&  $req->file('quote_filer')->isValid()){
+   echo $quote_file_name = $this->saveFile($req,'quote_filer','img/requests');
+  }
+
+  $msgId = \App\Models\RequestChats::insertGetId([
+
+    'buyer_id'=>$req->buyer_id,
+    'supplier_id'=>$req->supplier_id,
+    'request_id'=>$req->request_id,
+    'message'=>$messageToSend.'__@_seller_msg',
+    'created_at'=>date('Y-m-d h:i:s',time()),
+    'updated_at'=>date('Y-m-d h:i:s',time()),
+    'file_info'=>$main_file.'@__'.$other_file.'@__'.$quote_file_name
+  ]);
+
+//  $msgId->save();
+
+    return redirect()->back()->with(['message'=>'Meddelande skickat till kund']);
 }
+
+
+/**
+ * @param \Illuminate\Http\Request
+ * @param String <$formFieldHandler>
+ * @param String location<$location>
+ */
+public function saveFile(Request $request,$formFieldHandler,$location){
+        
+    $fileName = NULL;
+    //validating if a file is uploaded
+    if($request->file($formFieldHandler)->isValid()){
+    $fileName = time().'.'.$request->$formFieldHandler->guessExtension();
+    
+    $request->$formFieldHandler->move(public_path($location),$fileName);   
+
+}else{
+    flash('No file was uploaded')->fail();
+    return redirect()->back()->with('message','No file was uploaded, kindly check and try again');
+}
+
+return $fileName;
+}
+
 
  /**
  * supplier_s rating

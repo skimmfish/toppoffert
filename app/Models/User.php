@@ -98,4 +98,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
 }
 
+//creating a relational entity between users and the Requestchats model
+public function RequestChats(){
+    return $this->hasMany('\App\Models\RequestChats');
+}
+
+
 }

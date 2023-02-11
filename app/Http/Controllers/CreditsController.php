@@ -55,8 +55,39 @@ $suppliers = \DB::table('users')->join('credits',function($join){
     $join->on('credits.supplier_id','=','users.id')->where('users.user_cat','=','SUPPLIER');
 })->paginate(10);
 
-return view('marketplace.sadmin.credit_portal',['title'=>'Kredithanteringsportal','verified_suppliers'=>$suppliers]);
+return view('marketplace.sadmin.credit_portal',['title'=>'Kredithanteringsportal',
+'verified_suppliers'=>$suppliers]);
 
 }
 
+/**
+ * this function assigns credits to suppliers with an adjusted credit expiry date
+ * @param \Illuminate\Http\Request
+ */
+public function assign_credit(Request $req){
+
+    $rule = [
+        'credit'=>['required | integer']
+    ];
+    
+    $req->validate($rule);
+
+    $credits = $req->credits;
+    $supplier_id = $req->supplier_id;
+    $userEmail = \App\Models\User::find($supplier_id)->email;
+    $f_name =  \App\Models\User::find($supplier_id)->email;
+    
+    \DB::update("UPDATE credits SET credits=credits+?, updated_at=? WHERE supplier_id=?",[$credits,date('Y-m-d h:i:s',time()),$supplier_id]);
+
+    //send an email to the supplier
+    $msg = "Dina kreditbegäran har uppdaterats framgångsrikt med ett justerat utgångsdatum på din portfölj. Vänligen logga in på din instrumentpanel för mer information.";
+    
+    \Mail::to($userEmail)->queue(new \App\Mail\SendMessage($f_name,$msg));
+
+    return redirect()->back()->with(['message'=>'Krediter tilldelade framgångsrikt med ett justerat utgångsdatum']);
+    
+
+
+
+}
 }

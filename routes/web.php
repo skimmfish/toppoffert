@@ -102,12 +102,13 @@ Route::get('/doc-offerter/see-business-docs/{hash}','\App\Http\Controllers\Suppl
 
 //send message to abbeh
 Route::get('/send-message-to-abbeh/{email}',function($email){
-    return view('pages.sendmsgtoabbeh',['email'=>$email]);
+    return view('pages.sendmsgtoabbeh',['email'=>\App\Http\Controllers\ConfigController::get_value('business_email')]);
 })->name('send_message_to_abbeh');
+
+
 
 Route::get('/accept-offert/{hash}',function($hash){
 
-    
 
 })->name('accept_offert');
 
@@ -117,8 +118,10 @@ Route::post('sendmsg',function(Request $request){
     $email = $request->email__to;
     $msg = $request->msgto_send;
     $contactPerson = \App\Http\Controllers\ConfigController::get_value('contact_person');
-    \Mail::to($email)->send(new \App\Mail\SendMessage($msg,$contactPerson));
+    
+    \Mail::to($email)->queue(new \App\Mail\SendMessage($msg,$contactPerson));
 
+return redirect()->back()->with(['message'=>'Your email has been sent to Abbeh']);
 })->name('sendmsg');
 
 //for contact-oss page
@@ -208,8 +211,20 @@ return view('marketplace.sadmin.index',['title'=>"Administrator's Portal - ".con
 })->name('sadmin_index');
 
 
+//creating a new supplier
+Route::get('/new-supplier',function(){
+
+return view('marketplace.sadmin.new_supplier',['title'=>'Skapar ny leverantör']);
+
+})->name('new_user');
+
+//for creating new suppliers
+Route::post('/register-new-supplier',[\App\Http\Controllers\UserController::class,'createsupplier'])->name('create_supplier');
+
+
 //view request modal view
 Route::get('/sa-request-preview/{hash}',[\App\Http\Controllers\ServiceRequestsController::class,'viewservicerequest'])->name('sa_preview_request')->middleware(['sadmin']);
+
 
 
 //switch to maintenance
@@ -243,7 +258,7 @@ Route::get('/confirm-sending-docs/{username}',function($username){
      $supplier_dochash = \App\Models\Suppliers::where('supplier_id',$uid)->first()->docs_hash;
     
     //the url to send will lead to docstart
-    $url = 'http://localhost:8000/su/offerter/'.$supplier_dochash;
+    $url = 'https://toppoffert.se/se/home/su/offerter/'.$supplier_dochash;
     
     $supob = new \App\Http\Controllers\SuppliersController;
 
@@ -322,10 +337,15 @@ Route::get('/credit-management',[App\Http\Controllers\CreditsController::class,'
 
 
 //assign credit view
-Route::get('/assign-credit-view/{supplier_id}/{img}/{f_name}/{email}/{l_name}',function($supplier_id,$img,$f_name,$email,$l_name){
+Route::get('/assign-credit-view/{supplier_id}/',function($supplier_id){
+    $f_name = \App\Models\User::find($supplier_id)->f_name;
+    $l_name = \App\Models\User::find($supplier_id)->l_name;
+    $img = \App\Models\User::find($supplier_id)->profile_img;
+    $email = \App\Models\User::find($supplier_id)->email;
     
-    return view('marketplace.sadmin.assigncreditview',['l_name'=>$l_name,'supplier_id'=>$supplier_id,'img'=>$img,
-    'f_name'=>$f_name,'email'=>$email,'supObj'=>new \App\Http\Controllers\SuppliersController]);
+    return view('marketplace.sadmin.assigncreditview',[
+        'l_name'=>$l_name,'supplier_id'=>$supplier_id,
+        'img'=>$img,'f_name'=>$f_name,'email'=>$email,'supObj'=>new \App\Http\Controllers\SuppliersController]);
 
 })->name('assign_credit');
 
@@ -568,19 +588,23 @@ Route::get('/send-message-buyer/{id}/{supplier_id}/{buyer_id}',function($id,$sup
     $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
     $isDeducted = \App\Models\Responders::where(['supplier_id'=>$supplier_id,'buyer_id'=>$buyer_id,'request_id'=>$id])->get();
 
-    if(sizeof($isDeducted)>0){
-        $status=true;
-    }
-
+    $messages = \App\Models\RequestChats::where(['request_id'=>$id,'supplier_id'=>$supplier_id])->paginate(20);
+    
     //create an entry in the responder table first
 
     return view('pages.sendmessagebox',['requests'=>$requests,'buyer_id'=>$buyer_id,
+    'messages'=>$messages,'request_title'=>$title,
     'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits,'id'=>$id,'supplier_id'=>$supplier_id,'title'=>'Lämna intresse för köparens begäran - '.$title]);
-
 
 })->name('reach_out_to_buyer_action')->middleware(['creditdeduct']);
 
 
+//viewing images
+Route::get('view_img/{img_name}',function($img_name){
+
+    return view('pages.image_preview',['img_name'=>$img_name]);
+
+})->name('view_img');
 
 
 //send bid message popup to confirm action
@@ -735,6 +759,10 @@ Route::get('/recent-messages',function(){})->name('recent_messages');
 //for account summary of all requests, those responded to and those requesteds for which the buyer chose this arrtisan
 Route::get('/settings/accountsummary',function(){
 
+    return view('marketplace.suppliers.certifications',[
+        'request_count'=>0,
+        'title'=>'Kontosammanfattning och certifieringar']);
+
 })->name('accountsummary');
 
 
@@ -761,9 +789,6 @@ Route::get('/settings/password',function(){
 
 })->name('settings.password');
 
-//for account summary of all requests, those responded to and those requesteds for which the buyer chose this arrtisan
-Route::get('/settings/accountsummary',function(){
-})->name('accountsummary');
 
 //for generating invoices/paying invoices generated by the site administrators
 Route::get('/settings/invoices',function(){

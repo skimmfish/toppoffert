@@ -41,7 +41,7 @@ class CreditDeduct
         if(sizeof($deduct)>0 && $creditStatus->credits>0)
             
             $res = \DB::update("UPDATE credits SET credits=credits-? WHERE supplier_id=?",[1,$supplier_id]);
-                $credUpdate = \DB::update("UPDATE responders SET credit_deducted_for_supplier=? WHERE supplier_id=?",[true,$supplier_id]);
+                $credUpdate = \DB::update("UPDATE responders SET credit_deducted_for_supplier=? WHERE supplier_id=? AND request_id=?",[true,$supplier_id,$request_id]);
 
                 if($credUpdate=!null){
 

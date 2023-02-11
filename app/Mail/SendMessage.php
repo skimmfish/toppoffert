@@ -56,7 +56,7 @@ class SendMessage extends Mailable
         return new Content(
             markdown: 'emails.sendmessage',
             with: [
-                'message' => $this->message,
+                'msg' => $this->message,
                 'name' => $this->name,
                 
             ]
