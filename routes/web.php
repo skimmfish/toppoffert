@@ -99,18 +99,22 @@ Route::get('/su/offerter/{hash}',function($hash){
 //send business docs
 Route::get('/doc-offerter/see-business-docs/{hash}','\App\Http\Controllers\SuppliersController@getSupplierInfoForDocs')->name('see_agreement_documents');
 
+//Thanks for accepting offers
+Route::get('/su/tack-for-din',function(){
+
+    $info = 'Tack för att du accepterar'.config('app.name').' offert, vi uppskattar att du kommer och vi är villiga att se till att du får en fantastisk upplevelse på vår plattform!';
+
+    return view('marketplace.suppliers.view_confirmation_details')->with(['title'=>'Tack för din beställning','info'=>$info]);
+
+})->name('marketplace.suppliers.view_confirmation_details');
+
+//accept offer
+Route::put('/accept-offer/{hash}','\App\Http\Controllers\SuppliersController@acceptoffer')->name('accept_offert');
 
 //send message to abbeh
 Route::get('/send-message-to-abbeh/{email}',function($email){
     return view('pages.sendmsgtoabbeh',['email'=>\App\Http\Controllers\ConfigController::get_value('business_email')]);
 })->name('send_message_to_abbeh');
-
-
-
-Route::get('/accept-offert/{hash}',function($hash){
-
-
-})->name('accept_offert');
 
 
 //send message to Abbeh
@@ -225,6 +229,8 @@ Route::post('/register-new-supplier',[\App\Http\Controllers\UserController::clas
 //view request modal view
 Route::get('/sa-request-preview/{hash}',[\App\Http\Controllers\ServiceRequestsController::class,'viewservicerequest'])->name('sa_preview_request')->middleware(['sadmin']);
 
+//view request modal view
+Route::get('/preview-request/{hash}',[\App\Http\Controllers\ServiceRequestsController::class,'previewRequest'])->name('sa_preview_request_sa')->middleware(['sadmin']);
 
 
 //switch to maintenance
@@ -252,19 +258,13 @@ Route::get('/confirm-sending-docs/{username}',function($username){
 //confirm-sending_docs named route
     Route::get('/send-docs/{usr}',function($usr){
 
-    $user = \App\Models\User::where('username',$usr)->first();
-    $f_name = $user->f_name;
-     $uid = $user->id;
-     $supplier_dochash = \App\Models\Suppliers::where('supplier_id',$uid)->first()->docs_hash;
-    
-    //the url to send will lead to docstart
-    $url = 'https://toppoffert.se/se/home/su/offerter/'.$supplier_dochash;
-    
-    $supob = new \App\Http\Controllers\SuppliersController;
+        $supob = new \App\Http\Controllers\SuppliersController;
 
-    $supob->senddocs($usr);
+        $user = \App\Models\User::where('username',$usr)->first();
+        $f_name = $user->f_name;
+        $uid = $user->id;
 
-    \Mail::to($user)->queue(new \App\Mail\SendBusinessDocs($f_name,$url));
+        $supob->senddocs($usr);
 
     return redirect()->route('sa_all_users',['type'=>'supplier'])->with([
     'message'=>'Affärsdokument har skickats till leverantören framgångsrikt!']);
@@ -317,7 +317,15 @@ Route::get('/all-invoice',function(){})->name('sadmin_all_invoices');
 Route::get('/new-invoice')->name('sadmin.new_invoice');
 
 //deletion confirmation
-Route::get('confirm-resource-action/{action_type}/{id}/{resource}',function(){})->name('sadmin_confirm_resources');
+Route::get('confirm-resource-action/{action_type}/{id}/{resource}',function($action_type,$id,$resource){
+
+return view('pages.confirm_resource_action',['action_type'=>$action_type,'id'=>$id,'resource'=>$resource]);
+
+})->name('sadmin_confirm_resources');
+
+
+//this is generic deletion script
+Route::get('/delete-resource/{type}/{resource}/{id}','\App\Http\Controllers\ServiceRequestsController@deleteResources')->name('delete_resource');
 
 //all sales made between buyers and suppliers
 Route::get('all-sales',[App\Http\Controllers\ServiceRequestsController::class,'get_all_sales'])->name('sadmin_all_sales');
@@ -431,6 +439,12 @@ return view('marketplace.sadmin.index',['title'=>'Administratörens Instrumentpa
 })->name('sadmin_index');
 
 
+Route::get('/confirm-request-approval/{request_id}/{buyer_id}',function($request_id,$buyer_id){
+
+return view('pages.confirm_request_approval',['request_id'=>$request_id,'buyer_id'=>$buyer_id]);
+
+})->name('sadmin_approve_request_confirm');
+
 //configuration panel
 Route::get('/settings-and-configuration',function(){
 
@@ -532,11 +546,21 @@ Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/supplier
         $requests = \App\Models\ServiceRequests::where([
         'matched'=>0,
         'publish_status'=>true,
-        'archival_status'=>false
+        'archival_status'=>false,
         ])->get();
-        
+
+        //initializing the credits
+        $credits = 0;
+
         $catCount = sizeof(\App\Models\Categories::all());
-        $credits= \App\Http\Controllers\CreditsController::getCredits($uid)->credits;
+        
+        $creditObj = \App\Http\Controllers\CreditsController::getCredits($uid);
+        if(is_null($creditObj)){
+            $credits = 0;
+        }else{
+        $credits= $creditObj->credits;
+        }
+
         $supplierCoverage = \App\Http\Controllers\SuppliersController::getServiceAreas($uid);
 
     return view('marketplace.suppliers.index',[
@@ -554,10 +578,22 @@ Route::put('/save-categories/{id}','\App\Http\Controllers\CategoriesController@u
 //supplier's coverage
 Route::get('/suppliers-coverage',function(){
 
+    $uid = \Auth::user()->id;
     $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
     $cats = \App\Models\Categories::all();
     $catCount = sizeof($cats);
-    $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+
+    $credits = 0;
+
+    $catCount = sizeof(\App\Models\Categories::all());
+    
+    $creditObj = \App\Http\Controllers\CreditsController::getCredits($uid);
+    if(is_null($creditObj)){
+        $credits = 0;
+    }else{
+    $credits= $creditObj->credits;
+    }
+
     $buyersType = \DB::table('buyers_type')->get();
     return view('marketplace.suppliers.coverage',['title'=>'Bevakning','requests'=>$requests,
     'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits,

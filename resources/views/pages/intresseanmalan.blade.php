@@ -49,9 +49,7 @@
                     }()); _vwo_settings_timer = _vwo_code.init();
                 </script>
                 <!-- End Visual Website Optimizer Asynchronous Code -->
-        
-
-
+    
     
                 <link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}" />
             

@@ -10,8 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
 
-
-class ApproveSupplier extends Mailable
+class SendApprovalSuppliermessage extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,19 +19,21 @@ class ApproveSupplier extends Mailable
      *
      * @return void
      */
-    protected $fname;
-    protected $msg;
-    protected $email;
-    protected $password;
-    protected $url;
-    
-    public function __construct($f_name,$email,$password,$url)
-    {
-        $this->fname = $f_name;
-        $this->email = $email;
-        $this->password = $password;
-        $this->url = $url;
-    }
+
+
+     protected $fname;
+     protected $msg;
+     protected $email;
+     protected $password;
+     protected $url;
+     
+     public function __construct($f_name,$email,$password,$url)
+     {
+         $this->fname = $f_name;
+         $this->email = $email;
+         $this->password = $password;
+         $this->url = $url;
+     }
 
     /**
      * Get the message envelope.
@@ -42,11 +43,12 @@ class ApproveSupplier extends Mailable
     public function envelope()
     {
         return new Envelope(
+            subject: 'Tack för Ditt Intresse',
             from: new Address('info@toppoffert.se',config('app.name')),
             replyTo: [
                 new Address('info@toppoffert.se', config('app.name')),
             ],
-            subject: 'Tack för Ditt Intresse',
+ 
         );
     }
 
@@ -58,13 +60,14 @@ class ApproveSupplier extends Mailable
     public function content()
     {
         return new Content(
-            view: 'emails.approvedsupplier',
+            markdown: 'emails.sendapprovalmsg',
             with: [
                 'fname' => $this->fname,
                 'ur_email'=>$this->email,
                 'ur_pw' => $this->password,
                 'url'=>$this->url
             ]
+ 
         );
     }
 

@@ -61,13 +61,14 @@ class UserController extends Controller
  * SaveSupplier() function retrieves suppleir details and save them to database
  */
 public function savesupplier(Request $req){
+
     $newsupplier= new \App\Models\Suppliers;
     $newUser = new \App\Models\User;
 
     $s_email = $req->email;
 
     $rule = [
-    'email' => ['required','unique:users','unique:suppliers','email:rfc,dns'],
+    'email' => ['required'],
     'address'=>['required','string'],
     'contactPerson'=>['required','string'],
     'company' => ['required','string'],
@@ -140,10 +141,12 @@ public function savesupplier(Request $req){
 
     $msg = 'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.';
     
-   // \Mail::to($s_email)->send(new \App\Mail\NewSupplier($msg,$f_name,$s_email));
-if($res!=NULL){
+//    \Mail::to($s_email)->queue(new \App\Mail\NewSupplier($msg,$f_name,$s_email));
+
+    if($res==true){
  return redirect()->route("marketplace_suppliers_staging")->with(['message'=>'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.']);
 }
+
 }
 
 
@@ -229,9 +232,9 @@ public function createsupplier(Request $req){
 
     $msg = 'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.';
     
-    \Mail::to($s_email)->send(new \App\Mail\NewSupplier($msg,$f_name,$s_email));
-if($res!=NULL){
-   return redirect()->back()->with(['message'=>'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.']);
+//    \Mail::to($s_email)->send(new \App\Mail\NewSupplier($msg,$f_name,$s_email));
+if($res==1){
+   return redirect()->back()->with(['message'=>$msg]);
 }
 
 }
@@ -247,14 +250,31 @@ $findSupplier = \App\Models\User::find($supplier_id);
 $pw = Str::random(8);
 $password = Hash::make($pw);
 
-$response = \DB::update("UPDATE users SET active=?, password=?, email_verified_at=? WHERE id=?",[
-true,$password,date('Y-m-d h:i:s',time()),$supplier_id]);
+$response = \DB::update("UPDATE users SET active=?, password=?, email_verified_at=?, approval_status=? WHERE id=?",[
+true,$password,date('Y-m-d h:i:s',time()),true,$supplier_id]);
 
 $email = $findSupplier->email;
 $f_name = $findSupplier->f_name;
 
+$url = route('login');
+
+$msg = "Tack för ditt intresse för att arbeta med Toppoffert, här är dina inloggningsuppgifter.
+
+Hej! ".$f_name. "<br/>Användarnamn: ".$email."<br/>Lösenord: ".$pw.".
+
+<a href='".$url."'>Logga in</a>
+
+När du loggat in kan du byta lösenord under Kontoinställningar.
+
+Hör av dig till oss om du har några frågor, vi finns här för att hjälpa dig.
+
+Vänliga hälsningar,
+
+Thank you.";
+
+
 //send an email to the supplier with a login credentials
-\Mail::to($email)->send(new \App\Mail\ApproveSupplier($f_name,$email,$pw));
+\Mail::to($email)->queue(new \App\Mail\SendApprovalSuppliermessage($f_name,$email,$pw,$url));
 
 return redirect()->back()->with(['message'=>'Leverantören har godkänts, ett välkomstmail med inloggning har skickats!']);
 }

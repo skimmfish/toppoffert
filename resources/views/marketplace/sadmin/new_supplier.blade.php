@@ -8,7 +8,11 @@
     margin-bottom:35px;
 }
 .label{font-weight:600 !important;font-size:13.5px;}
-    </style>
+.form-group{
+    margin-bottom:20px !important;
+}
+</style>
+
 
 
 <div class="row m-3">
@@ -73,7 +77,7 @@
 
 <div class="form-group col-md-6 col-lg-6 col-xs-12 col-sm-6">
 <label class="label">E-post</label>
-<input type="email" name="email"  pattern="[a-z0-9._%+-]+\u0040[a-z0-9.-]+\.[a-z]{2,}$" class="form-control input-control-lg" placeholder="E-post" value="{{old('email')}}" required/>
+<input type="email" name="email" class="form-control input-control-lg" placeholder="E-post" value="{{old('email')}}" required/>
                     <span class="">                      
                     @if($errors->has('email'))
                       <span class="help-block">
@@ -154,9 +158,9 @@ value="{{old('business_email') }}" required/>
 <input type="text" name="province" class="form-control input-control-lg" placeholder="Provins" 
 value="{{old('province') }}" required/>
 <span class="input-error-icon">                      
-                    @if($errors->has('business_email'))
+                    @if($errors->has('province'))
                       <span class="help-block">
-                      <strong class="text-tiny weight-400 red alert alert-danger">{{ $errors->first('business_email') }}</strong>
+                      <strong class="text-tiny weight-400 red alert alert-danger">{{ $errors->first('province') }}</strong>
                        </span>
                        @endif
                    </span>  
@@ -183,6 +187,81 @@ value="{{old('pobox')}}" required/>
 
 
 </form>
+
+{{--
+<!--intressmalan pg-->
+
+<form action="{{route('register_supplier')}}" method="POST">
+@csrf
+<div id="supplierRegisterForm" class="form-new">
+    <!-- Email input -->
+    <div id="formGroupEmail" class="form-group">
+        <div class="label">E-post</div>
+        <div class="register-input-container">
+            <input class="form-control input-field" type="email" name="email" placeholder="Foretag E-post" autocomplete="email">
+
+                <span class="input-error-icon">  
+                    
+ @if($errors->has('email'))
+   <span class="help-block">
+   <strong class="text-tiny weight-400 red">{{ $errors->first('email') }}</strong>
+    </span>
+    @endif
+    </span>
+        </div>
+            </div>
+
+    <!-- Search input -->
+    <div id="formGroupSearch" class="form-group company-search-group">
+        <div class="label">Företagsnamn eller org-nummer</div>
+        <div class="register-input-container">
+            <input class="form-control input-field" type="text" placeholder="Företagsnamn eller org-nummer" name="company"
+                autocomplete="off" placeholder=" ">
+            <span id="companySearchErrorIcon" class="input-error-icon">
+            @if($errors->has('company'))
+                <span class="help-block">
+                            <strong class="text-tiny weight-400 red">{{ $errors->first('company') }}</strong>
+        </span>
+    @endif
+   
+        </span>
+        </div>
+    </div>
+
+    <!-- Phone input -->
+    <div id="formGroupPhoneNumber" class="form-group">
+        <div class="label">Telefon</div>
+        <div class="register-input-container">
+            <input class="form-control input-field" name="phoneNumber" placeholder="Telefon" autocomplete="tel" type="tel">
+            <span class="input-error-icon"> 
+             </span>
+        </div>
+    </div>
+
+ <!-- Contact input -->
+ <div id="formGroupContact" class="form-group">
+        <div class="label">Företags Adress</div>
+        <div class="register-input-container">
+            <input class="form-control input-field" name="address" placeholder="Företags Adress" autocomplete="address" type="text">
+        </div>
+       </div>
+
+
+    <!-- Contact input -->
+    <div id="formGroupContact" class="form-group">
+        <div class="label">Kontaktperson</div>
+        <div class="register-input-container">
+            <input class="form-control input-field" name="contactPerson" placeholder="Kontaktperson" autocomplete="name" type="text">
+            <span class="input-error-icon"> 
+     </span>
+        </div>
+     </div>
+
+    <!-- Submit button -->
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary dark-bg" style="cursor:pointer;font-family:'Spartan' ,'GD Sherpa Regular';font-size:13px;height:50px;border:0;">Skickar...</button>
+    </form>
+--}}
 </div>
 
 

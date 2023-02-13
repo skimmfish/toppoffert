@@ -23,12 +23,12 @@ text-align:center;
         <div class="login-wrapper">
         <div class="login-inner">
 
-        @if (session('message')) 
-        <div class="alert alert-success text-center">  {{ session('message') }} </div>
-              @elseif(session('error'))
-              <div class="alert alert-danger text-center">  {{ session('error') }}
-                  </div>  
-                      @endif      
+                      @if (session('status'))
+                            <div class="alert alert-success" style="text-align:center;margin:0 0 10px auto;background:#9eeec2;padding:9px;border-radius:8px;color:#000">
+                                {{ session('status') }}
+                                </div>
+                                @endif
+
 
         <a href="{{route('index')}}" class="logo-offerta">
                    
@@ -79,7 +79,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </a>
  <div class="login-box">
     <h1>Logga in</h1>
-       <form method="POST" action="{{route('login')}}" id="login_form">      
+       <form method="POST" action="{{route('user_login')}}" id="login_form">      
         @csrf                
                         <div class="input-wrapper">
                             <div class="form-group text-input">

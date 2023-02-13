@@ -5,8 +5,19 @@
 <div id="app">
         
         <div class="login-container">
-            <div class="login-wrapper">
-                <div class="login-inner">
+
+        <div class="login-wrapper">
+
+        <div class="row">
+
+                            @if (session('status'))
+                            <div class="alert alert-success" style="text-align:center;margin:0 0 10px auto;background:#9eeec2;padding:9px;border-radius:8px;color:#000">
+                                {{ session('status') }}
+                                </div>
+                                @endif
+
+
+        <div class="login-inner">
                     <a href="{{route('index')}}" class="logo-offerta">
                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1900.000000pt" height="1900.000000pt" viewBox="0 0 310 310.31" preserveAspectRatio="xMidYMid meet" class="logo">
 <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
@@ -58,18 +69,20 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                         <h1>Glömt lösenord på {{config('app.name')}}</h1>
                         <h4 class="subtitle">Ange den epost du har registrerat dig med så får du ett mejl med en länk som fungerar i 10 minuter där du kan sätta ett nytt lösenord.</h4>
                         <form id="form" method="post" novalidate action="{{ route('password.email') }}">
-                            
+
+                            @csrf
                             
                             <div class="form-group text-input">
-                                <input type="email" class="input-large" placeholder=" " autofocus data-val="true" data-val-email="Ogilitig e-postadress" data-val-required="Fyll i en e-postadress" id="Email" name="Email" value="" />
+                                <input type="email" class="input-large" placeholder="Fyll i en e-postadress" autofocus data-val="true" id="Email" name="email" value="{{old('email')}}" />
                                 <label for="Email">E-post</label>
-                                <span class="error-message field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                                <span class="error-message field-validation-valid" data-valmsg-for="email" data-valmsg-replace="true">
+
+                                </span>
                             </div>
-                            <input type="hidden" id="ReturnUrl" name="ReturnUrl" value="" />
                             <div class="form-group">
                                 <button type="submit" id="submit" class="button button-rounded button-login">Skicka</button>
                             </div>
-                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8LRaIQn2hIJCg90zztmrAkEio6TCuDK6XMKWL4ieKde2LvYxfcjqeLMvSBCQN_zo8SD6q6ny2CjEET_67NKEspQHVKf9pSN4EN1YF4wiNm-nTknER3RUbBMgZrHOUAapvgs3p4vCZNoAikCNpPtJTug" /></form>
+                        </form>
                     </div>
                 </div>
             </div>

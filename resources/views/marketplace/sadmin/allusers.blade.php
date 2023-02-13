@@ -130,7 +130,7 @@
 <div class="col-md-4 col-lg-4 col-xs-8 col-sm-4">
 <h6><a href="#" data-attr="{{route('seeuserprofile',['id'=>$x->id])}}" data-toggle="modal" data-target="#requestModal" id="viewUsr">{{$x->f_name. ' '.$x->l_name}} </a><Br/>
 <small>{{ $supObj->get_supplier_data('supplier_corp_name',$x->id) }} <Br/>
-{{date('D, M, Y',strtotime($x->created_at))}}
+{{date('D d, M, Y',strtotime($x->created_at))}}
 </small>
 </h6>
 @if($x->active==false)

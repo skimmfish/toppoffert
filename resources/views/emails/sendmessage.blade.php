@@ -1,5 +1,6 @@
 <x-mail::message>
-Dear, {{$name}},
+
+Kara, {{$name}},
 
 {{$msg}}.
 

@@ -164,56 +164,14 @@ function fetchCategories(category){
 
 
 <style>
-fieldset {
-  border: 1px solid blue;
-  width: 360px;
-  border-radius: 5px;
+#subcategories_fetcher{
+    margin: auto;
+    display: block;
+    position: relative;
+    top: -40px;
+    left: -12px;
 }
-
-legend, label{
-  color: blue; 
-  font-size: 24px;
-  font-family: sans-serif;
-}
-
-input {
-  font-size: 18px;
-  padding: 5px;
-  height: 35px;
-  width: 350px;
-  border: 1px solid blue;
-  outline: none;
-  border-radius: 5px;
-  color: blue;
-/*   border-bottom: none; */
-}
-datalist {
-  position: absolute;
-  background-color: white;
-  border: 1px solid blue;
-  border-radius: 0 0 5px 5px;
-  border-top: none;
-  font-family: sans-serif;
-  width: 350px;
-  padding: 5px;
-  max-height: 10rem;
-  overflow-y: auto
-  
-}
-
-option {
-  background-color: white;
-  padding: 4px;
-  color: blue;
-  margin-bottom: 1px;
-   font-size: 18px;
-  cursor: pointer;
-}
-
-option:hover,  .active{
-  background-color: lightblue;
-}
-    </style>
+</style>
 
 </head>
 
@@ -264,64 +222,6 @@ option:hover,  .active{
                             <input type="text" autocomplete placeholder="Vad behöver du hjälp med?" class="input-control toppoffert_search" id="searchService" list="cat_name" onChange="fetchCategories(this.value)"/>
 
                                 <button type="submit" class="btn_search_sok">Sök</button>
-
-
-<!--datalist-->
-
-
-<fieldset>
-    <legend>
-      Datalist Form
-    </legend>
-    <label>Select Browser</label>
-
-    <input  autocomplete="on" role="combobox" list="" id="input" name="browsers" placeholder="Select your fav browser">
-  <!-- Its important that you keep list attribute empty to hide the default dropdown icon and the browser's default datalist -->
-
-  <datalist id="browsers" role="listbox">
-    <option value="Internet Explorer">Internet Explorer</option>
-  <option value="Chrome">Chrome</option>
-  <option value="Safari">Safari</option>
-    <option value="Microsoft Edge">Microsoft Edge</option>
-    <option value="Firefox">Firefox</option><option value="Microsoft Edge">Microsoft Edge</option>
-    <option value="Firefox">Firefox</option><option value="Microsoft Edge">Microsoft Edge</option>
-    <option value="Firefox">Firefox</option><option value="Microsoft Edge">Microsoft Edge</option>
-    <option value="Firefox">Firefox</option><option value="Microsoft Edge">Microsoft Edge</option>
-    <option value="Firefox">Firefox</option><option value="Microsoft Edge">Microsoft Edge</option>
-    <option value="Firefox">Firefox</option><option value="Microsoft Edge">Microsoft Edge</option>
-    <option value="Firefox">Firefox</option><option value="Microsoft Edge">Microsoft Edge</option>
-    <option value="Firefox">Firefox</option><option value="Microsoft Edge">Microsoft Edge</option>
-    <option value="Firefox">Firefox</option><option value="Microsoft Edge">Microsoft Edge</option>
-    <option value="Firefox">Firefox</option>
-  </datalist>
-<!--     <br>
-    <br>
-    <label for="pwd"> Password </label>
-    <input id="pwd" type="password">
-     -->
-  </fieldset>
-
-
-
-
-
-
-
-
-
-<!--datalist-->
-
-
-
-
-
-
-
-
-
-
-
-
 
                                 <datalist id="cat_name" onChange="fetchCategories(catName.value)" onClick="fetchCategories(catName.value)" style="font-weight:800;">
  <option value="">Select an option</option>

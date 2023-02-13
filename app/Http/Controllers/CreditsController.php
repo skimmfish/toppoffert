@@ -12,7 +12,7 @@ class CreditsController extends Controller
        try{
          $creditObj =  \App\Models\Credits::where('supplier_id',$supplier_id)->first();
        if($creditObj==NULL){
-        $creditObj=array();
+        $creditObj = [];
        }else{
         return $creditObj;
        }

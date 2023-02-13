@@ -40,22 +40,32 @@ class SuppliersController extends Controller
      */
 public static function getServiceAreas($uid){
 
-    try{
-$supplier = Suppliers::where(['supplier_id'=>$uid])->first();
-if($supplier!=null){
+$suppliersCoverage = array();
 
-return $suppliersCoverage = [
+try{
+$supplier = Suppliers::where(['supplier_id'=>$uid])->first();
+
+if($supplier!=null){
+ $suppliersCoverage = [
 'categories'=>$supplier->service_category,
 'subcategories'=>$supplier->service_sub_categories,
 'assignment_size'=>$supplier->assignment_size,
 'buyers_type'=>$supplier->buyers_type
 ]; 
+}else{
+    $suppliersCoverage = [
+        'categories'=>[],
+        'subcategories'=>[],
+        'assignment_size'=>[],
+        'buyers_type'=>[]  
+    ];
+}
 
-}
     }catch(\Exception $e){
-        echo $e->getMessage();
-        return [];
+        $suppliersCoverage = [];
 }
+
+return $suppliersCoverage;
 }
 
 
@@ -69,13 +79,13 @@ public static function getBuyerTypeName($type_id){
 $buyer_type_name = null;
     try{
 
-       $typeObj = \App\Models\BuyerType::where('id',$type_id)->first();
-        if($typeObj!=NULL)
-      return $buyer_type_name = $typeObj->buyers_type_name;
+    $typeObj = \App\Models\BuyerType::where('id',$type_id)->first();
+    if($typeObj!=NULL)
+    return $buyer_type_name = $typeObj->buyers_type_name;
     }catch(\Exception $e){
 
-        echo $e->getMessage();
-    }
+        return [];
+}
 }
 
 /**
@@ -89,7 +99,9 @@ public function senddocs($username){
     try{
 
     $supplier = \App\Models\User::where('username',$username)->first();
+    $f_name = $supplier->f_name;
     
+   
      $this->uid = $supplier->id;
 
     $request = \DB::table('suppliers')->join('users',function($join){
@@ -103,11 +115,17 @@ public function senddocs($username){
     \DB::update("UPDATE suppliers SET docs_hash=?,updated_at=? WHERE supplier_id=?",[$hyphenatedStr,date('Y-m-d h:i:s',time()),$this->uid]);     
     }
 
+    $supplier_dochash = \App\Models\Suppliers::where('supplier_id',$this->uid)->first()->docs_hash;
+    
+    //the url to send will lead to docstart
+    $url = url('/').'/su/offerter/'.$supplier_dochash;
+
+    \Mail::to($request->email)->queue(new \App\Mail\SendBusinessDocs($f_name,$url));
+
 }catch(\Exeption $e){
     echo $e->getMessage();
 }
     //send email to the user with the url
-
 }
 
 /**
@@ -125,6 +143,7 @@ public function getSupplierInfoForDocs($hash){
 
  
     return view('marketplace.suppliers.view_docs_details',['hash'=>$request->docs_hash.'_'.$request->supplier_id,
+    'supplier_id'=>$request->supplier_id,
     'title'=>'Affärsdokument och avtalsundertecknare','last_updated'=>$request->updated_at]);
 
 }
@@ -180,6 +199,26 @@ public function sendbid(Request $req){
     return redirect()->back()->with(['message'=>'Meddelande skickat till kund']);
 }
 
+/***
+ * this function is for e-Signing the business documents
+ */
+
+public function acceptoffer($hash){
+
+$supplierID = explode("_",$hash)[1];
+
+$supplier = \App\Models\Suppliers::where('supplier_id','=',$supplierID)->first();
+
+$supplierID = $supplier->id;
+
+$supplierById = \App\Models\Suppliers::find($supplierID);
+
+$supplierById->signed_business_docs = true;
+$supplierById->save();
+$info = 'Tack för att du accepterar'.config('app.name').' offert, vi uppskattar att du kommer och vi är villiga att se till att du får en fantastisk upplevelse på vår plattform!';
+return redirect()->route('marketplace.suppliers.view_confirmation_details',['info'=>$info]);
+
+}
 
 /**
  * @param \Illuminate\Http\Request

@@ -126,6 +126,26 @@ public function createhypenatedstring($size){
 
 
  /**
+  * This function delete resources based on the specified resource
+  */
+public function deleteResources($type,$resource,$id){
+   try{
+   if($resource=='buyer_requests'){
+      $requestObj = \App\Models\ServiceRequests::find($id);
+      $rdelete = $requestObj->delete();
+   
+      
+  }
+
+}catch(\Exception $e){
+   echo $e->getMessage();
+}
+  
+return redirect()->route('sadmin_all_requests')->with(['message'=>'Resurser har tagits bort']);
+
+}
+
+ /**
   * This function gets all the offers sent by suppliers for a particular request from buyers
   * @param Integer <$request_id>
   * @return Array <$offers>
@@ -249,6 +269,7 @@ $no_of_coy = 10;
 return redirect()->back()->with(['message'=>'Köparens Begäran Godkändes']);
 }
 
+
 /**
  * This set of functions deals directly with the requests sent in by buyers
  */
@@ -268,6 +289,33 @@ $catCount = sizeof(\App\Models\Categories::all());
 
 
 return view('pages.request_view')->with(['requestBody'=>$request,
+'supplierObj'=>new \App\Models\Suppliers,
+'title'=>$request->request_title,
+'request_count'=>sizeof($requests),
+'related'=>$this->getRelatedRequests($request->service_cat)]);
+}
+
+
+
+/**
+ * This set of functions deals directly with the requests sent in by buyers
+ */
+public function previewRequest($hash){
+
+   $request = \App\Models\ServiceRequests::where('request_hash','=',$hash)->first();
+
+/*   $request = \DB::table('service_requests')->join('categories',function($join){
+
+      $join->on('categories.id','=','service_requests.service_cat')->where('service_requests.request_hash','=',$rhash);
+  })->get();
+*/
+$requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
+$catCount = sizeof(\App\Models\Categories::all());
+
+//$credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+
+
+return view('pages.previewrequrestsa')->with(['requestBody'=>$request,
 'supplierObj'=>new \App\Models\Suppliers,
 'title'=>$request->request_title,
 'request_count'=>sizeof($requests),

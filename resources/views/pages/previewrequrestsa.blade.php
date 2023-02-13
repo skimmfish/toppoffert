@@ -1,21 +1,6 @@
-@extends('layouts.supplierheader')
+@extends('layouts.admin_app_elite')
 @section('content')
 @include('layouts.admin_topbar')
-
-<style>
-@media(max-width:768px){
-
-    .fixed-footer{
-        display:none;
-    }
-    .request_credit_footer{
-background:#fff !important;
-    }
-
-}
-
-    </style>
-
 
 <div class="notify_div">
 @if (session('message')) 
@@ -27,15 +12,16 @@ background:#fff !important;
                         </div>
 
 
-<a href="{{url()->previous()}}" 
+
+<a href="{{route('suppliers.dashboard')}}" 
 class="text-black btn btn-white btn_r_circle" style="border-radius:40px;">
 <svg width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#231f20;}</style></defs><g data-name="arrow left" id="arrow_left">
-<path class="cls-1" d="M22,29.73a1,1,0,0,1-.71-.29L9.93,18.12a3,3,0,0,1,0-4.24L21.24,2.56A1,1,0,1,1,22.66,4L11.34,15.29a1,1,0,0,0,0,1.42L22.66,28a1,1,0,0,1,0,1.42A1,1,0,0,1,22,29.73Z"/></g></svg> Tillbak
+<path class="cls-1" d="M22,29.73a1,1,0,0,1-.71-.29L9.93,18.12a3,3,0,0,1,0-4.24L21.24,2.56A1,1,0,1,1,22.66,4L11.34,15.29a1,1,0,0,0,0,1.42L22.66,28a1,1,0,0,1,0,1.42A1,1,0,0,1,22,29.73Z"/></g></svg> back
 </a>
 
 
 <div class="row m-3">
-<h3 class="text-black">{{$requestBody->request_title}} <span class="text-grey">#{{$requestBody->id}}</span></h3>
+<h4 class="text-black">{{$requestBody->request_title}} <span class="text-grey">#{{$requestBody->id}}</span></h4>
 
 <div class="row">
 <div class="col-md-8 col-lg-8 col-xs-12 col-xl-8 col-sm-8 wht-bg" style="border-radius:9px;">
@@ -252,5 +238,4 @@ for($i=0;$i<($responderCount);$i++){
             </div>
         </div>
     </div>
-
 @endsection

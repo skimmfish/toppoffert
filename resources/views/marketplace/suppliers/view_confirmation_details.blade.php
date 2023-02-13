@@ -12,7 +12,7 @@ $oneYearLater = $currentDateTime->addDay(365)
 <div class="row header_area" style="padding-top:25px;padding-bottom:50px;">
 <div class="col-md-5 padded">
 
-<h2>Acceptera Offert</h2>
+<h2>Tack för din beställning</h2>
 <a href="{{route('index')}}"><h3>{{config('app.name')}} Sverige AB</h3></a>
 <p>
     <span>Datum: {{date('Y-m-d')}}</span><br/>
@@ -52,25 +52,20 @@ $oneYearLater = $currentDateTime->addDay(365)
                                 </div>
 
                                     <!--offer details section-->
-<div class="row alert alert-primary resize_div">
+<div class="row alert alert-primary resize_div" style="width:100% !important">
 
 <div class="row accept_box" style="background:#fff;box-shadow:2px 2px 2px 2px #fff">
 <h3 class="text-center">Offert</h3>
 
 <div class="offertbox" style="background:#f3f9fd;padding:5px 10px;border-radius:10px;">
-    <b class="text-center">Godkänn Offert</b>
     <Br/>
-    <form action="{{route('accept_offert',['hash'=>$hash])}}" method="POST" STYLE="padding:10px 6px;">
-    @csrf
-    @method('PUT')
-<input type="hidden" name="supplier_id" value="{{$supplier_id}}">
-    <div class="form-group" style="display:flex;justify-content:space-between;margin-top:15px;">
-    <input type="checkbox" name="accept_offer" class="checkbox" onchange="document.getElementById('acceptBtn').disabled = !this.checked;"> 
-        <label class="form-label" style="text-align:left"> Jag godtar erbjudandet i denna offert samt <b>{{config('app.name')}} allmanna avtal och vilkor</b>
-            </label>
-                </div>
-<button class="btn btn-primary accept" name="accept" id="acceptBtn" disabled>Godkänn Offert</button>
-</form>
+    <h5 class="text-success"><b style="color:green !important;text-align:center">Tack för din beställning</b></h5>
+
+    <div class="row box_d_man" style="justify-content:space-between;margin-top:15px;">
+<div><img src="{{asset('img/dancing_man.jpg')}}" class="img-responsive-circle" /></div>
+      <div class="form-label" style="font-size:13.5px;line-height:27px;">{{$info}}</div>
+</div>
+    </div>
 </div>
 </div>
 

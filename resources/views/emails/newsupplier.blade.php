@@ -2,9 +2,10 @@
 
 <img src="{{asset('img/logos/png.png')}}" lazyloading style="display:block;margin:auto;width:130px !important;height:auto">
 
-Hej {{$f_name}}!
-
+<div>Hej {{$f_name}}!</div>
+<p>
 {{$msg}}
+</p>
 
 Thank you.
 <br/>

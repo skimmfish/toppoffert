@@ -89,10 +89,12 @@ class LoginController extends Controller
                
             }
 
-            return back()->withErrors([
+            //return redirect()->route('login')->with(['status'=>$error]);
+
+            /*return back()->withErrors([
                'email' => 'De angivna uppgifterna stämmer inte överens med våra uppgifter.',
            ])->onlyInput('email');
-
+*/
             //$error = 'Invalid Login Credentials';
             //flash::fail($error);
             //return redirect()->route('login')->with(['error'=>$error]);

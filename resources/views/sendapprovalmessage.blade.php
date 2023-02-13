@@ -2,7 +2,7 @@
 
 <img src="{{asset('img/logos/png.png')}}" lazyloading style="display:block;margin:auto;width:130px !important;height:auto">
 
-Hej! {{$name}}, Din förfrågan {{$title}} har skickats ut till {{$no_of_coy}} av {{config('app.name')}} tjänsteföretag.
+Hej! {{$f_name}}, Din förfrågan {{$title}} har skickats ut till {{$no_of_coy}} av {{config('app.name')}} tjänsteföretag.
 
 <b>Vad händer nu?</b>
 Upp till sex företag kan besvara din förfrågan och ta kontakt med dig. 
@@ -13,7 +13,7 @@ Användarnamn: {{$ur_email}}<br/>
 
 Lösenord: {{$ur_pass}}
 
-<x-mail::button :url="{{route('login')}}">
+<x-mail::button :url="$url">
 Login
 </x-mail::button>
 

@@ -65,7 +65,7 @@ class CategoriesController extends Controller
 
         $subcategories =  Subcats::where('service_cat_id',$catid)->get();
     
-        echo "<select class='select' name='sub_category'>
+        echo "<select class='select' name='sub_category' class='sub_category' style='width: 90% !important;border-radius: 9px; padding: 10px 9px;'>
                 <option value=''>Välj en underkategori</option>";
         foreach($subcategories as $x){
         
@@ -102,10 +102,14 @@ class CategoriesController extends Controller
             $assignment_size[] = @($request->assignment_size)[$i];
         }
 
-
+if(!is_null($request->buyer_type)){
     for($i=0;$i<sizeof($request->buyer_type);$i++){
         $buyer_type[] = @($request->buyer_type)[$i];
     }
+
+}else{
+    $buyer_type = [];
+}
 
     $res = null;
     $res = \DB::update("UPDATE suppliers SET service_category=?,service_sub_categories=?, 

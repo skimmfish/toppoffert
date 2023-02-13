@@ -160,6 +160,9 @@ display:grid;grid-template-columns: 15% 15% 15% 15%;grid-gap:5px;
 .certification_section{
     padding:15px 15px;margin:15px 15px;
 }
+.btn_r_circle{
+    border-radius:40px;
+}
 .nav_img{
 width:25px !important;height:25px !important;position:relative;left:-10px;top:-3px;z-index:-1;
 }

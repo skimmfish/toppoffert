@@ -37,6 +37,12 @@
     <meta content="NOINDEX,FOLLOW" name="ROBOTS" />
     <meta name="viewport" content="width=device-width" />
 
+
+    
+    
+    <link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}" />
+            
+
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.lazy.min.js')}}"></script>
 <meta name="theme-color" content="#2F3033">

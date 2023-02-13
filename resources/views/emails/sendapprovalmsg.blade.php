@@ -1,14 +1,14 @@
 <x-mail::message>
 
-Tack för ditt intresse för att arbeta med Toppoffert, här är dina inloggningsuppgifter. 
+Kara! {{$fname}}
 
-Hej! {{$fname}}
+Tack för ditt intresse för att arbeta med Toppoffert, här är dina inloggningsuppgifter. 
 
 Användarnamn: {{$ur_email}}
 
 Lösenord: {{$ur_pw}}
 
-<x-mail::button :url="$url">
+<x-mail::button :url="'https://toppoffert.se/se/home/login'">
 Login
 </x-mail::button>
 
@@ -18,7 +18,7 @@ Hör av dig till oss om du har några frågor, vi finns här för att hjälpa di
 
 Vänliga hälsningar,
 
-Thank you.
-<br/>
+
+Thanks,<br>
 {{ config('app.name') }}
 </x-mail::message>

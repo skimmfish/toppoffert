@@ -359,11 +359,12 @@ function copyToClipBoard(textFieldToCopy) {
 
 
 <style>
-  
-
-.grey_border{
+  .grey_border{
   border:3px solid #222;
   border-radius:50%;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family:'Spartan','GD Sherpa Regular';
 }
 </style>
   </head>

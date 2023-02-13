@@ -165,6 +165,10 @@ b{
 .resize_div{
     background:#f3f9fd !important;width:80%;display:block;margin:auto;margin-top:20px;
 }
+.box_d_man{
+    display:grid;grid-template-columns:20% 80%;grid-gap:20px;justify-content:space-between;
+    padding:10px 15px;
+}
 .categories_bx{
 
     display:flex;flex:1 1 1;flex-direction
@@ -185,6 +189,11 @@ width:100% !important;border-radius:9px;font-family:inherit;font-size:12.5px;
 .categories_bx{
     padding:15px 20px;
 }
+
+.img-responsive-circle{
+width:100px;height:100px;border-radius:50%;
+}
+
 /**For mobile designs */
 @media(max-width:768px){
     .info_box{
