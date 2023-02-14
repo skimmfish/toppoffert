@@ -449,7 +449,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <div class="block">            
 <div class="row" >
 
-<input id="WhatText" name="catName" maxlength="100" list="cat_name" onChange="fetchCategories(this.value)" tabindex="1" title="Ange uppdragstyp" placeholder="Ange uppdragstyp" onClick="fetchCategories(this.value)" name="cat_name" class="form-control-lg input-lg flex-input" placeholder="Ange uppdragstyp">
+<input id="WhatText" name="catName" maxlength="100" list="cat_name" onChange="fetchCategories(this.value)" tabindex="1" title="Ange uppdragstyp" placeholder="Ange uppdragstyp" onClick="fetchCategories(this.value)" name="cat_name" class="form-control-lg input-lg flex-input" placeholder="Ange uppdragstyp" required>
 
 <datalist id="cat_name" onChange="fetchCategories(catName.value)" onClick="fetchCategories(catName.value)">
  <option value="">Select an option</option>
@@ -488,10 +488,29 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     </div>
     <span class="what-hint tiny p" id="whatHint"></span>
 
-    <label for="Description">Beskrivning</label>
-    <textarea class="flex-input enquiry-description" cols="20" id="Description" maxlength="4000" name="Description" placeholder="Tips: En bra och tydlig beskrivning möjliggör fler och bättre svar" rows="2" tabindex="3">
+    <label for="request_title">Beskrivning</label>
+    <textarea class="flex-input enquiry-description" cols="20" id="request_title" maxlength="4000" name="request_title" placeholder="Tips: En bra och tydlig beskrivning möjliggör fler och bättre svar" rows="2" tabindex="3" required>
 </textarea>
-    <div class="two-columns no-margins">
+
+<span class="text-black">@if($errors->has('request_title'))
+              {{ $errors->first('request_title') }}
+              @endif
+            </span>
+
+            <!--for territory of assignment-->
+            <div class="column">
+              <label for="territory">Begär territorium</label>
+            <input class="input-name full-width" id="territory" name="territory" type="text" value="{{old('territory')}}" required/>
+            <span class="text-black">@if($errors->has('territory'))
+              {{ $errors->first('territory') }}
+              @endif
+            </span>
+
+
+</div>
+
+
+<div class="two-columns no-margins">
             <div class="column">
                 <label for="WhoId">Uppdraget ska utf&#246;ras &#229;t</label>
                 <div class="flex-input dropdown">
@@ -510,7 +529,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <div class="column">
                 <label for="WhenId">N&#228;r ska uppdraget p&#229;b&#246;rjas</label>
                 <div class="flex-input dropdown">
-                    <select id="WhenId" name="when_to" tabindex="5"><option value="1">Snarast m&#246;jligt</option>
+                    <select id="WhenId" name="when_to" tabindex="5"><option value="7">Snarast m&#246;jligt</option>
 <option value="3">Inom 1 m&#229;nad</option>
 <option value="4">Inom 3 m&#229;nader</option>
 <option value="5">Inom 6 m&#229;nader</option>
@@ -518,9 +537,35 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <option value="7">Tidpunkt mindre viktig</option>
 </select></div>
             </div>
+      
+      </div>
 
-            
-        <input id="PriceId" name="PriceId" type="hidden" value="1" />    </div>
+      <div class="two-columns no-margins">
+
+      <div class="column">
+                <label for="fro_date">Från vilket datum </label>
+                <input class="input-name full-width" id="fro_date" name="fro_date" type="date" value="{{old('fro_date')}}" required/>
+
+                <span class="text-black">@if($errors->has('fro_date'))
+              {{ $errors->first('fro_date') }}
+              @endif
+            </span>
+</div>
+
+
+<div class="column">
+                <label for="to_date">Till när</label>
+                <input class="input-name full-width" id="to_date" name="to_date" type="date" value="{{old('to_date')}}" required/>
+            </div>
+
+            <span class="text-black">@if($errors->has('to_date'))
+              {{ $errors->first('to_date') }}
+              @endif
+            </span>
+
+</div>
+
+
 
     <input id="ShowBygghemma" name="ShowBygghemma" type="hidden" value="False" />
 
@@ -529,22 +574,11 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     <div class="media media-center block">
         <div class="media-left">
           
-<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 218 218" class="icon-round-bg">
-  <path d="M181 22.16H50.45a6 6 0 0 0-6 6v34.43H37a6 6 0 0 0 0 12h7.5V103H37a6 6 0 1 0 0 12h7.5v28.48H37a6 6 0 0 0 0 12h7.5v34.46a6 6 0 0 0 6 6H181a6 6 0 0 0 6-6V28.13a6 6 0 0 0-6-5.97zm-6 161.73H56.43v-28.48h7.5a6 6 0 0 0 0-12h-7.5V115h7.5a6 6 0 0 0 0-12h-7.5V74.54h7.5a6 6 0 1 0 0-12h-7.5V34.11H175v149.78z" />
-  <path d="M120 111.75a24.58 24.58 0 1 0-24.56-24.58A24.6 24.6 0 0 0 120 111.75zm0-37.21a12.63 12.63 0 1 1-12.63 12.63A12.64 12.64 0 0 1 120 74.54zM92.65 156.44a6 6 0 0 0 6-6v-10.3a12 12 0 0 1 12-12h18.87a12 12 0 0 1 12 12v10.33a6 6 0 1 0 12 0v-10.33a24 24 0 0 0-24-24h-18.87a24 24 0 0 0-24 24v10.33a6 6 0 0 0 6 5.97z" />
-</svg>
-
         </div>
         <div class="media-content h4">
             Kontaktuppgifter
             <span class="tooltipstered tooltip tooltip-small pull-right" data-tooltip="Dina kontaktuppgifter kan endast ses av sex företag">
                 
-
-<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330" class="icon-tiny icon-faded">
-  <path d="M165 0C74.019 0 0 74.018 0 164.999S74.019 330 165 330s165-74.02 165-165.001C330 74.018 255.981 0 165 0zm0 300c-74.439 0-135-60.561-135-135.001C30 90.56 90.561 30 165 30s135 60.56 135 134.999C300 239.439 239.439 300 165 300z" />
-  <path d="M165.002 230c-11.026 0-19.996 8.968-19.996 19.991 0 11.033 8.97 20.009 19.996 20.009 11.026 0 19.996-8.976 19.996-20.009 0-11.023-8.97-19.991-19.996-19.991zM165 60c-30.342 0-55.026 24.684-55.026 55.024 0 8.284 6.716 15 15 15 8.284 0 15-6.716 15-15C139.974 101.226 151.2 90 165 90s25.027 11.226 25.027 25.024c0 13.8-11.227 25.026-25.027 25.026-8.284 0-15 6.716-15 15V185c0 8.284 6.716 15 15 15s15-6.716 15-15v-17.044c23.072-6.548 40.027-27.79 40.027-52.931C220.027 84.684 195.342 60 165 60z" />
-</svg>
-
             </span>
         </div>
     </div>
@@ -554,12 +588,24 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                 <label for="Name">Namn</label>
                 <input autocomplete="name" class="input-name full-width" id="Name" name="Name" tabindex="12" type="text" value="" />
             </div>
-        </div>
+            <span class="text-black">@if($errors->has('Name'))
+              {{ $errors->first('Name') }}
+              @endif
+            </span>
+
+          </div>
+
         <div class="column">
             <div class="form-group">
                 <label for="Name">E-post</label>
                 <input autocomplete="email" class="full-width input-email" id="Email" name="Email" tabindex="13" type="email" value="" />
             </div>
+
+            <span class="text-black">@if($errors->has('Email'))
+              {{ $errors->first('Email') }}
+              @endif
+            </span>
+
         </div>
         <div class="column">
             <div class="form-group form-group-half">
@@ -567,7 +613,12 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                 <div class="where-postcode-container form-group no-label ">
                 <input autocomplete="tel" class="full-width input-phone" id="Phone" name="Phone" tabindex="14" type="tel" value="" />
             </div></div>
-        </div>
+            <span class="text-black">@if($errors->has('Phone'))
+              {{ $errors->first('Phone') }}
+              @endif
+            </span>
+
+          </div>
 
             <div class="column">
                 <div class="form-group form-group-whatwhere">
@@ -575,6 +626,11 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
     <div class="where-postcode-container form-group no-label ">
         <input autocomplete="postal-code" class="where-postcode-field input-address full-width no-validation" data-regexp="^(?:[ ]*[0-9]){5}[?:[ ]*]*$" id="PostCode" name="PostCode" placeholder="" tabIndex="16" title="Postnr." type="number" value="" />
     </div>
+    <span class="text-black">@if($errors->has('PostCode'))
+              {{ $errors->first('PostCode') }}
+              @endif
+            </span>
+
 
                 </div>
             </div>
@@ -585,7 +641,9 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <div class="column">
                 <div class="form-group form-group-half">
                     <label for="ContactPreferencesId">N&#228;r vill du bli kontaktad</label>
-                    <div class="flex-input dropdown"><select id="ContactPreferencesId" name="whentobecontacted" tabindex="18"><option value="1">N&#228;r som helst</option>
+                    <div class="flex-input dropdown">
+                      <select id="ContactPreferencesId" name="whentobecontacted" tabindex="18">
+          <option value="5">N&#228;r som helst</option>
 <option value="2">Omg&#229;ende</option>
 <option value="3">F&#246;rmiddag</option>
 <option value="4">Eftermiddag</option>

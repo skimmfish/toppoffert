@@ -96,7 +96,7 @@
                 @endif
             </td>
             <td>{{$x->user_cat}}</td>
-            <td>{{ date('D, M Y',strtotime($x->updated_at)) }}</td>
+            <td>{{ date('D d, M Y',strtotime($x->updated_at)) }}</td>
             <td>
             <!--actions-->
             <a href="#" data-toggle="modal" data-attr="{{route('seeuserprofile',['id'=>$x->id])}}" class="text-primary" title="View User" id="viewUsr" data-target="#requestModal">Visa användare</a><br/>

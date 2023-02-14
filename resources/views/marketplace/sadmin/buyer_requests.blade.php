@@ -58,7 +58,7 @@ class="text-black btn btn-white btn_r_circle" style="border-radius:40px;">
                                   <div class="col-md-4 col-lg-4 col-sm-4 col-xs-8 pad-top">
                                    <div class="pad-top">
                                             <span> <img src="{{asset('img/calendar-edit-svgrepo-com.svg')}}" class="img-responsive-sm" lazyloading /></span>
-                                            <span>{{date('d, M Y',strtotime($x->date_from)) }} - {{ date('d, M Y',strtotime($x->date_to))}}
+                                            <span>@if(is_null($x->date_from)) Not Set @else{{date('d, M Y',strtotime($x->date_from)) }} @endif @if(is_null($x->date_to))  @else - {{ date('d, M Y',strtotime($x->date_to))}} @endif
                                             </div>
 
                                             <div class="pad-top">         

@@ -65,7 +65,7 @@ class CategoriesController extends Controller
 
         $subcategories =  Subcats::where('service_cat_id',$catid)->get();
     
-        echo "<select class='select' name='sub_category' class='sub_category' style='width: 90% !important;border-radius: 9px; padding: 10px 9px;'>
+        echo "<select class='select' name='sub_category' class='sub_category' style='width: 100% !important;border-radius: 9px; padding: 0 9px;font-weight:500'>
                 <option value=''>Välj en underkategori</option>";
         foreach($subcategories as $x){
         

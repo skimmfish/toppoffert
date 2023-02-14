@@ -79,7 +79,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </a>
  <div class="login-box">
     <h1>Logga in</h1>
-       <form method="POST" action="{{route('user_login')}}" id="login_form">      
+       <form method="POST" action="{{route('login')}}" id="login_form">      
         @csrf                
                         <div class="input-wrapper">
                             <div class="form-group text-input">

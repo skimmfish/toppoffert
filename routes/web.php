@@ -139,7 +139,7 @@ Route::get('skapa',function(){
 
 
 //taking new buyers' requests
-Route::post('skapa_request','\App\Http\Controllers\ServiceRequestsController@store')->name('skapa_request');
+Route::post('/skapa-request-processor','\App\Http\Controllers\ServiceRequestsController@store')->name('skapa_request');
 
 //this route redirects user to their respective dashboard if properly logged in previously
 Route::get('redirecting',function(){
@@ -480,7 +480,7 @@ return view('marketplace.pages.reply_client',['email'=>$email]);
 })->name('reply_to_msg');
 
 //Delete user
-Route::get('/delete-user-confirmation/$id',function($id){
+Route::get('/delete-user-confirmation/{id}',function($id){
     return view('pages.deleteuserconfirmation',['id'=>$id]);
 })->name('delete_user_confirmation');
 
@@ -491,7 +491,7 @@ Route::get('/delete-msg/$id/{type}',function($id,$type){
 })->name('delete_msg_confirmation');
 
 //delete the msg using softdelete model
-Route::get('/delete-msg/{id}/{type}',[\App\Http\Controllers\UserController::class, 'delete_msg'])->name('delete_user');
+Route::get('/delete-msg/{id}/{type}',[\App\Http\Controllers\UserController::class, 'delete_msg'])->name('delete_msg');
 
 
 //delete the user using softdelete model

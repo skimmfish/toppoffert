@@ -68,14 +68,23 @@ public function savesupplier(Request $req){
     $s_email = $req->email;
 
     $rule = [
-    'email' => ['required'],
+    'email' => ['required','unique:users'],
     'address'=>['required','string'],
     'contactPerson'=>['required','string'],
     'company' => ['required','string'],
     'phoneNumber' => ['required']
     ];
 
-    $req->validate($rule);
+    $messages = [
+        'email' => 'The :attribute is required, check if this email has not been registered previously ',
+        'address' => 'The :attribute is needed',
+        'contactPerson' => 'The :attribute is required, make sure you enter two(2) names',
+        'company' => ':attribute is required',
+    ];
+
+    $validator = Validator::make($request->all(), $rule, $messages);
+
+    //$req->validate($rule);
 
     $username =explode("@",$s_email)[0];
     $pw = Str::random(8);
@@ -166,7 +175,16 @@ public function createsupplier(Request $req){
     'phoneNumber'=>['required']
     ];
 
-    $req->validate($rule);
+    $messages = [
+        'email' => 'The :attribute is required, check if this email has not been registered previously ',
+        'address' => 'The :attribute is needed',
+        'contactPerson' => 'The :attribute is required, make sure you enter two(2) names',
+        'company' => ':attribute is required',
+    ];
+
+    $validator = Validator::make($request->all(), $rule, $messages);
+
+//    $req->validate($rule);
 
     $username =explode("@",$s_email)[0];
     $pw = Str::random(8);
@@ -174,8 +192,15 @@ public function createsupplier(Request $req){
     $corp_name = $req->company;
     $date_registered = date('Y-m-d');
     $name = explode(" ",$req->contactPerson);
+
+    if(sizeof($name)==1){
     $f_name = $name[0];
+    $l_name = '';
+    }else if(sizeof($name)>1){
+    $f_name=$name[0];
     $l_name = $name[1];
+    }
+
     $phone_no = $req->phoneNumber;
     $alt_phone = $phone_no;
     $address = $req->address;
@@ -460,10 +485,10 @@ public function deleteaccount($id){
  */
 public function delete_user($id){
     $user = \App\Models\User::find($id);
-    $res = $user->delete();
+    $res = $user->forceDelete();
 
     if($res==1){
-return redirect()->route('sa_all_users')->with(['message'=>'Användaren Har Arkiverats!']);
+return redirect()->route('sa_all_users',['type'=>'all'])->with(['message'=>'Användaren Har Arkiverats!']);
     }
     //\App\Models\User::softDelete($id)
 

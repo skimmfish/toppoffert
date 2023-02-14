@@ -5,11 +5,11 @@
 
 <style>
 .row{
-    margin-bottom:35px;
+    margin-bottom:20px;
 }
 .label{font-weight:600 !important;font-size:13.5px;}
 .form-group{
-    margin-bottom:20px !important;
+    margin-bottom:10px !important;
 }
 </style>
 
@@ -42,13 +42,13 @@
 
 <hr/>
 
-<form class="form wht-bg" style="border-radius:9px;line-height:20px;padding:30px 30px;" action="{{route('create_supplier')}}" method="POST">
+<form class="form wht-bg form-border" action="{{route('create_supplier')}}" method="POST">
 @csrf
 
-<div class="row wht-bg">
-<div class="form-group col-md-12 col-lg-12 col-xs-12 col-sm-12">
+<div class="row">
+<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 form-group">
 <label class="label">Kontakt Person</label>
-<input type="text" name="contactPerson" class="form-control input-control-lg" placeholder="Kontakt Person" value="{{old('first_name')}}" required/>
+<input type="text" name="contactPerson" class="form-control" placeholder="Kontakt Person" value="{{old('contactPerson')}}" required/>
 </div>
 
 <span class="">
@@ -62,9 +62,9 @@
 
 
     <div class="row">
-    <div class="form-group col-lg-6 col-xs-12 col-sm-6">
+    <div class="form-group col-md-6 col-lg-6 col-xs-12 col-sm-6 col-12">
         <label class="label">Företagsnamn eller org-nummer</label>
-            <input class="form-control input-control-lg" type="text" name="company"
+            <input class="form-control input-control-lg" type="text" name="company" value="{{old('company')}}"
                 autocomplete="off" placeholder="Företagsnamn eller org-nummer">
             <span class="help-block">
             @if($errors->has('company'))
@@ -90,6 +90,7 @@
 
 
 <div class="row">
+
 <div class="form-group col-md-6 col-lg-6 col-xs-12 col-sm-6">
 <label class="label">Telefon</label>
 <input type="text" name="phoneNumber" class="form-control input-control-lg" placeholder="Telefon" 
@@ -99,10 +100,7 @@ value="{{old('phoneNumber') }}" required/>
                     @if($errors->has('phoneNumber'))
                       <span class="help-block">
                       <strong class="text-tiny weight-400 red alert alert-danger">{{ $errors->first('phoneNumber') }}</strong>
-                       </span>
-                       @endif
-                   </span>                   
-
+                       </span>  @endif </span>
 </div>
 
 
@@ -122,7 +120,7 @@ value="{{old('phone_no') }}" required/>
 </div>
 
 <div class="row">
-<div class="form-group col-md-6 col-lg-6 col-xs-12 col-sm-6">
+<div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-12">
 <label class="label">Adress</label>
 <input type="text" name="address" class="form-control input-control-lg" placeholder="Adress" 
 value="{{old('address') }}" required/>
@@ -137,7 +135,7 @@ value="{{old('address') }}" required/>
 </div>
 
 
-<div class="form-group col-md-6 col-lg-6 col-xs-12 col-sm-6">
+<div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-12">
 <label class="label">Företags-e-post</label>
 <input type="text" name="business_email" class="form-control input-control-lg" placeholder="Företags-e-post" 
 value="{{old('business_email') }}" required/>
@@ -153,7 +151,7 @@ value="{{old('business_email') }}" required/>
 
 
 <div class="row">
-<div class="form-group col-md-6 col-lg-6 col-xs-12 col-sm-6">
+<div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-12">
 <label class="label">Provins</label>
 <input type="text" name="province" class="form-control input-control-lg" placeholder="Provins" 
 value="{{old('province') }}" required/>
@@ -166,7 +164,7 @@ value="{{old('province') }}" required/>
                    </span>  
 </div>
 
-<div class="form-group col-md-6 col-lg-6 col-xs-12 col-sm-6">
+<div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-12">
 <label class="label">Postnummer</label>
 <input type="text" name="pobox" class="form-control input-control-lg" placeholder="Postnummer" 
 value="{{old('pobox')}}" required/>
@@ -181,8 +179,8 @@ value="{{old('pobox')}}" required/>
 
 </div>
 
-<div class="form-group col-md-6 col-lg-6 col-xs-12 col-sm-6 adjust_dw pull-right" >
-<button class="btn btn-primary btn-round dark-bg" type="submit" style="cursor:pointer;background:#0d2453 !important;color:#fff;border:0;border-radius:6px;" type="submit"><label class="label">Spara Uppgifter</label></button>
+<div class="form-group col-md-6 col-lg-6 col-sm-6 adjust_dw pull-right col-xs-12">
+<button class="btn btn-primary btn-round dark-bg" type="submit" style="cursor:pointer;background:#0d2453 !important;color:#fff;border:0;border-radius:6px;width:100%" type="submit"><label class="label">Spara Uppgifter</label></button>
 </div>
 
 

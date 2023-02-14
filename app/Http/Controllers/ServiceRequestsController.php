@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
+use Illuminate\Support\Facades\Validator;
+
 class ServiceRequestsController extends Controller
 {
 
@@ -41,11 +43,31 @@ public function searchservicecat(Request $req){
  */
 public function store(Request $request){
 
+   $last_id = 0;
+   
+   $rules = [
+      'Email'=>['required'],
+      'request_title'=>['required','unique:service_requests'],
+      'Name'=>['required'],
+      'Phone'=>['required'],
+      'PostCode'=>['required'],
+      'fro_date'=>['required'],
+      'to_date'=>['required']
+   ];
+
+   $request->validate($rules);
+
    $newRequest = new ServiceRequests;
    $f_name = $request->Name;
    $pw = Str::random(8);
+   
    $password = Hash::make($pw);
-      $email = $request->Email;
+      
+   $email = $request->Email;
+
+   $emailExists = \App\Models\User::where('email',$email)->first();
+
+   if(is_null($emailExists)){
       $last_id = $user = User::insertGetId([
       'f_name' => $f_name,
       'username' => explode('@',$email)[0],
@@ -61,7 +83,12 @@ public function store(Request $request){
       'updated_at'=>date('Y-m-d h:i:s',time()),
       'administrative_level'=>0
    ]);
+   }else{
 
+      //retrieve the users_id for the request
+      $last_id = $emailExists->id;
+
+   }
 
    $subCategory = $request->sub_category;
 
@@ -80,14 +107,18 @@ public function store(Request $request){
    $newRequest->executed_for = $request->executed_for;
    $newRequest->request_type = explode("_",$subCategory)[0];
    $newRequest->buyer_telephone = $request->Phone;
+   $newRequest->date_from = $request->fro_date;
+   $newRequest->date_to = $request->to_date;
+   $newRequest->territory = $request->territory;
+
    $newRequest->save();
+   
    //$newRequest-save();
    $msg = null;
    $requestScope=null;
    
    $supplier_count = 0;
-   \Mail::to($email)->queue(new \App\Mail\RequestUpdate($requestScope,$f_name,$msg,$supplier_count,
-   $request->Description));
+   \Mail::to($email)->queue(new \App\Mail\RequestUpdate($requestScope,$f_name,$msg,$supplier_count,$request->Description));
 
    return redirect()->route('clients_staging_area')->with(['message'=>'Din förfrågan har skickats till 100-tals företag, vänligen vänta tills de når dig']);
 }
