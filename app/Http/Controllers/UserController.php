@@ -62,6 +62,7 @@ class UserController extends Controller
  */
 public function savesupplier(Request $req){
 
+  try{
     $newsupplier= new \App\Models\Suppliers;
     $newUser = new \App\Models\User;
 
@@ -82,7 +83,7 @@ public function savesupplier(Request $req){
         'company' => ':attribute is required',
     ];
 
-    $validator = Validator::make($request->all(), $rule, $messages);
+    $validator = Validator::make($req->all(), $rule, $messages);
 
     //$req->validate($rule);
 
@@ -150,8 +151,11 @@ public function savesupplier(Request $req){
 
     $msg = 'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.';
     
-//    \Mail::to($s_email)->queue(new \App\Mail\NewSupplier($msg,$f_name,$s_email));
-
+   // \Mail::to($s_email)->queue(new \App\Mail\NewSupplier($msg,$f_name,$s_email));
+  }catch(\Exception $e){
+ return redirect()->route("marketplace_suppliers_staging")->with(['message'=>'Fel! Kanske har du använt den e-postadressen tidigare']);
+    
+  }
     if($res==true){
  return redirect()->route("marketplace_suppliers_staging")->with(['message'=>'Vi kontaktar dig inom kort för att berätta mer. Under ordinarie arbetstider hör vi normalt av oss inom en timme.']);
 }

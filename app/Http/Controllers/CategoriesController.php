@@ -55,6 +55,30 @@ class CategoriesController extends Controller
     }
 
     /**
+     * This function retrieves the cat data
+     * @param Integer <$cat_id>
+     * @return String <$cat_data>
+     */
+public static function getcatdata($fieldname,$cat_id){
+
+return \App\Models\Categories::where('id',$cat_id)->first()->$fieldname;
+
+}
+
+
+    /**
+     * This function retrieves the subcategory data
+     * @param Integer <$cat_id>
+     * @return String <$cat_data>
+     */
+    public static function getsubcatdata($fieldname,$cat_id){
+
+        return \App\Models\Subcats::where('id',$cat_id)->first()->$fieldname;
+        
+        }
+        
+        
+        /**
      * This function fetches all subcat names for a select category
      */
 
@@ -65,18 +89,44 @@ class CategoriesController extends Controller
 
         $subcategories =  Subcats::where('service_cat_id',$catid)->get();
     
-        echo "<select class='select' name='sub_category' class='sub_category' style='width: 100% !important;border-radius: 9px; padding: 0 9px;font-weight:500'>
-                <option value=''>Välj en underkategori</option>";
-        foreach($subcategories as $x){
-        
-            echo "<option value='".$x->subcat_name.'_'.$catid.'_'.$x->id.'_'.$cat_name."'>".ucfirst($x->subcat_name)."</option>";
+        if(sizeof($subcategories)>0){
+            echo "<div class='subcatbox'>";
 
-        }
-        echo "</select>";
+            foreach($subcategories as $x){
 
-    //return view('pages.subcatlist',['subcategories'=>$subcategories]);
+                echo "<div class='svgbox'>
+                        <a target='_blank' href='".url('/skapa/'.$catid.'/'.$x->id)."' style='font-family:Spartan;font-weight:600;' title='".$x->subcat_name."'><p class='catbox'>".$x->cat_img."</p>".ucfirst($x->subcat_name)."</div>";
+            }
+        }    
+        echo "</div>";
 }
-    /**
+
+
+        /**
+     * This function fetches all subcat names for a select category
+     */
+
+     public static function getsubcatnamesforpg($cat_name){
+
+        //get id of the category
+        $catid = Categories::where('cat_name',$cat_name)->first()->id;
+
+        $subcategories =  Subcats::where('service_cat_id',$catid)->get();
+    
+            echo "<div class='subcatbox'>
+                
+                    <select name='sub_category' class='form-control'>
+                    <option>Select an option</option>";
+
+            foreach($subcategories as $x){
+
+                echo "<option value='".$x->id."'>".ucfirst($x->subcat_name)."</option>";
+        
+            }
+        echo "</select></div>";
+}
+
+/**
      * this function updates suppliers' categorization
      */
     public function updatesuppliercategorizaton(Request $request,$id){

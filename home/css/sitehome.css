@@ -1,0 +1,24 @@
+
+@font-face {font-family: "GD Sherpa Regular";
+    src: url("../fonts/0aee6008b82cde991ec28387169bb13e.eot"); /* IE9*/
+    src: url("../fonts/0aee6008b82cde991ec28387169bb13e.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+        url("../fonts/0aee6008b82cde991ec28387169bb13e.woff2") format("woff2"), /* chrome、firefox */
+        url("../fonts/0aee6008b82cde991ec28387169bb13e.woff") format("woff"), /* chrome、firefox */
+        url("../fonts/0aee6008b82cde991ec28387169bb13e.ttf") format("truetype"), 
+        /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+        url("../fonts/0aee6008b82cde991ec28387169bb13e.svg#GD Sherpa Regular") format("svg"); /* iOS 4.1- */
+      }
+
+      .footer, .grid-row,.footer .grid-row{
+    display:grid;grid-template-columns: 25% 25% 25% 25%;grid-gap:10px;
+    justify-content: center;
+    background:#000 !important;
+    padding:15px 20px;
+    height:auto;
+    width:100vw;
+    overflow-x:hidden;
+    color:#fff;
+}
+.foo_h4 span{
+    color:#0055aa;
+}

@@ -5,9 +5,10 @@
     <a href="{{ route('intresseanmalan') }}" class="new-header__menu--item">Anmäl intresse</a>  
 
     @if(\Auth::check())
-      <a href="{{route('redirect_to_dashboard')}}" class="new-header__menu--item"><img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
+      <a href="{{route('redirect_to_dashboard')}}" class="new-header__menu--item">
+        <img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img_avatar"/>{{\Auth::user()->f_name}} {{\Auth::user()->l_name}}</a>
       @else
-      <a href="{{route('login')}}" class="new-header__menu--item">Logga In</a>
+      <a href="{{route('login')}}" class="new-header__menu--item loginlk">Logga In</a>
     @endif
    
 
@@ -68,7 +69,16 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 <!--end of navigation_logo--> 
 </label>
 
-        <label for="active" class="menu-btn"><i class="fa fa-bars"></i></label>
+        <label for="active" class="menu-btn">
+          <!--<i class="fa fa-bars"></i>-->
+        
+<!--          <svg fill="#000000" width="70px" height="70px" viewBox="0 0 24 24" id="menu" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg" class="icon flat-color"><path id="secondary" d="M21,13H3a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z" style="fill: rgb(44, 169, 188);"></path><path id="primary" d="M21,19H9a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2ZM15,7H3A1,1,0,0,1,3,5H15a1,1,0,0,1,0,2Z" style="fill: rgb(0, 0, 0);"></path></svg>-->
+
+<div style="background:#0055aa;width:50px;height:50px;border-radius:50%;">
+<svg width="30px" height="30px" class="navhamburger" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 17H20M4 12H20M4 7H20" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div>
+</label>
 
       <div class="wrapper">
       <ul>

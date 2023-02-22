@@ -133,9 +133,18 @@ Route::get('/kontact-os',function(){
     return view('pages.kontactos',['title'=>'Kontakta Oss']);
 })->name('kontactos-pg');
 
+
+//for request sybmission by customers interest
 Route::get('skapa',function(){
     return view('pages.skapa',['title'=>'Skapa förfrågan','categories'=>\App\Http\Controllers\CategoriesController::getcatnames()]);
 })->name('skapa');
+
+Route::get('/skapa/{cat}/{subcat}',function($cat,$subcat){
+
+return view('pages.skapa',['title'=>'Skapa förfrågan','catSelected'=>$cat,'subCatSelected'=>$subcat,'categories'=>\App\Http\Controllers\CategoriesController::getcatnames()]);
+
+})->name('skapa_with_cat');
+
 
 
 //taking new buyers' requests
@@ -204,7 +213,11 @@ $no_of_sales_to_date = 0;
 
 $new_suppliers = \App\Models\Suppliers::where(['date_registered'=>date('Y-m-d')])->get();
 
-return view('marketplace.sadmin.index',['title'=>"Administrator's Portal - ".config('app.name'), 'unreadMessageCounter'=>0,
+$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->orderBy('created_at','DESC')->orderBy('publish_status','DESC')->paginate(15);
+
+return view('marketplace.sadmin.buyer_requests',[
+'allrequest'=>$allrequests,
+'title'=>"Administrator's Portal - ".config('app.name'), 'unreadMessageCounter'=>0,
 'new_suppliers'=>$newSuppliers,
 'no_of_clients'=>$no_of_clients,
 'no_of_requests'=>$no_of_requests,
@@ -389,6 +402,18 @@ Route::get('/get-cat-names',function(){
 }
 //'\App\Http\Controllers\CategoriesController@getsubcatnames')
 )->name('categories');
+
+
+//fetch categories
+Route::get('/get-cat-names-for-page',function(){
+    if(isset($_GET['cat_name'])){
+        
+        $cat_name = $_GET['cat_name'];
+
+    \App\Http\Controllers\CategoriesController::getsubcatnamesforpg($cat_name); 
+}
+}
+)->name('categories_for_page');
 
 
 //grouping all routes under the dashboard/admin namespace for authenticated users

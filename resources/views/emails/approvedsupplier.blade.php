@@ -1,5 +1,8 @@
 <x-mail::message>
 
+<img src="{{asset('img/logos/png.png')}}" lazyloading style="display:block;margin:auto;width:130px !important;height:auto">
+
+
 Tack för ditt intresse för att arbeta med Toppoffert, här är dina inloggningsuppgifter. 
 
 Hej! {{$fname}}

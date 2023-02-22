@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-
 use Illuminate\Support\Facades\Validator;
 
 class ServiceRequestsController extends Controller
@@ -47,15 +46,31 @@ public function store(Request $request){
    
    $rules = [
       'Email'=>['required'],
-      'request_title'=>['required','unique:service_requests'],
+      'request_title'=>['required'],
       'Name'=>['required'],
       'Phone'=>['required'],
       'PostCode'=>['required'],
-      'fro_date'=>['required'],
-      'to_date'=>['required']
+      'fro_date'=>['required','date'],
+      'to_date'=>['required','date'],
+      'territory'=>['required', 'String']
+      
    ];
 
-   $request->validate($rules);
+   $messages = [
+      'Email' => 'The :attribute is required, it must not have been used previously',
+      'address' => 'The :attribute is essential',
+      'Name' => ':attribute is required, make sure you enter two(2) names',
+      'PostCode' => ':attribute is required',
+      'fro_date'=>'Date from which you want your request to be carried out is required',
+      'to_date'=>'Date to which you want your request to be carried out is required',
+      'Phone'=>':attribute is required',
+      'request_title'=>':attribute is required'
+  ];
+
+
+  $validator = Validator::make($request->all(), $rules, $messages);
+
+ //  $request->validate($rules);
 
    $newRequest = new ServiceRequests;
    $f_name = $request->Name;
@@ -99,8 +114,8 @@ public function store(Request $request){
    $newRequest->when_to_be_contacted = $request->whentobecontacted;
    $newRequest->customer_id = $last_id;
    $newRequest->when_to = $request->When_to;
-   $newRequest->request_title = $request->Description;
-   $newRequest->mission_type=$request->Description;
+   $newRequest->request_title = $request->request_title;
+   $newRequest->mission_type=$request->request_title;
    $newRequest->service_cat = $main_service_cat;
    $newRequest->subservice_cat = $subcat_id;
    $newRequest->postal_code_of_assignment = $request->PostCode;
@@ -163,13 +178,11 @@ public function deleteResources($type,$resource,$id){
    try{
    if($resource=='buyer_requests'){
       $requestObj = \App\Models\ServiceRequests::find($id);
-      $rdelete = $requestObj->delete();
-   
-      
+      $rdelete = $requestObj->forceDelete();
   }
 
 }catch(\Exception $e){
-   echo $e->getMessage();
+   $e->getMessage();
 }
   
 return redirect()->route('sadmin_all_requests')->with(['message'=>'Resurser har tagits bort']);
@@ -254,7 +267,7 @@ public static function get_request_metadata($field,$request_id){
 
 public function allbuyersrequest(){
 
-$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->orderBy('created_at','DESC')->orderBy('publish_status','DESC')->paginate(2);
+$allrequests = \App\Models\ServiceRequests::whereNull('deleted_at')->orderBy('created_at','DESC')->orderBy('publish_status','DESC')->paginate(15);
 
 return view('marketplace.sadmin.buyer_requests',['title'=>"Köparnas önskemål",'allrequest'=>$allrequests]);
 
@@ -308,11 +321,13 @@ public function viewservicerequest($hash){
 
    $request = \App\Models\ServiceRequests::where('request_hash','=',$hash)->first();
 
-/*   $request = \DB::table('service_requests')->join('categories',function($join){
+/*
+$request = \DB::table('service_requests')->join('categories',function($join){
 
       $join->on('categories.id','=','service_requests.service_cat')->where('service_requests.request_hash','=',$rhash);
   })->get();
-*/
+
+  */
 $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
 $catCount = sizeof(\App\Models\Categories::all());
 

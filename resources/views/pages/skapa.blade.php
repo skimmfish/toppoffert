@@ -1,5 +1,14 @@
-<!DOCTYPE html>
+@php
 
+$catName = null; $subCatNameSelected = null;
+if(isset($catSelected) && isset($subCatSelected)){
+$catName = \App\Http\Controllers\CategoriesController::getcatdata('cat_name',$catSelected);
+$subCatNameSelected = \App\Http\Controllers\CategoriesController::getsubcatdata('subcat_name',$subCatSelected);
+}
+@endphp
+
+
+<!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="sv" class="no-js ie ie7 ie-legacy"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="sv" class="no-js ie ie7 ie-legacy"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="sv" class="no-js ie ie8"> <![endif]-->
@@ -36,12 +45,9 @@
     <meta content="NOINDEX,FOLLOW" name="GOOGLEBOT" />
     <meta content="NOINDEX,FOLLOW" name="ROBOTS" />
     <meta name="viewport" content="width=device-width" />
-
-
-    
     
     <link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}" />
-            
+    <link href="https://fonts.googleapis.com/css?family=Spartan:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.lazy.min.js')}}"></script>
@@ -69,11 +75,12 @@ document.documentElement.className = document.documentElement.className.replace(
     
 
     <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
-    <style>
+<style>
+body{font-family:'Spartan','GD Sherpa Regular';}
 .new-header.scrolled{
-	background-color: #fff !important;
-	transition: background-color 200ms linear;
-  }
+background-color: #fff !important;
+transition: background-color 200ms linear;
+}
   
   .new-header__menu--item{
 	font-family:'Open Sans';
@@ -83,19 +90,6 @@ document.documentElement.className = document.documentElement.className.replace(
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Open Sans', sans-serif;
-  }
-  *{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Open Sans', sans-serif;
-  }
-  *{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Open Sans', sans-serif;
   }
   .wrapper{
 	position: fixed;
@@ -338,18 +332,252 @@ float:left;
 	.grid_case .href{
 		font-size:9px !important;font-weight:800;color:#434345;
 	}
-
 }
-    </style>
+
+		 /**
+		=========================================================
+		 FOOTER
+		=========================================================
+		 **/
+
+		 .footer, .grid-row,.footer .grid-row{
+			background:#dfdfdf !important;
+			padding:15px 20px;
+			height:auto;
+			width:100%;
+			overflow-x:hidden !important;
+			color:#000;
+			font-family:'Spartan','GD Sherpa Regular';
+		}
+		.footer{
+			padding:15px 10px 25px 90px !important;
+			display:grid;grid-template-columns: 28% 22% 22% 28%;grid-gap:20px;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.footer span, .footer h4, .footer h4 span, .box_1 .foo_h4{
+			font-family:'GD Sherpa Regular' !important;
+		}
+		.foo_h4 span{
+			color:#000;
+		}
+		.foo_h4{color:#000;}
+		.footer_navigation_ul li{
+			color:#dfdfdf;
+		}
+		.footer_navigation_ul{
+			padding-top:0;margin-top:-45px;line-height:35px;
+		}
+		.footer_navigation_ul li > a, .footer_navigation_ul b{
+			color:#000;font-family: 'Spartan','GD Sherpa Regular';
+			font-size:13px;font-weight:400;
+		}
+		.footer_navigation_ul b{
+			font-weight:700;font-size:19px;
+		}
+		.footer_navigation_ul li > a:hover{
+			text-decoration:underline;
+		}
+		.footer_logo{
+			width:130px;margin:10px 0 15px 0;
+		}
+		.copyright{
+			background:#efefef;
+			text-align:Center;color:#000;font-family: 'GD Sherpa Regular';
+			font-size:13.5px;
+			padding:20px 15px;
+		}
+		.adjust{
+			margin:10px auto 10px auto;	} .email_form .input-md{
+			border-radius:10px;height:60px;padding-left:9px;width:82%;
+		}
+		.text-opacity-drop{
+			color:#000 !important;font-family:'Spartan','GD Sherpa Regular' !important;font-weight:600;
+
+		}
+			.text-opacity-drop span,.adjust span{
+				font-family:'Spartan','GD Sherpa Regular' !important;font-weight:600;
+			}
+		.btn_sn svg{
+			line-height:25px;
+		}
+		.input-md::placeholder{
+			font-weight:700;font-size:12px;
+		}
+		.email_form label{
+			font-size:10.5px;margin:0 0 15px 0px;
+		}
+		.divbox_1{font-family:'Spartan','GD Sherpa Regular' !important;font-weight: 500;}
+		.box_4 .socials{margin:15px 0 0 10px;display:flex;flex-direction: row;justify-content:first baseline;flex:auto;position:relative;
+		}
+
+		.box_4 .form{
+		display:flex;flex-direction: column;flex:1;flex-basis: auto;
+		}
+
+		.form .input-md{width:100%;height:65px;}
+		.socials a, .phone div span{ margin-right:10px;}
+		.phone div{	display:flex;flex-direction: row;flex:1 1;margin:15px 0 0 10px;	}
+	
+		.form .btn_sn{
+			width:55px;height:55px;border-radius:50%;background:#0055aa;padding:8px;border:1px solid #fff;
+			line-height: 50px;position:relative;left:-74px;top:3px;
+		}
+		.form .input-item{
+			display: grid;grid-template-columns: 95% 5%;grid-gap:0;
+		}
+
+.page-section .center{
+	text-align:center;
+}
+.loginlk{
+        margin-right:55px;
+    }
+	.navhamburger{
+    position:relative;top:9px;
+}
+
+.pad-section{padding-top:20px;
+background:none;}
+.pad-section b, .pad-section h4{font-weight:800;}
+.pad-section b{font-size:16.5px;text-align: center !important;}
+.pad-section h4{
+	margin-top:-14px;font-size:35px;font-weight: 900;
+}
+.pad-section small{
+	font-weight: 800;text-align: center;
+}
+.page-section__inner .col_title{
+	font-weight:800;font-size:23px;font-family: 'Spartan','GD Sherpa Regular' !important;
+}
+.page-section__inner .cols{
+	background:#efefef;border-radius:15px;padding:15px 25px;margin-top:20px;
+}
+.page-section__inner .text{font-family: 'Spartan','GD Regular Sherpa' !important;font-size:12.5px;line-height:30px;font-weight:600;}
+.box_4{
+padding-top:30px;padding-left:15px;
+}
+
+
+@media(min-width:1440px){
+	.btn_search_sok{
+		left:127.5%;border:0 !important;
+		}
+		.padd-box_1{
+			padding-right:100px;
+		}
+}
+
+@media(max-width:768px){
+	.footer{
+		grid-template-columns: 50% 50%;line-height: 35px;
+		grid-gap:10px;
+		padding: 20px 10px 25px 68px !important
+		}
+		
+}
+
+@media(max-width:425px){
+.footer{
+grid-template-columns: 100%;line-height: 35px;
+grid-gap:67px;
+padding: 20px 0 25px 20px !important
+}
+.bg_two{
+	background-image:url('../img/cleaners.jpg');
+	background-position:center center;position:Relative;left:110px;background-size:cover;
+}
+
+
+.h6_one{
+	font-size:24px;position:relative;top:20px;bottom:10px;font-weight:700;margin-bottom:30px
+}
+
+.h4_one{
+	font-size:25px;font-weight:800;line-height:40px;
+}
+
+.h5_one{
+
+font-weight: 800;
+font-size: 13.5px;
+margin: auto;
+line-height: 34px;
+padding: 3px 27px;
+margin-bottom:-49px;
+}
+
+.cols svg{
+	width:45px !important;height:45px !important;
+}
+.footer_navigation_ul .box_1{
+	margin-top:15px;padding:5px;
+}
+.box_4{
+	padding-top:0;
+}
+.form .input-item{
+left:-20px;
+}
+
+.email_form .input-md{
+	width:80%;
+}
+}
+
+/**********
+*PAGE STYLES
+*/
+.page-title{
+  font-size:34px;text-align:left;color:#000;font-weight:400;line-height:44px;
+  font-family:'Spartan','GD Sherpa Regular' !important;
+}
+.page-subtitle{
+  font-size:20px;
+}
+.text-pull-left{
+  text-align:left;
+}
+.form-label, .text-white{
+  color:#fff;
+}
+.form-control{
+  height:60px;
+  border-radius:10px;
+  font-family:'Spartan','GD Sherpa Regular' !important;
+  padding-left:10px;font-weight:500;
+}
+
+.two-columns{
+	display:flex;flex-direction:row;flex:1 1;
+}
+.row{
+  display:block;
+  grid-template-columns:80% 20%;grid-gap:15px;
+  flex-direction:row;justify-content:space-between;
+  flex:1;
+}
+.text-lg-1x{
+	font-size:20px !important;font-weight:400 !important;color:#000;
+}
+.text-black{color:#000;}
+.btn-flat-bed{
+	width:65%;
+}
+.btn-flat-bed span{
+	position:relative;top:-20px;margin-right:-15px
+}
+</style>
 
 
 <!--this function fetches all the associated sub_Cat_names-->
 <script type="text/javascript">
-function fetchCategories(category){
+function fetchCategoriesForSkapa(category){
     if(category){
     $.ajax({
     type: 'GET',
-    url: "{{ route('categories') }}",
+    url: "{{ route('categories_for_page') }}",
    
     data: {
     cat_name: category,
@@ -419,175 +647,154 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 @include('layouts.navigationbar')
 </header>
 
-<main class="content-main" role="main">         
+
+<main class="content-main" role="main" style="background:#0d2453">   
+
+<section class="section" style="padding:0">
+<div class="white-bg" style="background:#fff !important;margin:0 !important;padding:140px 0 50px 50px;">
+
+<h1 class="page-title text-white" style="font-family:'Spartan' !important;margin-bottom:35px;color:#000;">Vi introducerar dig till f&#246;retag <br/>redo att hjälpa dig</h1>
+		@if(!is_null($subCatNameSelected))
+		<p class="page-subtitle text-pull-left text-white"><span class="tiny text-lg-1x">Få hjälp med </span><b class="text-black">{{$subCatNameSelected}}</b></p>
+        @else
+		<p class="page-title text-pull-left text-white text-lg-1x">Beskriv ditt behov och ta emot upp till sex offerter från lokala tjänsteföretag</p>
+		@endif
+</div>
+
+</section>
+
+
 <section class="section">
-    <div class="container">
-        <h1 class="page-title">Vi introducerar dig till f&#246;retag <br/>redo att hjälpa dig
-        </h1>
-        <p class="page-subtitle text-center">Beskriv ditt behov och ta emot upp till sex offerter från lokala tjänsteföretag</p>
-        <div class="grid">
+
+<div class="container">
+
+		<div class="grid">
             <div class="content">
-<form method="POST" action="{{route('skapa_request')}}">
-@csrf
-@method('POST')
-<div class="box box-enquiry-create has-button-bar">
-        <div class="media media-center block">
-            <div class="media-left">
-                
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.5 18.5" class="icon-round-bg">
-  <path d="M5.2 5.3H12v1.1H5.2zm10.2 8.3c.5-.9.4-2.1-.4-2.9-.4-.4-1-.7-1.7-.7-.6 0-1.3.3-1.7.7-.5.5-.7 1.1-.7 1.7 0 .6.3 1.3.7 1.7.5.5 1.1.7 1.7.7.4 0 .8-.1 1.2-.3l2.7 2.7.9-.9-2.7-2.7zm-1.1-.1c-.5.5-1.5.5-2 0-.6-.6-.6-1.5 0-2 .3-.3.6-.4 1-.4s.7.1 1 .4c.3.3.4.6.4 1s-.1.7-.4 1z" />
-  <path d="M14.1 15.5H4.5c-.2 0-.3-.1-.3-.3V3.3c0-.2.2-.3.3-.3H14c.2 0 .3.1.3.3v6.1c.4.1.8.3 1.1.5V3.3c0-.8-.6-1.4-1.4-1.4H4.5c-.8 0-1.4.6-1.4 1.4v11.9c0 .8.6 1.4 1.4 1.4H14c.6 0 .8-.1 1-.6l-.5-.5h-.4z" />
-  <path d="M5.2 8.4H12v1.1H5.2z" />
-</svg>
 
-            </div>
-            <div class="media-content h4">
-                Vad behöver du hjälp med?
-            </div>
-        </div>
+            <form method="POST" action="{{route('skapa_request')}}">
+          @csrf 
+          @method('POST')
+          <div class="row">
+          <div class="form-group">
+          <label class="form-label">Vad behöver du hjälp med?</label>
+          
+          <input id="WhatText" name="catName" maxlength="100" list="cat_name" value="@if(isset($catSelected)) {{$catName}} @else {{old('catName')}} @endif" onChange="fetchCategoriesForSkapa(this.value)" tabindex="1" title="Ange uppdragstyp" placeholder="Ange uppdragstyp" onClick="fetchCategoriesForSkapa(this.value)" name="cat_name" class="form-control form-control-lg input-lg flex-input" placeholder="Ange uppdragstyp" required />
 
-<div class="block">            
-<div class="row" >
+            <datalist id="cat_name" onChange="fetchCategoriesForSkapa(catName.value)" onClick="fetchCategoriesForSkapa(catName.value)">
+              @if(isset($catSelected))
+                <option selected value="{{$catName}}">{{$catName}}</option>
+                  @else
+                    <option value="">Välj ett alternativ</option>  
+                        @foreach($categories as $s)
+                           <option value="{{$s->cat_name}}">{{ ucfirst($s->cat_name) }}</option>
+                               @endforeach
+                                   @endif
+                                      </datalist>
+                                            </div>
 
-<input id="WhatText" name="catName" maxlength="100" list="cat_name" onChange="fetchCategories(this.value)" tabindex="1" title="Ange uppdragstyp" placeholder="Ange uppdragstyp" onClick="fetchCategories(this.value)" name="cat_name" class="form-control-lg input-lg flex-input" placeholder="Ange uppdragstyp" required>
+            <div class="form-group">
 
-<datalist id="cat_name" onChange="fetchCategories(catName.value)" onClick="fetchCategories(catName.value)">
- <option value="">Select an option</option>
-   @foreach($categories as $s)
-   <option value="{{$s->cat_name}}">{{ ucfirst($s->cat_name) }}</option>
-   @endforeach
-</datalist> 
+            <label class="form-label" for='sub_category'>Välj en underkategori för din förfrågan</label>
+				<br/>
+                	@if(isset($subCatSelected) && !is_null($subCatSelected))
+                  	<input type="text" name="sub_category" class="form-control form-control-lg input-lg flex-input" value="{{$subCatNameSelected}}" style="height:70px;padding-top:0 !important;"/>
+                    @else
+                    <div id="subcategories_fetcher"></div>
+                      @endif
+                    <!--end of subcategory-->      
+                    </div>
 
-
-<div class="row" >
-<label for='sub_category'>Välj en underkategori för din förfrågan</label>
-
-<div class="flex-input dropdown">
-
-<div id="subcategories_fetcher"></div>
-    </div>
-        </div>
-            </div>
-
-<div class="whatwhere-modal-cover modal-cover" data-dismiss="modal"></div>
-        </div>
-
-        <hr class="divider-full-width" />
-        <div class="media media-center block block-first">
-        <div class="media-left">
-            
-
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" class="icon-round-bg">
-  <path d="M79.3 47.7c-1.9 0-3.5 1.6-3.5 3.5v29.3H19.5V24.2h29.3c1.9 0 3.5-1.6 3.5-3.5s-1.6-3.5-3.5-3.5H17.2c-2.6 0-4.7 2.1-4.7 4.7v60.9c0 2.6 2.1 4.7 4.7 4.7h60.9c2.6 0 4.7-2.1 4.7-4.7V51.2c0-2-1.6-3.5-3.5-3.5zm7.4-24.3L76.6 13.3c-.5-.5-1.3-.8-2-.8s-1.4.3-2 .8l-39 39v14.1h14.1l39-39c.6-.6.8-1.3.8-2s-.3-1.4-.8-2zm-41.4 36h-4.7v-4.7l34-34 4.7 4.7-34 34z" />
-</svg>
-
-        </div>
-        <div class="media-content h4">
-            Beskrivning
-        </div>
-    </div>
-    <span class="what-hint tiny p" id="whatHint"></span>
-
-    <label for="request_title">Beskrivning</label>
-    <textarea class="flex-input enquiry-description" cols="20" id="request_title" maxlength="4000" name="request_title" placeholder="Tips: En bra och tydlig beskrivning möjliggör fler och bättre svar" rows="2" tabindex="3" required>
+                    <div class="form-group">
+    <label for="request_title" class="form-label">Beskrivning</label>
+    <textarea class="flex-input enquiry-description form-control" id="request_title" maxlength="4000" name="request_title" placeholder="Tips: En bra och tydlig beskrivning möjliggör fler och bättre svar" rows="2" tabindex="3" required>
 </textarea>
 
 <span class="text-black">@if($errors->has('request_title'))
               {{ $errors->first('request_title') }}
               @endif
-            </span>
+                </span>
+                  </div>
+
+<!--end of request_title-->
 
             <!--for territory of assignment-->
-            <div class="column">
-              <label for="territory">Begär territorium</label>
-            <input class="input-name full-width" id="territory" name="territory" type="text" value="{{old('territory')}}" required/>
-            <span class="text-black">@if($errors->has('territory'))
+            <div class="form-group">
+              <label for="territory" class="form-label">Plats</label>
+            <input class="flex-input form-control" style="height:65px !important;" placeholder="Plats" name="territory" type="text" value="{{old('territory')}}" required/>
+            <span class="text-danger">@if($errors->has('territory'))
               {{ $errors->first('territory') }}
               @endif
-            </span>
+                </span>
+                  </div>
+
+                  <!--end of plats-->
 
 
+            <div class="form-group">
+                <label for="WhoId" class="form-label">Uppdraget ska utf&#246;ras &#229;t</label><br/>
+                  <select id="WhoId" name="executed_for" class="flex-input form-control">
+                    <option value="1">Bostadsr&#228;ttsf&#246;rening</option>
+                        <option value="2">Byggherre/Entrepren&#246;r</option>
+                          <option value="3">F&#246;retag</option>
+                            <option value="4">Ideell f&#246;rening</option>
+                              <option value="5">Kommun/Myndighet</option>
+                                <option value="6">Privatperson</option>
+                                    <option value="7">Villaf&#246;rening</option>
+                                      </select> 
+                                          </div>
+
+            <div class="form-group">
+                <label for="WhenId" class="form-label">N&#228;r ska uppdraget p&#229;b&#246;rjas</label>
+                    <select id="WhenId" name="when_to" class="flex-input form-control">
+                    <option value="Snarast m&#246;jligt">Snarast m&#246;jligt</option>
+                    <option value="Inom 1 m&#229;nad">Inom 1 m&#229;nad</option>
+                    <option value="Inom 3 m&#229;nader">Inom 3 m&#229;nader</option> 
+                    <option value="Inom 6 m&#229;nader">Inom 6 m&#229;nader</option>
+                    <option value="Inom 12 m&#229;nader">Inom 12 m&#229;nader</option>
+                    <option value="Tidpunkt mindre viktig">Tidpunkt mindre viktig</option>
+                    </select>
+                </div>
+ 
+
+
+<div class="two-columns">
+<div class="form-group column">
+		  <label for="fro_date" class="form-label">Från vilket datum </label>
+		  <input class="flex-input form-control" style="width:100%;margin-top:8px;" id="fro_date" name="fro_date" type="date" value="{{old('fro_date')}}" required/>
+
+		  <span class="text-black">@if($errors->has('fro_date'))
+		{{ $errors->first('fro_date') }}
+		@endif
+	  </span>
 </div>
 
 
-<div class="two-columns no-margins">
-            <div class="column">
-                <label for="WhoId">Uppdraget ska utf&#246;ras &#229;t</label>
-                <div class="flex-input dropdown">
-<select id="WhoId" name="executed_for" tabindex="4">
-<option value="1">Bostadsr&#228;ttsf&#246;rening</option>
-<option value="2">Byggherre/Entrepren&#246;r</option>
-<option value="3">F&#246;retag</option>
-<option value="4">Ideell f&#246;rening</option>
-<option value="5">Kommun/Myndighet</option>
-<option value="6">Privatperson</option>
-<option value="7">Villaf&#246;rening</option>
+<div class="form-group column">
+		  <label for="to_date" class="form-label" style="margin-top:-8px !important;">Till när</label>
+		  <input class="flex-input form-control" style="width:100%;margin-top:0px;" id="to_date" name="to_date" type="date" value="{{old('to_date')}}" required/>
+	  </div>
 
-</select></div>
-            </div>
-
-            <div class="column">
-                <label for="WhenId">N&#228;r ska uppdraget p&#229;b&#246;rjas</label>
-                <div class="flex-input dropdown">
-                    <select id="WhenId" name="when_to" tabindex="5"><option value="7">Snarast m&#246;jligt</option>
-<option value="3">Inom 1 m&#229;nad</option>
-<option value="4">Inom 3 m&#229;nader</option>
-<option value="5">Inom 6 m&#229;nader</option>
-<option value="6">Inom 12 m&#229;nader</option>
-<option value="7">Tidpunkt mindre viktig</option>
-</select></div>
-            </div>
-      
-      </div>
-
-      <div class="two-columns no-margins">
-
-      <div class="column">
-                <label for="fro_date">Från vilket datum </label>
-                <input class="input-name full-width" id="fro_date" name="fro_date" type="date" value="{{old('fro_date')}}" required/>
-
-                <span class="text-black">@if($errors->has('fro_date'))
-              {{ $errors->first('fro_date') }}
-              @endif
-            </span>
-</div>
-
-
-<div class="column">
-                <label for="to_date">Till när</label>
-                <input class="input-name full-width" id="to_date" name="to_date" type="date" value="{{old('to_date')}}" required/>
-            </div>
-
-            <span class="text-black">@if($errors->has('to_date'))
-              {{ $errors->first('to_date') }}
-              @endif
-            </span>
+	  <span class="text-black">@if($errors->has('to_date'))
+		{{ $errors->first('to_date') }}
+		@endif
+	  </span>
 
 </div>
+</div>
 
+<!--end of dates-->
 
-
-    <input id="ShowBygghemma" name="ShowBygghemma" type="hidden" value="False" />
-
-
-    <hr class="divider-full-width" />
-    <div class="media media-center block">
-        <div class="media-left">
-          
-        </div>
-        <div class="media-content h4">
+<hr class="divider-full-width" />
+        <h5 class="media-content h4 form-label">
             Kontaktuppgifter
-            <span class="tooltipstered tooltip tooltip-small pull-right" data-tooltip="Dina kontaktuppgifter kan endast ses av sex företag">
-                
-            </span>
-        </div>
-    </div>
-    <div class="two-columns grid-inputs">
-        <div class="column">
-            <div class="form-group form-group-half">
-                <label for="Name">Namn</label>
-                <input autocomplete="name" class="input-name full-width" id="Name" name="Name" tabindex="12" type="text" value="" />
-            </div>
+</h5>
+
+<hr class="divider-full-width" />
+
+
+            <div class="form-group">
+                <label for="Name" class="form-label">Namn</label>
+                <input autocomplete="name" class="flex-input form-control" id="Name" placeholder="Namn" name="Name" type="text" value="{{old('Name')}}" />
             <span class="text-black">@if($errors->has('Name'))
               {{ $errors->first('Name') }}
               @endif
@@ -595,135 +802,82 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
           </div>
 
-        <div class="column">
-            <div class="form-group">
-                <label for="Name">E-post</label>
-                <input autocomplete="email" class="full-width input-email" id="Email" name="Email" tabindex="13" type="email" value="" />
-            </div>
 
+<!--email-->
+		  <div class="form-group">
+			<label for="Name" class="form-label">E-post</label>
+                <input autocomplete="email" class="full-width input-email flex-input form-control" id="Email" name="Email" type="email" value="{{old('Email')}}" />
+            
             <span class="text-black">@if($errors->has('Email'))
               {{ $errors->first('Email') }}
               @endif
             </span>
 
         </div>
-        <div class="column">
-            <div class="form-group form-group-half">
-                <label for="Name">Telefon</label>
-                <div class="where-postcode-container form-group no-label ">
-                <input autocomplete="tel" class="full-width input-phone" id="Phone" name="Phone" tabindex="14" type="tel" value="" />
-            </div></div>
+<!--end of E-post-->
+
+            <div class="form-group">
+                <label for="Name" class="form-label">Telefon</label>
+                <input autocomplete="tel" class="flex-input form-control" id="Phone" name="Phone" type="tel" value="{{old('Phone')}}" />
             <span class="text-black">@if($errors->has('Phone'))
               {{ $errors->first('Phone') }}
               @endif
             </span>
 
           </div>
+<!--end of Telefon-->
 
-            <div class="column">
-                <div class="form-group form-group-whatwhere">
-                    <label for="Name">Postnummer (d&#228;r uppdraget ska utf&#246;ras)</label>
-    <div class="where-postcode-container form-group no-label ">
-        <input autocomplete="postal-code" class="where-postcode-field input-address full-width no-validation" data-regexp="^(?:[ ]*[0-9]){5}[?:[ ]*]*$" id="PostCode" name="PostCode" placeholder="" tabIndex="16" title="Postnr." type="number" value="" />
-    </div>
-    <span class="text-black">@if($errors->has('PostCode'))
+                <div class="form-group">
+                    <label for="Name" class="form-label">Postnummer (d&#228;r uppdraget ska utf&#246;ras)</label>
+        <input autocomplete="postal-code" class="flex-input form-control" data-regexp="^(?:[ ]*[0-9]){5}[?:[ ]*]*$" id="PostCode" name="PostCode" placeholder="Postnummer" tabIndex="16" title="Postnr." type="number" value="{{old('PostCode')}}" />
+			    <span class="text-black">@if($errors->has('PostCode'))
               {{ $errors->first('PostCode') }}
               @endif
             </span>
+         </div>
 
-
-                </div>
-            </div>
-
-    </div>
-
-    <div class="two-columns no-margins">
-            <div class="column">
-                <div class="form-group form-group-half">
-                    <label for="ContactPreferencesId">N&#228;r vill du bli kontaktad</label>
-                    <div class="flex-input dropdown">
-                      <select id="ContactPreferencesId" name="whentobecontacted" tabindex="18">
-          <option value="5">N&#228;r som helst</option>
-<option value="2">Omg&#229;ende</option>
-<option value="3">F&#246;rmiddag</option>
-<option value="4">Eftermiddag</option>
-<option value="5">Kv&#228;ll</option>
-</select></div>
-                </div>
-            </div>
-
-        <div class="column nolabel-input">
-
-
-<div class="fileuploader-wrapper">
-    
-    <div class="progress-bar hidden">
-        <div class="progress" style="width: 0%;"></div>
-    </div>
-
-    <div class="uploaded-files hidden">
-        
-    </div>
-      </div>        
-       </div>
-          </div>
-
-
-    <input class="what-selection-method-field" id="WhatSelectionMethod" name="WhatSelectionMethod" type="hidden" value="preset" />
-    <p>
-        Vi på {{config('app.name')}} är måna om din personliga integritet och vår <a href="{{route('integritetspolicy')}}" class="link">integritetspolicy</a> förklarar hur vi samlar in och använder dina personuppgifter. Genom att klicka på knappen '{{config('app.name')}}} mig!' skickar du in din förfrågan och godkänner våra användarvillkor för att använda {{config('app.name')}} tjänst.
-    </p>
-
-    <div class="button-bar">
-        <button type="submit" id="enquiry-form-submit" class="button-large button-primary click-once button-create-enquiry button-flat" tabindex="20">
-            <div class="button-spinner"></div>
-            <span data-submit-text="Skapar förfrågan...">{{config('app.name')}} mig!</span>
-            <span class="badge">Gratis!</span>
-        </button>
-    </div>
+<!--Postal-code-->
+         
+<!--nxt-->
+<div class="two-columns">
+<div class="form-group column">
+		  
+<label for="ContactPreferencesId" class="form-label">N&#228;r vill du bli kontaktad</label>
+                      <select id="ContactPreferencesId" name="whentobecontacted" class="flex-input form-control" style="width:99%">
+          <option value="N&#228;r som helst">N&#228;r som helst</option>
+<option value="Omg&#229;ende">Omg&#229;ende</option>
+<option value="F&#246;rmiddag">F&#246;rmiddag</option>
+<option value="Eftermiddag">Eftermiddag</option>
+<option value="Kv&#228;ll">Kv&#228;ll</option>
+</select>
 </div>
-<input name="__RequestVerificationToken" type="hidden" value="my7vqT9y5FIUPq_BKjYscj3Cz0FymyG2OA3US_TKU7x-N4HJTyWwLTaEwvblCeZRMVyzlHMrYnJp4qwzuLpMX7i1ESJllIATWAPyqiNdL581" /></form>            </div>
-            <aside class="aside">
-                <div class="box">
-                    <h4>Hur fungerar {{config('app.name')}}?</h4>
-                    <p>Inom ett par timmar kommer vi att introducera dig till intresserade f&#246;retag. Du kommer att kunna jämföra offerter, erbjudanden, kundomdömen och profiler. När du är redo – anlita det bästa proffset för dig!</p>
-                    <ul class="list-clean small">
-                        <li class="media media-center">
-                            <div class="media-left">
 
-<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-round-bg">
-  <path d="M20.71 5.29a1 1 0 0 0-1.41 0L9 15.59l-4.29-4.3A1 1 0 0 0 3.3 12.7l5 5a1 1 0 0 0 1.41 0l11-11a1 1 0 0 0 0-1.41z" />
-</svg>
-</div>
-                            <div class="media-content">
-                                <strong>Skapa din förfrågan (snart klar)</strong>
-                            </div>
-                        </li>
-                        <li class="media media-center">
-                            <div class="media-left">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" class="icon-round-bg" />
+<div class="form-group column">
+		  <label for="filer" class="form-label" style="position:relative;top:-12px !important;">Välj en fil</label><br/>
+		  <input class="flex-input form-control file" style="width:99%;margin-top:-9px;width:99%" id="filer" name="filer" type="file" value="{{old('filer')}}" required/>
+	  </div>
+	  <span class="text-black">@if($errors->has('filer'))
+		{{ $errors->first('filer') }}
+		@endif
+	  </span>
 </div>
-                            <div class="media-content">Ta emot offerter gratis</div>
-                        </li>
-                        <li class="media media-center">
-                            <div class="media-left">
+</div>
+<!--end of nxt-->
 
-<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" class="icon-round-bg" />
+<div class="form-group column">
+<button type="submit" class="button btn-flat-bed" name="gratis">
+<svg width="50px" height="50px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M128 224v512a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V224H128zm0-64h768a64 64 0 0 1 64 64v512a128 128 0 0 1-128 128H192A128 128 0 0 1 64 736V224a64 64 0 0 1 64-64z"/><path fill="#ffffff" d="M904 224 656.512 506.88a192 192 0 0 1-289.024 0L120 224h784zm-698.944 0 210.56 240.704a128 128 0 0 0 192.704 0L818.944 224H205.056z"/></svg>	
+
+<span>Gratis!</span></button>
 </div>
-                            <div class="media-content">Anlita det bästa proffset för dig</div>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-        </div>
-    </div>
+</form>
+
+</div>
+
 </section>
-            </main>
-        </div>
-        
+        </main>
 
-        @include('pages.gen_footer')
-
+		@include('pages.footer')
     </body>
 </html>

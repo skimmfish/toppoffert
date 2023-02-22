@@ -42,17 +42,14 @@
  <!-- End Visual Website Optimizer Asynchronous Code -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>   ') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}"/>
 
 <meta name="theme-color" content="#2F3033">
 <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js js-loading');
     </script>
 
-    
-
-    <!--[if (lt IE 9)]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
+   <!--[if (lt IE 9)]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!-- 
                 <script>
                     (function (d) {
@@ -71,11 +68,13 @@
 
     <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
 
-<style>
+
+    <style>
+body{font-family:'Spartan','GD Sherpa Regular';}
 .new-header.scrolled{
-	background-color: #fff !important;
-	transition: background-color 200ms linear;
-  }
+background-color: #fff !important;
+transition: background-color 200ms linear;
+}
   
   .new-header__menu--item{
 	font-family:'Open Sans';
@@ -85,19 +84,6 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Open Sans', sans-serif;
-  }
-  *{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Open Sans', sans-serif;
-  }
-  *{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Open Sans', sans-serif;
   }
   .wrapper{
 	position: fixed;
@@ -340,10 +326,246 @@ float:left;
 	.grid_case .href{
 		font-size:9px !important;font-weight:800;color:#434345;
 	}
-
 }
-    </style>
-</head>
+
+		 /**
+		=========================================================
+		 FOOTER
+		=========================================================
+		 **/
+
+		 .footer, .grid-row,.footer .grid-row{
+			background:#dfdfdf !important;
+			padding:15px 20px;
+			height:auto;
+			width:100%;
+			overflow-x:hidden !important;
+			color:#000;
+			font-family:'Spartan','GD Sherpa Regular';
+		}
+		.footer{
+			padding:15px 10px 25px 90px !important;
+			display:grid;grid-template-columns: 28% 22% 22% 28%;grid-gap:20px;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.footer span, .footer h4, .footer h4 span, .box_1 .foo_h4{
+			font-family:'GD Sherpa Regular' !important;
+		}
+		.foo_h4 span{
+			color:#000;
+		}
+		.foo_h4{color:#000;}
+		.footer_navigation_ul li{
+			color:#dfdfdf;
+		}
+		.footer_navigation_ul{
+			padding-top:0;margin-top:-45px;line-height:35px;
+		}
+		.footer_navigation_ul li > a, .footer_navigation_ul b{
+			color:#000;font-family: 'Spartan','GD Sherpa Regular';
+			font-size:13px;font-weight:400;
+		}
+		.footer_navigation_ul b{
+			font-weight:700;font-size:19px;
+		}
+		.footer_navigation_ul li > a:hover{
+			text-decoration:underline;
+		}
+		.footer_logo{
+			width:130px;margin:10px 0 15px 0;
+		}
+		.copyright{
+			background:#efefef;
+			text-align:Center;color:#000;font-family: 'GD Sherpa Regular';
+			font-size:13.5px;
+			padding:20px 15px;
+		}
+		.adjust{
+			margin:10px auto 10px auto;	} .email_form .input-md{
+			border-radius:10px;height:60px;padding-left:9px;width:82%;
+		}
+		.text-opacity-drop{
+			color:#000 !important;font-family:'Spartan','GD Sherpa Regular' !important;font-weight:600;
+
+		}
+			.text-opacity-drop span,.adjust span{
+				font-family:'Spartan','GD Sherpa Regular' !important;font-weight:600;
+			}
+		.btn_sn svg{
+			line-height:25px;
+		}
+		.input-md::placeholder{
+			font-weight:700;font-size:12px;
+		}
+		.email_form label{
+			font-size:10.5px;margin:0 0 15px 0px;
+		}
+		.divbox_1{font-family:'Spartan','GD Sherpa Regular' !important;font-weight: 500;}
+		.box_4 .socials{margin:15px 0 0 10px;display:flex;flex-direction: row;justify-content:first baseline;flex:auto;position:relative;
+		}
+
+		.box_4 .form{
+		display:flex;flex-direction: column;flex:1;flex-basis: auto;
+		}
+
+		.form .input-md{width:100%;height:65px;}
+		.socials a, .phone div span{ margin-right:10px;}
+		.phone div{	display:flex;flex-direction: row;flex:1 1;margin:15px 0 0 10px;	}
+	
+		.form .btn_sn{
+			width:55px;height:55px;border-radius:50%;background:#0055aa;padding:8px;border:1px solid #fff;
+			line-height: 50px;position:relative;left:-74px;top:3px;
+		}
+		.form .input-item{
+			display: grid;grid-template-columns: 95% 5%;grid-gap:0;
+		}
+
+.page-section .center{
+	text-align:center;
+}
+.loginlk{
+        margin-right:55px;
+    }
+	.navhamburger{
+    position:relative;top:9px;
+}
+
+.pad-section{padding-top:20px;
+background:none;}
+.pad-section b, .pad-section h4{font-weight:800;}
+.pad-section b{font-size:16.5px;text-align: center !important;}
+.pad-section h4{
+	margin-top:-14px;font-size:35px;font-weight: 900;
+}
+.pad-section small{
+	font-weight: 800;text-align: center;
+}
+.page-section__inner .col_title{
+	font-weight:800;font-size:23px;font-family: 'Spartan','GD Sherpa Regular' !important;
+}
+.page-section__inner .cols{
+	background:#efefef;border-radius:15px;padding:15px 25px;margin-top:20px;
+}
+.page-section__inner .text{font-family: 'Spartan','GD Regular Sherpa' !important;font-size:12.5px;line-height:30px;font-weight:600;}
+.box_4{
+padding-top:30px;padding-left:15px;
+}
+
+
+@media(min-width:1440px){
+	.btn_search_sok{
+		left:127.5%;border:0 !important;
+		}
+		.padd-box_1{
+			padding-right:100px;
+		}
+}
+
+@media(max-width:768px){
+	.footer{
+		grid-template-columns: 50% 50%;line-height: 35px;
+		grid-gap:10px;
+		padding: 20px 10px 25px 68px !important
+		}
+		
+}
+
+@media(max-width:425px){
+.footer{
+grid-template-columns: 100%;line-height: 35px;
+grid-gap:67px;
+padding: 20px 0 25px 20px !important
+}
+.bg_two{
+	background-image:url('../img/cleaners.jpg');
+	background-position:center center;position:Relative;left:110px;background-size:cover;
+}
+
+
+.h6_one{
+	font-size:24px;position:relative;top:20px;bottom:10px;font-weight:700;margin-bottom:30px
+}
+
+.h4_one{
+	font-size:25px;font-weight:800;line-height:40px;
+}
+
+.h5_one{
+
+font-weight: 800;
+font-size: 13.5px;
+margin: auto;
+line-height: 34px;
+padding: 3px 27px;
+margin-bottom:-49px;
+}
+
+.cols svg{
+	width:45px !important;height:45px !important;
+}
+.footer_navigation_ul .box_1{
+	margin-top:15px;padding:5px;
+}
+.box_4{
+	padding-top:0;
+}
+.form .input-item{
+left:-20px;
+}
+
+.email_form .input-md{
+	width:80%;
+}
+}
+
+/**********
+*PAGE STYLES
+*/
+.page-title{
+  font-size:34px;text-align:left;color:#000;font-weight:400;line-height:44px;
+  font-family:'Spartan','GD Sherpa Regular' !important;
+}
+.page-subtitle{
+  font-size:20px;
+}
+.text-pull-left{
+  text-align:left;
+}
+.form-label, .text-white{
+  color:#fff;
+}
+.form-control{
+  height:60px;
+  border-radius:10px;
+  font-family:'Spartan','GD Sherpa Regular' !important;
+  padding-left:10px;font-weight:500;
+}
+
+.two-columns{
+	display:flex;flex-direction:row;flex:1 1;
+}
+.row{
+  display:block;
+  grid-template-columns:80% 20%;grid-gap:15px;
+  flex-direction:row;justify-content:space-between;
+  flex:1;
+}
+.text-lg-1x{
+	font-size:20px !important;font-weight:400 !important;color:#000;
+}
+.text-black{color:#000;}
+.btn-flat-bed{
+	width:65%;
+}
+.btn-flat-bed span{
+	position:relative;top:-20px;margin-right:-15px
+}
+</style>
+
+
+  </head>
 
 <body class="info info contactus">
 
@@ -513,22 +735,21 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                 <h4>Skicka ett meddelande till oss</h4>
 
-<form action="{{route('kontactos-pg')}}" method="post"><textarea class="flex-input" cols="20" id="FormModel_Message" minlength="5" name="FormModel.Message" required="required" rows="2">
-</textarea>
+<form action="{{route('kontactos-pg')}}" method="post">
+@csrf
+<textarea class="flex-input" cols="20" id="FormModel_Message" minlength="5" name="FormModel.Message" required="required" rows="2"></textarea>
 
 <input class="flex-input input-email" id="FormModel_Email" name="FormModel.Email" placeholder="e-post" type="text" value="" />
 
-<input class="flex-input input-phone" id="FormModel_Telephone" name="FormModel.Telephone" placeholder="Telefon" type="text" value="" />                    <button type="submit" class="button-primary">Skicka</button>
+<input class="flex-input input-phone" id="FormModel_Telephone" name="FormModel.Telephone" placeholder="Telefon" type="text" value="" />
+<button type="submit" class="button-primary" style="background:#0055aa !important">Skicka</button>
 </form>                <div class="block">
                     <hr />
                     <a href="https://www.facebook.com/profile.php?id=100089330416542" class="black block" target="_blank">
                         <div class="media">
                             <div class="media-left">
                                 
-
-<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 22" class="icon-large icon-faded">
-  <path d="M12 6a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H9a6 6 0 0 0-6 6v2H1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v7a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-7h2a1 1 0 0 0 1-.76l1-4A1 1 0 0 0 12 8H9V6zm-4 4h2.72l-.5 2H8a1 1 0 0 0-1 1v7H5v-7a1 1 0 0 0-1-1H2v-2h2a1 1 0 0 0 1-1V6a4 4 0 0 1 4-4h2v2H9a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1z" />
-</svg>
+    <svg width="30px" height="30px" viewBox="0 0 960 960" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M549.621 876.405C542.929 875.206 524.752 883.396 524.053 874.107C526.25 776.23 528.148 678.352 530.845 580.474C533.441 569.288 603.354 573.383 618.135 570.187C640.208 566.792 638.11 537.428 643.204 520.649C643.704 495.68 664.478 447.141 625.227 444.844C609.746 440.749 545.426 450.137 543.229 435.955C525.551 388.315 576.887 382.322 611.244 378.427C646.101 374.931 635.813 297.628 641.207 270.961C645.102 228.614 564.203 239.001 536.637 236.305C485.102 237.104 429.571 257.578 407.798 307.815C388.922 344.37 385.926 385.119 381.931 425.268C378.934 433.858 347.074 429.463 337.386 431.76C290.445 431.661 311.019 520.749 307.224 551.81C309.022 585.468 355.164 574.582 378.135 575.281C390.32 581.373 381.531 635.705 384.128 651.286C384.627 651.286 385.027 651.286 385.526 651.286C382.929 721.398 379.434 791.511 375.239 861.623C374.24 868.115 377.836 882.297 366.75 877.903C324.203 874.707 415.489 866.117 374.24 849.738V878.102L525.351 879.101V864.719C487.898 870.412 615.439 871.311 577.586 874.707C568.098 877.204 558.81 875.606 549.621 876.405Z" fill="#ffffff"/><path d="M869.219 530.637C866.822 447.241 862.927 363.845 857.134 280.35C832.665 87.4909 697.134 68.6145 531.741 84.6944C471.516 87.5908 410.492 81.2987 349.768 86.7918C296.934 89.4884 240.705 91.9853 194.263 120.45C143.926 149.913 117.658 204.145 107.471 259.776C98.2826 306.417 90.4924 352.959 89.993 400.699C85.998 462.922 88.1952 525.244 93.5885 587.466C97.983 641.698 103.177 696.33 123.351 747.366C144.824 799.301 187.471 831.361 236.909 850.937C278.158 867.316 324.1 874.907 366.647 878.103C377.733 882.497 374.238 868.415 375.137 861.823C379.331 791.711 382.927 721.698 385.424 651.486C384.924 651.486 384.525 651.486 384.025 651.486C381.429 635.806 390.218 581.573 378.033 575.481C354.962 574.782 308.919 585.668 307.122 552.01C310.917 520.949 290.243 431.86 337.284 431.96C346.972 429.763 378.832 434.158 381.828 425.468C385.823 385.319 388.919 344.57 407.696 308.015C429.469 257.778 484.999 237.304 536.535 236.505C564.1 239.101 644.999 228.814 641.104 271.161C635.811 297.828 645.998 375.131 611.141 378.627C576.784 382.522 525.449 388.515 543.127 436.155C545.324 450.337 609.643 440.949 625.124 445.044C664.375 447.341 643.601 495.98 643.102 520.849C638.008 537.628 640.205 566.992 618.033 570.387C603.251 573.683 533.339 569.588 530.742 580.674C528.045 678.552 526.048 776.43 523.95 874.307C524.65 883.596 542.827 875.306 549.519 876.604C558.807 875.805 567.995 877.403 577.484 875.006C615.336 871.611 654.787 870.712 692.24 865.019C748.27 856.43 799.706 836.954 833.663 781.623C878.407 706.817 872.914 614.532 869.219 530.637Z" fill="#000"/></svg>
 
                             </div>
                             <div class="media-content h4">
@@ -541,18 +762,15 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
                             <div class="media-left">
                                 
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" class="icon-large icon-faded">
-  <path d="M35 49.5h59c2.3 0 4.1-1.8 4.1-4.1s-1.8-4.1-4.1-4.1H35c-2.3 0-4.1 1.8-4.1 4.1s1.8 4.1 4.1 4.1zM35 69.3h59c2.3 0 4.1-1.8 4.1-4.1s-1.8-4.1-4.1-4.1H35c-2.3 0-4.1 1.8-4.1 4.1s1.8 4.1 4.1 4.1z" />
-  <path d="M10.5 95.8h13.2v13.5c0 1.6.9 3 2.3 3.7.6.3 1.2.4 1.8.4.9 0 1.8-.3 2.5-.8l22-16.7h66.2c2.3 0 4.1-1.8 4.1-4.1V18.9c0-2.3-1.8-4.1-4.1-4.1h-108c-2.3 0-4.1 1.8-4.1 4.1v72.8c0 2.3 1.9 4.1 4.1 4.1zM14.6 23h99.7v64.6H50.9c-.9 0-1.8.3-2.5.8L31.9 101v-9.3c0-2.3-1.8-4.1-4.1-4.1H14.6V23z" />
+                            <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.4" d="M8.5 10.5H15.5" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 18.4302H11L15.45 21.3902C16.11 21.8302 17 21.3602 17 20.5602V18.4302C20 18.4302 22 16.4302 22 13.4302V7.43018C22 4.43018 20 2.43018 17 2.43018H7C4 2.43018 2 4.43018 2 7.43018V13.4302C2 16.4302 4 18.4302 7 18.4302Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-
                             </div>
                             <div class="media-content">
                                 <div class="h4">Chatta med oss</div>
                                 <p class="small" style="margin-bottom: 10px">Chatten har öppet måndag-fredag 9-17. Lunchstängt 12-13.</p>
-                                <p class="small">
-                                    Avvikande öppettider: Dag före röd dag har vi öppet 09-15. Dagen före midsommarafton, julafton och nyårsafton har vi öppet som vanligt. Röda dagar har vi stängt. 
-                                </p>
+                                
                             </div>
                         </div>
                     </div>
@@ -622,7 +840,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 </main>
         </div>
         
-        @include('pages.gen_footer')
+        @include('pages.footer')
 
     </body>
 </html>
