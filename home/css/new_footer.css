@@ -1,0 +1,287 @@
+
+		 /**
+         =========================================================
+          FOOTER
+         =========================================================
+          **/
+ 
+          .footer, .grid-row,.footer .grid-row{
+             background:#dfdfdf !important;
+             padding:15px 20px;
+             height:auto;
+             width:100%;
+             overflow-x:hidden !important;
+             color:#000;
+             font-family:'GD Sherpa Regular';
+         }
+         .footer{
+             padding:15px 10px 25px 90px !important;
+             display:grid;grid-template-columns: 28% 22% 22% 28%;grid-gap:20px;
+             align-items: center;
+             justify-content: center;
+         }
+ 
+         .footer span, .footer h4, .footer h4 span, .box_1 .foo_h4{
+             font-family:'GD Sherpa Regular' !important;
+         }
+         .foo_h4 span{
+             color:#000;
+         }
+         .foo_h4{color:#000;}
+         .footer_navigation_ul li{
+             color:#dfdfdf;
+         }
+         .footer_navigation_ul{
+             padding-top:0;margin-top:-45px;line-height:35px;
+         }
+         .footer_navigation_ul li > a, .footer_navigation_ul b{
+             color:#000;font-family: 'GD Sherpa Regular';
+             font-size:13px;font-weight:400;
+         }
+         .footer_navigation_ul b{
+             font-weight:700;font-size:19px;
+         }
+         .footer_navigation_ul li > a:hover{
+             text-decoration:underline;
+         }
+         .footer_logo{
+             width:130px;margin:10px 0 15px 0;
+         }
+         .copyright{
+             background:#efefef;
+             text-align:Center;color:#000;font-family: 'GD Sherpa Regular';
+             font-size:13.5px;
+             padding:20px 15px;
+         }
+         .adjust{
+             margin:10px auto 10px auto;	} .email_form .input-md{
+             border-radius:10px;height:60px;padding-left:9px;width:82%;
+         }
+         .text-opacity-drop{
+             color:#000 !important;font-family:'Spartan','GD Sherpa Regular' !important;font-weight:600;
+ 
+         }
+             .text-opacity-drop span,.adjust span{
+                 font-family:'Spartan','GD Sherpa Regular' !important;font-weight:600;
+             }
+         .btn_sn svg{
+             line-height:25px;
+         }
+         .input-md::placeholder{
+             font-weight:700;font-size:12px;
+         }
+         .email_form label{
+             font-size:10.5px;margin:0 0 15px 0px;
+         }
+         .divbox_1{font-family:'Open Sans','GD Sherpa Regular' !important;font-weight: 500;}
+         .box_4 .socials{margin:15px 0 0 10px;display:flex;flex-direction: row;justify-content:first baseline;flex:auto;position:relative;
+         }
+ 
+         .box_4 .form{
+         display:flex;flex-direction: column;flex:1;flex-basis: auto;
+         }
+ 
+         .form .input-md{width:100%;height:65px;}
+         .socials a, .phone div span{ margin-right:10px;}
+         .phone div{	display:flex;flex-direction: row;flex:1 1;margin:15px 0 0 10px;	}
+     
+         .form .btn_sn{
+             width:55px;height:55px;border-radius:50%;background:#0055aa;padding:8px;border:1px solid #fff;
+             line-height: 50px;position:relative;left:-74px;top:3px;
+         }
+         .form .input-item{
+             display: grid;grid-template-columns: 95% 5%;grid-gap:0;
+         }
+ 
+ .page-section .center{
+     text-align:center;
+ }
+ .pad-section{padding-top:20px;
+ background:none;}
+ .pad-section b, .pad-section h4{font-weight:800;}
+ .pad-section b{font-size:16.5px;text-align: center !important;}
+ .pad-section h4{
+     margin-top:-14px;font-size:35px;font-weight: 900;
+ }
+ .pad-section small{
+     font-weight: 800;text-align: center;
+ }
+ .page-section__inner .col_title{
+     font-weight:800;font-size:23px;font-family: 'GD Sherpa Regular' !important;
+ }
+ .page-section__inner .cols{
+     background:#efefef;border-radius:15px;padding:15px 25px;margin-top:20px;
+ }
+ .page-section__inner .text{font-family: 'Spartan','GD Regular Sherpa' !important;font-size:12.5px;line-height:30px;font-weight:600;}
+ .box_4{
+ padding-top:30px;padding-left:15px;
+ }
+ 
+ .startpage-top-section{
+ display:grid;
+ background:url('../img/banners/default-20221018-mobile.jpg'); background-repeat: no-repeat;background-size:100%;
+ width:100vw;height:700px;background-position:center center;
+ }
+ .background-canvas{
+ display:grid;grid-template-columns: 55% 45%;	padding:0px;
+ position:relative;
+ }
+ .toppoffert_search{
+     width:calc(140%);position:relative;top:150px;height:90px !important;border-radius:50px !important;border:8px solid #cfcfcf !important;
+ }
+ #subcategories_fetcher, .sub_category{
+     position:relative;width: 600px !important; border-radius: 9px !important; padding: 0 9px;font-weight:500;
+     top:160px !important;left:20px !important;
+ }
+ 
+ .subcatbox{
+     display: grid;
+     grid-template-columns: 33% 33% 33%;grid-gap:10px;
+     flex-direction: row;flex:1 1 1;
+     justify-content: space-evenly;
+ 
+     background:#ffffff;border-radius: 12px;padding:15px;font-family: 'Spartan';font-size:10px;
+ }
+ 
+ .svgbox{
+     display:block;margin:auto;
+ }
+ 
+ .svgbox a{font-family: 'Spartan';font-size:12px;font-weight:600;
+ }
+ 
+ .catbox{background:#dfdfdf;border-radius:50%;
+ width:80px;height:80px;line-height: 45px;padding-top:20px;margin-bottom:5px;
+ }
+ 
+ .subcatbox svg{
+     width:40px;height:40px;display:block;margin:auto;
+ }
+ 
+ .btn_search_sok{
+ position:relative;	top:155px;width:80px !important;height:80px !important;border-radius: 50% !important;
+ left:97%;border:0 !important;
+ }
+ .btn_search_sok:active, .btn_search_sok:hover{
+     border:0 !important;
+ }
+ .btn_search_sok svg{fill:none !important;stroke:#fff;border:0 !important;
+ }
+ .h_toppofferta{position:relative;top:140px;
+ }
+ .h_toppofferta b{
+     font-weight: 400;font-family: 'Spartan','GD Sherpa Regular' !important;font-size:38.5px;color:#fff;line-height:45px;font-weight:400 !important;
+     line-height:64px;
+ }
+ .left-section{
+     background:#0055aa;height:100%;position: relative;
+     padding:30px 45px;
+ }
+ 
+ .anslu{
+ position:relative;top:-17px;
+ }
+ .bg_img_col{
+     background-image:url('../img/delivery_man2.jpg');
+     background-position: center;
+     width:300px;height:300px;border-radius: 50%;
+ }
+ 
+ .bg_two{
+     background-image:url('../img/cleaners.jpg');
+     background-position:center center;position:Relative;left:150px;background-size:cover;
+ }
+ .push-do-100{
+     margin:50px 0 10px 0;font-family:'Spartan','GD Sherpa Regular' !important;font-size:40px;font-weight:400;color:#fff;
+     position:relative;top:40px;
+ }
+ 
+ .push-do-100 hr{
+     width:40%;display:block;margin:auto;margin-top:50px 0 20px 0;position:Relative;top:25px;
+ }
+ 
+ .page-section__paragraph{
+     line-height: 35px;
+ }
+ /****
+ =================
+ MOBILE DESIGNS 
+ 
+ =================
+ *****/
+ @media(min-width:1441px){
+     .btn_search_sok{
+         left:127.5%;border:0 !important;
+         }
+         .padd-box_1{
+             padding-right:100px;
+         }
+ }
+ 
+ @media(max-width:768px){
+     .footer{
+         grid-template-columns: 50% 50%;line-height: 35px;
+         grid-gap:10px;
+         padding: 20px 10px 25px 68px !important
+         }
+ 
+ .btn_search_sok{
+     left:28%;
+ }
+ .h_toppofferta b{
+     font-size:27.5px;
+ }
+         
+ }
+ 
+ @media(max-width:425px){
+ .footer{
+ grid-template-columns: 100%;line-height: 35px;
+ grid-gap:67px;
+ padding: 20px 0 25px 20px !important
+ }
+ .bg_two{
+     background-image:url('../img/cleaners.jpg');
+     background-position:center center;position:Relative;left:110px;background-size:cover;
+ }
+ 
+ 
+ .h6_one{
+     font-size:24px;position:relative;top:20px;bottom:10px;font-weight:700;margin-bottom:30px
+ }
+ 
+ .h4_one{
+     font-size:25px;font-weight:800;line-height:40px;
+ }
+ 
+ .h5_one{
+ 
+ font-weight: 800;
+ font-size: 13.5px;
+ margin: auto;
+ line-height: 34px;
+ padding: 3px 27px;
+ margin-bottom:-49px;
+ }
+ 
+ .cols svg{
+     width:45px !important;height:45px !important;
+ }
+ .footer_navigation_ul .box_1{
+     margin-top:15px;padding:5px;
+ }
+ .box_4{
+     padding-top:0;
+ }
+ .form .input-item{
+ left:-20px;
+ }
+ 
+ .email_form .input-md{
+     width:80%;
+ }
+ }
+ 
+ .phone{
+ font-family:'Spartan','GD Sherpa Regular' !important;
+ }

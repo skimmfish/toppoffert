@@ -108,7 +108,10 @@ public function store(Request $request){
    $subCategory = $request->sub_category;
 
    $main_service_cat = explode("_",$subCategory)[1];
+
+
    $subcat_id = explode("_",$subCategory)[2];
+   
    $newRequest->request_hash = $this->createhypenatedstring(36);
    $newRequest->postcode = $request->PostCode;
    $newRequest->when_to_be_contacted = $request->whentobecontacted;
@@ -171,6 +174,26 @@ public function createhypenatedstring($size){
  }
 
 
+ /***
+  * @param NULL
+  This function filters only active requests
+  */
+ public function active_requets(){
+
+   $requests = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'publish_status'=>true])->get();
+   $requests = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>false])->orderBy('project_execution_status','ASC')->get();
+   $archivedrequest = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>true])->get();
+           
+   $messageCount = 0;
+
+   $interested_supplier = 0; $offers = 0;
+
+   return view('marketplace.clients.clients',['requests'=>$requests,
+   'title'=>'Fofragningar - '.config('app.name'),'obj'=> new \App\Http\Controllers\ServiceRequestsController,
+   'msgs'=>2,'offerCount'=> 0,'interested_suppliers'=>$interested_supplier,'archivedrequest'=>$archivedrequest]);
+}
+
+
  /**
   * This function delete resources based on the specified resource
   */
@@ -198,7 +221,7 @@ return redirect()->route('sadmin_all_requests')->with(['message'=>'Resurser har 
 
     $offers = array();
 
-    $off = \App\Models\Offers::where(['request_id'=>$request_id,'buyer_id'=>$user_id])->get();
+    $off = \App\Models\RequestChats::where(['request_id'=>$request_id,'buyer_id'=>$user_id])->get();
 
     return $offers = [
     'offer_count' => sizeof($off),
@@ -231,8 +254,30 @@ return redirect()->route('sadmin_all_requests')->with(['message'=>'Resurser har 
  * @param String <$hash>
  * This function pulls up using livewire to pull up all the suppliers info and request responses
  */
-public function enquiries_suppliers($hash){
+public function viewresponders ($request_hash){
 
+$request = \App\Models\ServiceRequests::where(['request_hash'=>$request_hash])->first();
+$title = null;
+
+$requests = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'publish_status'=>true])->get();
+$requests = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>false])->orderBy('project_execution_status','ASC')->get();
+$archivedrequest = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>true])->get();
+        
+$messageCount = 0;
+
+$interested_supplier = 0; $offers = 0;
+
+if(!is_null($request)){ $title = $request->request_title; }
+
+//showing all interested suppliers
+$interestedSuppliers = \App\Models\Responders::where(['request_id'=>$request->id,'buyer_id'=>auth()->id()])->get();
+
+
+return view('marketplace.clients.view-request')->with(['title'=>$title,'requestBody'=>$request,
+'obj'=> new \App\Http\Controllers\ServiceRequestsController,'requests'=>$requests,'request_hash'=>$request_hash,
+'msgs'=>2,'offerCount'=> 0,'interested_suppliers'=>$interested_supplier,
+'interestedSuppliers'=>$interestedSuppliers,   'archivedrequest'=>$archivedrequest
+]);
 
 }
 /**

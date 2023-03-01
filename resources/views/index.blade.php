@@ -230,10 +230,12 @@ function fetchCategoriesForSkapa(category){
     </div>
         <div class="fake-scrollbar"></div>
         <div class="page-wrapper">
+
+        @include('layouts.navigationbar_sticky')
+
             <header class="new-header">
                 <div class="new-header-container">
-                    <a class="new-header__logo" href="{{route('index')}}" aria-label="Hem">
-                </a>
+                    <a class="new-header__logo" href="{{route('index')}}" aria-label="Hem"></a>
                     
 @include('layouts.navigationbar')
 
@@ -243,8 +245,6 @@ function fetchCategoriesForSkapa(category){
 
 <!--start of navigation-->
        </header>
-
-
 
 <main class="content-main" role="main">
 
@@ -461,12 +461,12 @@ Vi ska vara ärliga: Det är varken glamoröst eller roligt att flytta.
 
 Om du inte anlitar en flyttfirma, förstås.
 
-<p style="line-height:34px;font-family:'Spartan','GD Sherpa Regular';font-weight:600;">Då kan du fokusera på allt det spännande och skojiga som en flytt faktiskt innebär. Du slipper bära tunga lådor eller kånka soffa, bord och småprylar upp- och nedför trapphusets smala spiraltrappa. Du slipper kämpa för att få plats med alla dina ägodelar i en för trång flyttbil. Du slipper stressa och oroa dig.
+<p class="page-section__paragraph" style="line-height:34px;font-family:'Spartan','GD Sherpa Regular';font-weight:600;">Då kan du fokusera på allt det spännande och skojiga som en flytt faktiskt innebär. Du slipper bära tunga lådor eller kånka soffa, bord och småprylar upp- och nedför trapphusets smala spiraltrappa. Du slipper kämpa för att få plats med alla dina ägodelar i en för trång flyttbil. Du slipper stressa och oroa dig.
     </p>
 
-<p style="line-height:34px;font-family:'Spartan','GD Sherpa Regular';font-weight:600;">    Istället får du tid över till att planera ditt nya hem och se till att allt blir så bra som möjligt. Så luta dig tillbaka och låt någon annan göra grovjobbet. Du har tillräckligt att tänka på som det är.
+<p class="page-section__paragraph" style="line-height:34px;font-family:'Spartan','GD Sherpa Regular';font-weight:600;">    Istället får du tid över till att planera ditt nya hem och se till att allt blir så bra som möjligt. Så luta dig tillbaka och låt någon annan göra grovjobbet. Du har tillräckligt att tänka på som det är.
     </p>
-    <p style="line-height:34px;font-family:'Spartan','GD Sherpa Regular';font-weight:600;">
+    <p class="page-section__paragraph" style="line-height:34px;font-family:'Spartan','GD Sherpa Regular';font-weight:600;">
     Om du vill kan du också låta flyttfirman eller en städfirma sköta flyttstädningen åt dig.
 För att hitta rätt flyttfirma för dig är det bra att ta in offerter från flera olika firmor. Det gör du enkelt och gratis på en minut genom att fylla i vårt formulär. Sedan kan du enkelt jämföra flyttfirmornas erbjudanden och offerter – och förhandla priset.
 </p>

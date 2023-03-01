@@ -23,6 +23,6 @@ Hör av dig till oss om du har några frågor, vi finns här för att hjälpa di
 Vänliga hälsningar,
 
 
-Thanks,<br>
+Tack,<br>
 {{ config('app.name') }}
 </x-mail::message>

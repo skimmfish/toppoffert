@@ -115,12 +115,12 @@ return \App\Models\Categories::where('id',$cat_id)->first()->$fieldname;
     
             echo "<div class='subcatbox'>
                 
-                    <select name='sub_category' class='form-control'>
+                    <select name='sub_category' class='form-control flex-input'>
                     <option>Select an option</option>";
 
             foreach($subcategories as $x){
 
-                echo "<option value='".$x->id."'>".ucfirst($x->subcat_name)."</option>";
+                echo "<option value='".$x->subcat_name.'_'.$catid.'_'.$x->id."'>".ucfirst($x->subcat_name)."</option>";
         
             }
         echo "</select></div>";

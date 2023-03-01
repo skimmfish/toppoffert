@@ -1,12 +1,10 @@
 <x-mail::message>
-# Introduction
 
-The body of your message.
 
-<x-mail::button :url="''">
-Button Text
+<x-mail::button :url="https://toppoffert.se/se/home/login">
+Logga in
 </x-mail::button>
 
-Thanks,<br>
+Tack,<br>
 {{ config('app.name') }}
 </x-mail::message>

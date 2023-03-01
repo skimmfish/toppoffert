@@ -1,129 +1,28 @@
-<!-- 
+@extends('layouts.clientsheader')
+@section('content')
 
-Project execution status of 2 == project is ongoing
-                            1 == project has been executed
-                            0 == project has not started
--->
+@include('layouts.admin_topbar')
 
-<!DOCTYPE html>
-<html lang="en-US" dir="ltr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="row">
+<h2>Hej! {{\Auth::user()->f_name}}</h2><br/>
+ <p class="line-height-auto">Välkommen till din instrumentpanel</p>
+ </div>
 
-    <!-- ===============================================-->
-    <!--    Document Title-->
-    <!-- ===============================================-->
-    <title>@if(isset($title)) {{ $title }} @else Enquiries - Quotation Buyers @endif - {{config('app.name')}}</title>
+ <!--here comes all requests made by this buyer-->
 
-    <!-- ===============================================-->
-    <!--    Favicons-->
-    <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('ico/site_logo.png') }} ">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('ico/site_logo.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('ico/site_logo.png') }}" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('ico/site_logo.png') }}">
-
-    <link rel="manifest" href="{{asset('assets/img/favicons/manifest.json')}}">
-    <meta name="msapplication-TileImage" content="{{asset('ico/site_logo.svg')}}">
-    <meta name="theme-color" content="#ffffff">
-    <!-- ===============================================-->
-    <!--    Stylesheets-->
-    <!-- ===============================================-->
-    <link rel="preconnect" href="https://fonts.gstatic.com/">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
-    <link href="{{asset('vendors/overlayscrollbars/OverlayScrollbars.min.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link href="{{asset('css/clients.css')}}" rel="stylesheet">
-
-    <link href="{{asset('css/index.509e34c1.css')}}" rel="stylesheet" />
-    <link href="{{asset('css/chunk.css')}}" rel="stylesheet" />
-    <script src="{{asset('js/index.68b2b9e4.js')}}" type="text/javascript"></script>
-
-<script>
-      var isRTL = JSON.parse(localStorage.getItem('isRTL'));
-      if (isRTL) {
-        var linkDefault = document.getElementById('style-default');
-        var userLinkDefault = document.getElementById('user-style-default');
-        linkDefault.setAttribute('disabled', true);
-        userLinkDefault.setAttribute('disabled', true);
-        document.querySelector('html').setAttribute('dir', 'rtl');
-      } else {
-        var linkRTL = document.getElementById('style-rtl');
-        var userLinkRTL = document.getElementById('user-style-rtl');
-        linkRTL.setAttribute('disabled', true);
-        userLinkRTL.setAttribute('disabled', true);
-      }
-    </script>
-
-<style>
-/*<!--extra styles-->*/
-@font-face {font-family: "GD Sherpa Regular";
-  src: url("{{asset('fonts/0aee6008b82cde991ec28387169bb13e.eot') }}"); /* IE9*/
-  src: url("{{asset('fonts/0aee6008b82cde991ec28387169bb13e.eot?#iefix') }}") format("embedded-opentype"), /* IE6-IE8 */
-  url("{{asset('fonts/0aee6008b82cde991ec28387169bb13e.woff2') }}") format("woff2"), /* chrome、firefox */
-  url("{{asset('fonts/0aee6008b82cde991ec28387169bb13e.woff') }}") format("woff"), /* chrome、firefox */
-  url("{{asset('fonts/0aee6008b82cde991ec28387169bb13e.ttf') }}") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("{{asset('fonts/0aee6008b82cde991ec28387169bb13e.svg#GD Sherpa Regular') }}") format("svg"); /* iOS 4.1- */
-}
-
-body{
-font-family:'GD Sherpa Regular' !important;font-size:14px;
-}
-h1,h2,h3,h4,h5,h6{
-        font-familg:'GD Sherpa Regular' !important;
-}
-h1{font-size:36px;font-weight:900;}
-
-.cc_phone{
-        height:50px;padding:11px 14px 11px 14px;border-radius:8px;
-}
-.cc_phone svg{
-        width:30px;
-}
-.cc_phone:active, .cc_phone:hover{
-        background:#f0f2ff;text-decoration:none;
-}
-.avatar-xl span{
-        position:relative;right:-35px;top:-14px;
-}
-.nav-link svg{
-        width:30px;position:relative;top:10px;
-
-}
-  </style>
-  </head>
-
-  <body>
-
-  <div class="container-fluid">
-@include('layouts.nav__bar')
-<!--clearing divs-->
-<div class="clearfix"></div>
-
-<div class="row mainx">
-    <div class="col-lg-6 col-xs-12 col-sm-6 colmd-6 bg-neutral">
-        <h1 class="mb-0 mt-2 d-flex align-items-center" style="font-weight:bold !important">Välkommen tillbaka, {{\Auth::user()->f_name}}</h1><br/>
-            </div>
-
-    <div class="col-lg-6 col-xs-12 col-sm-6 colmd-6 bg-neutral">
-        <a href="{{route('index')}}" class="btn btn-primary btn-dark" target="_blank"> Skapa ny förfrågan <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color media-right-small" style="fill: none;"><path d="M6.167 9.682L15.5.5M15.5 5.747V.5h-5.333M8.083 3.833h-7a.583.583 0 00-.583.584v10.5a.583.583 0 00.583.583h10.5a.583.583 0 00.584-.583v-7" stroke="#6172BC" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
-            </div>
-            <!--./row-fluid-->
-                </div>
-
-<!--all buyers' requests that have not been archived-->
-<div class="row mainx">
+ <div class="row">
 @if(sizeof($requests)>0)
-@foreach($requests as $x)
-<div class="col-md-6 col-xxl-6 request_items">
+
+        @foreach($requests as $x)
+                <div class="col-md-6 col-lg-6 request_items">
         <!--card-->
         <div class="card ecommerce-card-min-width tw-div">
-              <div>
-                <a href="{{route('suppliers.offerta_pages',['hash'=>$x->request_hash])}}"><h6 class="align-items-center h6-md_title">{{$x->request_title}}</h6></a>
-                    <small>Publicerades on {{ date('d M Y',strtotime($x->created_at)) }} </small>
-                        </div>
+              
+        <div>
+        <a href="{{route('single_enquiry_view',['request_hash'=>$x->request_hash])}}">
+            <h6 class="align-items-center h6-md_title">{{$x->request_title}}</h6></a>
+               <small>Publicerades on {{ date('d M Y',strtotime($x->created_at)) }} </small>
+                   </div>
               
         <div class="service_request_publish_status">
         @if($x->project_execution_status==1 && $x->pub_status==0 && $x->archival_status==0) 
@@ -137,120 +36,45 @@ h1{font-size:36px;font-weight:900;}
 <hr/>                    
 <br/>
 
-@if($x->project_execution_status==0 && $x->publish_status==1)
-<div class="rw_control">
 
-<div class="fact-icon" data-v-0b12e4d7="">
-<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M5.785 17.942L1.36 13.034a1.517 1.517 0 01-.134-1.841v0a1.517 1.517 0 012.025-.459l2.375 1.434-1.241-8.742a1.525 1.525 0 011.133-1.667v0a1.525 1.525 0 011.867 1.159l1.133 5.641V2.068A1.433 1.433 0 0110.001.626v0a1.441 1.441 0 011.442 1.442v6.491l1.058-5.683a1.484 1.484 0 012.713-.503c.204.323.277.711.204 1.086l-1.167 5.834 2.209-4.409a1.323 1.323 0 011.933-.516v0a1.317 1.317 0 01.5 1.608l-2.167 5.433a4.249 4.249 0 00-.308 1.608v2.05a4.325 4.325 0 01-1.733 3.459v0a4.3 4.3 0 01-2.6.833H9a4.309 4.309 0 01-3.216-1.417v0z" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-@if(isset($interested_suppliers) && $obj->getInterestSuppliers($x->id,\Auth::user()->id)['supplier_count']>0) {{$obj->getInterestSuppliers($x->id,\Auth::user()->id)['supplier_count'] }} interested companies @endif
+
+<div class="fact-icon" style="font-size:11.5px">
+@if(isset($interested_suppliers) && $obj->getInterestSuppliers($x->id,\Auth::user()->id)['supplier_count']>0) 
+
+<svg fill="#000000" width="30px" height="30px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<title>hand</title>
+<path d="M31 8.5c0 0-2.53 5.333-3.215 8.062-0.896 3.57 0.13 6.268-1.172 9.73-2.25 4.060-2.402 4.717-10.613 4.708-3.009-0.003-11.626-2.297-11.626-2.297-1.188-0.305-3.373-0.125-3.373-1.453s1.554-2.296 2.936-2.3l5.439 0.478c1.322-0.083 2.705-0.856 2.747-2.585-0.022-2.558-0.275-4.522-1.573-6.6l-5.042-7.867c-0.301-0.626-0.373-1.694 0.499-2.171s1.862 0.232 2.2 0.849l5.631 7.66c0.602 0.559 1.671 0.667 1.58-0.524l-2.487-11.401c-0.155-0.81 0.256-1.791 1.194-1.791 1.231 0 1.987 0.47 1.963 1.213l2.734 11.249c0.214 0.547 0.972 0.475 1.176-0.031l0.779-10.939c0.040-0.349 0.495-0.957 1.369-0.831s1.377 1.063 1.285 1.424l-0.253 10.809c0.177 0.958 0.93 1.098 1.517 0.563l3.827-6.843c0.232-0.574 1.143-0.693 1.67-0.466 0.491 0.32 0.81 0.748 0.81 1.351v0z"></path>
+</svg>
+{{ $obj->getInterestSuppliers($x->id,\Auth::user()->id)['supplier_count'] }} intresserade företag @endif
+
 
 <Br/>
-<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M18.75 18.125a1.25 1.25 0 01-1.25 1.25h-15a1.25 1.25 0 01-1.25-1.25V1.875A1.25 1.25 0 012.5.625h12.537c.327 0 .64.127.874.355l2.461 2.402a1.249 1.249 0 01.378.895v13.848zM5.038 6.875h10M5.038 10.625h10M5.038 14.375h5" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-@if(isset($msgs) && $msgs>0){{$msgs}} new messages @endif
+@if(isset($msgs) && $msgs>0)
+<svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C10.5937 3 9.2995 3.05598 8.14453 3.14113C6.41589 3.26859 5.80434 3.32966 5.0751 3.73C4.42984 4.08423 3.66741 4.90494 3.36159 5.5745C3.01922 6.32408 3.00002 7.07231 3.00002 9.13826V10.8156C3.00002 11.9615 3.00437 12.3963 3.06904 12.7399C3.37386 14.3594 4.64066 15.6262 6.26012 15.931C6.60374 15.9957 7.03847 16 8.18442 16C8.1948 16 8.20546 16 8.21637 16C8.33199 15.9998 8.47571 15.9996 8.61593 16.019C9.21331 16.1021 9.74133 16.4502 10.053 16.9666C10.1261 17.0878 10.1825 17.22 10.2279 17.3264C10.2322 17.3364 10.2364 17.3462 10.2404 17.3557L10.6994 18.4267C11.0609 19.2701 11.3055 19.8382 11.518 20.2317C11.6905 20.5511 11.7828 20.6364 11.794 20.6477C11.9249 20.7069 12.0751 20.7069 12.2061 20.6477C12.2172 20.6364 12.3095 20.5511 12.482 20.2317C12.6946 19.8382 12.9392 19.2701 13.3006 18.4267L13.7596 17.3557C13.7637 17.3462 13.7679 17.3364 13.7721 17.3264C13.8175 17.22 13.8739 17.0878 13.9471 16.9666C14.2587 16.4502 14.7867 16.1021 15.3841 16.019C15.5243 15.9996 15.668 15.9998 15.7837 16C15.7946 16 15.8052 16 15.8156 16C16.9616 16 17.3963 15.9957 17.7399 15.931C19.3594 15.6262 20.6262 14.3594 20.931 12.7399C20.9957 12.3963 21 11.9615 21 10.8156V9.13826C21 7.07231 20.9808 6.32408 20.6384 5.5745C20.3326 4.90494 19.5702 4.08423 18.9249 3.73C18.1957 3.32966 17.5841 3.26859 15.8555 3.14113C14.7005 3.05598 13.4064 3 12 3ZM7.99746 1.14655C9.19742 1.05807 10.5408 1 12 1C13.4593 1 14.8026 1.05807 16.0026 1.14655C16.0472 1.14984 16.0913 1.15308 16.1351 1.1563C17.6971 1.27104 18.7416 1.34777 19.8874 1.97681C20.9101 2.53823 21.973 3.68239 22.4577 4.74356C23.001 5.93322 23.0007 7.13737 23.0001 8.95396C23 9.0147 23 9.07613 23 9.13826V10.8156C23 10.8555 23 10.8949 23 10.9337C23.0002 11.921 23.0003 12.5583 22.8965 13.1098C22.4392 15.539 20.5391 17.4392 18.1099 17.8965C17.5583 18.0003 16.9211 18.0002 15.9337 18C15.8949 18 15.8555 18 15.8156 18C15.7355 18 15.6941 18.0001 15.6638 18.0009C15.6625 18.0009 15.6612 18.0009 15.66 18.001C15.6596 18.002 15.659 18.0032 15.6585 18.0044C15.6458 18.0319 15.6294 18.07 15.5979 18.1436L15.1192 19.2604C14.7825 20.0462 14.5027 20.6992 14.2417 21.1823C13.9898 21.6486 13.6509 22.1678 13.098 22.4381C12.4052 22.7768 11.5948 22.7768 10.902 22.4381C10.3491 22.1678 10.0103 21.6486 9.75836 21.1823C9.49738 20.6992 9.21753 20.0462 8.88079 19.2604L8.40215 18.1436C8.3706 18.07 8.35421 18.0319 8.34157 18.0044C8.34101 18.0032 8.34048 18.002 8.33998 18.001C8.33881 18.0009 8.33755 18.0009 8.33621 18.0009C8.30594 18.0001 8.26451 18 8.18442 18C8.14451 18 8.10515 18 8.06633 18C7.07897 18.0002 6.44169 18.0003 5.89017 17.8965C3.46098 17.4392 1.56079 15.539 1.10356 13.1098C0.999748 12.5583 0.999849 11.921 1.00001 10.9337C1.00001 10.8949 1.00002 10.8555 1.00002 10.8156V9.13826C1.00002 9.07613 0.999998 9.0147 0.999978 8.95396C0.999383 7.13737 0.998989 5.93322 1.54238 4.74356C2.02707 3.68239 3.08998 2.53823 4.11264 1.97681C5.25848 1.34777 6.30294 1.27104 7.86493 1.1563C7.9087 1.15308 7.95287 1.14984 7.99746 1.14655Z" fill="#0F1729"/>
+</svg>
+{{ $obj->getOffers($x->id,\Auth::user()->id)['offer_count'] }} Nya Meddelanden @endif
 
 @if(isset($offerCount) && $obj->getOffers($x->id,\Auth::user()->id)['offer_count']>0) 
-<br/>
-<div class="notification"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small svg-icon--spacing-right-tiny fill-current-color" style="fill: none;" data-v-0b12e4d7=""><path d="M18.125 15.625h-8.75l-5 3.75v-3.75h-2.5a1.25 1.25 0 01-1.25-1.25v-12.5a1.25 1.25 0 011.25-1.25h16.25a1.25 1.25 0 011.25 1.25v12.5a1.25 1.25 0 01-1.25 1.25z" stroke="#64748B" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path></svg> 
-{{ $obj->getOffers($x->id,\Auth::user()->id)['offer_count'] }} offers
+
 
 @endif
-</div>
+
 </div>
 
-<div class="active_control fact-icon">
-<a href="#" data-toggle="" class="dropdown-toggle button-square-rounded button-transparent">
-<img src="{{asset('img/gear.png')}}" class="img svg_icon" style="width:20px;height:20px;" lazyloading />
-</a>
-</div>
-</div>
-
-@elseif($x->project_execution_status==2)
-<div class="span_tw_div">
-<span class="text-md">Har du valt företag för detta uppdrag? </span>
-<span><a href="{{route('projekt_winnr')}}" class="btn btn-primary btn-dark" style="padding-top:2px !important; font-size:12.5px;" target="_blank">Ange vinnare</a></span>
-</div>
-@endif
 </div>
    <!--./card-->
     <!--./col-md-6-->
   </div>
   @endforeach
-        @else
+
+
+  @else
 <h5><i>You haven't submitted any request, <a href="{{route('skapa')}}" target="_blank" class="text-primary"><u>submit one here</u></a>.</i></h5>
 @endif
 
-<!--./row-->
-</div>
-
-
-<!--==========================ARCHIVED REQUESTS===============-->
-<!--for archived buyer requests-->
-@if(sizeof($archivedrequest)>0)
-<div class="container-fluid mainx pull-up">
-<h6 class="grey">Arkiverade<hr style="border:1px solid #dfdfdf;width:100% !important;"></hr></h6> 
-</div>
-@endif
-
-
-<div class="row mainx">
-
-@if(sizeof($archivedrequest)>0)
-@foreach($archivedrequest as $x)
-
-<div class="col-md-6 col-xxl-6 request_items">
-
-        <!--card-->
-        <div class="card ecommerce-card-min-width tw-div">
-              <div>
-                <h6 class="align-items-center h6-md_title">{{$x->request_title}}</h6>
-                    <small>Publicerades on {{ date('d M Y',strtotime($x->created_at)) }} </small>
-                        </div>
-              
-        <div class="service_request_publish_status">@if($x->project_execution_status==0 && $x->matched==0 && $x->publish_status==0) 
-                <small class="text-black" style="background:#dfdfdf !important">Avpublicerad</small> 
-                
-                @elseif($x->project_execution_status==1 && $x->matched==1 && $x->publish_status==0) 
-                <small class="alert-success">avklarad</small> 
-                @endif
-                </div>
-
-                
-<hr/>                    
-<br/>
-
-@if($x->project_execution_status==0 && $x->matched==0 && $x->publish_status==0)
-<div class="span_tw_div">
-<span class="text-md">Har du valt företag för detta uppdrag? </span>
-<span><a href="{{route('projekt_winnr')}}" class="btn btn-primary btn-dark" style="padding-top:0 !important; font-size:14px;background:none !important;border:2px solid #0099cc;color:#0099cc !important;font-weight:600;" target="_blank">Ange vinnare</a></span>
-</div>
-@elseif($x->project_execution_status==1 && $x->matched==1 && $x->publish_status==0)
-<div class="grid-rows">
-<span>Du valde</span>
-<h2>{{ $supplierObj->where('supplier_id','=',$x->supplier_matched_with)->first()->supplier_corp_name }}
-
-<span>{{\App\Http\Controllers\SuppliersController::getRatings($x->supplier_matched_with)}}</span>
-
-</h2>
-</div>
-
-@endif
 
 </div>
-   <!--./card-->
-   <!--./col-md-6-->
-  </div>
-@endforeach
-@endif
+<!--./container  end of container-->
 
-<!--./for archived requests-->
-</div>
-</div>
-
-
-<!--./container-fluid-->
-</div>
-
-</body>
-<!--JS scripts-->
-@include('layouts.client__footer') 
-</html>
+@endsection

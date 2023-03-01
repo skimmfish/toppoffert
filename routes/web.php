@@ -134,6 +134,27 @@ Route::get('/kontact-os',function(){
 })->name('kontactos-pg');
 
 
+//for powering sendmsg to customer care via the contactus page
+Route::post('sendmsg',function(Request $request){
+    $email = \App\Http\Controllers\ConfigController::get_value('business_email');
+    $msg = $request->msgto_send;
+    $phone_no = $request->telefon;
+    $senderEmail = $request->return_email;
+    $contactPerson = \App\Http\Controllers\ConfigController::get_value('contact_person');
+
+    try{
+    \Mail::to($email)->queue(new \App\Mail\SendCustomerEnquiry($msg,$contactPerson,$senderEmail,$phone_no));
+    }catch(\Exception $e){
+
+        $e->getMessage();
+        return redirect()->back()->with(['error'=>'Det finns ett fel i din begäran']);
+
+    }
+    return redirect()->back()->with(['message'=>'Ditt meddelande har skickats till kundtjänsten']);
+
+})->name('sendmsg_to_cs');
+
+
 //for request sybmission by customers interest
 Route::get('skapa',function(){
     return view('pages.skapa',['title'=>'Skapa förfrågan','categories'=>\App\Http\Controllers\CategoriesController::getcatnames()]);
@@ -158,7 +179,7 @@ if(\Auth::check()){
 //check if user is a client
 if(\Auth::user()->user_cat=='CLIENT'){
 
-    return redirect()->route('marketplace.clients');
+    return redirect()->route('marketplace.clients.active_requests');
 
 }else if(\Auth::user()->user_cat=='SADMIN'){
 
@@ -420,6 +441,9 @@ Route::get('/get-cat-names-for-page',function(){
 Route::middleware(['auth','verified'])->prefix('marketplace/clients')->group(function(){
 
 
+//for enquiries overview of all who showed interest
+
+Route::get('/enquiries/{request_hash}','\App\Http\Controllers\ServiceRequestsController@viewresponders')->name('single_enquiry_view');
 //for searching service areas
 Route::get('/auto-search-cat',[App\Http\Controllers\ServiceRequestsController::class,'searchservicecat'])->name('searchservicecat');
 
@@ -428,7 +452,17 @@ Route::get('/auto-search-cat',[App\Http\Controllers\ServiceRequestsController::c
     //consumers' home page
     Route::get('/',[App\Http\Controllers\ServiceRequestsController::class,'index'])->name('marketplace.clients');
 
-    //for getting all the buyers' request feeds
+    //for active requests
+    Route::get('/active-requests',[App\Http\Controllers\ServiceRequestsController::class,'active_requets'])->name('marketplace.clients.active_requests');
+
+
+        //for archived requests
+        Route::get('/archived-requests',[App\Http\Controllers\ServiceRequestsController::class,'archived_requets'])->name('marketplace.clients.archived_requests');
+
+        //for archived requests
+        Route::get('/unapproved-requests',[App\Http\Controllers\ServiceRequestsController::class,'unapproved_request'])->name('marketplace.clients.unapproved_requests');
+
+        //for getting all the buyers' request feeds
     Route::get('feeds',function(){
         return view('marketplace.clients.feeds');
     })->name('feeds');
@@ -436,6 +470,15 @@ Route::get('/auto-search-cat',[App\Http\Controllers\ServiceRequestsController::c
 
     //for pulling up al that is relative to every service_requests
     Route::get('/enquiries/{hash}','\App\Http\Controllers\ServiceRequestsController@enquiries_suppliers')->name('suppliers.offerta_pages');
+
+
+
+//for chatting with a supplier
+Route::get('/request-box/{supplier_id}/{request_hash}',function($supplier_id,$request_hash){
+
+
+    
+})->name('chat_with_supplier');
 
 });
 

@@ -5,6 +5,6 @@ Kara, {{$name}},
 {{$msg}}.
 
 
-Thanks,<br>
+Tack,<br>
 {{ config('app.name') }}
 </x-mail::message>

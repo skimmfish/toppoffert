@@ -11,6 +11,6 @@ Tack.
 See Agreement Documents
 </x-mail::button>
 
-Thanks,<br>
+Tack,<br>
 {{ config('app.name') }}
 </x-mail::message>

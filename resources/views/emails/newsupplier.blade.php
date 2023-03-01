@@ -7,7 +7,7 @@
 {{$msg}}
 </p>
 
-Thank you.
+Tack!
 <br/>
 {{ config('app.name') }}
 </x-mail::message>

@@ -71,7 +71,7 @@ class LoginController extends Controller
 
                  if(\Auth()->user()->user_cat=='CLIENT'){  
                    //return response()->json([[1]]);
-                   return redirect()->route('marketplace.clients');
+                   return redirect()->route('marketplace.clients.active_requests');
 
                 }  
     

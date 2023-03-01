@@ -10,7 +10,8 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
 
-class SendMessage extends Mailable
+
+class SendCustomerEnquiry extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,13 +20,17 @@ class SendMessage extends Mailable
      *
      * @return void
      */
-    protected $message;
-    protected $name;
 
-    public function __construct($msg,$name)
+     protected $message;
+     protected $name;
+     protected $reply_email;
+    protected $phone;
+     public function __construct($msg,$name,$reply_email,$phone)
     {
         $this->message = $msg;
         $this->name = $name;
+        $this->reply_email = $reply_email;
+        $this->phone = $phone;
     }
 
     /**
@@ -35,13 +40,13 @@ class SendMessage extends Mailable
      */
     public function envelope()
     {
-        return new Envelope(
-            from: new Address('info@toppoffert.se',config('app.name')),
-            replyTo: [
-                new Address('info@toppoffert.se', config('app.name')),
-            ],
-            subject: 'Tack för att du ansluter'
-       
+            return new Envelope(
+                from: new Address('info@toppoffert.se',config('app.name')),
+                replyTo: [
+                    new Address($this->reply_email,$this->name),
+                ],
+    
+            subject: 'Skicka kundförfrågan',
         );
     }
 
@@ -53,11 +58,12 @@ class SendMessage extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'emails.sendmessage',
+            markdown: 'emails.sendcustomerenquiry',
             with: [
                 'msg' => $this->message,
                 'name' => $this->name,
-                
+                'reply_email'=>$this->reply_email,
+                'phone'=>$this->phone
             ]
         );
     }
