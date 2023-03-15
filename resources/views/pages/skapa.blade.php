@@ -1,9 +1,13 @@
 @php
 
 $catName = null; $subCatNameSelected = null;
+
 if(isset($catSelected) && isset($subCatSelected)){
-$catName = \App\Http\Controllers\CategoriesController::getcatdata('cat_name',$catSelected);
-$subCatNameSelected = \App\Http\Controllers\CategoriesController::getsubcatdata('subcat_name',$subCatSelected);
+
+  $catName = \App\Http\Controllers\CategoriesController::getcatdata('cat_name',$catSelected);
+
+$subCatNameSelected = \App\Http\Controllers\CategoriesController::getsubcatdata('subcat_name',$subCatSelected).'_'.$catSelected.'_'.$subCatSelected;
+
 }
 @endphp
 
@@ -101,6 +105,15 @@ function fetchCategoriesForSkapa(category){
 } //end of fetchServersList() function
 </script>
 
+<style>
+
+
+.form-control{
+
+  padding:17px 11px;
+
+}
+  </style>
 </head>
 
 
@@ -185,7 +198,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
           <div class="form-group">
           <label class="form-label">Vad behöver du hjälp med?</label>
           
-          <input id="WhatText" name="catName" maxlength="100" list="cat_name" value="@if(isset($catSelected)) {{$catName}} @else {{old('catName')}} @endif" onChange="fetchCategoriesForSkapa(this.value)" tabindex="1" title="Ange uppdragstyp" placeholder="Ange uppdragstyp" onClick="fetchCategoriesForSkapa(this.value)" name="cat_name" class="form-control form-control-lg input-lg flex-input" placeholder="Ange uppdragstyp" required />
+          <input id="WhatText" name="catName" maxlength="100" list="cat_name" value="@if(isset($catSelected)) {{$catName}} @else {{old('catName')}} @endif" onChange="fetchCategoriesForSkapa(this.value)" title="Ange uppdragstyp" placeholder="Ange uppdragstyp" onClick="fetchCategoriesForSkapa(this.value)" name="cat_name" class="form-control form-control-lg input-lg flex-input" placeholder="Ange uppdragstyp" required />
 
             <datalist id="cat_name" onChange="fetchCategoriesForSkapa(catName.value)" onClick="fetchCategoriesForSkapa(catName.value)">
               @if(isset($catSelected))
@@ -213,7 +226,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                     <div class="form-group">
     <label for="request_title" class="form-label">Beskrivning</label>
-    <textarea class="flex-input enquiry-description form-control" id="request_title" maxlength="4000" name="request_title" placeholder="Tips: En bra och tydlig beskrivning möjliggör fler och bättre svar" rows="2" tabindex="3" required>
+    <textarea class="flex-input enquiry-description form-control" id="request_title" maxlength="4000" name="request_title" placeholder="Tips: En bra och tydlig beskrivning möjliggör fler och bättre svar" rows="2" required>
 </textarea>
 
 <span class="text-black">@if($errors->has('request_title'))
@@ -336,7 +349,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
                 <div class="form-group">
                     <label for="Name" class="form-label">Postnummer (d&#228;r uppdraget ska utf&#246;ras)</label>
-        <input autocomplete="postal-code" class="flex-input form-control" data-regexp="^(?:[ ]*[0-9]){5}[?:[ ]*]*$" id="PostCode" name="PostCode" placeholder="Postnummer" tabIndex="16" title="Postnr." type="number" value="{{old('PostCode')}}" />
+        <input autocomplete="postal-code" class="flex-input form-control" data-regexp="^(?:[ ]*[0-9]){5}[?:[ ]*]*$" id="PostCode" name="PostCode" placeholder="Postnummer" title="Postnr." type="number" value="{{old('PostCode')}}" />
 			    <span class="text-black">@if($errors->has('PostCode'))
               {{ $errors->first('PostCode') }}
               @endif

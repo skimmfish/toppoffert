@@ -3,6 +3,13 @@
 $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_status'=>0,'receiver_id'=>'admin'])->get());
 $supplierObj = new \App\Models\Suppliers;	
 
+
+$requests = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'publish_status'=>true])->get();
+   $requests = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>false])->orderBy('project_execution_status','ASC')->get();
+   $archivedrequest = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>true])->get();
+           
+
+
 @endphp
 
 <!DOCTYPE html>

@@ -52,19 +52,20 @@ public function store(Request $request){
       'PostCode'=>['required'],
       'fro_date'=>['required','date'],
       'to_date'=>['required','date'],
-      'territory'=>['required', 'String']
-      
+      'territory'=>['required', 'String'],
+      'sub_category'=>['required']
    ];
 
    $messages = [
-      'Email' => 'The :attribute is required, it must not have been used previously',
-      'address' => 'The :attribute is essential',
-      'Name' => ':attribute is required, make sure you enter two(2) names',
-      'PostCode' => ':attribute is required',
-      'fro_date'=>'Date from which you want your request to be carried out is required',
-      'to_date'=>'Date to which you want your request to be carried out is required',
-      'Phone'=>':attribute is required',
-      'request_title'=>':attribute is required'
+      'Email' => 'Din e-postadress är obligatorisk, den får inte ha använts tidigare',
+      'address' => 'Din adress krävs',
+      'Name' => 'Namn krävs, se till att du anger två(2) namn',
+      'PostCode' => 'Postnummer krävs',
+      'fro_date'=>'När vill du att våra leverantörer ska börja',
+      'to_date'=>'När vill du begära att bli färdigställd',
+      'Phone'=>'Telefonnummer krävs',
+      'request_title'=>'Vänligen ange din förfrågan, en perfekt titel skulle duga',
+      'sub_category'=>'En underkategori som din begäran faller in i krävs'
   ];
 
 
@@ -106,12 +107,18 @@ public function store(Request $request){
    }
 
    $subCategory = $request->sub_category;
+   $main_service_cat = 0;
+   $subcat_id = 0;
 
-   $main_service_cat = explode("_",$subCategory)[1];
+   $subCategory = explode("_",$subCategory);
+
+   if(sizeof($subCategory)>1){
+   $main_service_cat = $subCategory[1];
+   $subcat_id = $subCategory[2];
+   }
 
 
-   $subcat_id = explode("_",$subCategory)[2];
-   
+
    $newRequest->request_hash = $this->createhypenatedstring(36);
    $newRequest->postcode = $request->PostCode;
    $newRequest->when_to_be_contacted = $request->whentobecontacted;
@@ -123,7 +130,7 @@ public function store(Request $request){
    $newRequest->subservice_cat = $subcat_id;
    $newRequest->postal_code_of_assignment = $request->PostCode;
    $newRequest->executed_for = $request->executed_for;
-   $newRequest->request_type = explode("_",$subCategory)[0];
+   $newRequest->request_type = $subCategory[0];
    $newRequest->buyer_telephone = $request->Phone;
    $newRequest->date_from = $request->fro_date;
    $newRequest->date_to = $request->to_date;
@@ -254,7 +261,7 @@ return redirect()->route('sadmin_all_requests')->with(['message'=>'Resurser har 
  * @param String <$hash>
  * This function pulls up using livewire to pull up all the suppliers info and request responses
  */
-public function viewresponders ($request_hash){
+public function viewresponders($request_hash){
 
 $request = \App\Models\ServiceRequests::where(['request_hash'=>$request_hash])->first();
 $title = null;
@@ -272,14 +279,50 @@ if(!is_null($request)){ $title = $request->request_title; }
 //showing all interested suppliers
 $interestedSuppliers = \App\Models\Responders::where(['request_id'=>$request->id,'buyer_id'=>auth()->id()])->get();
 
+$msgCount = sizeof(\App\Models\RequestChats::where(['request_id'=>$request->id])->get());
 
 return view('marketplace.clients.view-request')->with(['title'=>$title,'requestBody'=>$request,
-'obj'=> new \App\Http\Controllers\ServiceRequestsController,'requests'=>$requests,'request_hash'=>$request_hash,
-'msgs'=>2,'offerCount'=> 0,'interested_suppliers'=>$interested_supplier,
-'interestedSuppliers'=>$interestedSuppliers,   'archivedrequest'=>$archivedrequest
+'obj'=> new \App\Http\Controllers\ServiceRequestsController,
+'requests'=>$requests,'request_hash'=>$request_hash,
+'msgs'=>$msgCount,'interested_suppliers'=>$interested_supplier,
+'interestedSuppliers'=>$interestedSuppliers,   
+'archivedrequest'=>$archivedrequest
 ]);
 
 }
+
+
+//this box loads the chatbox for the buyer and seller
+public function chatbox($supplier_id,$request_hash){
+
+   $request = \App\Models\ServiceRequests::where(['request_hash'=>$request_hash])->first();
+   $title = null;
+   
+   $requests = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'publish_status'=>true])->get();
+   $requests = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>false])->orderBy('project_execution_status','ASC')->get();
+   $archivedrequest = \App\Models\ServiceRequests::where(['customer_id'=>\Auth::user()->id,'archival_status'=>true])->get();
+           
+   $messageCount = 0;
+   
+   $messages = \App\Models\RequestChats::where(['request_id'=>$request->id,'buyer_id'=>auth()->id()])->orderBy('created_at','ASC')->get();
+   
+   $files = \App\Models\RequestChats::where(['request_id'=>$request->id])->get();
+
+   if(!is_null($request)){ $title = $request->request_title; }
+
+    $titl = null;
+      
+      if(!is_null($title)){
+          $titl = $request->request_title;
+      }
+
+      return view('marketplace.clients.requestbox')->with(['title'=>$titl,'messages'=>$messages,'files'=>$files,
+      'request_hash'=>$request_hash,'request'=>$request,'id'=>$request->id,'supplier_id'=>$supplier_id,'buyer_id'=>auth()->id()]);
+          
+}
+
+
+
 /**
  * @param Illuminate\Http\Request
  * @return Illuminate\Http\Response $response

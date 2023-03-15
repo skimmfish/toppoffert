@@ -9,16 +9,13 @@ $supController = new \App\Http\Controllers\SuppliersController;
 
 $ratingObj = new \App\Http\Controllers\RatingsController;
  
-
 @endphp
 
-<div class="row" style="margin-bottom:30px;">
-    <a href="{{url()->previous()}}" 
+<a href="{{url()->previous()}}" 
 class="text-black btn btn-white btn_r_circle" style="border-radius:40px;">
 <svg width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#231f20;}</style></defs><g data-name="arrow left" id="arrow_left">
 <path class="cls-1" d="M22,29.73a1,1,0,0,1-.71-.29L9.93,18.12a3,3,0,0,1,0-4.24L21.24,2.56A1,1,0,1,1,22.66,4L11.34,15.29a1,1,0,0,0,0,1.42L22.66,28a1,1,0,0,1,0,1.42A1,1,0,0,1,22,29.73Z"/></g></svg> Tillbaka
 </a>
-</div>
 
 
 <div class="row">
@@ -45,7 +42,7 @@ $rating = $ratingObj->getRatings($x->supplier_id)['rating'];
         <div class="title">
             <div class="row">
                 <span>
-                    <a href="{{route('chat_with_supplier',['supplier_id'=>$x->supplier_id,'request_hash'=>$request_hash])}}">
+                    <a href="{{route('marketplace.buyers.sendmsg')}}">
                         <h6 class="align-items-center h6-md_title" style="font-size:1.2em !important">{{ $supController->get_supplier_data('supplier_corp_name',$x->supplier_id)}}</h6>
                             </a>
                             
@@ -88,7 +85,7 @@ $rating = $ratingObj->getRatings($x->supplier_id)['rating'];
                    
                    <div class="nuo_line">
                    <span>#{{$x->org_reg_number}} / <a href="mailto:{{$supController->get_supplier_data('email',$x->supplier_id)}}">{{$supController->get_supplier_data('email',$x->supplier_id)}}</a></span>
-                   <span><a href="{{route('chat_with_supplier',['supplier_id'=>$x->supplier_id,'request_hash'=>$request_hash])}}" class="btn btn-ball">
+                   <span><a href="{{route('chat_with_supplier',['supplier_id'=>$requestBody->id,'request_hash'=>$requestBody->request_hash])}}" class="btn btn-ball">
 
                    <svg width="20px" height="20px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7.6728 22L16.1434 13.0294C16.4081 12.75 16.4081 12.3088 16.1434 12.0147L7.65808 3" stroke="#fff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>

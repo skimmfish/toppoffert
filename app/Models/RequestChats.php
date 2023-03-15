@@ -19,10 +19,5 @@ class RequestChats extends Model
 
         return $this->belongsTo('\App\Models\User');
     }
-
-    public function Supplier(){
-        return $this->belongsTo('\App\Models\Suppliers');
-    }
-
     
 }

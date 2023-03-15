@@ -474,11 +474,7 @@ Route::get('/auto-search-cat',[App\Http\Controllers\ServiceRequestsController::c
 
 
 //for chatting with a supplier
-Route::get('/request-box/{supplier_id}/{request_hash}',function($supplier_id,$request_hash){
-
-
-    
-})->name('chat_with_supplier');
+Route::get('/request-box/{supplier_id}/{request_hash}','\App\Http\Controllers\ServiceRequestsController@chatbox')->name('chat_with_supplier');
 
 });
 
@@ -703,14 +699,6 @@ Route::get('/send-message-buyer/{id}/{supplier_id}/{buyer_id}',function($id,$sup
 })->name('reach_out_to_buyer_action')->middleware(['creditdeduct']);
 
 
-//viewing images
-Route::get('view_img/{img_name}',function($img_name){
-
-    return view('pages.image_preview',['img_name'=>$img_name]);
-
-})->name('view_img');
-
-
 //send bid message popup to confirm action
 Route::get('/send-message-popup/{id}/{supplier_id}/{buyer_id}',function($id,$supplier_id,$buyer_id){
 
@@ -726,16 +714,8 @@ Route::get('/send-message-popup/{id}/{supplier_id}/{buyer_id}',function($id,$sup
 
 Route::get('/message-board')->name('marketplace.suppliers.message_board');
 
-
-
 //for reading single messages
 Route::get('/read-inbox/{note_id}',function($note_id){})->name('marketplace.suppliers.messages');
-
-//sending message to a buyer
-//THIS FUNCTION ENSURES THAT THE PERSON SENDING MSG WOULD  HAVE HIS ID APPENDED TO the end to the message
-//for quality assurance purposes
-Route::post('/send-bid','\App\Http\Controllers\SuppliersController@sendbid')->name('marketplace.supplier.sendbid');
-
 
 //for viewing invoice
 Route::get('/view_invoice/{id}')->name('view_invoice');
@@ -1018,6 +998,27 @@ Route::get('/home', function(){
     return redirect()->route('redirect_to_dashboard');
 })->name('home');
 
+
+/*************
+ * THIS ROUTES IS FOR ALL USERS BOTH SUPPLIERS AND BUYERS
+ */
+
+ //sending message to a buyer
+//THIS FUNCTION ENSURES THAT THE PERSON SENDING MSG WOULD  HAVE HIS ID APPENDED TO the end to the message
+//for quality assurance purposes
+Route::post('/send-bid','\App\Http\Controllers\SuppliersController@sendbid')->name('marketplace.supplier.sendbid')->middleware(['verified','auth']);
+
+Route::get('/see-request-box/{request_id}')->name('marketplace.buyers.seechatbox');
+
+//for buyers to send messages to sellers
+Route::post('/send-message-to-seller','\App\Http\Controllers\RespondersController@sendmsgtoseller')->name('marketplace.buyers.sendmsg')->middleware(['verified','auth']);
+
+//viewing images
+Route::get('view_img/{img_name}',function($img_name){
+
+    return view('pages.image_preview')->with(['img_name'=>$img_name]);
+
+})->name('view_img')->middleware(['auth']);
 
 
 //for profile pages for all users

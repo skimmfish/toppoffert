@@ -107,9 +107,15 @@ return \App\Models\Categories::where('id',$cat_id)->first()->$fieldname;
      */
 
      public static function getsubcatnamesforpg($cat_name){
-
+$catid=0;
         //get id of the category
-        $catid = Categories::where('cat_name',$cat_name)->first()->id;
+        $cat = Categories::where('cat_name',$cat_name)->first();
+       //->id;
+      if(!is_null($cat)){
+        $catid=$cat->id;
+
+
+        }
 
         $subcategories =  Subcats::where('service_cat_id',$catid)->get();
     

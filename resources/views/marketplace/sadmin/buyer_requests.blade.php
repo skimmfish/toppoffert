@@ -42,7 +42,7 @@ class="text-black btn btn-white btn_r_circle" style="border-radius:40px;">
                 
                 </b><br/>
 
-                     <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color svg-icon svg-icon--spacing-right-small" data-v-40d54a8c=""><path d="M.8 2.4h14.4v12.8H.8V2.4zM4 .8V4M12 .8V4M.8 7.2h14.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> <span>{{ \App\Http\Controllers\CategoriesController::getcatdata('cat_name',$x->service_cat) }}</span>
+                     <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color svg-icon svg-icon--spacing-right-small" data-v-40d54a8c=""><path d="M.8 2.4h14.4v12.8H.8V2.4zM4 .8V4M12 .8V4M.8 7.2h14.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg> <span>@if($x->service_cat!=0 && !is_null($x->service_cat)) {{ \App\Http\Controllers\CategoriesController::getcatdata('cat_name',$x->service_cat) }} @else Non-Selected @endif</span>
                         <Br/>
                         <img src="{{asset('img/product-item-transaction-svgrepo-com.svg')}}" class="img-responsive-sm" lazyloading />
                         <span>{{$x->request_type}}</span><hr/>
