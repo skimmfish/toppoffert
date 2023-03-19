@@ -9,7 +9,7 @@ chat='true'>
 
     <div class="box_1 footer_navigation_ul" style="padding-top:0px;">
     <!--<img src="{{asset('img/logos/png.png')}}" class="footer_logo" lazyloading/>-->
-    <Br/><b class="foo_h4" style="font-weight:700;">About Toppoffert</b><br/>
+    <Br/><b class="foo_h4" style="font-weight:700;">Toppoffert</b><br/>
     <h4 class="text-opacity-drop padd-box_1">
    <span style="font-size:13px;font-family:'Spartan','GD Sherpa Regular' !important;"> Vi är Toppoffert, vi finns alltid där för att tillgodose dina behov, städning, transporter, få några av de bästa hantverkarna i vårt nätverk.</span>
     </h4>

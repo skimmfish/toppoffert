@@ -7,6 +7,8 @@ use App\Models\Suppliers;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
+
 
 class SuppliersController extends Controller
 {
@@ -95,7 +97,7 @@ $buyer_type_name = null;
 public function senddocs($username){
 
     $this->username = $username;
-
+    $this->supObject = new \App\Http\Controllers\SuppliersController;
     try{
 
     $supplier = \App\Models\User::where('username',$username)->first();
@@ -110,9 +112,16 @@ public function senddocs($username){
 
     $hyphenatedStr = $this->createhypenatedstring(128);
     //update Supplier's record
-  
+
+    $smsCode = Str::random(6);
+
+
     if($request->docs_hash==NULL){   
-    \DB::update("UPDATE suppliers SET docs_hash=?,updated_at=? WHERE supplier_id=?",[$hyphenatedStr,date('Y-m-d h:i:s',time()),$this->uid]);     
+    \DB::update("UPDATE suppliers SET docs_hash=?,updated_at=?, sms_code=? WHERE supplier_id=?",[$hyphenatedStr,date('Y-m-d h:i:s',time()),$smsCode,$this->uid]);     
+    }else{
+    
+        \DB::update("UPDATE suppliers SET sms_code=? WHERE supplier_id=?",[$smsCode,$this->uid]);     
+    
     }
 
     $supplier_dochash = \App\Models\Suppliers::where('supplier_id',$this->uid)->first()->docs_hash;
@@ -120,13 +129,82 @@ public function senddocs($username){
     //the url to send will lead to docstart
     $url = url('/').'/su/offerter/'.$supplier_dochash;
 
+    //sending an email to the supplier here
     \Mail::to($request->email)->queue(new \App\Mail\SendBusinessDocs($f_name,$url));
+    $msg = "Dear $f_name, this message is coming to your because you opted to be a service supplier with ".config('app.name')."Please kindly take note of your approval SMS code: $smsCode, 
+    kindly navigate to this link - $url to approve the business documents. Thank you";
+
+    //send an sms to the same supplier
+ //   $this->supObject->sendSms($request->phone_no,$msg);
+
+   $this->supObject->httpSendSms($request->phone_no,$msg);
 
 }catch(\Exeption $e){
     echo $e->getMessage();
 }
     //send email to the user with the url
 }
+
+
+/**
+ * This function sends SMS using the HTTP client structure
+ * @param String <$user> API username
+ * @param String <$pass>
+ * @param String <$nr> Receiver's phone number
+ * @param String <$sender> Site owner
+ * @param Text    <$msg>
+ */
+
+public function httpSendSms($nr,$msg){
+
+$token = \App\Http\Controllers\ConfigController::get_value('sms_token');
+
+//$token = "token_api_oauth"; //https://portal.smsapi.se/react/oauth/manage
+
+$params = array(
+    'to'            => $nr,         //destination number  
+    'from'          => 'ToppOffert',                 
+     //sendername made in https://portal.smsapi.se/sms_settings/sendernames 
+    'message'       => $msg,    //message content
+    'format'        => 'json',           
+);
+
+return $this->sms_send($params,$token);
+}
+
+
+/**generic function for sending sms to phone numbers 
+ * 
+*/
+public function sms_send($params, $token)
+{
+
+    static $content;
+
+
+        $url = 'https://api.smsapi.se/sms.do';
+
+    $c = curl_init();
+    curl_setopt($c, CURLOPT_URL, $url);
+    curl_setopt($c, CURLOPT_POST, true);
+    curl_setopt($c, CURLOPT_POSTFIELDS, $params);
+    curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($c, CURLOPT_HTTPHEADER, array(
+        "Authorization: Bearer $token"
+    ));
+
+    $content = curl_exec($c);
+    $http_status = curl_getinfo($c, CURLINFO_HTTP_CODE);
+
+    if ($http_status != 200) {
+        sms_send($params, $token);
+    }
+
+    curl_close($c);
+    return $content;
+}
+
+
 
 /**
  * This function generate the info for the documents
