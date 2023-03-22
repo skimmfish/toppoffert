@@ -131,13 +131,14 @@ public function senddocs($username){
 
     //sending an email to the supplier here
     \Mail::to($request->email)->queue(new \App\Mail\SendBusinessDocs($f_name,$url));
-    $msg = "Dear $f_name, this message is coming to your because you opted to be a service supplier with ".config('app.name')."Please kindly take note of your approval SMS code: $smsCode, 
+    
+    /*$msg = "Dear $f_name, this message is coming to your because you opted to be a service supplier with ".config('app.name')."Please kindly take note of your approval SMS code: $smsCode, 
     kindly navigate to this link - $url to approve the business documents. Thank you";
+*/
 
-    //send an sms to the same supplier
- //   $this->supObject->sendSms($request->phone_no,$msg);
+        $msg =  "Kära $f_name Här kommer din offert från ToppOffert! Med vänliga hälsningar! ToppOffert.se - $url";
 
-   $this->supObject->httpSendSms($request->phone_no,$msg);
+        $this->supObject->httpSendSms($request->phone_no,$msg);
 
 }catch(\Exeption $e){
     echo $e->getMessage();

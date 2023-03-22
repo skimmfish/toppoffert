@@ -11,8 +11,20 @@ class CreditsController extends Controller
 
        try{
          $creditObj =  \App\Models\Credits::where('supplier_id',$supplier_id)->first();
-       if($creditObj==NULL){
-        $creditObj = [];
+       
+         if($creditObj==NULL){
+        
+            $creditObj =  NULL;
+
+            $crObj = new  \App\Models\Credits([
+            'credits'=> 0,
+            'supplier_id'=>Auth::user()->id,
+            'created_at'=>date('Y-m-d h:i:s',time()),
+            'updated_at'=>date('Y-m-d h:i:s',time())
+          ]);
+        
+          $crObj->save();
+
        }else{
         return $creditObj;
        }

@@ -407,7 +407,7 @@ return redirect()->back()->with(['message'=>'Köparens Begäran Godkändes']);
  */
 public function viewservicerequest($hash){
 
-   $request = \App\Models\ServiceRequests::where('request_hash','=',$hash)->first();
+$request = \App\Models\ServiceRequests::where('request_hash','=',$hash)->first();
 
 /*
 $request = \DB::table('service_requests')->join('categories',function($join){
@@ -416,16 +416,27 @@ $request = \DB::table('service_requests')->join('categories',function($join){
   })->get();
 
   */
+
+$creditBalance = 0;
+
+$creditObj = \App\Http\Controllers\CreditsController::getCredits(auth()->id());
+
 $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
+
 $catCount = sizeof(\App\Models\Categories::all());
 
-//$credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+if(!is_null($creditObj)){
+   $creditBalance = $creditObj->credits;
+}
 
+
+
+//$credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
 
 return view('pages.request_view')->with(['requestBody'=>$request,
 'supplierObj'=>new \App\Models\Suppliers,
 'title'=>$request->request_title,
-'request_count'=>sizeof($requests),
+'request_count'=>sizeof($requests),'creditBalance'=>$creditBalance,
 'related'=>$this->getRelatedRequests($request->service_cat)]);
 }
 
@@ -501,4 +512,13 @@ public function sendmessagetobuyer($id,$supplier_id){
 
 }
 
+
+/**
+ * This function returns the buyer type from the buyer_type table
+ */
+public static function getbuyertype($btindex){
+
+return $buyer_type = \App\Models\BuyerType::where('id',$btindex)->first()->buyers_type_name;
+
+}
 }

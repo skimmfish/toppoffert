@@ -652,6 +652,7 @@ Route::get('/suppliers-coverage',function(){
     $catCount = sizeof(\App\Models\Categories::all());
     
     $creditObj = \App\Http\Controllers\CreditsController::getCredits($uid);
+
     if(is_null($creditObj)){
         $credits = 0;
     }else{
@@ -685,7 +686,27 @@ Route::get('/send-message-buyer/{id}/{supplier_id}/{buyer_id}',function($id,$sup
     $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
     $cats = \App\Models\Categories::all();
     $catCount = sizeof($cats);
-    $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+    $credits = 0.0;
+    $credObj = \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id);
+
+    if(!is_null($credObj)){
+
+    $credits = $credObj->credits;
+ }else{
+
+  $crObj = new  \App\Models\Credits([
+
+    'credits'=> 0,
+    'supplier_id'=>Auth::user()->id,
+    'created_at'=>date('Y-m-d h:i:s',time()),
+    'updated_at'=>date('Y-m-d h:i:s',time())
+  ]);
+
+  $crObj->save();
+
+}
+
+
     $isDeducted = \App\Models\Responders::where(['supplier_id'=>$supplier_id,'buyer_id'=>$buyer_id,'request_id'=>$id])->get();
 
     $messages = \App\Models\RequestChats::where(['request_id'=>$id,'supplier_id'=>$supplier_id])->paginate(20);
