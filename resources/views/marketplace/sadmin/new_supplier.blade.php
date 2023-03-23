@@ -231,8 +231,15 @@ value="{{old('pobox')}}" required/>
         <div class="label">Telefon</div>
         <div class="register-input-container">
             <input class="form-control input-field" name="phoneNumber" placeholder="Telefon" autocomplete="tel" type="tel">
-            <span class="input-error-icon"> 
-             </span>
+           
+            <span class="input-error-icon">                      
+                    @if($errors->has('phoneNumber'))
+                      <span class="help-block">
+                      <strong class="text-tiny weight-400 red alert alert-danger">{{ $errors->first('phoneNumber') }}</strong>
+                       </span>
+                       @endif
+                   </span>   
+
         </div>
     </div>
 
@@ -242,7 +249,15 @@ value="{{old('pobox')}}" required/>
         <div class="register-input-container">
             <input class="form-control input-field" name="address" placeholder="Företags Adress" autocomplete="address" type="text">
         </div>
-       </div>
+
+        <span class="input-error-icon">                      
+                    @if($errors->has('address'))
+                      <span class="help-block">
+                      <strong class="text-tiny weight-400 red alert alert-danger">{{ $errors->first('address') }}</strong>
+                       </span>
+                       @endif
+                   </span>   
+    </div>
 
 
     <!-- Contact input -->
@@ -250,8 +265,15 @@ value="{{old('pobox')}}" required/>
         <div class="label">Kontaktperson</div>
         <div class="register-input-container">
             <input class="form-control input-field" name="contactPerson" placeholder="Kontaktperson" autocomplete="name" type="text">
-            <span class="input-error-icon"> 
-     </span>
+           
+            
+        <span class="input-error-icon">                      
+                    @if($errors->has('contactPerson'))
+                      <span class="help-block">
+                      <strong class="text-tiny weight-400 red alert alert-danger">{{ $errors->first('contactPerson') }}</strong>
+                       </span>
+                       @endif
+                   </span>  
         </div>
      </div>
 

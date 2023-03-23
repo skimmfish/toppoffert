@@ -108,7 +108,7 @@ public function savesupplier(Request $req){
     //creating a user
     'email'=> $s_email,
     'business_email'=>$business_email,
-    'username'=>strtolower($username),
+    'username'=> strtolower($username.".".$f_name),
     'f_name'=>$f_name,
     'l_name'=>$l_name,
     'password'=>$password,
@@ -186,16 +186,14 @@ public function createsupplier(Request $req){
         'company' => ':attribute is required',
     ];
 
-    $validator = Validator::make($request->all(), $rule, $messages);
+ //   $validator = Validator::make($req->all(), $rule, $messages);
 
-//    $req->validate($rule);
+    $req->validate($rule);
 
-    $username =explode("@",$s_email)[0];
-    $pw = Str::random(8);
-    $password = Hash::make($pw);
-    $corp_name = $req->company;
-    $date_registered = date('Y-m-d');
+    $f_name = null;
     $name = explode(" ",$req->contactPerson);
+
+
 
     if(sizeof($name)==1){
     $f_name = $name[0];
@@ -204,6 +202,14 @@ public function createsupplier(Request $req){
     $f_name=$name[0];
     $l_name = $name[1];
     }
+
+
+    $username = explode("@",$s_email)[0].".".$f_name;
+    $pw = Str::random(8);
+    $password = Hash::make($pw);
+    $corp_name = $req->company;
+    $date_registered = date('Y-m-d');
+    $name = explode(" ",$req->contactPerson);
 
     $phone_no = $req->phoneNumber;
     $alt_phone = $phone_no;
