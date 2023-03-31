@@ -5,7 +5,7 @@ $catName = null; $subCatNameSelected = null;
 if(isset($catSelected) && isset($subCatSelected)){
 
   $catName = \App\Http\Controllers\CategoriesController::getcatdata('cat_name',$catSelected);
-
+  
 $subCatNameSelected = \App\Http\Controllers\CategoriesController::getsubcatdata('subcat_name',$subCatSelected).'_'.$catSelected.'_'.$subCatSelected;
 
 }
@@ -175,7 +175,8 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
 <h1 class="page-title text-white" style="font-family:'Spartan' !important;margin-bottom:35px;color:#000;">Vi introducerar dig till f&#246;retag <br/>redo att hjälpa dig</h1>
 		@if(!is_null($subCatNameSelected))
-		<p class="page-subtitle text-pull-left text-white"><span class="tiny text-lg-1x">Få hjälp med </span><b class="text-black">{{$subCatNameSelected}}</b></p>
+		<p class="page-subtitle text-pull-left text-white"><span class="tiny text-lg-1x">Få hjälp med </span>
+    <b class="text-black">{{$catName}}</b></p>
         @else
 		<p class="page-title text-pull-left text-white text-lg-1x">Beskriv ditt behov och ta emot upp till sex offerter från lokala tjänsteföretag</p>
 		@endif
@@ -217,7 +218,10 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <label class="form-label" for='sub_category'>Välj en underkategori för din förfrågan</label>
 				<br/>
                 	@if(isset($subCatSelected) && !is_null($subCatSelected))
-                  	<input type="text" name="sub_category" class="form-control form-control-lg input-lg flex-input" value="{{$subCatNameSelected}}" style="height:70px;padding-top:0 !important;"/>
+                  	<input type="hidden" name="sub_category" class="form-control form-control-lg input-lg flex-input" value="{{$subCatNameSelected}}" style="height:70px;padding-top:0 !important;"/>
+                    <input type="text" name="sub_catgr" class="form-control form-control-lg input-lg flex-input" value="{{$catName}}" style="height:70px;padding-top:0 !important;"/>
+
+                    
                     @else
                     <div id="subcategories_fetcher"></div>
                       @endif
@@ -240,7 +244,38 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <!--for territory of assignment-->
             <div class="form-group">
               <label for="territory" class="form-label">Plats</label>
-            <input class="flex-input form-control" style="height:65px !important;" placeholder="Plats" name="territory" type="text" value="{{old('territory')}}" required/>
+            {{-- <input class="flex-input form-control" style="height:65px !important;" placeholder="Plats" 
+            name="territory" type="text" value="{{old('territory')}}" required/> --}}
+           
+           
+           
+<select name="territory" class="flex-input form-control">
+<option selected="" value="{{old('territory')}}">Hela Sverige</option>
+<option>Blekinge</option>
+<option>Dalarna</option>
+<option>Gotland</option>
+<option>Gävleborg</option>
+<option>Göteborg</option>
+<option>Halland</option>
+  <option>Jämtland</option>
+  <option>Jönköping</option>
+  <option>Kalmar</option>
+  <option>Kronoberg</option>
+  <option>Norrbotten</option>
+  <option>Skaraborg</option>
+  <option>Skåne</option>
+  <option>Stockholm</option>
+  <option>Södermanland</option>
+  <option>Uppsala</option>
+  <option>Värmland</option>
+  <option>Västerbotten</option>
+  <option>Västernorrland</option>
+  <option>Västmanland</option>
+  <option>Älvsborg</option>
+<option>Örebro</option>
+<option>Östergötland</option>
+</select>
+           
             <span class="text-danger">@if($errors->has('territory'))
               {{ $errors->first('territory') }}
               @endif
