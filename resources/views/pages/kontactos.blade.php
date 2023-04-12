@@ -21,9 +21,25 @@
     <link rel="dns-prefetch" href="https://www.youtube.com/" />
 
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
-    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
+
+	<link rel="icon" type="image/x-icon" sizes="192x192"  href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="icon" type="image/x-icon" sizes="32x32" href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="icon" type="image/x-icon" sizes="96x96" href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="icon" type="image/x-icon" sizes="16x16" href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="{{ asset('img/icons/favicon.ico')}}">
+
+  <link rel="manifest" href="{{ asset('img/icons/manifest.json')}}">
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/icons/apple-icon-57x57.png')}}">
+<link rel="apple-touch-icon" sizes="60x60" href="{{ asset('img/icons/apple-icon-60x60.png')}}">
+<link rel="apple-touch-icon" sizes="72x72" href="{{ asset('img/icons/apple-icon-72x72.png')}}">
+<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/icons/apple-icon-76x76.png')}}">
+<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('img/icons/apple-icon-114x114.png')}}">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ asset('img/icons/apple-icon-120x120.png')}}">
+<link rel="apple-touch-icon" sizes="144x144" href="{{ asset('img/icons/apple-icon-144x144.png')}}">
+<link rel="apple-touch-icon" sizes="152x152" href="{{ asset('img/icons/apple-icon-152x152.png')}}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/icons/apple-icon-180x180.png')}}">
+  
     
     <link href="https://fonts.googleapis.com/css?family=Spartan:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
 
@@ -819,47 +835,6 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         </div>
     </div>
 </section>
-<!--
-<section class="section-alt">
-    <div class="container">
-        <h2 class="section-title">Kontaktpersoner</h2>
-        <div class="four-columns">
-            <div class="column text-center">
-                <img src="{{asset('img/profilepictures/profile-anna-bergius.jpg')}}" class="profile-picture" alt="Anna Bergius" />
-                <div class="h5">Anna Bergius</div>
-                <div class="title-info">VD</div>
-                <div>
-                    <a href="mailto:anna.bergius@toppoffert.se" class="link">anna.bergius@toppoffert.se</a>
-                </div>
-            </div>
-            <div class="column text-center">
-                <img src="{{asset('img/profilepictures/profile-caroline-lindblad.jpg')}}" class="profile-picture" alt="Caroline Lindblad" />
-                <div class="h5">Caroline Lindblad</div>
-                <div class="title-info">Marknadschef</div>
-                <div>
-                    <a href="mailto:caroline.lindblad@toppoffert.se" class="link">caroline.lindblad@toppoffert.se</a>
-                </div>
-            </div>
-            <div class="column text-center">
-                <img src="{{asset('img/profilepictures/profile-martin-hjorth.png')}}" class="profile-picture" alt="Martin Hjorth" />
-                <div class="h5">Martin Hjorth</div>
-                <div class="title-info">Försäljningschef</div>
-                <div>
-                    <a href="mailto:magnus.svanblom@toppoffert.se" class="link">martin.hjorth@fortnox.se</a>
-                </div>
-            </div>
-            <div class="column text-center">
-                <img src="{{asset('img/profilepictures/profile-mia-paarni.jpg')}}" class="profile-picture" alt="Mia Päärni" />
-                <div class="h5">Mia Päärni</div>
-                <div class="title-info">Ekonomiansvarig</div>
-                <div>
-                    <a href="mailto:mia.paarni@toppoffert.se" class="link">mia.paarni@toppoffert.se</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
--->
 </main>
         </div>
         

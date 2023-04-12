@@ -333,11 +333,13 @@ $user = \App\Models\User::findOrFail($id);
     $user->pobox = $req->pobox;
     $user->c_o_address = $req->c_o_address;
     $user->receive_top_offers = $req->receive_top_offers;
+    $user->welcome_msg_to_buyers = $req->welcome_msg_to_buyers;
     $user->save();
 
-    return redirect()->back()->with(['message'=>'Dina kontaktuppgifter har uppdaterats!']);
+    return redirect()->route('contact-information')->with(['message'=>'Dina kontaktuppgifter har uppdaterats!']);
 
 }
+
 
 
 

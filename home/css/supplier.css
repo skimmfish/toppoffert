@@ -28,12 +28,28 @@ margin-top:8px;
 margin-top:20px;
 }
 
+.certificates{
+    margin:15px 0px 25px -10px;padding:25px 15px;
+}
+.cert_box{
+    border-radius:7px; background:#fff;padding:15px;
+}
+.btn-dark svg{
+    width:35px !important;height:35px !important;line-height: 30px;
+}
+
 .form .check_box_md{
 width:25px;height:25px;line-height: 24px;
 }
 
 .topp_logo{
     width:100px !important;height:90px !important;
+}
+.spartan{
+    font-family:'Spartan' !important;font-size:100%;line-height: 24px;
+}
+.gdsherpa{
+    font-family: 'GD Sherpa Reguarl' !important;font-size:100%;line-height: auto;
 }
 body, a{
     font-family:'Spartan','GD Sherpa Regular','Open Sans' !important;font-size:13.5px !important;
@@ -172,9 +188,10 @@ display:grid;grid-template-columns: 15% 15% 15% 15%;grid-gap:5px;
 }
 .grey_bg{background:#dfdfdf !important;border-radius:50%;width:60px !important;height:60px !important;}
 .bmsgg span{font-size:12.5px;line-height:34px;font-weight:500 !important;color:#000 !important;}
-.bmsgg,.msgg{
-    padding:10px 0 15px 0;
-}
+
+/**.bmsgg,.msgg{
+    padding:6px 0 8px 0;
+}**/
 
 .certification_section{
     padding:15px 15px;margin:15px 15px;
@@ -460,7 +477,7 @@ top:2px;left:-10px;
     font-size:17px;
 }
 .wht-bg{
-    background:#fff;padding:2px 10px 2px 10px;line-height: 29px;
+    background:#fff;padding:0px 2px 0px 2px;line-height: 29px;
 }
 .wht-bg span{
 font-weight: 700;
@@ -526,8 +543,8 @@ width:20px;height:20px;border-radius:50%;
 background:#fff;border-radius:10px;padding:10px 8px;
 }
 
-.info_item span{
-    font-size:12px;
+.info_item span, .info_item a{
+    font-size:12px !important;
 }
 
 .tabs button{

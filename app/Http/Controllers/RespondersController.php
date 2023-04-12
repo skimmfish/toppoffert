@@ -18,7 +18,6 @@ class RespondersController extends Controller
     }
 
 
-
     /**
      * this function sends message to the seller
      */
@@ -53,9 +52,32 @@ class RespondersController extends Controller
         'file_info'=>$main_file.'@__'.$other_file
       ]);
 
-      $messages = \App\Models\RequestChats::where('request_id',$request_id)->orderBy('created_at','ASC')->get();
+      //creating or updating an existing file
+      //check if the request exists previously
+      $isExist = \App\Models\FileManager::where('request_id',$request_id)->first();
+      if(is_null($isExist)){
+
+      $newfile = new \App\Models\FileManager([
+
+        'request_id'=>$request_id,
+        'sent_by'=>$buyer_id,
+        'file_name'=>$main_file.'@__'.$other_file,
+        'created_at'=>date('Y-m-d h:i:s',time()),
+        'updated_at'=>date('Y-m-d h:i:s',time())
+     ]);
+
+     $newfile->save();
+
+    }else{
+      //only do an update
+      \DB::update("UPDATE file_managers SET file_name=file_name.? WHERE request_id=?",
+      ['@__'.$main_file.'@__'.$other_file, $request_id]);
+    }
+
+
+    $messages = \App\Models\RequestChats::where('request_id',$request_id)->orderBy('created_at','ASC')->get();
   
-      return view('chat_with_supplier')->with(['supplier_id'=>$supplier_id,'request_hash'=>$request->request_hash]);
+      return redirect()->route('chat_with_supplier',['request_id'=>$supplier_id,'request_hash'=>$request->request_hash,'supplier_id'=>$supplier_id]);
       
    }
   }

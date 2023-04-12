@@ -26,30 +26,8 @@ if(json_decode($supplierCoverage['categories'],true)==null){
 
 }
 
-$buyerTypes = NULL;
+$buyerTypes = '';
 
-$buyersTypes = json_decode($supplierCoverage['buyers_type'],true);
-
-if($buyersTypes!=NULL && sizeof($buyersTypes)>0){
-
-  for($i=0;$i< sizeof($buyersTypes);$i++){
-
-  $buyerTypes .= \App\Http\Controllers\SuppliersController::getBuyerTypeName($buyersTypes[$i]).',';
-
-}
-}
-
-
-//getting the supplier's category and service areas
-    $categoryPayload = json_decode($supplierCoverage['categories'],true);
-    $subcategoryPayload = json_decode($supplierCoverage['subcategories'],true);
-    $buyerTypePayload = json_decode($supplierCoverage['buyers_type'],true);
-
-    if(!is_null($buyerTypePayload)){
-      $buyerTypePayload = [];
-    }
-
-    
 
 @endphp
 
@@ -66,7 +44,7 @@ if($buyersTypes!=NULL && sizeof($buyersTypes)>0){
                     <!--./end of tp-padding-->
                       </div>
 
-@if($categoriesCount>0 && $buyerTypes!=NULL && !is_null($subcategoryPayload))
+{{-- @if($categoriesCount>0) --}}
 
     @if($request_count>0)
     @foreach($requests as $x) 
@@ -78,10 +56,14 @@ if($buyersTypes!=NULL && sizeof($buyersTypes)>0){
     $buyersType = $x->executed_for; 
     $buyersTypeName = \App\Http\Controllers\SuppliersController::getBuyerTypeName($buyersType);
 
-  @endphp
+    @endphp
 
-    @if(in_array($service_category,$categoryPayload) && in_array($subservice_cat,$subcategoryPayload) && in_array($buyersType,$buyerTypePayload))
-    
+
+     {{-- @if(in_array($service_category,json_decode($supplierCoverage['categories'],true)) && 
+    in_array($subservice_cat,json_decode($supplierCoverage['subcategories'],true)) && 
+    in_array($buyersType,json_decode($supplierCoverage['buyers_type'],true)))
+    --}}
+
     <a hre="#" data-attr="{{route('supplier_view_request',['hash'=>$x->request_hash])}}"  id="viewRequest" data-toggle="modal" data-target="#requestModal">
      <div class="row requests">
             <!--request_title_and_no. of_interested_suppliers-->
@@ -116,7 +98,7 @@ if($buyersTypes!=NULL && sizeof($buyersTypes)>0){
 
               <div class="col-md-3 col-lg-3 col-sm-3 col-xs-6 titles">
                   <span>{{$buyersTypeName}}</span><br/>
-                  <span>ldag {{explode(" ", $x->created_at)[1]}}</span>
+                  <span>ldag {{date('d F, Y',strtotime(explode(" ", $x->created_at)[0]))}}</span>
                          </div>
 
                   <div class="col-md-3 col-xs-3 col-xs-6 flex-rw titles">
@@ -135,12 +117,9 @@ if($buyersTypes!=NULL && sizeof($buyersTypes)>0){
                     <!--./end of .row .requests-->
                   </div> 
                 </a>
-
-              
-                @else
-                 <span> Request not matched with your profile</span>
-                @endif
-                @endforeach  
+                {{-- @endif --}}
+                @endforeach   
+                  {{-- @endif --}}
 
                     @elseif(sizeof($requests)<=0)
 
@@ -157,9 +136,10 @@ if($buyersTypes!=NULL && sizeof($buyersTypes)>0){
 </span>
 </div>
 
-@endif
 
-@else
+                    @endif
+
+              <!--
 <div class="row">
 <hr/>
 <div class="col-md-2 col-lg-2 col-xs-3 col-sm-2">
@@ -174,8 +154,10 @@ if($buyersTypes!=NULL && sizeof($buyersTypes)>0){
 <a href="{{route('settings.coverage')}}" class="underline">Ställ in kategorier, prissättning och köpartyper här</a>
 </span>
 </div>
-@endif
+    -->
+{{-- @endif --}}
 </div>
+
 
               <!--modal-->
     <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
@@ -194,5 +176,6 @@ if($buyersTypes!=NULL && sizeof($buyersTypes)>0){
             </div>
         </div>
     </div>
+
 
     @endsection

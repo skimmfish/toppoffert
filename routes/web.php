@@ -474,7 +474,7 @@ Route::get('/auto-search-cat',[App\Http\Controllers\ServiceRequestsController::c
 
 
 //for chatting with a supplier
-Route::get('/request-box/{supplier_id}/{request_hash}','\App\Http\Controllers\ServiceRequestsController@chatbox')->name('chat_with_supplier');
+Route::get('/request-box/{request_id}/{request_hash}/{supplier_id}','\App\Http\Controllers\ServiceRequestsController@chatbox')->name('chat_with_supplier');
 
 });
 
@@ -711,11 +711,14 @@ Route::get('/send-message-buyer/{id}/{supplier_id}/{buyer_id}',function($id,$sup
 
     $messages = \App\Models\RequestChats::where(['request_id'=>$id,'supplier_id'=>$supplier_id])->paginate(20);
     
+    $allFiles = \App\Models\FileManager::where(['request_id'=>$id])->first();
+
+    $suppAvatar = \Auth::user()->profile_img; 
     //create an entry in the responder table first
 
     return view('pages.sendmessagebox',['requests'=>$requests,'buyer_id'=>$buyer_id,
-    'messages'=>$messages,'request_title'=>$title,
-    'request_count'=>sizeof($requests),'category_count'=>$catCount,'credit'=>$credits,'id'=>$id,'supplier_id'=>$supplier_id,'title'=>'Lämna intresse för köparens begäran - '.$title]);
+    'messages'=>$messages,'request_title'=>$title,'allfiles'=>$allFiles,
+    'request_count'=>sizeof($requests),'category_count'=>$catCount,'avatar'=>$suppAvatar,'credit'=>$credits,'id'=>$id,'supplier_id'=>$supplier_id,'title'=>'Lämna intresse för köparens begäran - '.$title]);
 
 })->name('reach_out_to_buyer_action')->middleware(['creditdeduct']);
 
@@ -727,6 +730,7 @@ Route::get('/send-message-popup/{id}/{supplier_id}/{buyer_id}',function($id,$sup
     'id'=>$id,
     'supplier_id'=>$supplier_id,
     'buyer_id'=>$buyer_id]);
+
 })->name('reach_out_to_buyer');
 
 
@@ -841,13 +845,23 @@ Route::get('contact-information',function(){
     $review_count = $ratingObj->getRatings($uid);
 
     $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials($uid);
+    
+    $certificate = \App\Models\Suppliers::where(['supplier_id'=>$uid])->first()->certificate_uri;
+    $coy_reg_cert = \App\Models\Suppliers::where(['supplier_id'=>$uid])->first()->coy_reg_cert;
 
     return view('marketplace.suppliers.kontactinformation',['title'=>'Kontaktuppgifter',
-    'review_count'=>$review_count['review_count'], 'request_count'=>$request_count,'credit'=>$credits]);
+    'review_count'=>$review_count['review_count'], 'certificate'=>$certificate,
+    'coy_reg_cert'=>$coy_reg_cert,'request_count'=>$request_count,'credit'=>$credits]);
+
 
 })->name('contact-information');
 
+//upload certification
+Route::get('/file-certificate-upload/{id}',function($id){
 
+    return view('pages.file_uploader_view')->with(['s_id'=>$id]);
+
+})->name('file_uploader_view');
 
 //updating kontact info for suppliers
 Route::put('save-kontact-info/{id}','\App\Http\Controllers\UserController@updateUser')->name('save_kontact');

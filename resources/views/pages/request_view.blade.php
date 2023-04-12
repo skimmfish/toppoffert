@@ -35,13 +35,26 @@ class="text-black btn btn-white btn_r_circle" style="border-radius:40px;">
 
 
 <div class="row m-3">
-<h3 class="text-black">{{$requestBody->request_title}} <span class="text-grey">#{{$requestBody->id}}</span></h3>
+<div class="col-md-8 col-lg-8 col-xs-8 col-xl-8 col-sm-8"><h3 class="text-black">{{$requestBody->request_title}} <span class="text-grey">#{{$requestBody->id}}</span></h3></div>
+
+<div class="col-md-4 col-lg-4 col-xs-4 col-xl-4 col-sm-4">
+<a href="{{route('reach_out_to_buyer_action',['id'=>$requestBody->id,'supplier_id'=>Auth::user()->id,'buyer_id'=>$requestBody->customer_id])}}" class="btn btn-dark" style="font-size:12.5px !important;font-weight:600;padding-top:20px;border:0;">
+<svg width="30px" height="30px" style="width:22px !important;height:22px !important" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>message [#1579]</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+</defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dribbble-Light-Preview" transform="translate(-60.000000, -919.000000)" fill="#000000">
+            <g id="icons" transform="translate(56.000000, 160.000000)">
+                <path d="M13.9577278,759 C7.99972784,759 3.26472784,764.127 4.09472784,770.125 C4.62372784,773.947 7.52272784,777.156 11.3197278,778.168 C12.7337278,778.545 14.1937278,778.625 15.6597278,778.372 C16.8837278,778.16 18.1397278,778.255 19.3387278,778.555 L20.7957278,778.919 L20.7957278,778.919 C22.6847278,779.392 24.4007278,777.711 23.9177278,775.859 C23.9177278,775.859 23.6477278,774.823 23.6397278,774.79 C23.3377278,773.63 23.2727278,772.405 23.5847278,771.248 C23.9707278,769.822 24.0357278,768.269 23.6887278,766.66 C22.7707278,762.415 18.8727278,759 13.9577278,759 M13.9577278,761 C17.9097278,761 21.0047278,763.71 21.7337278,767.083 C22.0007278,768.319 21.9737278,769.544 21.6547278,770.726 C20.3047278,775.718 24.2517278,777.722 19.8237278,776.614 C18.3507278,776.246 16.8157278,776.142 15.3187278,776.401 C14.1637278,776.601 12.9937278,776.544 11.8347278,776.236 C8.80772784,775.429 6.49272784,772.863 6.07572784,769.851 C5.40472784,764.997 9.26872784,761 13.9577278,761 L13.9577278,761" id="message-[#1579]">
+</path>           </g>        </g></g></svg> Meddelanden</a>
+</div>
 
 <div class="row">
-<div class="col-md-8 col-lg-8 col-xs-12 col-xl-8 col-sm-8 wht-bg" style="border-radius:9px;">
-<h5>Description</h5>
-<span>Hej! 
-    <br/>{{$requestBody->mission_type}}</span>
+<div class="col-md-8 col-lg-8 col-xs-12 col-xl-8 col-sm-8 wht-bg" style="border-radius:9px;padding:15px">
+<h5>Beskrivning</h5><hr/>
+<span>{{$requestBody->mission_type}}</span>
 
 <div id="map"></div>
 
@@ -50,7 +63,9 @@ class="text-black btn btn-white btn_r_circle" style="border-radius:40px;">
 
 
 <b>Mellan vilka datum väntas flytten ske?</b><Br/>
-<span>{{ date('d, M, Y',strtotime($requestBody->date_from)) .' - '. date('d, M, Y',strtotime($requestBody->date_to)) }}</span>
+<span>@if(!is_null($requestBody->date_from) && !is_null($requestBody->date_to)) {{ date('d, M, Y',strtotime($requestBody->date_from)) .' - '. date('d, M, Y',strtotime($requestBody->date_to)) }}@else 
+<i class="text-primary text-sm">Request from Buyer</i>   
+@endif</span>
 
 <Br/>
 

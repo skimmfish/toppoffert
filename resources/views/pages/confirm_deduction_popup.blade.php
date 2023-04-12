@@ -1,6 +1,6 @@
 <div class="container">
 <div class="row">
-    <h6 style="font-size:13.5px;font-weight:700">
+    <h6 style="font-size:12.5px !important;font-weight:700">
     Bekräfta om du vill fortsätta med den här åtgärden! Vänligen notera att, {{\App\Http\Controllers\ConfigController::get_value('credit_per_request')}} kommer att debiteras från ditt saldo om det inte har dragits tidigare.</h6>
 </div>
 <div class="row flex-btn">

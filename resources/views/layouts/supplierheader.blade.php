@@ -22,9 +22,24 @@ $supplierObj = new \App\Models\Suppliers;
     <!--    Favicons-->
     <!-- ===============================================-->
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
-    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
+    <link rel="icon" type="image/x-icon" sizes="192x192"  href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="icon" type="image/x-icon" sizes="32x32" href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="icon" type="image/x-icon" sizes="96x96" href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="icon" type="image/x-icon" sizes="16x16" href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="{{ asset('img/icons/favicon.ico')}}">
+
+  <link rel="manifest" href="{{ asset('img/icons/manifest.json')}}">
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/icons/apple-icon-57x57.png')}}">
+<link rel="apple-touch-icon" sizes="60x60" href="{{ asset('img/icons/apple-icon-60x60.png')}}">
+<link rel="apple-touch-icon" sizes="72x72" href="{{ asset('img/icons/apple-icon-72x72.png')}}">
+<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/icons/apple-icon-76x76.png')}}">
+<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('img/icons/apple-icon-114x114.png')}}">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ asset('img/icons/apple-icon-120x120.png')}}">
+<link rel="apple-touch-icon" sizes="144x144" href="{{ asset('img/icons/apple-icon-144x144.png')}}">
+<link rel="apple-touch-icon" sizes="152x152" href="{{ asset('img/icons/apple-icon-152x152.png')}}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/icons/apple-icon-180x180.png')}}">
+  
 
     <meta name="msapplication-TileImage" content="">
     <meta name="author" content="Toppoffert Sverige AB" />
@@ -232,6 +247,35 @@ $supplierObj = new \App\Models\Suppliers;
         });
 </script>
 
+
+<!--document uploader for suppliers-->
+<script>
+        // display a modal (small modal)
+        $(document).on('click', '#uploadCertificate', function(event) {
+            event.preventDefault();
+            let href = $(this).attr('data-attr');
+            $.ajax({
+                url: href,
+                beforeSend: function() {
+                    $('#loader').show();
+                },
+                // return the result
+                success: function(result) {
+                    $('#requestModal').modal("show");
+                    $('#mediumBody').html(result).show();
+                },
+                complete: function() {
+                    $('#loader').hide();
+                },
+                error: function(jqXHR, testStatus, error) {
+                    console.log(error);
+                    alert("Page " + href + " cannot open. Error:" + error);
+                    $('#loader').hide();
+                },
+                timeout: 8000
+            })
+        });
+</script>
 
 <!--view user-->
 <script>
@@ -640,15 +684,13 @@ h1,h2,h3,h4,h5,h6{
                       </a>
                     </li>-->
                     
-                    <li class="nav-item"><a class="nav-link" href="{{route('settings.notifications')}}" data-bs-toggle="" aria-expanded="false">
+                    <!--<li class="nav-item"><a class="nav-link" href="{{route('settings.notifications')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Pushnotiser</span></div>
-                      </a><!-- more inner pages-->
+                      </a>
+          --><!-- more inner pages-->
+
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('settings.cookie')}}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Cookie-inställningar</span></div>
-                      </a><!-- more inner pages-->
-                    </li>
                   </ul>
                 </li>
 

@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ServiceRequests extends Model
 {
     use HasFactory, SoftDeletes;
+    
+//    protected $table = 'service_requests';
 
     protected $fillable = [
         'service_cat',

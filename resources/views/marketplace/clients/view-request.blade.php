@@ -85,7 +85,7 @@ $rating = $ratingObj->getRatings($x->supplier_id)['rating'];
                    
                    <div class="nuo_line">
                    <span>#{{$x->org_reg_number}} / <a href="mailto:{{$supController->get_supplier_data('email',$x->supplier_id)}}">{{$supController->get_supplier_data('email',$x->supplier_id)}}</a></span>
-                   <span><a href="{{route('chat_with_supplier',['supplier_id'=>$requestBody->id,'request_hash'=>$requestBody->request_hash])}}" class="btn btn-ball">
+                   <span><a href="{{route('chat_with_supplier',['request_id'=>$requestBody->id,'request_hash'=>$requestBody->request_hash,'supplier_id'=>$x->supplier_id])}}" class="btn btn-ball">
 
                    <svg width="20px" height="20px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7.6728 22L16.1434 13.0294C16.4081 12.75 16.4081 12.3088 16.1434 12.0147L7.65808 3" stroke="#fff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>

@@ -39,7 +39,7 @@ $credit = $creditObj->credits;
               </li>
               
           @if(\Auth::user()->user_cat=='SUPPLIER')    <li class="nav-item dropdown">
-              <div class="credit_box">{{$credit}} Kreditas</div>
+              <div class="credit_box">{{$credit}} Krediter</div>
                 </li>
                 @endif
 
@@ -95,7 +95,7 @@ $credit = $creditObj->credits;
                   <div class="bg-white dark__bg-1000 rounded-2 py-2">
 				  @if((\Auth::user()->is_admin==true && \Auth::user()->administrative_level>2))
 				
-          <a class="dropdown-item" href="{{route('switch_to_maintenance')}}">Underhåll</a>				  
+          <a class="dropdown-item" href="{{route('switch_to_maintenance')}}">Byt till underhåll</a>				  
         
           @endif
                     <a class="dropdown-item" href="{{route('contact-information')}}">Profil &amp; Inställningar</a>

@@ -23,8 +23,8 @@ chat='true'>
 <ul class="footer_navigation_ul">
 <b>{{config('app.name')}}</b>
 <li><a href="{{route('index')}}" class="text-opacity-drop"><span>Home</span></a></li>
-<li><a href="" class="text-opacity-drop"><span>Integritetspolicy<span></a></li>
-<li><a href="" class="text-opacity-drop"><span>Villkor</span></a></li>
+<!--<li><a href="" class="text-opacity-drop"><span>Integritetspolicy<span></a></li>
+<li><a href="" class="text-opacity-drop"><span>Villkor</span></a></li>-->
 <li><a href="{{route('kontactos-pg')}}" class="text-opacity-drop"><span>Kontakt Os</span></a></li>
 </ul>
 
@@ -35,9 +35,8 @@ chat='true'>
 <ul class="footer_navigation_ul">
 <b>Företag & Kunder</b>
 <li><a href="{{route('anslut-ditt-foretag')}}" class="text-opacity-drop"><span>Anslut Foretag</span></a></li>
-<li><a href="{{route('anslut-ditt-foretag')}}" class="text-opacity-drop"><span>Kategorier</span></a></li>
 <li><a href="{{route('intresseanmalan')}}" class="text-opacity-drop"><span>Skicka intresse</span></a></li>
-<li><a href="{{route('skapa')}}" class="text-opacity-drop"><span>Skapa</span></a></li>
+<li><a href="{{route('skapa')}}" class="text-opacity-drop"><span>Skapa förfrågan</span></a></li>
 </ul>
 </div>
 
@@ -62,7 +61,7 @@ chat='true'>
 <div class="phone">
 <div>
 <span><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.40894 3.94109C7.73727 3.44596 7.28496 3.33417 7.04226 3.38154C6.04101 3.57694 5.44749 3.96671 4.64337 4.77082C3.54575 5.86842 3.01318 6.68799 3.24513 7.93061C3.51219 9.36128 4.81689 11.5448 8.41291 15.1409C12.0087 18.7366 14.2054 20.0551 15.6441 20.3277C16.3108 20.4541 16.8185 20.3553 17.2741 20.1309C17.7612 19.891 18.2302 19.4872 18.7681 18.9258C19.2452 18.4279 19.5347 18.0804 19.7373 17.7385C19.9303 17.4128 20.0671 17.0527 20.1728 16.5118C20.2202 16.2691 20.1084 15.8168 19.6132 15.145C19.1513 14.5185 18.4997 13.8963 17.8973 13.3884C17.4998 13.0532 16.8848 13.0318 16.388 13.4037L14.8697 14.5404C13.5001 15.5656 11.5864 15.4188 10.3781 14.2104L9.34333 13.1757C8.13502 11.9674 7.98816 10.0537 9.0134 8.68411L10.15 7.16583C10.5219 6.66902 10.5005 6.05402 10.1653 5.65651C9.65746 5.05425 9.03533 4.40283 8.40894 3.94109ZM9.59567 2.33122C10.4051 2.9279 11.1441 3.71478 11.6943 4.3672C12.6971 5.55642 12.6153 7.20992 11.7511 8.3644L10.6145 9.88268C10.191 10.4483 10.2458 11.2497 10.7575 11.7615L11.7923 12.7962C12.3041 13.308 13.1054 13.3627 13.6711 12.9393L15.1894 11.8027C16.3439 10.9385 17.9973 10.8566 19.1865 11.8593C19.8391 12.4095 20.6262 13.1486 21.223 13.9582C21.7864 14.7225 22.3533 15.7809 22.1357 16.8953C21.9959 17.6108 21.7906 18.1965 21.4579 18.758C21.1348 19.3034 20.715 19.7848 20.2122 20.3095C19.6296 20.9176 18.9653 21.5274 18.1578 21.9251C17.3189 22.3383 16.3708 22.5011 15.2716 22.2928C13.1786 21.8961 10.6038 20.1601 6.99869 16.5551C3.39388 12.9502 1.66901 10.3864 1.27909 8.2976C0.854079 6.02071 2.03716 4.54859 3.22916 3.3566C4.21375 2.37202 5.14736 1.71361 6.65918 1.41857C7.7733 1.20114 8.83152 1.76792 9.59567 2.33122Z" fill="#000"/></svg></span>
-<span class="phone" style="font-family:Spartan !important;font-size:13px;font-weight:600;">{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}</span>
+<a href="tel:{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}"><span class="phone" style="font-family:Spartan !important;font-size:13px;font-weight:600;">{{\App\Http\Controllers\ConfigController::get_value('phone_no')}}</span></a>
 </div>
 
 <div>
@@ -70,7 +69,7 @@ chat='true'>
 <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="style=linear"><g id="email"><path id="vector" d="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z" stroke="#000" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path id="vector_2" d="M18.7698 7.7688L13.2228 12.0551C12.5025 12.6116 11.4973 12.6116 10.777 12.0551L5.22998 7.7688" stroke="#000" stroke-width="1.5" stroke-linecap="round"/></g></g></svg>
 </span>
-<span class="phone" style="font-family:Spartan !important;font-size:13px;font-weight:600;">{{\App\Http\Controllers\ConfigController::get_value('business_email')}}</span>
+<a href="mailto:{{\App\Http\Controllers\ConfigController::get_value('business_email')}}"><span class="phone" style="font-family:Spartan !important;font-size:13px;font-weight:600;">{{\App\Http\Controllers\ConfigController::get_value('business_email')}}</span>
 </div>
 
 <div class="socials">

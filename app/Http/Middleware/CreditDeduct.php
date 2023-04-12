@@ -24,8 +24,8 @@ class CreditDeduct
            $supplier_id = $request->route('supplier_id');
            $request_id = $request->route('id');
 
-           $ifStatus = \App\Models\Responders::where(['credit_deducted_for_supplier'=>true,'supplier_id'=>$supplier_id,'buyer_id'=>$buyer_id,'request_id'=>$request_id])->get();
-            if(sizeof($ifStatus)>0){
+           $ifStatus = \App\Models\Responders::where(['credit_deducted_for_supplier'=>true,'supplier_id'=>$supplier_id,'buyer_id'=>$buyer_id,'request_id'=>$request_id])->first();
+            if(!is_null($ifStatus)){
           // if($ifStatus!=NULL)
         //  if($status==true){
             return $next($request);
@@ -38,14 +38,29 @@ class CreditDeduct
             $deduct = \App\Models\Responders::where(['supplier_id'=>$supplier_id,'request_id'=>$request_id,'credit_deducted_for_supplier'=>false])->get();
             //responders eli
 
-        if(sizeof($deduct)>0 && $creditStatus->credits>0)
+        if($creditStatus->credits>0)
             
-            $res = \DB::update("UPDATE credits SET credits=credits-? WHERE supplier_id=?",[1,$supplier_id]);
-                $credUpdate = \DB::update("UPDATE responders SET credit_deducted_for_supplier=? WHERE supplier_id=? AND request_id=?",[true,$supplier_id,$request_id]);
+        $resMsg = \App\Models\Suppliers::where(["supplier_id"=>$supplier_id])->first()->welcome_msg_to_buyers;
 
+            $res = \DB::update("UPDATE credits SET credits=credits-? WHERE supplier_id=?",[1,$supplier_id]); 
+
+            $msgToBuyer = new \App\Models\Responders([
+                'supplier_id'=>$supplier_id,
+                'buyer_id'=>$buyer_id,
+                'request_id'=>$request_id,
+                'responder_msg'=>$resMsg,
+                'time_sent'=>date('Y-m-d h:i:s',time()),
+                'credit_deducted_for_supplier'=>true,
+                'created_at'=>date('Y-m-d h:i:s',time()),
+                'updated_at'=>date('Y-m-d h:i:s',time())
+            ]);
+
+            $credUpdate = $msgToBuyer->save();
+            
                 if($credUpdate=!null){
 
                     //return redirect()->route('reach_out_to_buyer_action',['id'=>$request_id,'supplier_id'=>$supplier_id,'buyer_id'=>$buyer_id]);
+                    
                     return $next($request);
            
                 }

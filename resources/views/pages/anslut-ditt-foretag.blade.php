@@ -26,8 +26,8 @@
     <meta content="Toppoffert hjälper dig att hitta nya kunder och får ditt företag att växa. Bevaka din bransch, kontakta kunder och vinn uppdrag. Gör din intresseanmälan idag!" name="description" />
     <link href="{{route('anslut-ditt-foretag')}}" rel="canonical" />
     <meta content="INDEX,FOLLOW" name="GOOGLEBOT" />
-<meta content="INDEX,FOLLOW" name="ROBOTS" />
-
+	<meta content="INDEX,FOLLOW" name="ROBOTS" />
+    <meta name="keywords" content="Anslut ditt foretag, {{\App\Http\Controllers\ConfigController::get_value('header_keywords')}}" />
     
 <meta name="viewport" content="width=device-width" />
 <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -51,10 +51,26 @@
 <link href="https://fonts.googleapis.com/css?family=Spartan:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
 
 <meta name="theme-color" content="#2F3033">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/logos/toppofferta_logo.svg') }} ">
-    <link rel="icon" type="image/svg" sizes="32x32" href="{{ asset('img/logos/toppofferta_logo.svg') }}" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logos/toppofferta_logo.svg') }}">
+  
 
+<link rel="icon" type="image/x-icon" sizes="192x192"  href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="icon" type="image/x-icon" sizes="32x32" href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="icon" type="image/x-icon" sizes="96x96" href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="icon" type="image/x-icon" sizes="16x16" href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="{{ asset('img/icons/favicon.ico')}}">
+
+  <link rel="manifest" href="{{ asset('img/icons/manifest.json')}}">
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/icons/apple-icon-57x57.png')}}">
+<link rel="apple-touch-icon" sizes="60x60" href="{{ asset('img/icons/apple-icon-60x60.png')}}">
+<link rel="apple-touch-icon" sizes="72x72" href="{{ asset('img/icons/apple-icon-72x72.png')}}">
+<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/icons/apple-icon-76x76.png')}}">
+<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('img/icons/apple-icon-114x114.png')}}">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ asset('img/icons/apple-icon-120x120.png')}}">
+<link rel="apple-touch-icon" sizes="144x144" href="{{ asset('img/icons/apple-icon-144x144.png')}}">
+<link rel="apple-touch-icon" sizes="152x152" href="{{ asset('img/icons/apple-icon-152x152.png')}}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/icons/apple-icon-180x180.png')}}">
+  
 
 
 <script>
@@ -63,19 +79,7 @@
 
 <!--[if (lt IE 9)]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-    <!-- 
-                <script>
-                    (function (d) {
-                        var config = {
-                            kitId: 'goi3eol',
-                            scriptTimeout: 2000,
-                            async: true
-                        },
-                            h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
-                    })(document);
-                </script>
-            
- -->
+   
 <!--[if (IE)]><link href="/dist/css/ie.css" rel="stylesheet" type="text/css"/><![endif]-->
 
 <style>

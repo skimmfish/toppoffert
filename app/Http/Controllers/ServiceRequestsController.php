@@ -293,7 +293,7 @@ return view('marketplace.clients.view-request')->with(['title'=>$title,'requestB
 
 
 //this box loads the chatbox for the buyer and seller
-public function chatbox($supplier_id,$request_hash){
+public function chatbox($request_id,$request_hash,$supplier_id){
 
    $request = \App\Models\ServiceRequests::where(['request_hash'=>$request_hash])->first();
    $title = null;
@@ -308,6 +308,7 @@ public function chatbox($supplier_id,$request_hash){
    
    $files = \App\Models\RequestChats::where(['request_id'=>$request->id])->get();
 
+   $supplierPreMsg = \App\Models\Suppliers::where(['supplier_id'=>$supplier_id])->first()->welcome_msg_to_buyers;
    if(!is_null($request)){ $title = $request->request_title; }
 
     $titl = null;
@@ -316,8 +317,13 @@ public function chatbox($supplier_id,$request_hash){
           $titl = $request->request_title;
       }
 
-      return view('marketplace.clients.requestbox')->with(['title'=>$titl,'messages'=>$messages,'files'=>$files,
-      'request_hash'=>$request_hash,'request'=>$request,'id'=>$request->id,'supplier_id'=>$supplier_id,'buyer_id'=>auth()->id()]);
+      $supplierAvatar =   \App\Models\User::where('id',$supplier_id)->first()->profile_img;
+
+      $allFiles = \App\Models\FileManager::where(['request_id'=>$request_id])->first();
+
+      return view('marketplace.clients.requestbox')->with(['title'=>$titl,'premsg'=>$supplierPreMsg,'messages'=>$messages,'files'=>$files,
+      'request_hash'=>$request_hash,'request'=>$request,'allfiles'=>$allFiles,'id'=>$request->id,
+      's_avatar'=>$supplierAvatar,'supplier_id'=>$supplier_id,'buyer_id'=>auth()->id()]);
           
 }
 
@@ -428,8 +434,6 @@ $catCount = sizeof(\App\Models\Categories::all());
 if(!is_null($creditObj)){
    $creditBalance = $creditObj->credits;
 }
-
-
 
 //$credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
 
