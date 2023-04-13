@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Events\Message;
+
 
 
 /*
@@ -1058,3 +1060,12 @@ Route::get('view_img/{img_name}',function($img_name){
 
 //for profile pages for all users
 Route::get('/user-profile',[App\Http\Controllers\UserController::class,'profile'])->name('pages.profile')->middleware(['auth','verified']);
+
+/***
+ * FOR SENDING AND BROADCASTING MESSAGES VIA THE CHAT BOX
+ */
+Route::post('/send-message',function(Request $request){
+    event(new Message($request->input('username'), $request->input('username')));
+    })->middleware(['auth']);
+    
+    

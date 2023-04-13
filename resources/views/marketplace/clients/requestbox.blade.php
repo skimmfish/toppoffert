@@ -8,23 +8,38 @@
 $supplierObj = new \App\Models\Suppliers;
 @endphp
 
-<style>
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+  <script>
 
-.mesg, body::-webkit-scrollbar {
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('2be730af9eb7e5d92332', {
+      cluster: 'mt1'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script>
+
+<style>
+.mesg_box::-webkit-scrollbar {
   width: 5px;               /* width of the entire scrollbar */
 }
 
-.mesg, body::-webkit-scrollbar-track {
+.mesg_box::-webkit-scrollbar-track {
   background: #fff; padding:8px;       /* color of the tracking area */
 }
 
-.mesg, body::-webkit-scrollbar-thumb {
+.mesg_box::-webkit-scrollbar-thumb {
   background-color: #555;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 2px #ffffff;  /* creates padding around scroll thumb */
 }
-
 </style>
+
 
 <a href="{{url()->previous()}}" class="text-black btn btn-white"><svg width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#231f20;}</style></defs><g data-name="arrow left" id="arrow_left">
 <path class="cls-1" d="M22,29.73a1,1,0,0,1-.71-.29L9.93,18.12a3,3,0,0,1,0-4.24L21.24,2.56A1,1,0,1,1,22.66,4L11.34,15.29a1,1,0,0,0,0,1.42L22.66,28a1,1,0,0,1,0,1.42A1,1,0,0,1,22,29.73Z"/></g></svg> Tillbak

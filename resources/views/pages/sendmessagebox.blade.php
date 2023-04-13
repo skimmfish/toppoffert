@@ -7,6 +7,41 @@
 $supplierObj = new \App\Models\Suppliers;
 @endphp
 
+
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('2be730af9eb7e5d92332', {
+      cluster: 'mt1'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script>
+  
+
+<style>
+.mesg_box::-webkit-scrollbar {
+  width: 5px;               /* width of the entire scrollbar */
+}
+
+.mesg_box::-webkit-scrollbar-track {
+  background: #fff; padding:8px;       /* color of the tracking area */
+}
+
+.mesg_box::-webkit-scrollbar-thumb {
+  background-color: #555;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 2px #ffffff;  /* creates padding around scroll thumb */
+}
+</style>
+ 
+
 <!--send message box to buyers showing interest-->
 
 <a href="{{url()->previous()}}" class="text-black btn btn-white"><svg width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#231f20;}</style></defs><g data-name="arrow left" id="arrow_left">
@@ -55,7 +90,7 @@ Tack!</i>
 </div>
 @else
 
-<div class="mesg_box">
+<div class="mesg_box" style="overflow-y:scroll;height:400px;">
 @foreach($messages as $e)
 
 @php 
@@ -199,13 +234,8 @@ for($i=0;$i< sizeof($files)-1;$i++){
         </div>
 
         <div class="form-group">
-            <label class="form-label">Ladda upp dokument här</label>
-            <input type="file" class="form-control input-control-md" placeholder="Please select a file for your portfolio if you got one" name="other_filer"/>
-        </div>
-
-        <div class="form-group">
             <label class="form-label">Offertfil om någon!</label>
-            <input type="file" class="form-control input-control-md" placeholder="Please select a file for your portfolio if you got one" name="quote_filer"/>
+            <input type="file" class="form-control input-control-md" placeholder="Please select a file for your portfolio if you got one" name="other_filer"/>
         </div>
 
         <div class="col-md-12 form-group" style="margin-top:5px;">

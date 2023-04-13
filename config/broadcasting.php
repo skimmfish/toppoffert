@@ -27,6 +27,12 @@ return [
     | each available type of connection are provided inside this array.
     |
     */
+    
+    'options' => [
+        'cluster' => 'mt1',
+        'useTLS' => true
+      ],
+
 
     'connections' => [
 
