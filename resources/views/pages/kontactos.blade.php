@@ -582,6 +582,23 @@ left:-20px;
 }
 </style>
 
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Toppoffert.se Home",
+        "item": {{url('/')}}
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Kontakta Os",
+        "item": {{url('/kontact-os')}}
+      }]
+    }
+    </script>
 
   </head>
 
@@ -647,8 +664,11 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
 @include('layouts.navigationbar')
 
-            </header>
-            <main class="content-main" role="main">
+
+
+
+  </header>
+       <main class="content-main" role="main">
                 
         <div class="container breadcrumbs-container">
         <nav class="breadcrumbs">
@@ -673,13 +693,13 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
         <span class="breadcrumbs-arrow">
             &gt;
         </span>
+
         <a href="{{route('kontactos-pg')}}" itemprop="url" class="title-info">
             <span itemprop="title">Kontakta oss</span>
         </a>
     </span>
         </nav>
     </div>
-
 
 
 <section class="section">

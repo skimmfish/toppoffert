@@ -68,7 +68,7 @@ h1{font-size:38px !important;font-weight:900}h2{font-size:26px !important;font-w
     line-height: 29px;font-size:12.5px;
 }
 .img-responsive-md{
-    width:40px;height:40px;border-radius:50%;float:right;
+    width:40px;height:40px;border-radius:50% !important;float:right;
 }
 .nuo_line{
     margin-top: 10px;

@@ -431,6 +431,8 @@ $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>t
 
 $catCount = sizeof(\App\Models\Categories::all());
 
+$creditDed = \App\Models\Responders::where(['request_id'=>$request->id,'supplier_id'=>auth()->id()])->first()->credit_deducted_for_supplier;
+
 if(!is_null($creditObj)){
    $creditBalance = $creditObj->credits;
 }
@@ -439,7 +441,7 @@ if(!is_null($creditObj)){
 
 return view('pages.request_view')->with(['requestBody'=>$request,
 'supplierObj'=>new \App\Models\Suppliers,
-'title'=>$request->request_title,
+'title'=>$request->request_title,'isCreditDeducted'=>$creditDed,
 'request_count'=>sizeof($requests),'creditBalance'=>$creditBalance,
 'related'=>$this->getRelatedRequests($request->service_cat)]);
 }

@@ -1065,7 +1065,7 @@ Route::get('/user-profile',[App\Http\Controllers\UserController::class,'profile'
  * FOR SENDING AND BROADCASTING MESSAGES VIA THE CHAT BOX
  */
 Route::post('/send-message',function(Request $request){
-    event(new Message($request->input('username'), $request->input('username')));
+    event(new Message($request->input('uid'), $request->input('request_response')));
     })->middleware(['auth']);
     
     

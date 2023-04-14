@@ -61,8 +61,8 @@ $subCatNameSelected = \App\Http\Controllers\CategoriesController::getsubcatdata(
 
     
     <link href="{{route('skapa')}}" rel="canonical" />
-    <meta content="NOINDEX,FOLLOW" name="GOOGLEBOT" />
-    <meta content="NOINDEX,FOLLOW" name="ROBOTS" />
+    <meta content="FOLLOW" name="GOOGLEBOT" />
+    <meta content="FOLLOW" name="ROBOTS" />
     <meta name="viewport" content="width=device-width" />
     
     <link rel="stylesheet" type="text/css" href="{{asset('css/site_v638066915660000000.css')}}" />
@@ -129,6 +129,25 @@ function fetchCategoriesForSkapa(category){
 
 }
   </style>
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Toppoffert.se Home",
+        "item": {{url('/')}}
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Skapa förfrågan",
+        "item": {{url('/skapa')}}
+      }]
+    }
+    </script>
+
 </head>
 
 

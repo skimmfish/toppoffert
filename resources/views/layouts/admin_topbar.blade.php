@@ -93,7 +93,7 @@ $credit = $creditObj->credits;
                 </a>
                 <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                   <div class="bg-white dark__bg-1000 rounded-2 py-2">
-				  @if((\Auth::user()->is_admin==true && \Auth::user()->administrative_level>2))
+				  @if((\Auth::user()->is_admin==true && \Auth::user()->administrative_level>=3))
 				
           <a class="dropdown-item" href="{{route('switch_to_maintenance')}}">Byt till underhåll</a>				  
         

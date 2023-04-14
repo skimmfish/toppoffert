@@ -19,13 +19,13 @@ class Message implements ShouldBroadcast {
      *
      * @return void
      */
-    public $msg;
-    public $username;
+    public $request_response;
+    public $uid;
 
-    public function __construct($username,$message)
+    public function __construct($uid,$request_response)
     {
-        $this->msg = $message;
-        $this->username = $username;
+        $this->request_response = $request_response;
+        $this->uid = $uid;
     }
 
     /**
@@ -43,7 +43,7 @@ class Message implements ShouldBroadcast {
 
     public function broadcastAs(){
         
-    return 'message';
+    return 'request_response';
        
     }
 

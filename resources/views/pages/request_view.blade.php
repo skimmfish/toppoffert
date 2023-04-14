@@ -38,6 +38,7 @@ class="text-black btn btn-white btn_r_circle" style="border-radius:40px;">
 <div class="col-md-8 col-lg-8 col-xs-8 col-xl-8 col-sm-8"><h3 class="text-black">{{$requestBody->request_title}} <span class="text-grey">#{{$requestBody->id}}</span></h3></div>
 
 <div class="col-md-4 col-lg-4 col-xs-4 col-xl-4 col-sm-4">
+@if($isCreditDeducted)
 <a href="{{route('reach_out_to_buyer_action',['id'=>$requestBody->id,'supplier_id'=>Auth::user()->id,'buyer_id'=>$requestBody->customer_id])}}" class="btn btn-dark" style="font-size:12.5px !important;font-weight:600;padding-top:20px;border:0;">
 <svg width="30px" height="30px" style="width:22px !important;height:22px !important" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>message [#1579]</title>
@@ -49,6 +50,9 @@ class="text-black btn btn-white btn_r_circle" style="border-radius:40px;">
             <g id="icons" transform="translate(56.000000, 160.000000)">
                 <path d="M13.9577278,759 C7.99972784,759 3.26472784,764.127 4.09472784,770.125 C4.62372784,773.947 7.52272784,777.156 11.3197278,778.168 C12.7337278,778.545 14.1937278,778.625 15.6597278,778.372 C16.8837278,778.16 18.1397278,778.255 19.3387278,778.555 L20.7957278,778.919 L20.7957278,778.919 C22.6847278,779.392 24.4007278,777.711 23.9177278,775.859 C23.9177278,775.859 23.6477278,774.823 23.6397278,774.79 C23.3377278,773.63 23.2727278,772.405 23.5847278,771.248 C23.9707278,769.822 24.0357278,768.269 23.6887278,766.66 C22.7707278,762.415 18.8727278,759 13.9577278,759 M13.9577278,761 C17.9097278,761 21.0047278,763.71 21.7337278,767.083 C22.0007278,768.319 21.9737278,769.544 21.6547278,770.726 C20.3047278,775.718 24.2517278,777.722 19.8237278,776.614 C18.3507278,776.246 16.8157278,776.142 15.3187278,776.401 C14.1637278,776.601 12.9937278,776.544 11.8347278,776.236 C8.80772784,775.429 6.49272784,772.863 6.07572784,769.851 C5.40472784,764.997 9.26872784,761 13.9577278,761 L13.9577278,761" id="message-[#1579]">
 </path>           </g>        </g></g></svg> Meddelanden</a>
+
+@endif
+
 </div>
 
 <div class="row">
@@ -221,14 +225,17 @@ for($i=0;$i<($responderCount);$i++){
 
 
 <!--request_footer-->
-<div class="fixed-footer request_credit_footer">
+
+<div @if($isCreditDeducted==false) class="fixed-footer request_credit_footer" @else style="display:none" @endif>
 @if(\Auth::user()->is_admin==false)
 @if($creditBalance>1)
+@if($isCreditDeducted==false)
 <a class="btn btn-info dark_bg" href="#" data-target="#requestModal" data-toggle="modal" id="sendResponse" data-attr="{{route('reach_out_to_buyer',['id'=>$requestBody->id,'supplier_id'=>\Auth::user()->id,'buyer_id'=>$requestBody->customer_id])}}">
 <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Iconly/Curved/Buy"><g id="Buy"><path id="Stroke 1" d="M5.69415 6.43034C15.5425 5.0931 17.9695 5.25722 19.5 7C21.0305 8.74278 20.6721 14.4881 18.8831 16.0871C17.0951 17.6861 9.33015 17.8381 6.87015 16.0871C4.27115 14.2361 5.77915 8.5421 5.69415 5.0931C5.74515 3.1631 3.65015 2.8501 3.65015 2.8501" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path id="Stroke 3" d="M14.156 10.7197H16.929" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path id="Stroke 5" fill-rule="evenodd" clip-rule="evenodd" d="M7.26399 20.1274C7.56399 20.1274 7.80799 20.3714 7.80799 20.6714C7.80799 20.9724 7.56399 21.2164 7.26399 21.2164C6.96299 21.2164 6.71899 20.9724 6.71899 20.6714C6.71899 20.3714 6.96299 20.1274 7.26399 20.1274Z" fill="#fff" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path id="Stroke 7" fill-rule="evenodd" clip-rule="evenodd" d="M17.5954 20.1274C17.8964 20.1274 18.1404 20.3714 18.1404 20.6714C18.1404 20.9724 17.8964 21.2164 17.5954 21.2164C17.2954 21.2164 17.0514 20.9724 17.0514 20.6714C17.0514 20.3714 17.2954 20.1274 17.5954 20.1274Z" fill="#ffffff" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg>    
 1 kredit | Skicka Intresse
 </a>
+@endif
 @else
 <a class="btn btn-success dark_bg" href="mailto:{{\App\Http\Controllers\ConfigController::get_value('business_email')}}">
 <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="Iconly/Curved/Buy"><g id="Buy"><path id="Stroke 1" d="M5.69415 6.43034C15.5425 5.0931 17.9695 5.25722 19.5 7C21.0305 8.74278 20.6721 14.4881 18.8831 16.0871C17.0951 17.6861 9.33015 17.8381 6.87015 16.0871C4.27115 14.2361 5.77915 8.5421 5.69415 5.0931C5.74515 3.1631 3.65015 2.8501 3.65015 2.8501" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path id="Stroke 3" d="M14.156 10.7197H16.929" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

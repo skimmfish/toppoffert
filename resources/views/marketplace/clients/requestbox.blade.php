@@ -25,19 +25,20 @@ $supplierObj = new \App\Models\Suppliers;
   </script>
 
 <style>
-.mesg_box::-webkit-scrollbar {
+.mesg_box::-webkit-scrollbar, #mesg_box::-webkit-scrollbar{
   width: 5px;               /* width of the entire scrollbar */
 }
 
-.mesg_box::-webkit-scrollbar-track {
+.mesg_box::-webkit-scrollbar-track, #mesg_box::-webkit-scrollbar-track{
   background: #fff; padding:8px;       /* color of the tracking area */
 }
 
-.mesg_box::-webkit-scrollbar-thumb {
+.mesg_box::-webkit-scrollbar-thumb, #mesg_box::-webkit-scrollbar-thumb{
   background-color: #555;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 2px #ffffff;  /* creates padding around scroll thumb */
 }
+
 </style>
 
 
@@ -93,7 +94,7 @@ Tack!</i>
 
 @else
 
-<div class="mesg_box" style="background:none;padding:0 12px 5px 12px !important;height:400px;overflow-y:scroll;overflow-x:hidden">
+<div class="mesg_box" id="mesg_box" style="background:none;padding:0 12px 5px 12px !important;height:300px;overflow-y:scroll;overflow-x:hidden;">
 
 <div class="row premsg" style="background:#fff">
 
@@ -131,7 +132,7 @@ $supplier_id = $e->supplier_id; $seller_img = \App\Models\User::get_data('profil
 @endphp
 
 @if($whoSendsIt=='seller_msg')
-<div class="row" style="border-radius:10px;background:#fff;padding:0 12px 5px 12px !important;margin:10px 0 9px 0;">
+<div class="row" style="border-radius:10px;background:#fff;padding:14px 12px 10px 12px !important;margin:10px 0 9px 0;">
 
 <div class="col-md-2 col-xs-2">
 
@@ -158,7 +159,8 @@ $supplier_id = $e->supplier_id; $seller_img = \App\Models\User::get_data('profil
 
 @elseif($whoSendsIt=='buyer_msg')
 
-<div class="row msgg" style="border-radius:10px; background:#bce8fa;padding:12px 12px 5px 12px !important;margin:10px 0 9px 0" id="mgsbx">
+<div class="row msgg" style="border-radius:10px; background:#bce8fa;padding:15px 12px 10px 12px !important;
+margin:10px 0 9px 0" id="mgsbx">
 
 <div class="col-md-2 col-lg-2 col-xl-2 col-xs-3">
 
@@ -179,26 +181,22 @@ $supplier_id = $e->supplier_id; $seller_img = \App\Models\User::get_data('profil
 <span style="font-size:12px;">{{$message}}</span><hr/>
 <small><i>Skickad på: {{date('D d, F Y',strtotime($e->created_at))}}</i></small>
 </div>
-
-        <!--message control-->
-<div class="col-md-1 col-lg-1 col-xs-1 col-sm-1"></div>
-
+<!--./row-->
 </div>        
 @endif
 @endforeach
 
+<!--new chat message box-->
 <hr/>
-
-<div class="row">  
-<div class="col-md-12" id="buyer_Box" style="width:98%;background:none !important;margin-top:30px;padding:10px 15px;">
-    
-<div class="row"><span> Skicka din röra</span></div><br/>
-
-    <form action="{{route('marketplace.buyers.sendmsg')}}" method="POST" enctype="multipart/form-data" style="margin-top:-9px !important;margin-bottom:15px;width:100%;">
+<h6><b>Skicka dina meddelanden här</b></h6>
+<hr/>
+<form action="{{route('marketplace.buyers.sendmsg')}}" method="POST" enctype="multipart/form-data" style="margin-top:-9px !important;margin-bottom:15px;width:100%;">
     {{csrf_field()}}
     <input type="hidden" name="supplier_id" value="{{$supplier_id}}" />
     <input type="hidden" name="request_id" value="{{$id}}" />
     <input type="hidden" name="buyer_id" value="{{$buyer_id}}" />
+    <input type="hidden" name="uid" value="{{$buyer_id}}" />
+    
 
     <div class="form-group">
         <textarea class="msg_box form-control" name="request_response" style="height:95px !important;border-radius:10px;padding-top:20px" required placeholder="Ange din korrespondens här, köparen återkommer när de ser ditt meddelande!" style="padding-top:7px;"></textarea>
@@ -209,7 +207,7 @@ $supplier_id = $e->supplier_id; $seller_img = \App\Models\User::get_data('profil
         </div>
 
         <div class="form-group">
-            <label class="form-label">Ladda upp dokument här</label>
+            <label class="form-label">Offertfil om någon!</label>
             <input type="file" class="form-control input-control-md" placeholder="Please select a file for your portfolio if you got one" name="other_filer"/>
         </div>
 
@@ -219,21 +217,20 @@ $supplier_id = $e->supplier_id; $seller_img = \App\Models\User::get_data('profil
         <Br/><br/><br/>
     </form>
     </div>
+    
+
+</div>
 </div>
 
 <!--for files-->
 <!-- style="display:none" 
 main-container wht-bg shif-dw flex-box-->
-<div id="files" class="row city main-container shif-dw">
-
+<div id="files" class="row city main-container shif-dw" style="display:none">
 @php
-
 $files = explode("@__",$allfiles->file_name);
-
 @endphp
 
 @if(is_null($allfiles) || is_null($files[0]))
-NULL
 <span><svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M21.0169 7.99175C21.4148 8.55833 20.9405 9.25 20.2482 9.25H3C2.44772 9.25 2 8.80228 2 8.25V6.42C2 3.98 3.98 2 6.42 2H8.74C10.37 2 10.88 2.53 11.53 3.4L12.93 5.26C13.24 5.67 13.28 5.72 13.86 5.72H16.65C18.4546 5.72 20.0516 6.61709 21.0169 7.99175Z" fill="#292D32"/>
 <path d="M21.9834 11.7466C21.9815 11.1957 21.5343 10.75 20.9834 10.75L2.99998 10.7503C2.44771 10.7503 2 11.1981 2 11.7503V16.6504C2 19.6004 4.4 22.0004 7.35 22.0004H16.65C19.6 22.0004 22 19.6004 22 16.6504L21.9834 11.7466ZM14.5 16.7504H12.81V18.5004C12.81 18.9104 12.47 19.2504 12.06 19.2504C11.64 19.2504 11.31 18.9104 11.31 18.5004V16.7504H9.5C9.09 16.7504 8.75 16.4104 8.75 16.0004C8.75 15.5904 9.09 15.2504 9.5 15.2504H11.31V13.5004C11.31 13.0904 11.64 12.7504 12.06 12.7504C12.47 12.7504 12.81 13.0904 12.81 13.5004V15.2504H14.5C14.91 15.2504 15.25 15.5904 15.25 16.0004C15.25 16.4104 14.91 16.7504 14.5 16.7504Z" fill="#292D32"/>
@@ -241,32 +238,21 @@ NULL
 <span>
 Dina bifogade filer visas här
 </span>
+
 @else
-
-
-
 
 <div class="row">
 @php
-
-for($i=0;$i < count($files);$i++){ @endphp
-
-<div class="col-md-3 col-xs-4 col-lg-3 col-sm-4 ims-md" style="margin-bottom:10px;">
-<a href="#" data-attr="{{route('view_img',['img_name'=>$files[$i]])}}" data-target="#requestModal" data-toggle="modal" id="viewImage"><img src="{{asset('img/requests/'.$files[$i])}}" class="img-responsive-lg" lazyloading/></a>
+for($i=0;$i < count($files);$i++){ 
+@endphp
+<div class="col-md-2 col-xs-4 col-lg-2 col-sm-2 col-xl-2 ims-md" style="margin-bottom:10px;">
+<a href="#" data-attr="{{route('view_img',['img_name'=>$files[$i]])}}" data-target="#requestModal" data-toggle="modal" id="viewImage"><img src="{{asset('img/requests/'.$files[$i])}}" class="img-responsive-md" style="width:50px;height:50px" lazyloading/></a>
 </div>
-
-
-
 
 @php } @endphp
-
-@endphp
 </div>
-
 @endif
-
 </div>
-
 </div>
 
 <!--./row message_row-->
@@ -277,6 +263,7 @@ for($i=0;$i < count($files);$i++){ @endphp
 
 <div class="col-md-1 col-lg-1 col-sm-1 col-xs-12"></div>
 </div>
+
 
 <!--modals-->
 		<!-- view modal -->
