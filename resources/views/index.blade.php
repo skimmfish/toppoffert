@@ -45,11 +45,10 @@
   
   
     <meta name="author" content="Toppoffert Sverige AB" />
-    <meta property="fb:admins" content="" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="format-detection" content="telephone=no">
 
-    <meta content="Toppoffert.se  Du använder en webbläsare som inte stöds av {{config('app.name')}} och därför fungerar inte alla funktioner som de skall" name="description" />
+    <meta content="Toppoffert Sverige AB. är ett flytt- och städföretag. Vi är specialiserade på att arbeta med lokalbefolkningen för att få det bästa och rätta serviceföretaget att göra sin städning och flytt av fastigheter från en plats till en annan." name="description" />
     <link href="{{route('index')}}" rel="canonical" />
     <meta content="INDEX,FOLLOW" name="GOOGLEBOT" />
     <meta content="INDEX,FOLLOW" name="ROBOTS" />

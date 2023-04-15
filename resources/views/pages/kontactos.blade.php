@@ -595,7 +595,7 @@ left:-20px;
         "@type": "ListItem",
         "position": 2,
         "name": "Kontakta Os",
-        "item": {{url('/kontact-os')}}
+        "item": {{route('kontactos-pg')}}
       }]
     }
     </script>

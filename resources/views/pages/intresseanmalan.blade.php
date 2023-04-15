@@ -114,6 +114,26 @@
     position:relative;top:9px;
 }
 </style>
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Toppoffert.se Home",
+        "item": {{route('index')}}
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Intresseanmalan",
+        "item": {{route('intresseanmalan')}}
+      }]
+    }
+    </script>
+
+
 </head>
 <body class="supplier-register">
      

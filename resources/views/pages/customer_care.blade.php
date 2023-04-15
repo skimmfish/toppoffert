@@ -33,7 +33,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="{{asset('css/clients.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('css/index.509e34c1.css')}}" />
-    
+
+<link href="{{route('customer_care')}}" rel="canonical" />
+    <meta content="INDEX,FOLLOW" name="GOOGLEBOT" />
+    <meta content="INDEX,FOLLOW" name="ROBOTS" />
+
+
 <script>
       var isRTL = JSON.parse(localStorage.getItem('isRTL'));
       if (isRTL) {
@@ -49,6 +54,7 @@
         userLinkRTL.setAttribute('disabled', true);
       }
     </script>
+
 
 <style>
 /*<!--extra styles-->*/
@@ -82,7 +88,27 @@ font-family:'GD Sherpa Regular' !important;font-size:14px;
 
 }
   </style>
-  </head>
+
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Toppoffert.se Home",
+        "item": {{url('/')->previous()}}
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Toppoffert Kundtjänst",
+        "item": {{route('customer_care')}}
+      }]
+    }
+    </script>
+
+</head>
 
   <body>
 

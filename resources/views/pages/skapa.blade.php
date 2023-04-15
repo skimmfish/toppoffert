@@ -143,7 +143,7 @@ function fetchCategoriesForSkapa(category){
         "@type": "ListItem",
         "position": 2,
         "name": "Skapa förfrågan",
-        "item": {{url('/skapa')}}
+        "item": {{route('skapa')}}
       }]
     }
     </script>
