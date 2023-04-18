@@ -278,11 +278,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <!--for territory of assignment-->
             <div class="form-group">
               <label for="territory" class="form-label">Plats</label>
-            {{-- <input class="flex-input form-control" style="height:65px !important;" placeholder="Plats" 
-            name="territory" type="text" value="{{old('territory')}}" required/> --}}
-           
-           
-           
+                     
 <select name="territory" class="flex-input form-control">
 <option selected="" value="{{old('territory')}}">Hela Sverige</option>
 <option>Blekinge</option>

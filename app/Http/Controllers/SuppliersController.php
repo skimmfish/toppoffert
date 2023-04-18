@@ -347,4 +347,23 @@ return $columntoreturn;
 
 }
 
+
+
+/**
+ * This function uploads the certification document for a supplier
+ * @param Integer <$uid>
+ * 
+ */
+public function uploadcertification(Request $request,$uid){
+
+$main_file=NULL;
+    if($request->file('filer')!=NULL && $request->file('filer')->isValid()){
+        $main_file = $supObj->saveFile($request,'certificate_uri','img/certificates');
+       }
+
+   $update = \DB::update("UPDATE suppliers SET certification_uri=? WHERE supplier_id=?",[$main_file,$uid]);
+
+return redirect()->route('contact-information')->with(['message'=>'Certification uploaded successfully']);
+}
+
 }

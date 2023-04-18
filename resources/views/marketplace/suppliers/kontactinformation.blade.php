@@ -35,14 +35,15 @@
 <svg width="35px" height="35px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Ladda upp certifieringsdokument</title><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Upload-2"><rect id="Rectangle" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect><line x1="12" y1="14" x2="12" y2="20" id="Path" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></line><path d="M15,15 L12.7071,12.7071 C12.3166,12.3166 11.6834,12.3166 11.2929,12.7071 L9,15" id="Path" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path><path d="M19.9495,16 C20.5978,15.3647 21,14.4793 21,13.5 C21,11.567 19.433,10 17.5,10 C17.3078,10 17.1192,10.0155 16.9354,10.0453 C16.4698,6.63095 13.5422,4 10,4 C6.13401,4 3,7.13401 3,11 C3,12.9587 3.80447,14.7295 5.10102,16" id="Path" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></path></g></g></svg>
 </a>
 
-@endif
+@else
 
+<img src="{{asset('img/certificates/'.$certificate)}}" alt="Competency Certification" width="100%" height="100%" lazyloading/>
+
+@endif
 </div>
 
 <!--for company registration cert-->
-<div class="col-md-4 col-lg-4 col-sm-4 col-xl-4 col-xs-12">
-
-</div>
+<div class="col-md-4 col-lg-4 col-sm-4 col-xl-4 col-xs-12"></div>
 </div>
 
 

@@ -20,7 +20,7 @@ $unreadMessageCounter = sizeof(\App\Models\NotificationModel::where(['read_statu
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="icon" type="image/x-icon" sizes="192x192"  href="{{ asset('img/icons/favicon.ico')}}">
+<link rel="icon" type="image/x-icon" sizes="192x192"  href="{{ asset('img/icons/favicon.ico')}}">
 <link rel="icon" type="image/x-icon" sizes="32x32" href="{{ asset('img/icons/favicon.ico')}}">
 <link rel="icon" type="image/x-icon" sizes="96x96" href="{{ asset('img/icons/favicon.ico')}}">
 <link rel="icon" type="image/x-icon" sizes="16x16" href="{{ asset('img/icons/favicon.ico')}}">
@@ -369,6 +369,16 @@ function copyToClipBoard(textFieldToCopy) {
   alert("Text Copied to Clipboard");
 }
 </script>
+
+<script>
+function searchFilters(atName,sub_category,territory,executed_for,when_to){
+
+
+
+
+
+}
+  </script>
 
 
 <style>

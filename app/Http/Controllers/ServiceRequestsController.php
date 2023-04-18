@@ -527,4 +527,15 @@ public static function getbuyertype($btindex){
 return $buyer_type = \App\Models\BuyerType::where('id',$btindex)->first()->buyers_type_name;
 
 }
+
+
+/**
+ * @param 
+ */
+public function searchservices($search_phrase,$cat_name,$sub_category,$territory,$executed_for,$when_to){
+
+
+echo $search_phrase;
+
+}
 }

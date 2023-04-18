@@ -162,12 +162,12 @@ Route::get('skapa',function(){
     return view('pages.skapa',['title'=>'Skapa förfrågan','categories'=>\App\Http\Controllers\CategoriesController::getcatnames()]);
 })->name('skapa');
 
+
 Route::get('/skapa/{cat}/{subcat}',function($cat,$subcat){
 
 return view('pages.skapa',['title'=>'Skapa förfrågan','catSelected'=>$cat,'subCatSelected'=>$subcat,'categories'=>\App\Http\Controllers\CategoriesController::getcatnames()]);
 
 })->name('skapa_with_cat');
-
 
 
 //taking new buyers' requests
@@ -212,7 +212,7 @@ $dayOfWeek = explode(',',$dt->toDayDateTimeString())[0];
 })->name('customer_care');
 
 //for faqs page
-Route::get('faq',function(){
+Route::get('/faq',function(){
 
     return view('pages.faqs',['title'=>'Vanliga frågor och svar']);
 
@@ -638,6 +638,11 @@ Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/supplier
 })->name('suppliers.dashboard');
 
 
+Route::get('/inbox/{search_phrase}/{cat_name}/{sub_category}/{territory}/{executed_for}/{when_to}','\App\Http\Controllers\ServiceRequestController@searchservices')->name('suppliers.search_filters');
+
+//saving certification doc
+Route::put('/save-certification-doc/{uid}','\App\Http\Controllers\SuppliersController@uploadcertification')->name('upload_certification');
+
 //for submitting suppliers' category
 Route::put('/save-categories/{id}','\App\Http\Controllers\CategoriesController@updatesuppliercategorizaton')->name('fix_supplier_category');
 
@@ -830,7 +835,7 @@ Route::get('/settings/account',function(){
 
 
 //for supplier's contact information
-Route::get('contact-information',function(){
+Route::get('/contact-information',function(){
 
     $uid = \Auth::user()->id;
     $credits= \App\Http\Controllers\CreditsController::getCredits($uid)->credits;
