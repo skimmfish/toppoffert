@@ -355,15 +355,17 @@ return $columntoreturn;
  * 
  */
 public function uploadcertification(Request $request,$uid){
+    $this->supObject = new \App\Http\Controllers\SuppliersController;
 
 $main_file=NULL;
-    if($request->file('filer')!=NULL && $request->file('filer')->isValid()){
-        $main_file = $supObj->saveFile($request,'certificate_uri','img/certificates');
+    if($request->file('certificate_uri')!=NULL && $request->file('certificate_uri')->isValid()){
+        $main_file = $this->saveFile($request,'certificate_uri','img/certificates');
        }
 
    $update = \DB::update("UPDATE suppliers SET certification_uri=? WHERE supplier_id=?",[$main_file,$uid]);
-
-return redirect()->route('contact-information')->with(['message'=>'Certification uploaded successfully']);
+if(!is_null($update)){
+return redirect()->route('contact-information')->with(['message'=>'Certifikatet har laddats upp. Uppdatera sidan för att uppdatera']);
+}
 }
 
 }

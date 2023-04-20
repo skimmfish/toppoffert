@@ -854,11 +854,11 @@ Route::get('/contact-information',function(){
 
     $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials($uid);
     
-    $certificate = \App\Models\Suppliers::where(['supplier_id'=>$uid])->first()->certificate_uri;
+    $certificate = \App\Models\Suppliers::where(['supplier_id'=>$uid])->first()->certification_uri;
     $coy_reg_cert = \App\Models\Suppliers::where(['supplier_id'=>$uid])->first()->coy_reg_cert;
 
     return view('marketplace.suppliers.kontactinformation',['title'=>'Kontaktuppgifter',
-    'review_count'=>$review_count['review_count'], 'certificate'=>$certificate,
+    'review_count'=>$review_count['review_count'], 'certificate'=>$certificate,'uid'=>$uid,
     'coy_reg_cert'=>$coy_reg_cert,'request_count'=>$request_count,'credit'=>$credits]);
 
 

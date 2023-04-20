@@ -24,7 +24,7 @@
 
 <!--form starts here-->
 
-<div class="row certificates">
+<div class="row certificates" style="margin-bottom:25px !important">
 
 <!--for certifications-->
 <div class="col-md-8 col-lg-8 col-sm-8 col-xl-8 col-xs-12">
@@ -37,7 +37,7 @@
 
 @else
 
-<img src="{{asset('img/certificates/'.$certificate)}}" alt="Competency Certification" width="100%" height="100%" lazyloading/>
+<img src="{{asset('img/certificates/'.$certificate)}}" alt="Competency Certification" width="70%" height="auto" lazyloading/>
 
 @endif
 </div>

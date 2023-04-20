@@ -1,5 +1,5 @@
     <div class="row">
-    <h6 class="text-sm spartan">Ladda upp ditt certifieringsdokument för din valda yrkeskategori</h6><hr/>
+    <h6 class="text-sm spartan" style="font-size:12.5px !important">Ladda upp ditt certifieringsdokument för din valda yrkeskategori</h6><hr/>
     <form method="POST" action="{{route('upload_certification',['uid'=>$s_id])}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
