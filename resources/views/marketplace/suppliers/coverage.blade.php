@@ -7,7 +7,7 @@
 <div class="row">
 <div class="row" > @if (session('message'))   <div class="alert alert-info text-md" style="font-size:14.5px;">  {{ session('message') }}</div>@endif</div>
 
-<div class="nav-tex wht-bg">
+<div class="nav-tex wht-bg" style="padding:12px 10px">
 <h2 class="text-lg" style="font-size:18px !important;">Bevakning<Br/>
 <small class="text-success">{{$category_count }} kategorier, alla områden,alla köpartyper,0 - 15 milj kr</small><Br/>
 </h6>

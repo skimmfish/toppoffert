@@ -431,18 +431,27 @@ $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>t
 
 $catCount = sizeof(\App\Models\Categories::all());
 
-$creditDed = \App\Models\Responders::where(['request_id'=>$request->id,'supplier_id'=>auth()->id()])->first()->credit_deducted_for_supplier;
+$creditDed = false;
 
-if(!is_null($creditObj)){
-   $creditBalance = $creditObj->credits;
+$iscreditDed = \App\Models\Responders::where(['request_id'=>$request->id,'supplier_id'=>auth()->id()])->first();
+
+if(!is_null($iscreditDed)){
+   $status = $iscreditDed->credit_deducted_for_supplier;
+if($status==true)
+$creditDed = true;
+}else{
+
+   $creditDed = false;
+
 }
 
-//$credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
+//retrieving the credit line here
+$credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
 
 return view('pages.request_view')->with(['requestBody'=>$request,
 'supplierObj'=>new \App\Models\Suppliers,
 'title'=>$request->request_title,'isCreditDeducted'=>$creditDed,
-'request_count'=>sizeof($requests),'creditBalance'=>$creditBalance,
+'request_count'=>sizeof($requests),'creditBalance'=>$credits,
 'related'=>$this->getRelatedRequests($request->service_cat)]);
 }
 
@@ -530,12 +539,46 @@ return $buyer_type = \App\Models\BuyerType::where('id',$btindex)->first()->buyer
 
 
 /**
- * @param 
+ * @param \Illuminate\Http\Request
+ * 
  */
-public function searchservices($search_phrase,$cat_name,$sub_category,$territory,$executed_for,$when_to){
+public function searchservices(Request $req){
+
+   $requests = \App\Models\ServiceRequests::where([
+      'matched'=>0,
+      'publish_status'=>true,
+      'archival_status'=>false,
+      ])->get();    
 
 
-echo $search_phrase;
+   $supplierCoverage = \App\Http\Controllers\SuppliersController::getServiceAreas(auth()->id());
 
+   $results = null;
+   
+   $catName =  $req->catName;
+   $sub_category = explode("_",$req->sub_category);
+   $catId = $sub_category[1];
+   $subCatName = $sub_category[0];
+   $subcatID = $sub_category[2];
+   $territory = $req->territory;
+   $executed_for = $req->executed_for;
+   $when = $req->when_to;
+
+
+         //fiiltering search result from the right table
+         $results = \App\Models\ServiceRequests::where([
+            'matched'=>0,
+            'publish_status'=>true,
+            'archival_status'=>false,
+            'subservice_cat'=>$subcatID,
+            'service_cat'=>$catId,
+            'executed_for'=>$executed_for,
+            'territory'=>$territory
+            ])->get();
+   
+
+   return view('marketplace.suppliers.searchfilter')->with(['supplierCoverage'=>$supplierCoverage,
+   'request_count'=>sizeof($requests),'catName'=>$catName,'subcatname'=>$subCatName,'title'=>'Söktjänst begär svar',
+   'requests'=>$results, 'catName'=>$req->catName]);   
 }
 }

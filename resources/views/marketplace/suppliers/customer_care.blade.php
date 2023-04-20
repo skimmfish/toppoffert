@@ -6,7 +6,7 @@
 <div class="container" style="margin:0;">
 
 <h1 class="kseerv_h1">Kundservice</h1>
-<h3>Har du frågor? Vår kundservice finns här för att hjälpa till </h3>
+<h5 style="font-size:16.5px !important">Har du frågor? Vår kundservice finns här för att hjälpa till </h5>
 
 <div class="row man">
 <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12 gen_body">
@@ -31,16 +31,19 @@ Du kan också kika om du hittar svar på din fråga bland våra <a href="{{route
 @endif
 
 <p class="tel_phone">
-<div class="other_info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon svg-icon--size-small svg-icon--spacing-right-small fill-current-color" data-v-095efe40=""><path d="M18.023 24.039a6.293 6.293 0 01-3.411-1.01A50.484 50.484 0 01.993 9.406c-1.606-2.524-1.259-5.747.84-7.846l.774-.774A2.58 2.58 0 014.442.028c.694 0 1.345.269 1.834.758l3.262 3.266a2.597 2.597 0 01-.002 3.667 1.098 1.098 0 00.001 1.549l5.232 5.233c.193.192.468.306.76.306s.567-.114.773-.32c.49-.489 1.141-.759 1.835-.759s1.345.269 1.835.758l3.261 3.26a2.598 2.598 0 010 3.669l-.774.774a6.24 6.24 0 01-4.436 1.85zm-2.581-2.26c.798.5 1.683.757 2.583.757 1.267 0 2.464-.5 3.372-1.408l.774-.774a1.098 1.098 0 000-1.549l-3.26-3.259c-.206-.206-.481-.319-.774-.319s-.568.114-.774.32a2.578 2.578 0 01-1.834.759 2.57 2.57 0 01-1.824-.75l-5.228-5.229a2.598 2.598 0 010-3.669 1.096 1.096 0 00.001-1.545l-.027-.028-3.236-3.239a1.09 1.09 0 00-.773-.318c-.293 0-.568.114-.775.32l-.774.773a4.756 4.756 0 00-.653 5.951 48.97 48.97 0 0013.202 13.207z"></path></svg> Ring oss på <a href="tel: {{\App\Http\Controllers\ConfigController::get_value('phone_no')}}"><u>  {{\App\Http\Controllers\ConfigController::get_value('phone_no')}}</u></a></div>
+<div class="other_info" style="line-height:30px !important">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon svg-icon--size-small svg-icon--spacing-right-small fill-current-color" data-v-095efe40=""><path d="M18.023 24.039a6.293 6.293 0 01-3.411-1.01A50.484 50.484 0 01.993 9.406c-1.606-2.524-1.259-5.747.84-7.846l.774-.774A2.58 2.58 0 014.442.028c.694 0 1.345.269 1.834.758l3.262 3.266a2.597 2.597 0 01-.002 3.667 1.098 1.098 0 00.001 1.549l5.232 5.233c.193.192.468.306.76.306s.567-.114.773-.32c.49-.489 1.141-.759 1.835-.759s1.345.269 1.835.758l3.261 3.26a2.598 2.598 0 010 3.669l-.774.774a6.24 6.24 0 01-4.436 1.85zm-2.581-2.26c.798.5 1.683.757 2.583.757 1.267 0 2.464-.5 3.372-1.408l.774-.774a1.098 1.098 0 000-1.549l-3.26-3.259c-.206-.206-.481-.319-.774-.319s-.568.114-.774.32a2.578 2.578 0 01-1.834.759 2.57 2.57 0 01-1.824-.75l-5.228-5.229a2.598 2.598 0 010-3.669 1.096 1.096 0 00.001-1.545l-.027-.028-3.236-3.239a1.09 1.09 0 00-.773-.318c-.293 0-.568.114-.775.32l-.774.773a4.756 4.756 0 00-.653 5.951 48.97 48.97 0 0013.202 13.207z"></path></svg> 
+Ring oss på <a href="tel: {{\App\Http\Controllers\ConfigController::get_value('phone_no')}}"><u>  {{\App\Http\Controllers\ConfigController::get_value('phone_no')}}</u></a></div>
+<br/>
 <div class="other_info"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon svg-icon--size-small svg-icon--spacing-right-small fill-current-color" data-v-095efe40=""><path d="M3 20.5a2.252 2.252 0 01-2.25-2.25v-12a2.22 2.22 0 01.498-1.411l.023-.027A2.238 2.238 0 013 4h18a2.245 2.245 0 011.757.845l.018.026c.311.399.475.875.475 1.379v12A2.252 2.252 0 0121 20.5H3zm-.75-2.25c0 .414.336.75.75.75h18a.75.75 0 00.75-.75V6.562l-7.276 5.596a4.077 4.077 0 01-2.474.841c-.891 0-1.77-.299-2.474-.841L2.25 6.562V18.25zm8.19-7.281c.444.342.998.53 1.56.53s1.115-.188 1.559-.53l7.111-5.47H3.329l7.111 5.47z"></path></svg>
 Maila oss på <a href="mailto:info@toppoffert.se"><u>info@toppoffert.se</u></a></div>
 </p>
 </div>
 
-<div class="col-md-3 col-xs-2 col-lg-3 col-sm-3 open_close" style="padding:9px;">
+<div class="col-md-3 col-xs-2 col-lg-3 col-sm-3 open_close" style="padding:9px;line-height:29px">
 <b>Öppettider</b>
-<p><div class="open_info">Måndag-fredag 9-17.</div>
-<div class="open_info"> Lunchstängt 12-13.</div>
+<p><div class="open_info">Måndag-fredag 9 - 17.</div>
+<div class="open_info"> Lunchstängt 12 - 13.</div>
 </p>
 <!--./open_close-->
 </div>

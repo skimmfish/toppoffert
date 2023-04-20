@@ -638,7 +638,8 @@ Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/supplier
 })->name('suppliers.dashboard');
 
 
-Route::get('/inbox/{search_phrase}/{cat_name}/{sub_category}/{territory}/{executed_for}/{when_to}','\App\Http\Controllers\ServiceRequestController@searchservices')->name('suppliers.search_filters');
+//for searching for services
+Route::get('/inbox/searchserrequests','\App\Http\Controllers\ServiceRequestsController@searchservices')->name('suppliers.search_filters');
 
 //saving certification doc
 Route::put('/save-certification-doc/{uid}','\App\Http\Controllers\SuppliersController@uploadcertification')->name('upload_certification');

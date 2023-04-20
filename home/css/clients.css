@@ -6,7 +6,8 @@ body{
 h1,h2,h3,h4,h5,h6{
     font-family:'GD Sherpa Regular' !important;
 }
-h1{font-size:46px;font-weight:900;}h3{font-size:19px !important;}
+
+
 a, .top-nav-text{
     text-decoration: none !important;
 }
@@ -49,7 +50,7 @@ a, .top-nav-text{
 h1,h2,h3,h4,h5,h6{
     font-family:GD Sherpa Regular;font-weight: 900;
 }
-h1{font-size:45px;}h2{font-size:39px;}h3{font-size:32px}h4{font-size:28px}h5{font-size:22px;}h6{font-size:17px;}
+h1{font-size:35px;}h2{font-size:30px;}h3{font-size:28px}h4{font-size:25px}h5{font-size:22px;}h6{font-size:18.5px;}
 
 .tw-div{
     display:grid;grid-template-columns: 80% 20%;grid-gap:5px;border-radius: 10px;

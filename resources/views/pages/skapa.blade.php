@@ -331,12 +331,12 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <div class="form-group">
                 <label for="WhenId" class="form-label">N&#228;r ska uppdraget p&#229;b&#246;rjas</label>
                     <select id="WhenId" name="when_to" class="flex-input form-control">
-                    <option value="Snarast m&#246;jligt">Snarast m&#246;jligt</option>
-                    <option value="Inom 1 m&#229;nad">Inom 1 m&#229;nad</option>
-                    <option value="Inom 3 m&#229;nader">Inom 3 m&#229;nader</option> 
-                    <option value="Inom 6 m&#229;nader">Inom 6 m&#229;nader</option>
-                    <option value="Inom 12 m&#229;nader">Inom 12 m&#229;nader</option>
-                    <option value="Tidpunkt mindre viktig">Tidpunkt mindre viktig</option>
+                    <option value="Så snart som möjligt">Snarast m&#246;jligt</option>
+                    <option value="Inom 1 månad">Inom 1 m&#229;nad</option>
+                    <option value="Inom 3 månader">Inom 3 m&#229;nader</option> 
+                    <option value="Inom 6 månader">Inom 6 m&#229;nader</option>
+                    <option value="Inom 12 månader">Inom 12 m&#229;nader</option>
+                    <option value="Timing är mindre viktigt">Tidpunkt mindre viktig</option>
                     </select>
                 </div>
  

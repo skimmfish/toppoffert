@@ -199,7 +199,7 @@ M15.383,15.076a1,1,0,0,0-1.09.217l-3,3a1,1,0,0,0,1.414,1.414L14,18.414V23a1,1,0,
 <span>
 @php 
 $responderCount =  \App\Http\Controllers\RespondersController::get_responders_count($requestBody->id);
-$maxResponder = \App\Http\Controllers\ConfigController::get_value('max_responder');
+$maxResponder = (\App\Http\Controllers\ConfigController::get_value('max_responder'))-6;
 for($i=0;$i<((int)$maxResponder-$responderCount);$i++){
   echo "<span class='emptyballs'>.</span>";
 }
@@ -213,7 +213,7 @@ for($i=0;$i<($responderCount);$i++){
 }
 @endphp
 </span>
-<span>{{ (int)$maxResponder-$responderCount }} till kan besvara</span>
+<span>{{ ((int)$maxResponder-$responderCount) }} till kan besvara</span>
 </div>
 </p>
 

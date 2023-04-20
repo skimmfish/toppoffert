@@ -158,8 +158,8 @@ justify-items: self-end;position:relative;top:15px;
 }
 
 
-.text-md, .text-lg{font-family: 'Spartan','GD Sherpa Regular' !important;}
-.text-md{font-size:13.5px;font-weight: 600;}.text-lg{font-size:19px;font-weight: 700;}
+.text-md, .text-lg{font-family: 'Spartan','GD Sherpa Regular' !important;font-weight:500 !important;}
+.text-md{font-size:14px;font-weight: 600;}.text-lg{font-size:19px;font-weight: 700;}
 .bevel_border p{font-size:14px;font-weight:700;color:#64748b;}
 .bevel_border h5{
     font-size:30px;font-weight: 800 !important;
@@ -205,15 +205,26 @@ border-radius:50px;width:150%;position:relative;top:5px;height:50px;
 .service_search .svgsear{
     position:relative;top:-43px;left:132%;
 }
+
 .custom_m12r{
         right: -20rem !important;
         height: 420px;
         width: 500px;
-        top: -18px;border-radius:10px;
+        top:10px !important;border-radius:15px;
+        border:0;
+        box-shadow:2px 2px 2px 2px #efefef;
 }
 
 .service_search label{
     font-weight:700 !important;
+}
+
+.remove_hover_color:hover{
+background:none !important
+}
+
+.text-underline{
+    text-decoration: underline !important;
 }
 
 .dark_btn svg{

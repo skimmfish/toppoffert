@@ -370,17 +370,6 @@ function copyToClipBoard(textFieldToCopy) {
 }
 </script>
 
-<script>
-function searchFilters(atName,sub_category,territory,executed_for,when_to){
-
-
-
-
-
-}
-  </script>
-
-
 <style>
   .grey_border{
   border:3px solid #222;

@@ -635,7 +635,8 @@ h1,h2,h3,h4,h5,h6{
                       </a><!-- more inner pages-->
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('settings.password')}}" data-bs-toggle="" aria-expanded="false">
+                    {{-- 
+                      <li class="nav-item"><a class="nav-link" href="{{route('settings.password')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Byt lösenord</span></div>
                       </a><!-- more inner pages-->
                     </li>
@@ -650,7 +651,7 @@ h1,h2,h3,h4,h5,h6{
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Fakturor och betalningar</span></div>
                       </a><!-- more inner pages-->
                     </li>
-
+--}}
                     
                     <li class="nav-item"><a class="nav-link" href="{{route('settings.coverage')}}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Bevakning</span></div>
@@ -823,9 +824,11 @@ h1,h2,h3,h4,h5,h6{
                @if(\Auth::user()->profile_img!=NULL) 
                <img src="{{asset('img/avatar/'.\Auth::user()->profile_img)}}" class="img-responsive img-circle-md move-left-20" />
                 @else
-                <svg width="34px" height="34px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16.9696 19.5047C16.7257 17.5293 15.0414 16 13 16H11C8.95858 16 7.27433 17.5293 7.03036 19.5047M16.9696 19.5047C19.3986 17.893 21 15.1335 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 15.1335 4.60137 17.893 7.03036 19.5047M16.9696 19.5047C15.5456 20.4496 13.8371 21 12 21C10.1629 21 8.45441 20.4496 7.03036 19.5047M15 10C15 11.6569 13.6569 13 12 13C10.3431 13 9 11.6569 9 10C9 8.34315 10.3431 7 12 7C13.6569 7 15 8.34315 15 10Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+
+                <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.5 21.0001H6.5C5.11929 21.0001 4 19.8808 4 18.5001C4 14.4194 10 14.5001 12 14.5001C14 14.5001 20 14.4194 20 18.5001C20 19.8808 18.8807 21.0001 17.5 21.0001Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
 
                   @endif
                 <small>@if(\Auth::user()->user_cat=='SUPPLIER') {{$supplierObj->where('supplier_id','=',\Auth::user()->id)->first()->supplier_corp_name }} @else 
@@ -835,7 +838,9 @@ h1,h2,h3,h4,h5,h6{
 
               <div class="grid-2-y">
               <div class="footer-item">
+              
               <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-mini fill-current-color" style="fill: none;" data-v-270f2b45=""><g clip-path="url(#clip0_1810_41320)" stroke="#B8C3D5" stroke-width=".75" stroke-linecap="round" stroke-linejoin="round"><path d="M11.625.374L.375 11.624M11.625 3.749V.374H8.25M.375.374L4.5 4.499M11.625 8.249v3.375H8.25M7.5 7.499l4.125 4.125"></path></g><defs><clipPath id="clip0_1810_41320"><path fill="#fff" d="M0 0h12v12H0z"></path></clipPath></defs></svg>
+
               <a href="{{route('suppliers.dashboard')}}" target="_blank"><span class="text-black">Home</span></a>
               </div>
               <div class="footer-item">

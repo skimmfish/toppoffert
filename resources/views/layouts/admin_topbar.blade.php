@@ -37,7 +37,7 @@ $categories = \App\Http\Controllers\CategoriesController::getcatnames();
 
 <form class="service_search" method="GET" action="{{route('suppliers.search_filters')}}">
 
-<input type="text" name="search_phrase" class="form-control input-text-sm service_search_box" placeholder="Ange din söktext!"/>
+<input type="text" class="form-control input-text-sm service_search_box" placeholder="Ange din söktext!"/>
 <li class="nav-item dropdown">
 
 <a class="nav-link pe-0 ps-2" id="navbarDropdownSearch" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,7 +45,9 @@ $categories = \App\Http\Controllers\CategoriesController::getcatnames();
 </a>
 
 <div class="dropdown-menu dropdown-menu-end py-0 custom_m12r" aria-labelledby="navbarDropdownSearch">
-    <div class="dropdown-item">
+    <div class="dropdown-item remove_hover_color">
+
+    <b>Ange sökparametrar här</b>
     
     <div class="row 1">
     <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-12">
@@ -118,16 +120,16 @@ $categories = \App\Http\Controllers\CategoriesController::getcatnames();
 <div class="form-group col-md-12 col-sm-12 col-xl-12 col-lg-12 col-xs-12">
   <label>När ska uppdraget påbörjas</label>
   <select name="when_to" class="form-control">
-                    <option value="Snarast m&#246;jligt">Snarast m&#246;jligt</option>
-                    <option value="Inom 1 m&#229;nad">Inom 1 m&#229;nad</option>
-                    <option value="Inom 3 m&#229;nader">Inom 3 m&#229;nader</option> 
-                    <option value="Inom 6 m&#229;nader">Inom 6 m&#229;nader</option>
-                    <option value="Inom 12 m&#229;nader">Inom 12 m&#229;nader</option>
-                    <option value="Tidpunkt mindre viktig">Tidpunkt mindre viktig</option>
+                    <option value="Så snart som möjligt">Snarast m&#246;jligt</option>
+                    <option value="Inom 1 månad">Inom 1 m&#229;nad</option>
+                    <option value="Inom 3 månader">Inom 3 m&#229;nader</option> 
+                    <option value="Inom 6 månader">Inom 6 m&#229;nader</option>
+                    <option value="Inom 12 månader">Inom 12 m&#229;nader</option>
+                    <option value="Timing är mindre viktigt">Tidpunkt mindre viktig</option>                    
                     </select>
-                      </div>
+                    </div>
+                    </div>
 
-</div>
 <!--./row-->
 <div class="row">
   <button class="btn btn-primary dark_btn" onClick="searchFilters(catName.value,
