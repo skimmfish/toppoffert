@@ -613,7 +613,7 @@ Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/supplier
         'matched'=>0,
         'publish_status'=>true,
         'archival_status'=>false,
-        ])->get();
+        ])->orderBy('created_at','DESC')->get();
 
         //initializing the credits
         $credits = 0;
@@ -679,7 +679,11 @@ Route::get('/suppliers-coverage',function(){
 Route::get('/view-service-request/{hash}',[\App\Http\Controllers\ServiceRequestsController::class,'viewservicerequest'])->name('supplier_view_request');
 
 //delete a request from your view
-Route::get('clear-request/{id}')->name('request_clear');
+Route::get('clear-request/{id}',function($id){
+
+
+    
+})->name('request_clear');
 
 //showing interest by clicking the pink button
 Route::get('/show-interest/{hash}',function(){

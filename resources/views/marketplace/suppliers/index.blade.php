@@ -32,10 +32,10 @@ $buyerTypes = '';
 @endphp
 
 <div class="nav-tex"><span><b>{{$categoriesCount }} kategorier, alla områden,
-  {{$buyerTypes}} 0 - 10 milj kr</b> <a href="#" onClick="triggerRefresh()"> Ändra </a></span></div>
+  {{$buyerTypes}} 0 - 10 milj kr</b> <a href="{{route('settings.coverage')}}"> Ändra </a></span></div>
 
           <div class="navigation_control">
-{{--            <a href="#" class="btn"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color icon no-fill"><g clip-path="url(#clip0_289_161)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.674 13.588C15.525 16.19 12.97 18 10 18c-2.969 0-5.525-1.81-6.674-4.412M17 8.294C16.08 5.23 13.294 3 10 3S3.92 5.229 3 8.294"></path><path d="M13.376 13.486l4.234-.372.372 4.234M6.72 7.472L2.694 8.836 1.33 4.81"></path></g><defs><clipPath id="clip0_289_161"><path fill="#fff" d="M0 0h20v20H0z"></path></clipPath></defs></svg></a>
+{{-- <a href="#" class="btn"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color icon no-fill"><g clip-path="url(#clip0_289_161)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.674 13.588C15.525 16.19 12.97 18 10 18c-2.969 0-5.525-1.81-6.674-4.412M17 8.294C16.08 5.23 13.294 3 10 3S3.92 5.229 3 8.294"></path><path d="M13.376 13.486l4.234-.372.372 4.234M6.72 7.472L2.694 8.836 1.33 4.81"></path></g><defs><clipPath id="clip0_289_161"><path fill="#fff" d="M0 0h20v20H0z"></path></clipPath></defs></svg></a>
               <a href="#" class="btn"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color icon no-fill"><path d="M7.464 3.216L8.09 1.62A1.429 1.429 0 019.42.714h1.16a1.429 1.429 0 011.33.907l.626 1.595 2.071 1.197 1.693-.257a1.429 1.429 0 011.451.698l.58 1a1.428 1.428 0 01-.12 1.606l-1.068 1.344v2.392l1.068 1.338a1.428 1.428 0 01.12 1.609l-.58 1a1.428 1.428 0 01-1.451.698l-1.693-.257-2.071 1.197-.626 1.595a1.429 1.429 0 01-1.33.907H9.42a1.43 1.43 0 01-1.33-.907l-.626-1.595-2.071-1.197-1.693.257a1.428 1.428 0 01-1.451-.698l-.58-1a1.428 1.428 0 01.12-1.606l1.068-1.341V8.804L1.79 7.466a1.429 1.429 0 01-.12-1.609l.58-1A1.429 1.429 0 013.7 4.156l1.693.257 2.071-1.197zM7.143 10a2.857 2.857 0 105.714 0 2.857 2.857 0 00-5.714 0z" stroke-width="1.429" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
                 <a href="#" class="btn"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color icon no-fill"><rect x="1" y="1" width="7" height="4" rx="1" stroke-width="1.5"></rect><rect x="11" y="1" width="8" height="18" rx="1" stroke-width="1.5"></rect><rect x="1" y="8" width="7" height="4" rx="1" stroke-width="1.5"></rect><rect x="1" y="15" width="7" height="4" rx="1" stroke-width="1.5"></rect></svg></a>
                   <a href="#" class="btn"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon--size-small fill-current-color icon no-fill"><rect x="1" y="1" width="18" height="4" rx="1" stroke-width="1.5"></rect><rect x="1" y="8" width="18" height="4" rx="1" stroke-width="1.5"></rect><rect x="1" y="15" width="18" height="4" rx="1" stroke-width="1.5"></rect></svg></a>
@@ -66,7 +66,7 @@ $buyerTypes = '';
     --}}
 
     
-     <div class="row requests" id="requestFilter" style="margin:15px 0 12px 0;">
+     <div class="row requests" id="hideDiv_{{$x->id}}" style="margin:15px 0 12px 0;" >
             <!--request_title_and_no. of_interested_suppliers-->
             <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6 titles">
             <a href="{{route('supplier_view_request',['hash'=>$x->request_hash])}}" class="request_title underline">{{$x->request_title}}</a>
@@ -100,7 +100,9 @@ $buyerTypes = '';
 
               <div class="col-md-3 col-lg-3 col-sm-3 col-xs-6 titles">
                   <span>{{$buyersTypeName}}</span><br/>
-                  <span>ldag {{date('d F, Y',strtotime(explode(" ", $x->created_at)[0]))}}</span>
+                  <span><svg fill="#000000" width="30px" height="30px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 0c-8.836 0-16 7.163-16 16s7.163 16 16 16c8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 30.032c-7.72 0-14-6.312-14-14.032s6.28-14 14-14 14 6.28 14 14-6.28 14.032-14 14.032zM17 15.594v-9.594c0-0.552-0.448-1-1-1s-1 0.448-1 1v10c0 0.283 0.118 0.537 0.308 0.719 0.017 0.020 0.030 0.041 0.048 0.059l4.949 4.95c0.39 0.39 1.023 0.39 1.414 0s0.39-1.024 0-1.415z"></path>
+</svg> ldag {{date('d F, Y h:i',strtotime(explode(" ", $x->created_at)[0]))}}</span>
                          </div>
 
                   <div class="col-md-3 col-xs-3 col-xs-6 flex-rw titles">
@@ -115,7 +117,7 @@ $buyerTypes = '';
                   </div>
 
                     <div class="col-md-2 col-xs-4">
-                      <a href="#" data-toggle="modal" data-attr="{{route('request_clear',['id'=>$x->id])}}" class="btn-grey-bg" id="deleteRequest" data-target="#requestModal">
+                      <a href="#" onClick="hideRequest({{$x->id}})" type="button" class="btn-grey-bg">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon svg-icon--size-small fill-current-color" data-v-467c38da=""><path d="M6.631 23.25a2.263 2.263 0 01-2.242-2.064L3.06 5.25H1.5a.75.75 0 010-1.5h6V3A2.252 2.252 0 019.75.75h4.5A2.252 2.252 0 0116.5 3v.75h6a.75.75 0 010 1.5h-1.56l-1.328 15.937a2.262 2.262 0 01-2.242 2.063H6.631zm-.748-2.188c.032.386.36.688.748.688H17.37a.753.753 0 00.747-.688L19.435 5.25H4.565l1.318 15.812zM15 3.75V3a.75.75 0 00-.75-.75h-4.5A.75.75 0 009 3v.75h6z"></path>
                       <path d="M9.75 18a.75.75 0 01-.75-.75v-7.5a.75.75 0 011.5 0v7.5a.75.75 0 01-.75.75zM14.25 18a.75.75 0 01-.75-.75v-7.5a.75.75 0 011.5 0v7.5a.75.75 0 01-.75.75z"></path></svg>
                       </a>

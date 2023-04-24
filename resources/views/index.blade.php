@@ -480,6 +480,26 @@ Kontos-& Buttikstadning
 </div>
     </section>
 
+
+<!--this section is for upcoming mobile-->
+
+<section class="page-section" style="background:#0055aa;color:#fff">
+
+  <div class="grid-layer">
+
+<div class="layer-col-6">
+
+
+  </div>
+
+  <div class="layer-col-6 p-right">
+    SNART LANSERAS VÅRAN APP DÄR NI KAN FÖRETAG KAN HITTA JOBBEN SOM PASSAR ER BÄST!
+  </div>
+
+    </section>
+
+<!--end of mobile app section-->
+
 <section class="page-section gray-bg">
     <div class="page-section__inner two-col">
         <div class="col" style="line-height:34px;font-family:'Spartan','GD Sherpa Regular'">

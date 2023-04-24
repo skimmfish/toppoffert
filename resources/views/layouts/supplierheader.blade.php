@@ -931,5 +931,14 @@ h1,h2,h3,h4,h5,h6{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 
+<script type="text/javascript">
+
+function hideRequest(divId){
+var divBox = 'hideDiv_'+divId;
+var divElement = document.getElementById(divBox);
+divElement.style.display = 'none';
+}
+</script>
+
 </body>
 </html>
