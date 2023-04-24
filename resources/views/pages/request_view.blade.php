@@ -35,7 +35,7 @@ class="text-black btn btn-white btn_r_circle" style="border-radius:40px;">
 
 
 <div class="row m-3">
-<div class="col-md-8 col-lg-8 col-xs-8 col-xl-8 col-sm-8"><h3 class="text-black">{{$requestBody->request_title}} <span class="text-grey">#{{$requestBody->id}}</span></h3></div>
+<div class="col-md-8 col-lg-8 col-xs-8 col-xl-8 col-sm-8"><h3 class="text-black">{{$requestBody->request_title}} {{-- <span class="text-grey">#{{$requestBody->id}}</span> --}} </h3></div>
 
 <div class="col-md-4 col-lg-4 col-xs-4 col-xl-4 col-sm-4">
 @if($isCreditDeducted)

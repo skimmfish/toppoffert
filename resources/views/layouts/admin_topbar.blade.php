@@ -47,7 +47,7 @@ $categories = \App\Http\Controllers\CategoriesController::getcatnames();
 <div class="dropdown-menu dropdown-menu-end py-0 custom_m12r" aria-labelledby="navbarDropdownSearch">
     <div class="dropdown-item remove_hover_color">
 
-    <b>Ange sökparametrar här</b>
+  <br/><b>Ange sökparametrar här</b><hr/>
     
     <div class="row 1">
     <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-12">
@@ -144,7 +144,7 @@ $categories = \App\Http\Controllers\CategoriesController::getcatnames();
  @endif
  </ul>
 
- <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center" @if(Auth::user()->user_cat=='SUPPLIER') style="position:relative;top:-25px;" @endif>
+ <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center move_rf_20" >
               <li class="nav-item">
       
             <div class="theme-control-toggle fa-icon-wait px-2">

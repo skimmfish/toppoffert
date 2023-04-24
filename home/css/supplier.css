@@ -200,17 +200,17 @@ display:grid;grid-template-columns: 15% 15% 15% 15%;grid-gap:5px;
     position:relative;
 }
 .service_search_box{
-border-radius:50px;width:150%;position:relative;top:5px;height:50px;
+border-radius:10px;width:150%;position:relative;top:25px;height:50px;
 }
 .service_search .svgsear{
-    position:relative;top:-43px;left:132%;
+    position:relative;top:-23px;left:132%;
 }
 
 .custom_m12r{
-        right: -20rem !important;
-        height: 420px;
+        right: -19.4rem !important;
+        height: 470px;
         width: 500px;
-        top:10px !important;border-radius:15px;
+        top:35px !important;border-radius:15px;
         border:0;
         box-shadow:2px 2px 2px 2px #efefef;
 }

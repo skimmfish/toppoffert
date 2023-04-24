@@ -342,7 +342,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
  
 
 
-<div class="two-columns">
+{{-- <div class="two-columns">
 <div class="form-group column">
 		  <label for="fro_date" class="form-label">Från vilket datum </label>
 		  <input class="flex-input form-control" style="width:100%;margin-top:8px;" id="fro_date" name="fro_date" type="date" value="{{old('fro_date')}}" required/>
@@ -366,6 +366,7 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
 
 </div>
 </div>
+--}}
 
 <!--end of dates-->
 

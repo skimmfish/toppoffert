@@ -50,8 +50,8 @@ public function store(Request $request){
       'Name'=>['required'],
       'Phone'=>['required'],
       'PostCode'=>['required'],
-      'fro_date'=>['required','date'],
-      'to_date'=>['required','date'],
+/*      'fro_date'=>['required','date'],
+      'to_date'=>['required','date'],*/
       'territory'=>['required', 'String'],
       'sub_category'=>['required']
    ];
@@ -61,8 +61,8 @@ public function store(Request $request){
       'address' => 'Din adress krävs',
       'Name' => 'Namn krävs, se till att du anger två(2) namn',
       'PostCode' => 'Postnummer krävs',
-      'fro_date'=>'När vill du att våra leverantörer ska börja',
-      'to_date'=>'När vill du begära att bli färdigställd',
+/*      'fro_date'=>'När vill du att våra leverantörer ska börja',
+      'to_date'=>'När vill du begära att bli färdigställd',*/
       'Phone'=>'Telefonnummer krävs',
       'request_title'=>'Vänligen ange din förfrågan, en perfekt titel skulle duga',
       'sub_category'=>'En underkategori som din begäran faller in i krävs'
@@ -132,8 +132,8 @@ public function store(Request $request){
    $newRequest->executed_for = $request->executed_for;
    $newRequest->request_type = $subCategory[0];
    $newRequest->buyer_telephone = $request->Phone;
-   $newRequest->date_from = $request->fro_date;
-   $newRequest->date_to = $request->to_date;
+//   $newRequest->date_from = $request->fro_date;
+  // $newRequest->date_to = $request->to_date;
    $newRequest->territory = $request->territory;
 
    $newRequest->save();
