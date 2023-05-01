@@ -85,7 +85,7 @@ class LoginController extends Controller
             }else if(\Auth()->user()->user_cat=='SADMIN'){
                //IF the logged in user is a super admin   
                //return response()->json([[3]]);
-               return redirect()->route('sadmin_index');
+               return redirect()->route('sadmin_all_requests');
                
             }
 

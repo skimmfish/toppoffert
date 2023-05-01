@@ -483,17 +483,19 @@ Kontos-& Buttikstadning
 
 <!--this section is for upcoming mobile-->
 
-<section class="page-section" style="background:#0055aa;color:#fff">
+<section class="page-section page_sec" style="background:#fff;color:#000;padding:40px 10px 125px 0px !important;margin-bottom:0 !important">
 
   <div class="grid-layer">
 
 <div class="layer-col-6">
 
+<img src="{{asset('img/mobilemockup.PNG')}}" alt="Mobile App Coming soon" class="img-responsive"/>
 
-  </div>
+</div>
 
-  <div class="layer-col-6 p-right">
-    SNART LANSERAS VÅRAN APP DÄR NI KAN FÖRETAG KAN HITTA JOBBEN SOM PASSAR ER BÄST!
+  <div class="layer-col-5 p-right" style="background-color:#0055aa;color:#ffffff;">
+    <b>Kommer snart</b><Br/><br/>
+    <span class="capitalize">SNART LANSERAS VÅRAN APP DÄR NI KAN FÖRETAG KAN HITTA JOBBEN SOM PASSAR ER BÄST!</span>
   </div>
 
     </section>

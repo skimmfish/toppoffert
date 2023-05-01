@@ -495,7 +495,7 @@ return view('pages.projekt_winnr',['title'=>'Ange Vinnare - '.config('app.name')
 Route::middleware(['auth','verified','sadmin'])->prefix('sadmin')->group(function(){
 
 //HOMEPAGE
-Route::get('/',function(){
+/*Route::get('/',function(){
 
 $active_user = \App\Models\User::whereNull('deleted_at')->orderBy('created_at','DESC')->take(5)->get();
 $messages = \App\Models\NotificationModel::where('receiver_id',\Auth::user()->id)->orderBy('created_at','DESC')->get();
@@ -503,8 +503,13 @@ return view('marketplace.sadmin.index',['title'=>'Administratörens Instrumentpa
 'active_user'=>$active_user,'personalNotification'=>$messages]);
 
 })->name('sadmin_index');
+*/
+
+//homepage
+Route::get('/',[App\Http\Controllers\ServiceRequestsController::class,'allbuyersrequest'])->name('sadmin_index');
 
 
+//confirm request_approval
 Route::get('/confirm-request-approval/{request_id}/{buyer_id}',function($request_id,$buyer_id){
 
 return view('pages.confirm_request_approval',['request_id'=>$request_id,'buyer_id'=>$buyer_id]);

@@ -318,12 +318,12 @@ l1 -42 -107 -3 c-99 -2 -108 -4 -108 -22 0 -24 12 -31 52 -32 22 -1 36 5 46
             <div class="form-group">
                 <label for="WhoId" class="form-label">Uppdraget ska utf&#246;ras &#229;t</label><br/>
                   <select id="WhoId" name="executed_for" class="flex-input form-control">
+                  <option value="6" selected>Privatperson</option>
                     <option value="1">Bostadsr&#228;ttsf&#246;rening</option>
                         <option value="2">Byggherre/Entrepren&#246;r</option>
                           <option value="3">F&#246;retag</option>
                             <option value="4">Ideell f&#246;rening</option>
                               <option value="5">Kommun/Myndighet</option>
-                                <option value="6">Privatperson</option>
                                     <option value="7">Villaf&#246;rening</option>
                                       </select> 
                                           </div>

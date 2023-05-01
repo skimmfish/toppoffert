@@ -15,7 +15,50 @@
     
     h1,h2,h3,h4,h5,h6{
       font-family:GD Sherpa Regular;font-family:30px;
+}
+
+.page_sec{
+
+  margin-bottom: 40px !important;
+}
+
+.grid-layer{
+display:grid;grid-template-columns: 48% 52%;grid-gap:35px;
     }
+.capitalize{
+  text-transform: capitalize !important;line-height:40px;font-size:26px;
+}
+
+.layer-col-6 img{
+border-radius:25px;rotate: 15deg;
+}
+.layer-col-6{
+  display:flex;justify-content: flex-end;
+  padding:30px 
+}
+.p-right{
+  padding:200px 95px;text-align:Center;
+}
+@media(max-width:768px){
+  .p-right{
+    padding:180px 41px;text-align:Center;
+  }
+    
+}
+
+@media(max-width:425px){
+.page_sec{
+  display:none !important;
+}
+  .grid-layer{
+    display:none;
+    flex-direction: column-reverse;
+    
+  }
+
+}
+
+
 
     .grid-box{
       display:grid;

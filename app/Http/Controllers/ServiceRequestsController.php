@@ -86,7 +86,7 @@ public function store(Request $request){
    if(is_null($emailExists)){
       $last_id = $user = User::insertGetId([
       'f_name' => $f_name,
-      'username' => explode('@',$email)[0],
+      'username' => explode('@',$email)[0].'_'.Str::random(5),
       'email' => $email,
       'password' => $password,
       'business_email' => $email,
