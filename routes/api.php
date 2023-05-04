@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\ServiceRequestsControllers;
+use \App\Models\ServiceRequests;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +37,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//fetching all requests
+Route::get('/requests',function(){
+
+return ServiceRequests::where(['matched_with_supplier'=>false])->get();
+
+})->middleware(['auth:sanctum']);

@@ -32,9 +32,15 @@ Route::get('/authorized',function(){
     return view('errors.unauthorized')->with(['title'=>'Unauthorized']);
 })->name('unauthorized');
 
+Route::get('/docs',function(){
+
+    return view('scribe.index');
+
+})->name('api_docs');
+
 //for running finder search for service companies
 Route::get('/finder',function(){
-    
+
 })->name('finder_search');
 
 //yrkeskategorier page
@@ -124,7 +130,7 @@ Route::post('sendmsg',function(Request $request){
     $email = $request->email__to;
     $msg = $request->msgto_send;
     $contactPerson = \App\Http\Controllers\ConfigController::get_value('contact_person');
-    
+
     \Mail::to($email)->queue(new \App\Mail\SendMessage($msg,$contactPerson));
 
 return redirect()->back()->with(['message'=>'Your email has been sent to Abbeh']);
@@ -176,7 +182,7 @@ Route::post('/skapa-request-processor','\App\Http\Controllers\ServiceRequestsCon
 //this route redirects user to their respective dashboard if properly logged in previously
 Route::get('redirecting',function(){
 
-if(\Auth::check()){ 
+if(\Auth::check()){
 
 //check if user is a client
 if(\Auth::user()->user_cat=='CLIENT'){
@@ -386,7 +392,7 @@ Route::get('/assign-credit-view/{supplier_id}/',function($supplier_id){
     $l_name = \App\Models\User::find($supplier_id)->l_name;
     $img = \App\Models\User::find($supplier_id)->profile_img;
     $email = \App\Models\User::find($supplier_id)->email;
-    
+
     return view('marketplace.sadmin.assigncreditview',[
         'l_name'=>$l_name,'supplier_id'=>$supplier_id,
         'img'=>$img,'f_name'=>$f_name,'email'=>$email,'supObj'=>new \App\Http\Controllers\SuppliersController]);
@@ -417,10 +423,10 @@ Route::get('site-configuration')->name('site_configuration');
 //fetch categories
 Route::get('/get-cat-names',function(){
     if(isset($_GET['cat_name'])){
-        
+
         $cat_name = $_GET['cat_name'];
 
-    \App\Http\Controllers\CategoriesController::getsubcatnames($cat_name); 
+    \App\Http\Controllers\CategoriesController::getsubcatnames($cat_name);
 }
 }
 //'\App\Http\Controllers\CategoriesController@getsubcatnames')
@@ -430,10 +436,10 @@ Route::get('/get-cat-names',function(){
 //fetch categories
 Route::get('/get-cat-names-for-page',function(){
     if(isset($_GET['cat_name'])){
-        
+
         $cat_name = $_GET['cat_name'];
 
-    \App\Http\Controllers\CategoriesController::getsubcatnamesforpg($cat_name); 
+    \App\Http\Controllers\CategoriesController::getsubcatnamesforpg($cat_name);
 }
 }
 )->name('categories_for_page');
@@ -577,7 +583,7 @@ return view('pages.send_a_message',['email'=>$email,'id'=>$id,'subject'=>$subjec
 })->name('send_message');
 
 
-//send notification 
+//send notification
 Route::post('/send-notification',[\App\Http\Controllers\NotificationsController::class,'sendnotification'])->name('sendmsg_reply');
 
 //create invoices
@@ -591,7 +597,7 @@ Route::get('/recent-messages',function(){
     return view('marketplace.sadmin.messages',[
 
     ]);
-    
+
 })->name('marketplace.sadmin.recent_message')->middleware(['auth']);
 
 
@@ -624,7 +630,7 @@ Route::middleware(['auth','verified','suppliers'])->prefix('marketplace/supplier
         $credits = 0;
 
         $catCount = sizeof(\App\Models\Categories::all());
-        
+
         $creditObj = \App\Http\Controllers\CreditsController::getCredits($uid);
         if(is_null($creditObj)){
             $credits = 0;
@@ -663,7 +669,7 @@ Route::get('/suppliers-coverage',function(){
     $credits = 0;
 
     $catCount = sizeof(\App\Models\Categories::all());
-    
+
     $creditObj = \App\Http\Controllers\CreditsController::getCredits($uid);
 
     if(is_null($creditObj)){
@@ -687,7 +693,7 @@ Route::get('/view-service-request/{hash}',[\App\Http\Controllers\ServiceRequests
 Route::get('clear-request/{id}',function($id){
 
 
-    
+
 })->name('request_clear');
 
 //showing interest by clicking the pink button
@@ -727,10 +733,10 @@ Route::get('/send-message-buyer/{id}/{supplier_id}/{buyer_id}',function($id,$sup
     $isDeducted = \App\Models\Responders::where(['supplier_id'=>$supplier_id,'buyer_id'=>$buyer_id,'request_id'=>$id])->get();
 
     $messages = \App\Models\RequestChats::where(['request_id'=>$id,'supplier_id'=>$supplier_id])->paginate(20);
-    
+
     $allFiles = \App\Models\FileManager::where(['request_id'=>$id])->first();
 
-    $suppAvatar = \Auth::user()->profile_img; 
+    $suppAvatar = \Auth::user()->profile_img;
     //create an entry in the responder table first
 
     return view('pages.sendmessagebox',['requests'=>$requests,'buyer_id'=>$buyer_id,
@@ -779,7 +785,7 @@ return redirect()->back()->with(['message'=>'Invoice deleted successfully!']);
 
 //customer care_for suppliers page
 Route::get('/services/customer-care',function(){
-$dt = \Carbon\Carbon::now();   
+$dt = \Carbon\Carbon::now();
 $dayOfWeek = explode(',',$dt->toDayDateTimeString())[0];
 
 $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'archival_status'=>false])->get();
@@ -795,7 +801,7 @@ return view('marketplace.suppliers.customer_care',[
 'credit'=>$credits]);
 
 })->name('supplier_customer_care');
-   
+
 
 //suppliers settings snapshot page this displays ratings, starsm company name and registration date
 Route::get('/projects',function(){
@@ -823,11 +829,11 @@ Route::get('/settings',function(){
     $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
     $catCount = sizeof(\App\Models\Categories::all());
     $ratingObj = new \App\Http\Controllers\RatingsController;
-  
+
     $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials($uid);
 
     $credits= \App\Http\Controllers\CreditsController::getCredits(\Auth::user()->id)->credits;
-    
+
     $review_count = $ratingObj->getRatings($uid);
 
 
@@ -855,14 +861,14 @@ Route::get('/contact-information',function(){
     if(sizeof($requests)<=0){
         $request_count = 0;
     }
-    
+
     $catCount = sizeof(\App\Models\Categories::all());
     $ratingObj = new \App\Http\Controllers\RatingsController;
 
     $review_count = $ratingObj->getRatings($uid);
 
     $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials($uid);
-    
+
     $certificate = \App\Models\Suppliers::where(['supplier_id'=>$uid])->first()->certification_uri;
     $coy_reg_cert = \App\Models\Suppliers::where(['supplier_id'=>$uid])->first()->coy_reg_cert;
 
@@ -906,7 +912,7 @@ Route::get('/settings/accountsummary',function(){
 //for resetting supplier's password from the dashboard
 Route::get('/settings/password',function(){
     $uid = \Auth::user()->id;
-  $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials($uid);  
+  $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials($uid);
   $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
   $catCount = sizeof(\App\Models\Categories::all());
 
@@ -929,7 +935,7 @@ Route::get('/settings/password',function(){
 //for generating invoices/paying invoices generated by the site administrators
 Route::get('/settings/invoices',function(){
     $uid = \Auth::user()->id;
-    
+
     $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
     $catCount = sizeof(\App\Models\Categories::all());
     $ratingObj = new \App\Http\Controllers\RatingsController;
@@ -939,7 +945,7 @@ Route::get('/settings/invoices',function(){
 
     $review_count = $ratingObj->getRatings($uid);
 
-    
+
     return view('marketplace.suppliers.invoices',['title'=>'Fakturor Och',
     'ratings'=>$review_count['rating'],
     'review_count'=>$review_count['review_count'], 'request_count'=>sizeof($requests),
@@ -952,7 +958,7 @@ Route::get('/settings/invoices',function(){
 //for ratings
 Route::get('/settings/ratings',function(){
 
-  $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials(\Auth::user()->id);  
+  $testimonials = \App\Http\Controllers\RatingTestimonialsController::getTestimonials(\Auth::user()->id);
   $requests = \App\Models\ServiceRequests::where(['matched'=>0,'publish_status'=>true,'project_execution_status'=>0])->get();
   $catCount = sizeof(\App\Models\Categories::all());
   $ratingObj = new \App\Http\Controllers\RatingsController;
@@ -1024,7 +1030,7 @@ Route::get('/email/verify', function () {
 //link for verifying new users
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
- 
+
     return redirect('/home');
 
 })->middleware(['auth', 'signed'])->name('verification.verify');
@@ -1033,7 +1039,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 //for users who forgot their verification link
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
- 
+
     return back()->with('message', 'Verifieringslänk har skickats!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
@@ -1082,5 +1088,4 @@ Route::get('/user-profile',[App\Http\Controllers\UserController::class,'profile'
 Route::post('/send-message',function(Request $request){
     event(new Message($request->input('uid'), $request->input('request_response')));
     })->middleware(['auth']);
-    
-    
+
